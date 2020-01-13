@@ -1,0 +1,22 @@
+{
+  "name": "javascript-data-structures-and-algorithms",
+  "version": "1.0.0",
+  "description": "javascript data structures & algorithms",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EvgeniRusev/javascript-data-structures-and-algorithms.git"
+  },
+  "author": "Evgeni Rusev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EvgeniRusev/javascript-data-structures-and-algorithms/issues"
+  },
+  "homepage": "https://github.com/EvgeniRusev/javascript-data-structures-and-algorithms#readme",
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
