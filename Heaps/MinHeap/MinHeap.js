@@ -9,6 +9,10 @@ class MinHeap {
     }
 
     extractMin() {
+        if (!this.data.length) {
+            throw 'The heap is empty!';
+        }
+
         const result = this.data[0];
         this.data[0] = this.data.pop();
         this._heapifyDown(0);
@@ -22,38 +26,31 @@ class MinHeap {
         if (!index) {
             return;
         }
+        
+        const parent = this._parent(index);
 
-        const parentIndex = this._getParent(index);
-
-        if (this.data[index] < this.data[parentIndex]) {
-            this._swap(index, parentIndex);
+        if (this.data[index] < this.data[parent]) {
+            this._swap(index, parent);
         }
 
-        this._heapifyUp(parentIndex);
+        this._heapifyUp(parent);
     }
 
     _heapifyDown(index) {
-        while(this._hasLeftChild(index)) {
-            const lowestChild = this._getLowestPriorityChild(index);
+        while(this._hasLeft(index)) {
+            let priorityIndex = this._left(index);
+            const right = this._right(index);
 
-            if (this.data[index] < lowestChild) {
+            if (right && this.data[right] < this.data[priorityIndex]) {
+                priorityIndex = right;
+            }
+
+            if (this.data[index] < this.data[priorityIndex]) {
                 return;
             }
 
-            this._swap(index, this.data.indexOf(lowestChild));
-            index = lowestChild;
-        }
-    }
-
-    _getLowestPriorityChild(index) {
-        const leftChild = this._getLeftChild(index);
-        const rightChild = this._getRightChild(index);
-
-        // TODO: comparator
-        if (!rightChild || leftChild < rightChild) {
-            return leftChild;
-        } else {
-            return rightChild;
+            this._swap(index, priorityIndex);
+            index = priorityIndex;
         }
     }
 
@@ -63,20 +60,20 @@ class MinHeap {
         this.data[j] = temp;
     }
 
-    _getParent(index) {
+    _parent(index) {
         return parseInt((index - 1) / 2);
     }
 
-    _getLeftChild(index) {
-        return this.data[2 * index + 1];
+    _left(index) {
+        return 2 * index + 1;
     }
 
-    _getRightChild(index) {
-        return this.data[2 * index + 2];
+    _right(index) {
+        return 2 * index + 2;
     }
 
-    _hasLeftChild(index) {
-        return this._getLeftChild(index) !== undefined;
+    _hasLeft(index) {
+        return this.data[this._left(index)] !== undefined;
     }
 }
 
