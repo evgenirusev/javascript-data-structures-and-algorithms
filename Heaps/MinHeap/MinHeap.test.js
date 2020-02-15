@@ -8,7 +8,7 @@ describe("MinHeap", () => {
         valuesToInsert.forEach(heap.insert.bind(heap));
 
         const expectedValues = [4, 5, 6, 13, 32];
-        
+
         expectedValues.forEach(val => {
             expect(heap.extractMin()).toEqual(val);
         });
