@@ -12,18 +12,21 @@ class MinHeap {
         if (!this.heap.length) {
             throw 'The heap is empty!';
         }
-        
+
         const result = this.heap.shift();
         this._heapifyDown(0);
         return result;
     }
 
-    findMin() { }
+    get top() {
+        return this.heap[0];
+    }
+
     deleteMin() { }
 
     _heapifyUpIterative(index) {
         let parent = this._parent(index);
-        while(this.heap[parent] > this.heap[index]) {
+        while (this.heap[parent] > this.heap[index]) {
             this._swap(index, parent);
             index = parent;
             parent = this._parent(index);
@@ -34,7 +37,7 @@ class MinHeap {
         if (!index) {
             return;
         }
-        
+
         const parent = this._parent(index);
 
         if (this.heap[index] < this.heap[parent]) {
@@ -45,7 +48,7 @@ class MinHeap {
     }
 
     _heapifyDown(index) {
-        while(this._hasLeft(index)) {
+        while (this._hasLeft(index)) {
             let priorityIndex = this._left(index);
             const right = this._right(index);
 

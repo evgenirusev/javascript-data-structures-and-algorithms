@@ -1,7 +1,7 @@
 const MinHeap = require("./MinHeap");
 
 describe("MinHeap", () => {
-    const heap;
+    let heap;
 
     beforeEach(() => {
         heap = new MinHeap();
