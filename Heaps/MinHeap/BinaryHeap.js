@@ -1,5 +1,11 @@
-class MinHeap {
-    constructor() {
+class BinaryHeap {
+    constructor(cmp) {
+        if (typeof cmp === "function") {
+            this._cmp = cmp;
+        } else {
+            this._cmp = (a, b) => a - b;
+        }
+
         this.heap = [];
     }
 
@@ -12,7 +18,7 @@ class MinHeap {
         this._heapifyUpIterative(this.heap.length - 1);
     }
 
-    extractMin() {
+    extract() {
         if (!this.heap.length) {
             throw 'The heap is empty!';
         }
@@ -28,7 +34,7 @@ class MinHeap {
 
     _heapifyUpIterative(index) {
         let parent = this._parent(index);
-        while (this.heap[parent] > this.heap[index]) {
+        while (this._cmp(this.heap[parent], this.heap[index]) > 0) {
             this._swap(index, parent);
             index = parent;
             parent = this._parent(index);
@@ -42,7 +48,7 @@ class MinHeap {
 
         const parent = this._parent(index);
 
-        if (this.heap[index] < this.heap[parent]) {
+        if (this._cmp(this.heap[parent], this.heap[index]) > 0) {
             this._swap(index, parent);
         }
 
@@ -54,11 +60,11 @@ class MinHeap {
             let priorityIndex = this._left(index);
             const right = this._right(index);
 
-            if (right && this.heap[right] < this.heap[priorityIndex]) {
+            if (right && this._cmp(this.heap[priorityIndex], this.heap[right]) > 0) {
                 priorityIndex = right;
             }
 
-            if (this.heap[index] < this.heap[priorityIndex]) {
+            if (this._cmp(this.heap[priorityIndex], this.heap[index]) > 0) {
                 return;
             }
 
@@ -90,4 +96,4 @@ class MinHeap {
     }
 }
 
-module.exports = MinHeap;
+module.exports = BinaryHeap;
