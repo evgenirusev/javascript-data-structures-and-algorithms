@@ -1,20 +1,19 @@
 class MinHeap {
     constructor() {
-        this.data = [];
+        this.heap = [];
     }
 
     insert(val) {
-        this.data.push(val);
-        this._heapifyUp(this.data.length - 1);
+        this.heap.push(val);
+        this._heapifyUpIterative(this.heap.length - 1);
     }
 
     extractMin() {
-        if (!this.data.length) {
+        if (!this.heap.length) {
             throw 'The heap is empty!';
         }
-
-        const result = this.data[0];
-        this.data[0] = this.data.pop();
+        
+        const result = this.heap.shift();
         this._heapifyDown(0);
         return result;
     }
@@ -22,18 +21,27 @@ class MinHeap {
     findMin() { }
     deleteMin() { }
 
-    _heapifyUp(index) {
+    _heapifyUpIterative(index) {
+        let parent = this._parent(index);
+        while(this.heap[index] < this.heap[parent]) {
+            this._swap(index, parent);
+            index = parent;
+            parent = this._parent(index);
+        }
+    }
+
+    _heapifyUpRecursive(index) {
         if (!index) {
             return;
         }
         
         const parent = this._parent(index);
 
-        if (this.data[index] < this.data[parent]) {
+        if (this.heap[index] < this.heap[parent]) {
             this._swap(index, parent);
         }
 
-        this._heapifyUp(parent);
+        this._heapifyUpRecursive(parent);
     }
 
     _heapifyDown(index) {
@@ -41,11 +49,11 @@ class MinHeap {
             let priorityIndex = this._left(index);
             const right = this._right(index);
 
-            if (right && this.data[right] < this.data[priorityIndex]) {
+            if (right && this.heap[right] < this.heap[priorityIndex]) {
                 priorityIndex = right;
             }
 
-            if (this.data[index] < this.data[priorityIndex]) {
+            if (this.heap[index] < this.heap[priorityIndex]) {
                 return;
             }
 
@@ -55,9 +63,9 @@ class MinHeap {
     }
 
     _swap(i, j) {
-        const temp = this.data[i];
-        this.data[i] = this.data[j];
-        this.data[j] = temp;
+        const temp = this.heap[i];
+        this.heap[i] = this.heap[j];
+        this.heap[j] = temp;
     }
 
     _parent(index) {
@@ -73,7 +81,7 @@ class MinHeap {
     }
 
     _hasLeft(index) {
-        return this.data[this._left(index)] !== undefined;
+        return this.heap[this._left(index)] !== undefined;
     }
 }
 
