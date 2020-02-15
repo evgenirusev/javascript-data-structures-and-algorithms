@@ -23,7 +23,7 @@ class MinHeap {
 
     _heapifyUpIterative(index) {
         let parent = this._parent(index);
-        while(this.heap[index] < this.heap[parent]) {
+        while(this.heap[parent] > this.heap[index]) {
             this._swap(index, parent);
             index = parent;
             parent = this._parent(index);
