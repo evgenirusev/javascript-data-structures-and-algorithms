@@ -19,7 +19,10 @@ describe("MinHeap", () => {
     });
 
     it("should find the min value", () => {
-        heap.insert(5);
-        expect(heap.top).toBe(5);
+        const lowestValue = 2;
+        const valuesToInsert = [5, 13, 32, lowestValue, 4, 6];
+        valuesToInsert.forEach(heap.insert.bind(heap));
+
+        expect(heap.top).toBe(lowestValue);
     });
 });

@@ -4,6 +4,10 @@ class MinHeap {
     }
 
     insert(val) {
+        if (typeof val === "undefined") {
+            throw 'Parameter value must not be undefined!';
+        }
+
         this.heap.push(val);
         this._heapifyUpIterative(this.heap.length - 1);
     }
@@ -21,8 +25,6 @@ class MinHeap {
     get top() {
         return this.heap[0];
     }
-
-    deleteMin() { }
 
     _heapifyUpIterative(index) {
         let parent = this._parent(index);
