@@ -33,4 +33,13 @@ describe("LinkedList", () => {
 
         expect(linkedList.isEmpty()).toBe(false);
     });
+
+    it("should have a length of 2", () => {
+        linkedList.addToTail(1);
+        linkedList.addToHead(4);
+        linkedList.addToHead(3);
+        linkedList.addToTail(3);
+
+        expect(linkedList.size()).toBe(4);
+    });
 });

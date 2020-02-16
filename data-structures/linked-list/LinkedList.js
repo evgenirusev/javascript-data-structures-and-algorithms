@@ -45,6 +45,21 @@ class LinkedList {
         return !this.head;
     }
 
+    size() {
+        if (this.isEmpty()) {
+            return 0;
+        }
+
+        let size = 1;
+        let current = this.head;
+        while(current.next) {
+            size++;
+            current = current.next;
+        }
+
+        return size;
+    }
+
     inorder() { }
     remove() { }
     reverse() { }
