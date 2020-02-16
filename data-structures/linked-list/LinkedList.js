@@ -43,11 +43,28 @@ class LinkedList {
             throw 'The linked list is already empty!';
         }
 
-        this.head = this.head.next;
-        this.head.prev = null;
+        if (this.head.next) {
+            this.head = this.head.next;
+            this.head.prev = null;
+        } else {
+            this.head = null;
+            this.tail = null;
+        }
     }
 
-    deleteFromTail() { }
+    deleteFromTail() {
+        if (!this.head) {
+            throw 'The linked list is already empty!';
+        }
+
+        if (this.tail.prev) {
+            this.tail = this.tail.prev;
+            this.tail.next = null;
+        } else {
+            this.tail = null;
+            this.head = null;
+        }
+    }
 
     isEmpty() {
         return !this.head;
@@ -69,7 +86,6 @@ class LinkedList {
     }
 
     inorder() { }
-    remove() { }
     reverse() { }
     hasCycle() { }
 }

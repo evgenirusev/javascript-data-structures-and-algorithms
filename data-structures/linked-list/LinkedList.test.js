@@ -46,9 +46,17 @@ describe("LinkedList", () => {
     it("should delete the head element", () => {
         linkedList.addToHead(1);
         linkedList.addToHead(2);
-        linkedList.addToTail(3);
 
         linkedList.deleteFromHead();
         expect(linkedList.peekHead()).toBe(1);
+    });
+
+    it("should delete the tail element", () => {
+        linkedList.addToHead(1);
+        linkedList.addToHead(2);
+        linkedList.addToTail(3);
+
+        linkedList.deleteFromTail();
+        expect(linkedList.peekTail()).toBe(1);
     });
 });
