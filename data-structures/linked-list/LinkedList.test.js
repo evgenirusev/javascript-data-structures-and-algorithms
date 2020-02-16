@@ -10,14 +10,14 @@ describe("LinkedList", () => {
     it("should peek a correct tail value", () => {
         linkedList.addToTail(1);
         linkedList.addToTail(2);
-        linkedList.addToTail(13);
+        linkedList.addToTail(3);
 
-        expect(linkedList.peekTail()).toBe(13);
+        expect(linkedList.peekTail()).toBe(3);
     });
 
     it("should peek a correct head value", () => {
         linkedList.addToTail(1);
-        linkedList.addToHead(4);
+        linkedList.addToHead(2);
         linkedList.addToHead(3);
 
         expect(linkedList.peekHead()).toBe(3);
@@ -28,18 +28,27 @@ describe("LinkedList", () => {
     });
 
     it("should be empty", () => {
-        linkedList.addToTail(3);
-        linkedList.addToTail(5);
+        linkedList.addToTail(1);
+        linkedList.addToTail(2);
 
         expect(linkedList.isEmpty()).toBe(false);
     });
 
-    it("should have a length of 2", () => {
+    it("should have a length of 4", () => {
         linkedList.addToTail(1);
-        linkedList.addToHead(4);
+        linkedList.addToHead(2);
         linkedList.addToHead(3);
-        linkedList.addToTail(3);
+        linkedList.addToTail(4);
 
         expect(linkedList.size()).toBe(4);
+    });
+
+    it("should delete the head element", () => {
+        linkedList.addToHead(1);
+        linkedList.addToHead(2);
+        linkedList.addToTail(3);
+
+        linkedList.deleteFromHead();
+        expect(linkedList.peekHead()).toBe(1);
     });
 });

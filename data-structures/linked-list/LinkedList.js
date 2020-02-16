@@ -38,7 +38,15 @@ class LinkedList {
         return this.tail.val;
     }
 
-    deleteFromHead() { }
+    deleteFromHead() {
+        if (!this.head) {
+            throw 'The linked list is already empty!';
+        }
+
+        this.head = this.head.next;
+        this.head.prev = null;
+    }
+
     deleteFromTail() { }
 
     isEmpty() {
