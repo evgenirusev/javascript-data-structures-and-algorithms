@@ -1,10 +1,18 @@
 function heapSort(arr) {
     buildHeap(arr);
+    sortHeap(arr);
 }
 
 function buildHeap(arr) {
     for(let i = (arr.length / 2) - 1; i >= 0; i--) {
         heapify(arr, arr.length, i);
+    }
+}
+
+function sortHeap(arr) {
+    for(let i = arr.length - 1; i > 0; i--) {
+        swap(arr, 0, i);
+        heapify(arr, i, 0);
     }
 }
 
