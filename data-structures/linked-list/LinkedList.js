@@ -1,10 +1,11 @@
 class LinkedList {
-    append() {}
-    prepend() {}
+    addToTail() {}
+    addToHead() {}
+    peekHead() {}
+    peekTail() {}
+    deleteFromHead() {}
+    deleteFromTail() {}
     isEmpty() {}
-    pop() {}
-    peek() {}
-    shift() {}
     inorder() {}
     remove() {}
     reverse() {}

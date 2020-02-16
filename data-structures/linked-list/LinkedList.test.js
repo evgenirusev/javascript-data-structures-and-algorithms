@@ -4,9 +4,9 @@ describe("LinkedList", () => {
     it("should peek a correct value", () => {
         const linkedList = new LinkedList();
 
-        linkedList.append(1);
-        linkedList.append(2);
+        linkedList.addToTail(1);
+        linkedList.addToTail(2);
 
-        expect(linkedList.peek()).toBe(2);
+        expect(linkedList.peekTail()).toBe(2);
     });
 });
