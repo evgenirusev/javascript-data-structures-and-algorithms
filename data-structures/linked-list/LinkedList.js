@@ -71,13 +71,9 @@ class LinkedList {
     }
 
     size() {
-        if (this.isEmpty()) {
-            return 0;
-        }
-
-        let size = 1;
+        let size = 0;
         let current = this.head;
-        while(current.next) {
+        while (current) {
             size++;
             current = current.next;
         }
@@ -85,7 +81,14 @@ class LinkedList {
         return size;
     }
 
-    inorder() { }
+    inorder(cb) {
+        let current = this.head;
+        while(current) {
+            cb(current);
+            current = current.next;
+        }
+    }
+
     reverse() { }
     hasCycle() { }
 }

@@ -59,4 +59,14 @@ describe("LinkedList", () => {
         linkedList.deleteFromTail();
         expect(linkedList.peekTail()).toBe(1);
     });
+
+    it("should have executed a callback for each element", () => {
+        const mockCallback = jest.fn();
+        linkedList.addToHead(1);
+        linkedList.addToTail(2);
+        linkedList.addToTail(3);
+
+        linkedList.inorder(mockCallback);
+        expect(mockCallback.mock.calls.length).toBe(3);
+    });
 });
