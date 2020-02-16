@@ -40,7 +40,11 @@ class LinkedList {
 
     deleteFromHead() { }
     deleteFromTail() { }
-    isEmpty() { }
+
+    isEmpty() {
+        return !this.head;
+    }
+
     inorder() { }
     remove() { }
     reverse() { }
