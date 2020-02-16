@@ -69,4 +69,14 @@ describe("LinkedList", () => {
         linkedList.inorder(mockCallback);
         expect(mockCallback.mock.calls.length).toBe(3);
     });
+
+    it("should transform the values to an array", () => {
+        const values = [1, 2, 3, 4, 5];
+
+        values.forEach(val => {
+            linkedList.addToTail(val);
+        });
+
+        expect(linkedList.toArray()).toEqual(values);
+    });
 });

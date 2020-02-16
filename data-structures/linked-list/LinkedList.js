@@ -84,12 +84,26 @@ class LinkedList {
     inorder(cb) {
         let current = this.head;
         while(current) {
-            cb(current);
+            cb(current.val);
             current = current.next;
         }
     }
 
-    reverse() { }
+    toArray() {
+        let result = [];
+        let current = this.head;
+        while(current) {
+            result.push(current.val);
+            current = current.next;
+        }
+
+        return result;
+    }
+
+    reverse() {
+
+    }
+
     hasCycle() { }
 }
 
