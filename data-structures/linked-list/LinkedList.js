@@ -17,20 +17,34 @@ class LinkedList {
         this.tail = node;
     }
 
-    addToHead() {}
-    peekHead() {}
+    addToHead(val) {
+        const node = new Node(val);
+        if (!this.head) {
+            this.head = node;
+            this.tail = this.head;
+            return;
+        }
+
+        node.next = this.head;
+        this.head.prev = node;
+        this.head = node;
+    }
+
+    peekHead() {
+        return this.head.val;
+    }
 
     peekTail() {
         return this.tail.val;
     }
 
-    deleteFromHead() {}
-    deleteFromTail() {}
-    isEmpty() {}
-    inorder() {}
-    remove() {}
-    reverse() {}
-    hasCycle() {}
+    deleteFromHead() { }
+    deleteFromTail() { }
+    isEmpty() { }
+    inorder() { }
+    remove() { }
+    reverse() { }
+    hasCycle() { }
 }
 
 class Node {

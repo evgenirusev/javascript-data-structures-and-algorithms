@@ -16,6 +16,6 @@ describe("LinkedList", () => {
         linkedList.addToHead(4);
         linkedList.addToHead(3);
 
-        expect(linkedList.peekHead()).toBe(4);
+        expect(linkedList.peekHead()).toBe(3);
     });
 });
