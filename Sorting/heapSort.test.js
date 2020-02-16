@@ -12,8 +12,9 @@ describe("heapSort", () => {
     it("should sort the array in descending order", () => {
         const arr = [2, 8, 5, 3, 9, 1];
         const sorted = [9, 8, 5, 3, 2, 1];
+        const cmp = (a, b) => b - a
         
-        heapSort(arr);
+        heapSort(arr, cmp);
         expect(arr).toEqual(sorted);
     });
 });
