@@ -100,9 +100,7 @@ class LinkedList {
         return result;
     }
 
-    reverse() {
-
-    }
+    reverse() { }
 
     hasCycle() { }
 }
