@@ -56,6 +56,30 @@ class BinarySearchTree {
         this._inorderRecursive(this.root, cb);
     }
 
+    // TODO: continue trying after a while
+    _inorderIterative(node, cb) {
+        // const stack = [];
+        // stack.push(node);
+
+        // let current = stack.pop();
+        // let flag = true;
+        // while(stack.length > 0 || flag) {
+        //     flag = false;
+        //     while(current.left) {
+        //         stack.push(current);
+        //         current = current.left;
+        //     }
+
+        //     cb(current);
+
+        //     if (current.right) {
+        //         stack.push(current.right);
+        //     }
+
+        //     current = stack.pop();
+        }
+    }
+
     _inorderRecursive(node, cb) {
         if (node.left) {
             this._inorderRecursive(node.left, cb);

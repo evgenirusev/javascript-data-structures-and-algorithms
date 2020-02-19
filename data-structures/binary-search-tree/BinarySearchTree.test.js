@@ -33,4 +33,21 @@ describe("BinarySearchTree", () => {
         bst.inorder(curriedCallbackMock);
         expect(result).toEqual([1, 2, 3, 5, 7, 8]);
     });
+
+    it("should execute the callback for each value in preorder", () => {
+        const mockCallback = function(arr) {
+            return function(val) {
+                arr.push(val);
+            }
+        }
+        const result = [];
+        const curriedCallbackMock = mockCallback(result);
+        const values = [1];
+        values.forEach(val => {
+            bst.insert(val);
+        });
+
+        bst.inorder(curriedCallbackMock);
+        expect(result).toEqual([7, 5, 8, 2, 3, 1]);
+    });
 });
