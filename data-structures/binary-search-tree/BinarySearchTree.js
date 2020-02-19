@@ -52,7 +52,22 @@ class BinarySearchTree {
         }
     }
 
-    inorder(cb) { }
+    inorder(cb) {
+        this._inorderRecursive(this.root, cb);
+    }
+
+    _inorderRecursive(node, cb) {
+        if (node.left) {
+            this._inorderRecursive(node.left, cb);
+        }
+
+        cb(node.val);
+
+        if (node.right) {
+            this._inorderRecursive(node.right, cb);
+        }
+    }
+
     postorder(cb) { }
     preorder(cb) { }
     find(val) { }
