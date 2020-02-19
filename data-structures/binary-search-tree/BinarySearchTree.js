@@ -59,15 +59,26 @@ class BinarySearchTree {
     remove(val) { }
 
     findMin() {
-        return this._findMin(this.root);
+        return this._findMinIterative();
     }
 
-    _findMin(node) {
+    _findMinIterative() {
+        let current = this.root;
+        while(true) {
+            if (!current.left) {
+                return current.val;
+            }
+
+            current = current.left;
+        }
+    }
+
+    _findMinRecursive(node) {
         if (!node.left) {
             return node.val;
         }
 
-        return this._findMin(node.left);
+        return this._findMinRecursive(node.left);
     }
 
     findMax() { }
