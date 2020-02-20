@@ -53,31 +53,29 @@ class BinarySearchTree {
     }
 
     inorder(cb) {
-        this._inorderRecursive(this.root, cb);
+        this._inorderIterative(this.root, cb);
     }
 
-    // TODO: continue trying after a while
     _inorderIterative(node, cb) {
-        // const stack = [];
-        // stack.push(node);
+        if (!node) {
+            return;
+        }
 
-        // let current = stack.pop();
-        // let flag = true;
-        // while(stack.length > 0 || flag) {
-        //     flag = false;
-        //     while(current.left) {
-        //         stack.push(current);
-        //         current = current.left;
-        //     }
+        const stack = [];
+        let current = node;
 
-        //     cb(current);
+        while(stack.length > 0 || current) {
+            while(current != null) {
+                stack.push(current);
+                current = current.left;
+            }
+            
+            current = stack.pop();
 
-        //     if (current.right) {
-        //         stack.push(current.right);
-        //     }
+            cb(current.val);
 
-        //     current = stack.pop();
-        // }
+            current = current.right;
+        }
     }
 
     _inorderRecursive(node, cb) {
