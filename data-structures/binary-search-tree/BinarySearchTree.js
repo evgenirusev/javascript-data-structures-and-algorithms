@@ -77,7 +77,7 @@ class BinarySearchTree {
         //     }
 
         //     current = stack.pop();
-        }
+        // }
     }
 
     _inorderRecursive(node, cb) {
@@ -92,8 +92,23 @@ class BinarySearchTree {
         }
     }
 
+    preorder(cb) {
+        this._preorderRecursive(this.root, cb);
+    }
+
+    _preorderRecursive(node, cb) {
+        cb(node.val);
+
+        if (node.left) {
+            this._preorderRecursive(node.left, cb);
+        }
+
+        if (node.right) {
+            this._preorderRecursive(node.right, cb);
+        }
+    }
+
     postorder(cb) { }
-    preorder(cb) { }
     find(val) { }
     remove(val) { }
 
