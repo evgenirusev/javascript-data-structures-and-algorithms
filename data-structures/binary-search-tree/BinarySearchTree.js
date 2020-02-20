@@ -79,15 +79,15 @@ class BinarySearchTree {
     }
 
     _inorderRecursive(node, cb) {
-        if (node.left) {
-            this._inorderRecursive(node.left, cb);
+        if (!node) {
+            return;
         }
+
+        this._inorderRecursive(node.left, cb);
 
         cb(node.val);
-
-        if (node.right) {
-            this._inorderRecursive(node.right, cb);
-        }
+        
+        this._inorderRecursive(node.right, cb);
     }
 
     preorder(cb) {
@@ -114,15 +114,14 @@ class BinarySearchTree {
     }
 
     _preorderRecursive(node, cb) {
+        if (!node) {
+            return;
+        }
+
         cb(node.val);
 
-        if (node.left) {
-            this._preorderRecursive(node.left, cb);
-        }
-
-        if (node.right) {
-            this._preorderRecursive(node.right, cb);
-        }
+        this._preorderRecursive(node.left, cb);
+        this._preorderRecursive(node.right, cb);
     }
 
     postorder(cb) {
@@ -130,13 +129,12 @@ class BinarySearchTree {
     }
 
     _postorderRecursive(node, cb) {
-        if (node.left) {
-            this._postorderRecursive(node.left, cb);
+        if (!node) {
+            return;
         }
 
-        if (node.right) {
-            this._postorderRecursive(node.right, cb);
-        }
+        this._postorderRecursive(node.left, cb);
+        this._postorderRecursive(node.right, cb);
 
         cb(node.val);
     }
