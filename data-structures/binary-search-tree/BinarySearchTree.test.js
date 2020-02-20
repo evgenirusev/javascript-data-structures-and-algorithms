@@ -65,7 +65,7 @@ describe("BinarySearchTree", () => {
             bst.insert(val);
         });
 
-        bst.inorder(curriedCallbackMock);
+        bst.postorder(curriedCallbackMock);
         expect(result).toEqual([4, 12, 10, 18, 24, 22, 15, 31, 44, 35, 66, 90, 70, 50, 25]);
     });
 });

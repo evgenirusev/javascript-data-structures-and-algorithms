@@ -126,7 +126,19 @@ class BinarySearchTree {
     }
 
     postorder(cb) {
+        this._postorderRecursive(this.root, cb);
+    }
 
+    _postorderRecursive(node, cb) {
+        if (node.left) {
+            this._postorderRecursive(node.left, cb);
+        }
+
+        if (node.right) {
+            this._postorderRecursive(node.right, cb);
+        }
+
+        cb(node.val);
     }
 
     find(val) { }
