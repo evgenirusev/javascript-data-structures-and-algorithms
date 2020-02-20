@@ -143,7 +143,24 @@ class BinarySearchTree {
         cb(node.val);
     }
 
-    find(val) { }
+    find(val) {
+        return this._findRecursive(this.root, val);
+    }
+
+    _findRecursive(node, val) {
+        if (!node) {
+            return null;
+        }
+
+        if (node.val === val) {
+            return val;
+        }
+
+        return val < node.val 
+            ? this._findRecursive(node.left, val) 
+            : this._findRecursive(node.right, val);
+    }
+
     remove(val) { }
 
     findMin() {
