@@ -86,7 +86,7 @@ class BinarySearchTree {
         this._inorderRecursive(node.left, cb);
 
         cb(node.val);
-        
+
         this._inorderRecursive(node.right, cb);
     }
 
@@ -102,7 +102,7 @@ class BinarySearchTree {
         const stack = [];
         let current = node;
 
-        while(stack.length > 0 || current) {
+        while (stack.length > 0 || current) {
             cb(current.val);
 
             if (current.right) {
@@ -156,8 +156,8 @@ class BinarySearchTree {
             return val;
         }
 
-        return val < node.val 
-            ? this._findRecursive(node.left, val) 
+        return val < node.val
+            ? this._findRecursive(node.left, val)
             : this._findRecursive(node.right, val);
     }
 
@@ -186,7 +186,29 @@ class BinarySearchTree {
         return this._findMinRecursive(node.left);
     }
 
-    findMax() { }
+    findMax() {
+        return this._findMaxIterative();
+    }
+
+    _findMaxIterative() {
+        let current = this.root;
+        while (true) {
+            if (!current.right) {
+                return current.val;
+            }
+
+            current = current.right;
+        }
+    }
+
+    _findMaxRecursive(node) {
+        if (!node.right) {
+            return node.val;
+        }
+
+        return this._findMaxRecursive(node.right);
+    }
+
     isBalanced() { }
     getDiameter() { }
     getHeight() { }
