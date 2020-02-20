@@ -64,12 +64,12 @@ class BinarySearchTree {
         const stack = [];
         let current = node;
 
-        while(stack.length > 0 || current) {
-            while(current != null) {
+        while (stack.length > 0 || current) {
+            while (current) {
                 stack.push(current);
                 current = current.left;
             }
-            
+
             current = stack.pop();
 
             cb(current.val);
@@ -91,7 +91,26 @@ class BinarySearchTree {
     }
 
     preorder(cb) {
-        this._preorderRecursive(this.root, cb);
+        this._preorderIterative(this.root, cb);
+    }
+
+    _preorderIterative(node, cb) {
+        const stack = [];
+        let current = node;
+
+        while(stack.length > 0 || current) {
+            cb(current.val);
+
+            if (current.right) {
+                stack.push(current.right);
+            }
+
+            if (current.left) {
+                stack.push(current.left);
+            }
+
+            current = stack.pop();
+        }
     }
 
     _preorderRecursive(node, cb) {
@@ -106,7 +125,10 @@ class BinarySearchTree {
         }
     }
 
-    postorder(cb) { }
+    postorder(cb) {
+
+    }
+
     find(val) { }
     remove(val) { }
 
@@ -116,7 +138,7 @@ class BinarySearchTree {
 
     _findMinIterative() {
         let current = this.root;
-        while(true) {
+        while (true) {
             if (!current.left) {
                 return current.val;
             }
