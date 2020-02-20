@@ -4,15 +4,15 @@ class BinarySearchTree {
     }
 
     insert(val) {
+        this._insertIterative(val);
+    }
+
+    _insertIterative(val) {
         if (!this.root) {
             this.root = new Node(val);
             return;
         }
 
-        this._insertIterative(val);
-    }
-
-    _insertIterative(val) {
         const node = new Node(val);
 
         let current = this.root;
@@ -95,6 +95,10 @@ class BinarySearchTree {
     }
 
     _preorderIterative(node, cb) {
+        if (!node) {
+            return;
+        }
+
         const stack = [];
         let current = node;
 
