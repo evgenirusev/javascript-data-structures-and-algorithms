@@ -53,4 +53,12 @@ describe("BinarySearchTree", () => {
 
         expect(bst.find(100)).toBe(null);
     });
+
+    it("should insert and find the max value", () => {
+        mockValues.forEach(val => {
+            bst.insert(val);
+        });
+
+        expect(bst.findMax()).toBe(90);
+    });
 });
