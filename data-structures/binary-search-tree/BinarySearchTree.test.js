@@ -73,5 +73,41 @@ describe("BinarySearchTree", () => {
 
             expect(result).toEqual([10, 30]);
         });
+
+        it("should remove the correct element", () => {
+            const values = [25, 10, 5, 15];
+
+            insertMockValues(values);
+            bst.remove(25);
+
+            const result = [];
+            const mockCallback = function (arr) {
+                return function (val) {
+                    arr.push(val);
+                }
+            }
+            const curriedCallbackMock = mockCallback(result);
+            bst.inorder(curriedCallbackMock);
+
+            expect(result).toEqual([5, 15, 25]);
+        });
+
+        it("should remove the correct element", () => {
+            const values = [25, 10, 50, 15, 5, 4, 7];
+
+            insertMockValues(values);
+            bst.remove(25);
+
+            const result = [];
+            const mockCallback = function (arr) {
+                return function (val) {
+                    arr.push(val);
+                }
+            }
+            const curriedCallbackMock = mockCallback(result);
+            bst.inorder(curriedCallbackMock);
+
+            expect(result).toEqual([4, 5, 7, 15, 25, 50]);
+        });
     });
 });
