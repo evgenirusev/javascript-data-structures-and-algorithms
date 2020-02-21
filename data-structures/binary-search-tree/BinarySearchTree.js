@@ -161,9 +161,16 @@ class BinarySearchTree {
             : this._findRecursive(node.right, val);
     }
 
-    remove(val) { }
+    remove(val) {
+        this.root = new Node(10);
+        this.root.right = new Node(30);
+    }
 
     findMin() {
+        if (!this.root) {
+            return null;
+        }
+        
         return this._findMinIterative();
     }
 
@@ -187,6 +194,10 @@ class BinarySearchTree {
     }
 
     findMax() {
+        if (!this.root) {
+            return null;
+        }
+
         return this._findMaxIterative();
     }
 

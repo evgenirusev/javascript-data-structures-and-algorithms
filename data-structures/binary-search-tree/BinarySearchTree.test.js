@@ -8,13 +8,11 @@ describe("BinarySearchTree", () => {
         bst = new BinarySearchTree();
     });
 
-    it("should insert and find the min value", () => {
-        mockValues.forEach(val => {
+    const insertMockValues = (values = mockValues) => {
+        values.forEach(val => {
             bst.insert(val);
         });
-
-        expect(bst.findMin()).toBe(4);
-    });
+    }
 
     const traversalUnitTestFactory = (procedure, assertionResult) => {
         it(`should execute the callback for each value preorder ${procedure}`, () => {
@@ -25,9 +23,7 @@ describe("BinarySearchTree", () => {
                 }
             }
             const curriedCallbackMock = mockCallback(result);
-            mockValues.forEach(val => {
-                bst.insert(val);
-            });
+            insertMockValues();
     
             bst[procedure](curriedCallbackMock);
             expect(result).toEqual(assertionResult);
@@ -38,27 +34,44 @@ describe("BinarySearchTree", () => {
     traversalUnitTestFactory("preorder", [25, 15, 10, 4, 12, 22, 18, 24, 50, 35, 31, 44, 70, 66, 90]);
     traversalUnitTestFactory("postorder", [4, 12, 10, 18, 24, 22, 15, 31, 44, 35, 66, 90, 70, 50, 25]);
 
-    it("should find specific value", () => {
-        mockValues.forEach(val => {
-            bst.insert(val);
-        });
+    it("should insert and find the min value", () => {
+        insertMockValues();
+        expect(bst.findMin()).toBe(4);
+    });
+    
 
+    it("should find specific value", () => {
+        insertMockValues();
         expect(bst.find(24)).toBe(24);
     });
 
     it("should't find specific value", () => {
-        mockValues.forEach(val => {
-            bst.insert(val);
-        });
-
+        insertMockValues();
         expect(bst.find(100)).toBe(null);
     });
 
     it("should insert and find the max value", () => {
-        mockValues.forEach(val => {
-            bst.insert(val);
-        });
-
+        insertMockValues();
         expect(bst.findMax()).toBe(90);
+    });
+
+    describe("remove", () => {
+        it("should remove the correct element", () => {
+            const values = [25, 10, 30];
+
+            insertMockValues(values);
+            bst.remove(25);
+
+            const result = [];
+            const mockCallback = function (arr) {
+                return function (val) {
+                    arr.push(val);
+                }
+            }
+            const curriedCallbackMock = mockCallback(result);
+            bst.inorder(curriedCallbackMock);
+
+            expect(result).toEqual([10, 30]);
+        });
     });
 });
