@@ -14,7 +14,7 @@ describe("BinarySearchTree", () => {
         });
     }
 
-    describe("tree traversal", () => {
+    describe("Tree traversal", () => {
         const traversalUnitTestFactory = (procedure, assertionResult) => {
             it(`should execute the callback for each value preorder ${procedure}`, () => {
                 const result = [];
@@ -90,25 +90,7 @@ describe("BinarySearchTree", () => {
             const curriedCallbackMock = mockCallback(result);
             bst.inorder(curriedCallbackMock);
 
-            expect(result).toEqual([5, 15, 25]);
-        });
-
-        it("should remove the correct element", () => {
-            const values = [25, 10, 50, 15, 5, 4, 7];
-
-            insertMockValues(values);
-            bst.remove(25);
-
-            const result = [];
-            const mockCallback = function (arr) {
-                return function (val) {
-                    arr.push(val);
-                }
-            }
-            const curriedCallbackMock = mockCallback(result);
-            bst.inorder(curriedCallbackMock);
-
-            expect(result).toEqual([4, 5, 7, 15, 25, 50]);
+            expect(result).toEqual([5, 10, 15]);
         });
     });
 });

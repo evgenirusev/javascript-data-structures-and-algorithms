@@ -162,15 +162,77 @@ class BinarySearchTree {
     }
 
     remove(val) {
-        this.root = new Node(10);
-        this.root.right = new Node(30);
+        let current = this.root;
+        let parent = null;
+
+        while (current.val !== val) {
+            parent = current;
+            if (val < current.val) {
+                if (!current.left) {
+                    throw `The value ${val} doesn't exist in the tree!`;
+                }
+
+                current = current.left;
+            } else {
+                if (!current.right) {
+                    throw `The value ${val} doesn't exist in the tree!`;
+                }
+
+                current = current.right;
+            }
+        }
+
+        if (current.left) {
+            const swapNode = this._extractSwapNodeFromLeft(current);
+            swapNode.left = current.left;
+            swapNode.right = current.right;
+
+            if (parent) {
+                if (parent.left === current) {
+                    parent.left = swapNode;
+                } else {
+                    parent.right = swapNode;
+                }
+            } else {
+                this.root = swapNode;
+            }
+        } else {
+            if (current.right && current.right.left) {
+                current = current.right.right;
+            } else {
+                current = current.right;
+            }
+        }
+    }
+
+    _extractSwapNodeFromLeft(node) {
+        let parent = node;
+        let current = node.left;
+
+        if (!current.left && !current.right) {
+            parent.left = null;
+            return current;
+        }
+        
+        while (current.right) {
+            parent = current;
+            current = current.right;
+        }
+
+        if (current.left) {
+            parent.right = current.left;
+        } else {
+            parent.right = null;
+        }
+
+        return current;
     }
 
     findMin() {
         if (!this.root) {
             return null;
         }
-        
+
         return this._findMinIterative();
     }
 
