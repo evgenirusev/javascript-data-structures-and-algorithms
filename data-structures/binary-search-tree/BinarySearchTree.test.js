@@ -108,7 +108,7 @@ describe("BinarySearchTree", () => {
             const curriedCallbackMock = mockCallback(result);
             bst.inorder(curriedCallbackMock);
 
-            expect(result).toEqual([4, 5, 7, 15, 25, 50]);
+            expect(result).toEqual([4, 5, 7, 10, 15, 50]);
         });
     });
 });
