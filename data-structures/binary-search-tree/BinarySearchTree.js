@@ -162,6 +162,12 @@ class BinarySearchTree {
     }
 
     remove(val) {
+        this._removeIterative(val);
+    }
+
+    _removeRecursive(val) { }
+
+    _findNodeAndParent(val) {
         let current = this.root;
         let parent = null;
 
@@ -182,13 +188,22 @@ class BinarySearchTree {
             }
         }
 
-        if (current.left) {
-            const swapNode = this._extractSwapNodeFromLeft(current);
-            swapNode.left = current.left;
-            swapNode.right = current.right;
+        return {
+            node: current,
+            parent: parent
+        }
+    }
+
+    _removeIterative(val) {
+        let { node, parent } = this._findNodeAndParent(val);
+
+        if (node.left) {
+            const swapNode = this._extractSwapNodeFromLeftChild(node);
+            swapNode.left = node.left;
+            swapNode.right = node.right;
 
             if (parent) {
-                if (parent.left === current) {
+                if (parent.left === node) {
                     parent.left = swapNode;
                 } else {
                     parent.right = swapNode;
@@ -197,19 +212,19 @@ class BinarySearchTree {
                 this.root = swapNode;
             }
         } else {
-            if (current.right && current.right.left) {
-                current = current.right.right;
+            if (node.right && node.right.left) {
+                node = node.right.right;
             } else {
-                current = current.right;
+                node = node.right;
 
-                if (this.root.right === current) {
-                    this.root = current;
+                if (this.root.right === node) {
+                    this.root = node;
                 }
             }
         }
     }
 
-    _extractSwapNodeFromLeft(node) {
+    _extractSwapNodeFromLeftChild(node) {
         let parent = node;
         let current = node.left;
 
@@ -217,7 +232,7 @@ class BinarySearchTree {
             parent.left = null;
             return current;
         }
-        
+
         while (current.right) {
             parent = current;
             current = current.right;
