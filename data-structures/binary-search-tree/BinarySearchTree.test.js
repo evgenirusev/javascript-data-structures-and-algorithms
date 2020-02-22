@@ -25,12 +25,12 @@ describe("BinarySearchTree", () => {
                 }
                 const curriedCallbackMock = mockCallback(result);
                 insertMockValues();
-        
+
                 bst[procedure](curriedCallbackMock);
                 expect(result).toEqual(assertionResult);
             });
         }
-    
+
         traversalUnitTestFactory("inorder", [4, 10, 12, 15, 18, 22, 24, 25, 31, 35, 44, 50, 66, 70, 90]);
         traversalUnitTestFactory("preorder", [25, 15, 10, 4, 12, 22, 18, 24, 50, 35, 31, 44, 70, 66, 90]);
         traversalUnitTestFactory("postorder", [4, 12, 10, 18, 24, 22, 15, 31, 44, 35, 66, 90, 70, 50, 25]);
@@ -109,6 +109,42 @@ describe("BinarySearchTree", () => {
             bst.inorder(curriedCallbackMock);
 
             expect(result).toEqual([4, 5, 7, 10, 15, 50]);
+        });
+
+        it("should remove the correct element", () => {
+            const values = [25, 10, 50, 15, 5, 4, 7];
+
+            insertMockValues(values);
+            bst.remove(10);
+
+            const result = [];
+            const mockCallback = function (arr) {
+                return function (val) {
+                    arr.push(val);
+                }
+            }
+            const curriedCallbackMock = mockCallback(result);
+            bst.inorder(curriedCallbackMock);
+
+            expect(result).toEqual([4, 5, 7, 15, 25, 50]);
+        });
+
+        it("should remove the correct element", () => {
+            const values = [5, 10];
+
+            insertMockValues(values);
+            bst.remove(5);
+
+            const result = [];
+            const mockCallback = function (arr) {
+                return function (val) {
+                    arr.push(val);
+                }
+            }
+            const curriedCallbackMock = mockCallback(result);
+            bst.inorder(curriedCallbackMock);
+
+            expect(result).toEqual([10]);
         });
     });
 });

@@ -201,6 +201,10 @@ class BinarySearchTree {
                 current = current.right.right;
             } else {
                 current = current.right;
+
+                if (this.root.right === current) {
+                    this.root = current;
+                }
             }
         }
     }
