@@ -324,7 +324,13 @@ class BinarySearchTree {
         return 1 + Math.max(left, right);
     }
 
-    getDiameter() { }
+    get diameter() {
+        const leftHeight = this._getHeight(this.root.left);
+        const rightHeight = this._getHeight(this.root.right);
+
+        return 1 + (leftHeight + rightHeight + 2);
+    }
+
     lowestCommonaAncestor() { }
 }
 
