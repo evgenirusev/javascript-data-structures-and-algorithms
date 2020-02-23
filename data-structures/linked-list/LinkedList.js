@@ -100,7 +100,26 @@ class LinkedList {
         return result;
     }
 
-    reverse() { }
+    reverse() {
+        if (!this.head) {
+            return;
+        }
+
+        const stack = [];
+        let current = this.head;
+
+        while(current) {
+            stack.push(current.val);
+            current = current.next;
+        }
+
+        this.head = null;
+        this.tail = null;
+        
+        stack.forEach(val => {
+            this.addToHead(val);
+        });
+    }
 
     hasCycle() { }
 }
