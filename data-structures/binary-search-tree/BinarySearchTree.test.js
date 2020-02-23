@@ -58,9 +58,7 @@ describe("BinarySearchTree", () => {
 
     describe("remove", () => {
         it("should remove the correct element", () => {
-            const values = [25, 10, 30];
-
-            insertMockValues(values);
+            insertMockValues([25, 10, 30]);
             bst.remove(25);
 
             const result = [];
@@ -76,9 +74,7 @@ describe("BinarySearchTree", () => {
         });
 
         it("should remove the correct element", () => {
-            const values = [25, 10, 5, 15];
-
-            insertMockValues(values);
+            insertMockValues([25, 10, 5, 15]);
             bst.remove(25);
 
             const result = [];
@@ -94,9 +90,7 @@ describe("BinarySearchTree", () => {
         });
 
         it("should remove the correct element", () => {
-            const values = [25, 10, 50, 15, 5, 4, 7];
-
-            insertMockValues(values);
+            insertMockValues([25, 10, 50, 15, 5, 4, 7]);
             bst.remove(25);
 
             const result = [];
@@ -112,9 +106,7 @@ describe("BinarySearchTree", () => {
         });
 
         it("should remove the correct element", () => {
-            const values = [25, 10, 50, 15, 5, 4, 7];
-
-            insertMockValues(values);
+            insertMockValues([25, 10, 50, 15, 5, 4, 7]);
             bst.remove(10);
 
             const result = [];
@@ -130,9 +122,7 @@ describe("BinarySearchTree", () => {
         });
 
         it("should remove the correct element", () => {
-            const values = [5, 10];
-
-            insertMockValues(values);
+            insertMockValues([5, 10]);
             bst.remove(5);
 
             const result = [];
@@ -146,5 +136,11 @@ describe("BinarySearchTree", () => {
 
             expect(result).toEqual([10]);
         });
+    });
+
+    it("should be balanced", () => {
+        insertMockValues([25, 15, 50, 7, 20, 29, 60]);
+
+        expect(bst.isBalanced()).toBe(true);
     });
 });

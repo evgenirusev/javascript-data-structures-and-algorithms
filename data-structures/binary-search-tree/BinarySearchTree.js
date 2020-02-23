@@ -16,21 +16,21 @@ class BinarySearchTree {
         const node = new Node(val);
 
         let current = this.root;
-        let noInsert = true;
-        while (noInsert) {
+        let noInsertYet = true;
+        while (noInsertYet) {
             if (val < current.val) {
                 if (current.left) {
                     current = current.left;
                 } else {
                     current.left = node;
-                    noInsert = false;
+                    noInsertYet = false;
                 }
             } else {
                 if (current.right) {
-                    current = current.right
+                    current = current.right;
                 } else {
                     current.right = node;
-                    noInsert = false;
+                    noInsertYet = false;
                 }
             }
         }
@@ -165,40 +165,15 @@ class BinarySearchTree {
         this._removeIterative(val);
     }
 
-    _removeRecursive(val) { }
-
-    _findNodeAndParent(val) {
-        let current = this.root;
-        let parent = null;
-
-        while (current.val !== val) {
-            parent = current;
-            if (val < current.val) {
-                if (!current.left) {
-                    throw `The value ${val} doesn't exist in the tree!`;
-                }
-
-                current = current.left;
-            } else {
-                if (!current.right) {
-                    throw `The value ${val} doesn't exist in the tree!`;
-                }
-
-                current = current.right;
-            }
-        }
-
-        return {
-            node: current,
-            parent: parent
-        }
-    }
-
     _removeIterative(val) {
         let { node, parent } = this._findNodeAndParent(val);
 
+        if (!node) {
+            throw `The value ${val} doesn't exist in the tree!`;
+        }
+
         if (node.left) {
-            const swapNode = this._extractSwapNodeFromLeftChild(node);
+            const swapNode = this._extractNodeFromLeft(node);
             swapNode.left = node.left;
             swapNode.right = node.right;
 
@@ -224,7 +199,7 @@ class BinarySearchTree {
         }
     }
 
-    _extractSwapNodeFromLeftChild(node) {
+    _extractNodeFromLeft(node) {
         let parent = node;
         let current = node.left;
 
@@ -245,6 +220,25 @@ class BinarySearchTree {
         }
 
         return current;
+    }
+
+    _findNodeAndParent(val) {
+        let current = this.root;
+        let parent = null;
+
+        while (current.val !== val) {
+            parent = current;
+            if (val < current.val) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+        }
+
+        return {
+            node: current,
+            parent: parent
+        }
     }
 
     findMin() {
@@ -301,7 +295,27 @@ class BinarySearchTree {
         return this._findMaxRecursive(node.right);
     }
 
-    isBalanced() { }
+    isBalanced() {
+        return this._getHeightAndBalance(this.root).isBalanced;
+    }
+
+    _getHeightAndBalance(node) {
+        if (!node) {
+            return {
+                isBalanced: true,
+                height: -1
+            }
+        }
+
+        const left = this._getHeightAndBalance(node.left);
+        const right = this._getHeightAndBalance(node.right);
+
+        return {
+            isBalanced: Math.abs(right.height - left.height) <= 1,
+            height: (left.height > right.height ? left.height : right.height) + 1
+        }
+    }
+
     getDiameter() { }
     getHeight() { }
     lowestCommonaAncestor() { }
