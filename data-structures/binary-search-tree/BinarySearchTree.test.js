@@ -156,7 +156,7 @@ describe("BinarySearchTree", () => {
         expect(bst.height).toBe(2);
     });
 
-    it("should have a height of 2", () => {
+    it("should have a height of 3", () => {
         insertMockValues([25, 40, 15, 10, 5, 20]);
 
         expect(bst.height).toBe(3);

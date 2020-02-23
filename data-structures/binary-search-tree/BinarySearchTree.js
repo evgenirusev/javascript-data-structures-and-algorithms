@@ -296,24 +296,17 @@ class BinarySearchTree {
     }
 
     isBalanced() {
-        return this._getHeightAndBalance(this.root).isBalanced;
+        return this._isBalanced(this.root);
     }
 
-    _getHeightAndBalance(node) {
+    _isBalanced(node) {
         if (!node) {
-            return {
-                isBalanced: true,
-                height: -1
-            }
+            return true;
         }
 
-        const left = this._getHeightAndBalance(node.left);
-        const right = this._getHeightAndBalance(node.right);
-
-        return {
-            isBalanced: 1 >= Math.abs(right.height - left.height),
-            height: 1 + Math.max(left.height, right.height)
-        }
+        return this._isBalanced(node.left) 
+            && this._isBalanced(node.right)
+            && 1 >= Math.abs(this._getHeight(node.left) - this._getHeight(node.right));
     }
 
     get height() {
