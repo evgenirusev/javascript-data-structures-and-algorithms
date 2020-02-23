@@ -304,7 +304,7 @@ class BinarySearchTree {
             return true;
         }
 
-        return this._isBalanced(node.left) 
+        return this._isBalanced(node.left)
             && this._isBalanced(node.right)
             && 1 >= Math.abs(this._getHeight(node.left) - this._getHeight(node.right));
     }
@@ -340,10 +340,45 @@ class BinarySearchTree {
         return Math.max(path, this._diameter(node.left), this._diameter(node.right));
     }
 
-    getlowestCommonaAncestor(firstNode, secondNode) {
-        
+    lowestCommonaAncestor(firstVal, secondVal) {
+        if (!this.root) {
+            throw 'The tree is empty!';
+        }
+
+        const firstNodePath = [],
+            secondNodePath = [];
+        this._getPathRecursive(this.root, firstVal, firstNodePath);
+        this._getPathRecursive(this.root, secondVal, secondNodePath);
+
+        let lowest = this.root.val;
+        for (let i = 1; i < Math.min(firstNodePath.length, secondNodePath.length); i++) {
+            if (firstNodePath[i] === secondNodePath[i]) {
+                lowest = firstNodePath[i];
+            }
+        }
+
+        return lowest;
     }
-}   
+
+    _getPathRecursive(node, val, arr) {
+        if (!node) {
+            throw `The value ${val} does not exist in the tree!`;
+        }
+
+        if (node.val === val) {
+            arr.unshift(val);
+            return;
+        }
+
+        if (val < node.val) {
+            this._getPathRecursive(node.left, val, arr);
+        } else {
+            this._getPathRecursive(node.right, val, arr);
+        }
+
+        arr.unshift(node.val);
+    }
+}
 
 class Node {
     constructor(val) {
@@ -352,6 +387,5 @@ class Node {
         this.right = null;
     }
 }
-
 
 module.exports = BinarySearchTree;
