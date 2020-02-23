@@ -179,4 +179,22 @@ describe("BinarySearchTree", () => {
 
         expect(bst.diameter).toBe(1);
     });
+
+    it("lowest common anscestor should be 12", () => {
+        insertMockValues([20, 8, 22, 4, 12, 10, 14]);
+
+        expect(bst.lowestCommonaAncestor(10, 14)).toBe(12);
+    });
+
+    it("lowest common anscestor should be 12", () => {
+        insertMockValues([20, 8, 22, 4, 12, 10, 14]);
+
+        expect(bst.lowestCommonaAncestor(14, 8)).toBe(8);
+    });
+
+    it("lowest common anscestor should be 12", () => {
+        insertMockValues([20, 8, 22, 4, 12, 10, 14]);
+
+        expect(bst.lowestCommonaAncestor(10, 22)).toBe(20);
+    });
 });

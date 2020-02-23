@@ -340,8 +340,10 @@ class BinarySearchTree {
         return Math.max(path, this._diameter(node.left), this._diameter(node.right));
     }
 
-    lowestCommonaAncestor() { }
-}
+    getlowestCommonaAncestor(firstNode, secondNode) {
+        
+    }
+}   
 
 class Node {
     constructor(val) {
