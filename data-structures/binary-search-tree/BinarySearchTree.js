@@ -311,13 +311,24 @@ class BinarySearchTree {
         const right = this._getHeightAndBalance(node.right);
 
         return {
-            isBalanced: Math.abs(right.height - left.height) <= 1,
-            height: Math.max(left.height, right.height) + 1
+            isBalanced: 1 >= Math.abs(right.height - left.height),
+            height: 1 + Math.max(left.height, right.height)
         }
     }
 
     get height() {
+        return this._getHeight(this.root);
+    }
 
+    _getHeight(node) {
+        if (!node) {
+            return -1;
+        }
+
+        const left = this._getHeight(node.left);
+        const right = this._getHeight(node.right);
+
+        return 1 + Math.max(left, right);
     }
 
     getDiameter() { }
