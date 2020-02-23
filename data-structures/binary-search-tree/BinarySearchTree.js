@@ -345,10 +345,8 @@ class BinarySearchTree {
             throw 'The tree is empty!';
         }
 
-        const firstNodePath = [],
-            secondNodePath = [];
-        this._getPathRecursive(this.root, firstVal, firstNodePath);
-        this._getPathRecursive(this.root, secondVal, secondNodePath);
+        const firstNodePath = this._getPathIterative(this.root, firstVal);
+        const secondNodePath = this._getPathIterative(this.root, secondVal);
 
         let lowest = this.root.val;
         for (let i = 1; i < Math.min(firstNodePath.length, secondNodePath.length); i++) {
@@ -358,6 +356,29 @@ class BinarySearchTree {
         }
 
         return lowest;
+    }
+
+    _getPathIterative(node, val) {
+        const path = [];
+        let current = node;
+
+        while (current.val !== val) {
+            path.push(current.val);
+
+            if (val < current.val) {
+                current = current.left;
+            } else {
+                current = current.right;
+            }
+
+            if (!current) {
+                throw `The value ${val} does not exist in the tree!`;
+            }
+        }
+
+        path.push(val);
+
+        return path;
     }
 
     _getPathRecursive(node, val, arr) {
