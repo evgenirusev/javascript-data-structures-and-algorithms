@@ -143,4 +143,10 @@ describe("BinarySearchTree", () => {
 
         expect(bst.isBalanced()).toBe(true);
     });
+
+    it("shouldn't be balanced", () => {
+        insertMockValues([25, 40, 15, 10, 5, 20]);
+
+        expect(bst.isBalanced()).toBe(false);
+    });
 });

@@ -312,7 +312,7 @@ class BinarySearchTree {
 
         return {
             isBalanced: Math.abs(right.height - left.height) <= 1,
-            height: (left.height > right.height ? left.height : right.height) + 1
+            height: Math.max(left.height, right.height) + 1
         }
     }
 
