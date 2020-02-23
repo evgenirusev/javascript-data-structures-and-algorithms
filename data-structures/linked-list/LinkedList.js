@@ -83,7 +83,7 @@ class LinkedList {
 
     inorder(cb) {
         let current = this.head;
-        while(current) {
+        while (current) {
             cb(current.val);
             current = current.next;
         }
@@ -92,7 +92,7 @@ class LinkedList {
     toArray() {
         let result = [];
         let current = this.head;
-        while(current) {
+        while (current) {
             result.push(current.val);
             current = current.next;
         }
@@ -101,24 +101,19 @@ class LinkedList {
     }
 
     reverse() {
-        if (!this.head) {
-            return;
-        }
-
-        const stack = [];
         let current = this.head;
+        let temp = null;
 
-        while(current) {
-            stack.push(current.val);
-            current = current.next;
+        while (current) {
+            temp = current.prev;
+            current.prev = current.next;
+            current.next = temp;
+            current = current.prev;
         }
 
-        this.head = null;
-        this.tail = null;
-        
-        stack.forEach(val => {
-            this.addToHead(val);
-        });
+        if (temp != null) {
+            this.head = temp.prev;
+        }
     }
 
     hasCycle() { }
