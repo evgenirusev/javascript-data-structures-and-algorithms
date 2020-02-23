@@ -179,10 +179,4 @@ describe("BinarySearchTree", () => {
 
         expect(bst.diameter).toBe(1);
     });
-
-    it("should have a diameter of 6", () => {
-        insertMockValues([25, 50, 12, 15, 20, 7, 4, 5, 22, 23]);
-
-        expect(bst.diameter).toBe(8);
-    });
 });
