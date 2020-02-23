@@ -345,59 +345,19 @@ class BinarySearchTree {
             throw 'The tree is empty!';
         }
 
-        const firstNodePath = this._getPathIterative(this.root, firstVal);
-        const secondNodePath = this._getPathIterative(this.root, secondVal);
-
-        let lowest = this.root.val;
-        for (let i = 1; i < Math.min(firstNodePath.length, secondNodePath.length); i++) {
-            if (firstNodePath[i] === secondNodePath[i]) {
-                lowest = firstNodePath[i];
-            }
-        }
-
-        return lowest;
+        return this._lowestCommonaAncestor(this.root, firstVal, secondVal).val;
     }
 
-    _getPathIterative(node, val) {
-        const path = [];
-        let current = node;
-
-        while (current.val !== val) {
-            path.push(current.val);
-
-            if (val < current.val) {
-                current = current.left;
-            } else {
-                current = current.right;
-            }
-
-            if (!current) {
-                throw `The value ${val} does not exist in the tree!`;
-            }
+    _lowestCommonaAncestor(node, firstVal, secondVal) {
+        if (firstVal < node.val && secondVal < node.val) {
+            return this._lowestCommonaAncestor(node.left, firstVal, secondVal);
         }
 
-        path.push(val);
-
-        return path;
-    }
-
-    _getPathRecursive(node, val, arr) {
-        if (!node) {
-            throw `The value ${val} does not exist in the tree!`;
+        if (firstVal > node.val && secondVal > node.val) {
+            return this._lowestCommonaAncestor(node.right, firstVal, secondVal);
         }
 
-        if (node.val === val) {
-            arr.unshift(val);
-            return;
-        }
-
-        if (val < node.val) {
-            this._getPathRecursive(node.left, val, arr);
-        } else {
-            this._getPathRecursive(node.right, val, arr);
-        }
-
-        arr.unshift(node.val);
+        return node;
     }
 }
 
