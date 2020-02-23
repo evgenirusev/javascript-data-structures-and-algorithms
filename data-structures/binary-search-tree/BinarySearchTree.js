@@ -316,8 +316,11 @@ class BinarySearchTree {
         }
     }
 
+    get height() {
+
+    }
+
     getDiameter() { }
-    getHeight() { }
     lowestCommonaAncestor() { }
 }
 

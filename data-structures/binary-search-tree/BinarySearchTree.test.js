@@ -149,4 +149,10 @@ describe("BinarySearchTree", () => {
 
         expect(bst.isBalanced()).toBe(false);
     });
+
+    it("should have a height of 2", () => {
+        insertMockValues([25, 15, 50, 7, 20, 29, 60]);
+
+        expect(bst.height).toBe(2);
+    });
 });
