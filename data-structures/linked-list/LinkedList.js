@@ -115,8 +115,6 @@ class LinkedList {
             this.head = temp.prev;
         }
     }
-
-    hasCycle() { }
 }
 
 class Node {
