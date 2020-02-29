@@ -37,19 +37,17 @@ class BinarySearchTree {
     }
 
     _insertRecursive(node, val) {
-        if (val < node.val) {
-            if (node.left) {
-                this._insertRecursive(node.left, val)
-            } else {
-                node.left = new Node(val);
-            }
-        } else {
-            if (node.right) {
-                this._insertRecursive(node.right, val);
-            } else {
-                node.right = new Node(val);
-            }
+        if (!node) {
+            return new Node(val);
         }
+
+        if (val < node.val) {
+            node.left = this._insertRecursive(node.left, val);
+        } else {
+            node.right = this._insertRecursive(node.right, val);
+        }
+
+        return node;
     }
 
     inorder(cb) {
