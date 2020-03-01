@@ -11,7 +11,7 @@ describe("BinarySearchTree", () => {
 
     describe("Tree traversal", () => {
         const generateTraversalTest = (procedure, assertionResult) => {
-            it(`should execute the callback for each value preorder ${procedure}`, () => {
+            it(`should execute the callback for each value ${procedure}`, () => {
                 const result = [];
                 const mockCallback = (arr) => (val) => arr.push(val);
                 const curriedCallbackMock = mockCallback(result);
