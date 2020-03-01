@@ -5,6 +5,7 @@ const Colors = {
     BLACK: 1
 }
 
+// TODO: consider composition over inheritance
 class RedBlackTree extends BinarySearchTree {
     insert(val) {
         this.root = this._insertRecursive(this.root, val);
@@ -70,6 +71,7 @@ class RedBlackTree extends BinarySearchTree {
     }
 }
 
+// TODO: inheritance + extract as a verice/node data structure in a sepparate folder
 class Node {
     constructor(val) {
         this.val = val;
