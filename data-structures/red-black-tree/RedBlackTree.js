@@ -41,7 +41,18 @@ class RedBlackTree {
         const leftChild = node.left;
         node.left = leftChild.right;
         leftChild.right = node;
+        leftChild.color = node.color;
+        node.color = Corols.RED;
         return leftChild;
+    }
+
+    _rotateLeft(node) {
+        const rightChild = node.right;
+        node.right = rightChild.left;
+        rightChild.left = node;
+        rightChild.color = node.color;
+        node.color = Colors.RED;
+        return node;
     }
 }
 
