@@ -1,5 +1,5 @@
 const RedBlackTree = require("./RedBlackTree");
-const insertMockValues = require("../../unit-test-utils/treeUnitTestUtils");
+const { insertMockValues } = require("../../unit-test-utils/treeUnitTestUtils");
 
 describe("RedBlackTree", () => {
     let tree;

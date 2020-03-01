@@ -82,9 +82,7 @@ class BinarySearchTree {
         }
 
         this._inorderRecursive(node.left, cb);
-
         cb(node.val);
-
         this._inorderRecursive(node.right, cb);
     }
 
