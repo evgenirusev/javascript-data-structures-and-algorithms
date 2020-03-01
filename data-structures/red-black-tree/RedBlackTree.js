@@ -21,6 +21,10 @@ class RedBlackTree {
         this._preorderRecursive(this.root, cb);
     }
 
+    postorder(cb) {
+        this._postorderRecursive(this.root, cb);
+    }
+
     _insertRecursive(node, val) {
         if (!node) {
             return new Node(val);
@@ -45,27 +49,6 @@ class RedBlackTree {
         }
 
         return node;
-    }
-
-    _inorderRecursive(node, cb) {
-        if (!node) {
-            return;
-        }
-
-        this._inorderRecursive(node.left, cb);
-        cb(node.val);
-        this._inorderRecursive(node.right, cb);
-    }
-
-    _preorderRecursive(node, cb) {
-        if (!node) {
-            return;
-        }
-
-        cb(node.val);
-
-        this._preorderRecursive(node.left, cb);
-        this._preorderRecursive(node.right, cb);
     }
 
     _isRed(node) {
@@ -94,6 +77,38 @@ class RedBlackTree {
         node.color = Colors.RED;
         node.left.color = Colors.BLACK;
         node.right.color = Colors.BLACK;
+    }
+
+    _inorderRecursive(node, cb) {
+        if (!node) {
+            return;
+        }
+
+        this._inorderRecursive(node.left, cb);
+        cb(node.val);
+        this._inorderRecursive(node.right, cb);
+    }
+
+    _preorderRecursive(node, cb) {
+        if (!node) {
+            return;
+        }
+
+        cb(node.val);
+
+        this._preorderRecursive(node.left, cb);
+        this._preorderRecursive(node.right, cb);
+    }
+
+    _postorderRecursive(node, cb) {
+        if (!node) {
+            return;
+        }
+
+        this._postorderRecursive(node.left, cb);
+        this._postorderRecursive(node.right, cb);
+
+        cb(node.val);
     }
 }
 

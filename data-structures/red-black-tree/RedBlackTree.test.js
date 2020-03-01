@@ -25,5 +25,6 @@ describe("RedBlackTree", () => {
         generateTraversalTest("inorder", [5, 4, 3, 2, 1], [1, 2, 3, 4, 5]);
         generateTraversalTest("inorder", mockValues, [4, 10, 12, 15, 18, 22, 24, 25, 31, 35, 44, 50, 66, 70, 90]);
         generateTraversalTest("preorder", [5, 4, 3, 2, 1], [4, 2, 1, 3, 5]);
+        generateTraversalTest("postorder", [5, 4, 3, 2, 1], [1, 3, 2, 5, 4]);
     });
 });
