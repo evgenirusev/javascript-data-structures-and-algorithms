@@ -2,7 +2,6 @@ const RedBlackTree = require("./RedBlackTree");
 const { insertMockValues } = require("../../unit-test-utils/treeUnitTestUtils");
 
 describe("RedBlackTree", () => {
-    const mockValues = [25, 15, 50, 10, 22, 35, 70, 4, 12, 18, 24, 31, 44, 66, 90];
     let tree;
 
     beforeEach(() => {
@@ -23,8 +22,11 @@ describe("RedBlackTree", () => {
         }
 
         generateTraversalTest("inorder", [5, 4, 3, 2, 1], [1, 2, 3, 4, 5]);
-        generateTraversalTest("inorder", mockValues, [4, 10, 12, 15, 18, 22, 24, 25, 31, 35, 44, 50, 66, 70, 90]);
+        generateTraversalTest("inorder", [5, 1, 0, 13, 7], [0, 1, 5, 7, 13]);
+
         generateTraversalTest("preorder", [5, 4, 3, 2, 1], [4, 2, 1, 3, 5]);
+        generateTraversalTest("preorder", [5, 1, 0, 13, 7], [7, 1, 0, 5, 13]);
+
         generateTraversalTest("postorder", [5, 4, 3, 2, 1], [1, 3, 2, 5, 4]);
     });
 });
