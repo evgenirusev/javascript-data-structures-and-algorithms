@@ -1,3 +1,8 @@
+const Colors = {
+    RED: 0,
+    BLACK: 1
+}
+
 class RedBlackTree {
     constructor() {
         this.root = null;
@@ -5,6 +10,7 @@ class RedBlackTree {
 
     insert(val) {
         this.root = this._insertRecursive(this.root, val);
+        this.root.color = Colors.BLACK;
     }
 
     inorder(cb) {
@@ -89,11 +95,6 @@ class RedBlackTree {
         node.left.color = Colors.BLACK;
         node.right.color = Colors.BLACK;
     }
-}
-
-const Colors = {
-    RED: 0,
-    BLACK: 0
 }
 
 class Node {
