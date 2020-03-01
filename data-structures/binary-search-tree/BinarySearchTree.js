@@ -7,6 +7,62 @@ class BinarySearchTree {
         this._insertIterative(val);
     }
 
+    inorder(cb) {
+        this._inorderIterative(this.root, cb);
+    }
+
+    preorder(cb) {
+        this._preorderIterative(this.root, cb);
+    }
+
+    postorder(cb) {
+        this._postorderRecursive(this.root, cb);
+    }
+
+    find(val) {
+        return this._findRecursive(this.root, val);
+    }
+
+    remove(val) {
+        this._removeIterative(val);
+    }
+
+    findMin() {
+        if (!this.root) {
+            return null;
+        }
+
+        return this._findMinIterative();
+    }
+
+    findMax() {
+        if (!this.root) {
+            return null;
+        }
+
+        return this._findMaxIterative();
+    }
+
+    get height() {
+        return this._getHeight(this.root);
+    }
+
+    isBalanced() {
+        return this._isBalanced(this.root);
+    }
+
+    get diameter() {
+        return this._diameter(this.root);
+    }
+
+    lowestCommonaAncestor(firstVal, secondVal) {
+        if (!this.root) {
+            throw 'The tree is empty!';
+        }
+
+        return this._lowestCommonaAncestor(this.root, firstVal, secondVal).val;
+    }
+
     _insertIterative(val) {
         if (!this.root) {
             this.root = new Node(val);
@@ -50,10 +106,6 @@ class BinarySearchTree {
         return node;
     }
 
-    inorder(cb) {
-        this._inorderIterative(this.root, cb);
-    }
-
     _inorderIterative(node, cb) {
         if (!node) {
             return;
@@ -84,10 +136,6 @@ class BinarySearchTree {
         this._inorderRecursive(node.left, cb);
         cb(node.val);
         this._inorderRecursive(node.right, cb);
-    }
-
-    preorder(cb) {
-        this._preorderIterative(this.root, cb);
     }
 
     _preorderIterative(node, cb) {
@@ -124,10 +172,6 @@ class BinarySearchTree {
         this._preorderRecursive(node.right, cb);
     }
 
-    postorder(cb) {
-        this._postorderRecursive(this.root, cb);
-    }
-
     _postorderRecursive(node, cb) {
         if (!node) {
             return;
@@ -137,10 +181,6 @@ class BinarySearchTree {
         this._postorderRecursive(node.right, cb);
 
         cb(node.val);
-    }
-
-    find(val) {
-        return this._findRecursive(this.root, val);
     }
 
     _findRecursive(node, val) {
@@ -155,10 +195,6 @@ class BinarySearchTree {
         return val < node.val
             ? this._findRecursive(node.left, val)
             : this._findRecursive(node.right, val);
-    }
-
-    remove(val) {
-        this._removeIterative(val);
     }
 
     _removeIterative(val) {
@@ -237,14 +273,6 @@ class BinarySearchTree {
         }
     }
 
-    findMin() {
-        if (!this.root) {
-            return null;
-        }
-
-        return this._findMinIterative();
-    }
-
     _findMinIterative() {
         let current = this.root;
         while (true) {
@@ -262,14 +290,6 @@ class BinarySearchTree {
         }
 
         return this._findMinRecursive(node.left);
-    }
-
-    findMax() {
-        if (!this.root) {
-            return null;
-        }
-
-        return this._findMaxIterative();
     }
 
     _findMaxIterative() {
@@ -291,9 +311,7 @@ class BinarySearchTree {
         return this._findMaxRecursive(node.right);
     }
 
-    isBalanced() {
-        return this._isBalanced(this.root);
-    }
+
 
     _isBalanced(node) {
         if (!node) {
@@ -303,10 +321,6 @@ class BinarySearchTree {
         return this._isBalanced(node.left)
             && this._isBalanced(node.right)
             && 1 >= Math.abs(this._getHeight(node.left) - this._getHeight(node.right));
-    }
-
-    get height() {
-        return this._getHeight(this.root);
     }
 
     _getHeight(node) {
@@ -320,10 +334,6 @@ class BinarySearchTree {
         return 1 + Math.max(left, right);
     }
 
-    get diameter() {
-        return this._diameter(this.root);
-    }
-
     _diameter(node) {
         if (!node) {
             return 0;
@@ -334,14 +344,6 @@ class BinarySearchTree {
         const path = leftHeight + rightHeight + 1
 
         return Math.max(path, this._diameter(node.left), this._diameter(node.right));
-    }
-
-    lowestCommonaAncestor(firstVal, secondVal) {
-        if (!this.root) {
-            throw 'The tree is empty!';
-        }
-
-        return this._lowestCommonaAncestor(this.root, firstVal, secondVal).val;
     }
 
     _lowestCommonaAncestor(node, firstVal, secondVal) {

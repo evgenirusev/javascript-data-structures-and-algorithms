@@ -11,14 +11,8 @@ class RedBlackTree {
         this._inorderRecursive(this.root, cb);
     }
 
-    _inorderRecursive(node, cb) {
-        if (!node) {
-            return;
-        }
-
-        this._inorderRecursive(node.left, cb);
-        cb(node.val);
-        this._inorderRecursive(node.right, cb);
+    preorder(cb) {
+        this._preorderRecursive(this.root, cb);
     }
 
     _insertRecursive(node, val) {
@@ -45,6 +39,27 @@ class RedBlackTree {
         }
 
         return node;
+    }
+
+    _inorderRecursive(node, cb) {
+        if (!node) {
+            return;
+        }
+
+        this._inorderRecursive(node.left, cb);
+        cb(node.val);
+        this._inorderRecursive(node.right, cb);
+    }
+
+    _preorderRecursive(node, cb) {
+        if (!node) {
+            return;
+        }
+
+        cb(node.val);
+
+        this._preorderRecursive(node.left, cb);
+        this._preorderRecursive(node.right, cb);
     }
 
     _isRed(node) {
