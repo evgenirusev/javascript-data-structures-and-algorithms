@@ -1,8 +1,16 @@
 const BinarySearchTree = require("../binary-search-tree/BinarySearchTree");
+const Node = require("../node/Node");
 
 const Colors = {
     RED: 0,
     BLACK: 1
+}
+
+class RedBlackNode extends Node {
+    constructor(val) {
+        super(val);
+        this.color = Colors.RED;
+    }
 }
 
 class RedBlackTree extends BinarySearchTree {
@@ -13,7 +21,7 @@ class RedBlackTree extends BinarySearchTree {
 
     _insertRecursive(node, val) {
         if (!node) {
-            return new Node(val);
+            return new RedBlackNode(val);
         }
 
         if (val < node.val) {
@@ -67,15 +75,6 @@ class RedBlackTree extends BinarySearchTree {
         node.color = Colors.RED;
         node.left.color = Colors.BLACK;
         node.right.color = Colors.BLACK;
-    }
-}
-
-class Node {
-    constructor(val) {
-        this.val = val;
-        this.left = null;
-        this.right = null;
-        this.color = Colors.RED;
     }
 }
 
