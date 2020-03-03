@@ -9,6 +9,8 @@ describe("AvlTree", () => {
     });
 
     describe("Avl Tree traversal", () => {
+
+        // reusable abstraction to test tree traversals without violating encapsulation
         const generateTraversalTest = (procedure, valuesToInsert, assertionResult) => {
             it(`should execute the callback for each value ${procedure}`, () => {
                 const result = [];
