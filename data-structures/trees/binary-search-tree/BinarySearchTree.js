@@ -6,6 +6,10 @@ class BinarySearchTree {
     }
 
     insert(val) {
+        if (typeof val === 'undefined') {
+            throw 'No parameter value was passed';
+        }
+
         this._insertIterative(val);
     }
 

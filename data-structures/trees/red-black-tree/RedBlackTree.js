@@ -15,6 +15,10 @@ class RedBlackNode extends Node {
 
 class RedBlackTree extends BinarySearchTree {
     insert(val) {
+        if (typeof val === 'undefined') {
+            throw 'No parameter value was passed!';
+        }
+
         this.root = this._insertRecursive(this.root, val);
         this.root.color = Colors.BLACK;
     }
