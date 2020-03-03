@@ -76,6 +76,10 @@ class RedBlackTree extends BinarySearchTree {
         node.left.color = Colors.BLACK;
         node.right.color = Colors.BLACK;
     }
+
+    delete() {
+        // TODO: implement delete OR consider composition for encapsulation
+    }
 }
 
 module.exports = RedBlackTree;

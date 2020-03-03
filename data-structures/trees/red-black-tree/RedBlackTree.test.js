@@ -8,7 +8,7 @@ describe("RedBlackTree", () => {
         tree = new RedBlackTree();
     });
 
-    describe("Tree traversal", () => {
+    describe("Red Black Tree traversal", () => {
         const generateTraversalTest = (procedure, valuesToInsert, assertionResult) => {
             it(`should execute the callback for each value ${procedure}`, () => {
                 const result = [];

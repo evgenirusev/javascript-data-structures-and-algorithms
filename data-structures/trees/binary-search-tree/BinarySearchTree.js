@@ -313,8 +313,6 @@ class BinarySearchTree {
         return this._findMaxRecursive(node.right);
     }
 
-
-
     _isBalanced(node) {
         if (!node) {
             return true;
