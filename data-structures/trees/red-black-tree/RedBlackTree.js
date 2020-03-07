@@ -23,6 +23,26 @@ class RedBlackTree extends BinarySearchTree {
         this.root.color = Colors.BLACK;
     }
 
+    remove(val) {
+        if (typeof val === 'undefined') {
+            throw 'No parameter value was passed!';
+        }
+
+        if (!this.find(val)) {
+            throw `The value ${val} does not exist in the tree!`;
+        }
+
+        if (!this._isRed(this.root.left) && !this._isRed(this.root.right)) {
+            this.root.color = Colors.RED;
+        }
+
+        this.root = this._removeRecursive(this.root, val)
+
+        if (this.root) {
+            this.root.color = Colors.BLACK;
+        }
+    }
+
     _insertRecursive(node, val) {
         if (!node) {
             return new RedBlackNode(val);
@@ -34,6 +54,14 @@ class RedBlackTree extends BinarySearchTree {
             node.right = this._insertRecursive(node.right, val);
         }
 
+        return this._balance(node);
+    }
+
+    _isRed(node) {
+        return node ? node.color === Colors.RED : false;
+    }
+
+    _balance(node) {
         if (this._isRed(node.right) && !this._isRed(node.left)) {
             node = this._rotateLeft(node);
         }
@@ -47,10 +75,6 @@ class RedBlackTree extends BinarySearchTree {
         }
 
         return node;
-    }
-
-    _isRed(node) {
-        return node ? node.color === Colors.RED : false;
     }
 
     _rotateLeft(node) {
@@ -79,6 +103,74 @@ class RedBlackTree extends BinarySearchTree {
         node.color = Colors.RED;
         node.left.color = Colors.BLACK;
         node.right.color = Colors.BLACK;
+    }
+
+    _removeRecursive(node, val) {
+        if (val < node.val) {
+            if (!this._isRed(node.left) && !this._isRed(node.left.left)) {
+                node = this._moveRedLeft(node);
+            }
+
+            node.left = this._removeRecursive(node.left, val);
+        } else {
+            if (this._isRed(node.left)) {
+                node = this._rotateRight(node);
+            }
+
+            if (val === node.val && node.right == null) {
+                return null;
+            }
+
+            if (!this._isRed(node.right) && !this._isRed(node.right.left)) {
+                node = this._moveRedRight(node);
+            }
+
+            if (val === node.val) {
+                const min = this._findMinRecursive(node.right);
+                node.val = min.val;
+                node.right = this._deleteMin(node.right);
+            } else {
+                node.right = this._removeRecursive(node.right, val);
+            }
+        }
+
+        return this._balance(node);
+    }
+
+    _deleteMin(node) {
+        if (!node.left) {
+            return null;
+        }
+
+        if (!this._isRed(node.left) && !this._isRed(node.left.left)) {
+            node = this._moveRedLeft(node);
+        }
+
+        node.left = this._deleteMin(node.left);
+        return this._balance(node);
+    }
+
+    _moveRedRight(node) {
+        this._swapColors(node);
+
+        if (this._isRed(node.left.left)) {
+            node = this._rotateRight(node);
+            this._swapColors(node);
+        }
+
+        return node;
+    }
+
+    _moveRedLeft(node) {
+        this._swapColors(node);
+
+        if (this._isRed(node.right.left)) {
+            node.right = this._rotateRight(node.right);
+            node = this._rotateLeft(node);
+            this._swapColors(node);
+        }
+
+        return node;
     }
 }
 
