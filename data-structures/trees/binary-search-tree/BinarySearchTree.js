@@ -30,7 +30,7 @@ class BinarySearchTree {
     }
 
     remove(val) {
-        this._removeIterative(val);
+        return this._removeIterative(val);
     }
 
     findMin() {
@@ -38,7 +38,7 @@ class BinarySearchTree {
             return null;
         }
 
-        return this._findMinIterative();
+        return this._findMinRecursive(this.root).val;
     }
 
     findMax() {
@@ -235,6 +235,8 @@ class BinarySearchTree {
                 }
             }
         }
+
+        return true;
     }
 
     _extractNodeFromLeft(node) {
@@ -279,20 +281,9 @@ class BinarySearchTree {
         }
     }
 
-    _findMinIterative() {
-        let current = this.root;
-        while (true) {
-            if (!current.left) {
-                return current.val;
-            }
-
-            current = current.left;
-        }
-    }
-
     _findMinRecursive(node) {
         if (!node.left) {
-            return node.val;
+            return node;
         }
 
         return this._findMinRecursive(node.left);

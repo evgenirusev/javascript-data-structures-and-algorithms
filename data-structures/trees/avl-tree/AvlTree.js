@@ -17,6 +17,16 @@ class AvlTree extends BinarySearchTree {
         this.root = this._insertRecursive(this.root, val);
     }
 
+    remove(val) {
+        if (!this.find(val)) {
+            throw `The value ${val} does not exist in the tree!`;
+        }
+
+        this.root = this._removeRecursive(this.root, val);
+    }
+
+
+
     _insertRecursive(node, val) {
         if (!node) {
             return new AvlNode(val);
@@ -89,6 +99,42 @@ class AvlTree extends BinarySearchTree {
 
     _updateHeight(node) {
         node.height = 1 + Math.max(this._height(node.left), this._height(node.right));
+    }
+
+    _removeRecursive(node, val) {
+        if (val < node.val) {
+            node.left = this._removeRecursive(node.left, val);
+        }
+        else if (val > node.val) {
+            node.right = this._removeRecursive(node.right, val);
+        }
+        else {
+            if (node.left == null) {
+                return node.right;
+            }
+            else if (node.right == null) {
+                return node.left;
+            }
+            else {
+                const temp = node;
+                node = this._findMinRecursive(temp.right);
+                node.right = this._deleteMin(temp.right);
+                node.left = temp.left;
+            }
+        }
+
+        this._updateHeight(node);
+        return this._balance(node);
+    }
+
+    _deleteMin(node) {
+        if (!node.left) {
+            return node.right;
+        }
+
+        node.left = this._deleteMin(node.left);
+        this._updateHeight(node);
+        return this._balance(node);
     }
 }
 
