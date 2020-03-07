@@ -18,14 +18,16 @@ class AvlTree extends BinarySearchTree {
     }
 
     remove(val) {
+        if (typeof val === 'undefined') {
+            throw 'No parameter value was passed!';
+        }
+
         if (!this.find(val)) {
             throw `The value ${val} does not exist in the tree!`;
         }
 
         this.root = this._removeRecursive(this.root, val);
     }
-
-
 
     _insertRecursive(node, val) {
         if (!node) {

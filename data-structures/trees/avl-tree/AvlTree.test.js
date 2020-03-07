@@ -73,15 +73,16 @@ describe("AvlTree", () => {
         });
 
         it("should delete the specified node and re-balance the tree", () => {
+            const valueToRemove = 10;
             insertMockValues(tree, [5, 2, 10, 1, 3]);
-            tree.remove(10);
+            tree.remove(valueToRemove);
     
             const result = [];
             const mockCallback = (arr) => (val) => arr.push(val);
             const curriedCallbackMock = mockCallback(result);
             tree.preorder(curriedCallbackMock);
 
-            expect(tree.find(10)).toBe(null);
+            expect(tree.find(valueToRemove)).toBe(null);
             expect(result).toEqual([2, 1, 5, 3]);
         });
     });
