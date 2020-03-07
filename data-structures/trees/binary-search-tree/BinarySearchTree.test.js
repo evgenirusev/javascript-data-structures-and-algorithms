@@ -55,11 +55,7 @@ describe("BinarySearchTree", () => {
             tree.remove(25);
 
             const result = [];
-            const mockCallback = function (arr) {
-                return function (val) {
-                    arr.push(val);
-                }
-            }
+            const mockCallback = (arr) => (val) => arr.push(val);
             const curriedCallbackMock = mockCallback(result);
             tree.inorder(curriedCallbackMock);
 
@@ -87,11 +83,7 @@ describe("BinarySearchTree", () => {
             tree.remove(25);
 
             const result = [];
-            const mockCallback = function (arr) {
-                return function (val) {
-                    arr.push(val);
-                }
-            }
+            const mockCallback = (arr) => (val) => arr.push(val);
             const curriedCallbackMock = mockCallback(result);
             tree.inorder(curriedCallbackMock);
 
@@ -103,11 +95,7 @@ describe("BinarySearchTree", () => {
             tree.remove(10);
 
             const result = [];
-            const mockCallback = function (arr) {
-                return function (val) {
-                    arr.push(val);
-                }
-            }
+            const mockCallback = (arr) => (val) => arr.push(val);
             const curriedCallbackMock = mockCallback(result);
             tree.inorder(curriedCallbackMock);
 
@@ -119,11 +107,7 @@ describe("BinarySearchTree", () => {
             tree.remove(5);
 
             const result = [];
-            const mockCallback = function (arr) {
-                return function (val) {
-                    arr.push(val);
-                }
-            }
+            const mockCallback = (arr) => (val) => arr.push(val);
             const curriedCallbackMock = mockCallback(result);
             tree.inorder(curriedCallbackMock);
 

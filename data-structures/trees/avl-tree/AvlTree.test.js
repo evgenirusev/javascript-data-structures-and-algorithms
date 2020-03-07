@@ -24,18 +24,18 @@ describe("AvlTree", () => {
         }
 
         // right rotation in root
-        generateTraversalTest("inorder", [3, 2, 1], [123]);
+        generateTraversalTest("inorder", [3, 2, 1], [1, 2, 3]);
         // right rotation in subtree
-        generateTraversalTest("inorder", [5, 2, 10, 1, 3, 0], [0, 1, 2, 5, 3, 10]);
+        generateTraversalTest("inorder", [5, 2, 10, 1, 3, 0], [0, 1, 2, 3, 5, 10]);
         // left + right rotations
         generateTraversalTest("inorder", [5, 2, 6, 1, 3, 4], [1, 2, 3, 4, 5, 6]);
 
         // right rotation
         generateTraversalTest("preorder", [3, 2, 1], [2, 1, 3]);
         // right rotation in subtree
-        generateTraversalTest("preorder", [1, 0, 5, 4, 3], [1, 0, 6, 5, 7]);
+        generateTraversalTest("preorder", [1, 0, 5, 4, 3], [1, 0, 4, 3, 5]);
         // right rotation in subtree
-        generateTraversalTest("preorder", [5, 2, 10, 1, 3, 0], [5, 2, 1, 0, 3, 6]);
+        generateTraversalTest("preorder", [5, 2, 10, 1, 3, 0], [2, 1, 0, 5, 3, 10]);
         // right + left rotations
         generateTraversalTest("preorder", [1, 0, 6, 7, 4, 3], [4, 1, 0, 3, 6, 7]);
         // right + left rotations
@@ -44,16 +44,16 @@ describe("AvlTree", () => {
         generateTraversalTest("preorder", [5, 2, 6, 1, 3, 4], [3, 2, 1, 5, 4, 6]);
 
         // right rotation
-        generateTraversalTest("postorder", [3, 2, 1], [3, 2, 1]);
+        generateTraversalTest("postorder", [3, 2, 1], [1, 3, 2]);
         // right rotation in subtree
-        generateTraversalTest("postorder", [1, 0, 5, 4, 3], [0, 1, 5, 6, 7]);
+        generateTraversalTest("postorder", [1, 0, 5, 4, 3], [0, 3, 5, 4, 1]);
         // right + left rotations
-        generateTraversalTest("postorder", [1, 0, 6, 7, 4, 3], [0, 3, 1, 4, 7, 6]);
+        generateTraversalTest("postorder", [1, 0, 6, 7, 4, 3], [0, 3, 1, 7, 6, 4]);
         // right + left rotations
-        generateTraversalTest("postorder", [1, 0, 6, 7, 4, 5], [0, 1, 4, 5, 7, 6]);
+        generateTraversalTest("postorder", [1, 0, 6, 7, 4, 5], [0, 1, 5, 7, 6, 4]);
         // right rotation
-        generateTraversalTest("postorder", [5, 2, 10, 1, 3, 0], [0, 1, 2, 3, 6, 5]);
+        generateTraversalTest("postorder", [5, 2, 10, 1, 3, 0], [0, 1, 3, 10, 5, 2]);
         // left + right rotations
-        generateTraversalTest("postorder", [5, 2, 6, 1, 3, 4], [1, 2, 3, 4, 6, 5]);
+        generateTraversalTest("postorder", [5, 2, 6, 1, 3, 4], [1, 2, 4, 6, 5, 3]);
     });
 });
