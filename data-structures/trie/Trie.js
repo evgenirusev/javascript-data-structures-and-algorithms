@@ -64,7 +64,8 @@ class Trie {
             charIndex++;
         }
 
-        return this._getAllWordsFromNode(node).map(word => prefix.slice(0, -1) + word);
+        return this._getAllWordsFromNode(node)
+            .map(word => prefix.slice(0, -1) + word);
     }
 
     _getAllWordsFromNode(node) {
