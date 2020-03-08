@@ -49,8 +49,39 @@ class Trie {
         return node.isCompletedWord;
     }
 
-    deleteWord() { }
+    deleteWord(word) {
+        if (!word) {
+            throw 'No argument value was passed!';
+        }
+
+        this._deleteWord(this.root, word, 0);
+    }
+
     getWordsWithPrefix() { }
+
+    _deleteWord(node, word, charIndex) {
+        if (charIndex >= word.length) {
+            node.isCompletedWord = false;
+            return;
+        }
+
+        const char = word.charAt(charIndex);
+        const childNode = node.children[char];
+
+        if (!childNode) {
+            throw `The word ${word} does not exist in the Trie!`;
+        }
+
+        this._deleteWord(childNode, word, charIndex + 1);
+
+        if (!childNode.isCompletedWord && this._hasChildren(childNode)) {
+            delete node.children[charIndex + 1];
+        }
+    }
+
+    _hasChildren(node) {
+        return Object.keys(node.children).length > 0;
+    }
 }
 
 module.exports = Trie;
