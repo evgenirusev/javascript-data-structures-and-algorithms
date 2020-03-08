@@ -72,19 +72,16 @@ class Trie {
             return [node.char];
         }
 
-        const words = [];
-        const objectKeys = Object.keys(node.children);
-
-        for (let i = 0; i < objectKeys.length; i++) {
-            const char = objectKeys[i];
+        return Object.keys(node.children).reduce((acc, key) => {
+            const char = key;
             const childNode = node.children[char];
-            words.push(
-                ...this._getAllWordsFromNode(childNode)
-                    .map(word => node.char + word)
-            );
-        }
 
-        return words;
+            acc.push(...this._getAllWordsFromNode(childNode)
+                .map(word => node.char + word)
+            );
+
+            return acc;
+        }, []);
     }
 
     _deleteWord(node, word, charIndex) {
