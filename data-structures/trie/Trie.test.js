@@ -17,15 +17,24 @@ describe('Trie', () => {
         expect(trie.hasWord('abcdefffe')).toBe(true);
     });
 
-    it('should successfuly delete words', () => {
-        trie.insertWord('for');
-        trie.insertWord('bar');
+    describe("delete", () => {
+        it('should successfuly delete the words', () => {
+            trie.insertWord('for');
+            trie.insertWord('bar');
+    
+            trie.deleteWord('for');
+            expect(trie.hasWord('for')).toBe(false);
+            expect(trie.hasWord('bar')).toBe(true);
+    
+            trie.deleteWord('bar');
+            expect(trie.hasWord('bar')).toBe(false);
+        });
 
-        trie.deleteWord('for');
-        expect(trie.hasWord('for')).toBe(false);
-        expect(trie.hasWord('bar')).toBe(true);
-
-        trie.deleteWord('bar');
-        expect(trie.hasWord('bar')).toBe(false);
+        it('should successfuly delete a one letter word', () => {
+            trie.insertWord('x');
+    
+            trie.deleteWord('x');
+            expect(trie.hasWord('x')).toBe(false);
+        });
     });
 });
