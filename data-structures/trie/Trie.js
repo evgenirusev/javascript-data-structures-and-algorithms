@@ -64,8 +64,7 @@ class Trie {
             charIndex++;
         }
 
-        const prefixWithoutLastChar = prefix.slice(0, -1);
-        return this._getAllWordsFromNode(node).map(word => prefixWithoutLastChar + word);
+        return this._getAllWordsFromNode(node).map(word => prefix.slice(0, -1) + word);
     }
 
     _getAllWordsFromNode(node) {
@@ -79,11 +78,10 @@ class Trie {
         for (let i = 0; i < objectKeys.length; i++) {
             const char = objectKeys[i];
             const childNode = node.children[char];
-            words.push(...this._getAllWordsFromNode(childNode));
-        }
-
-        for (let i = 0; i < words.length; i++) {
-            words[i] = node.char + words[i];
+            words.push(
+                ...this._getAllWordsFromNode(childNode)
+                    .map(word => node.char + word)
+            );
         }
 
         return words;
