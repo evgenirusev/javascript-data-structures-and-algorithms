@@ -68,15 +68,12 @@ class Trie {
     }
 
     _getAllWordsFromNode(node) {
-        if (!node.hasChildren()) {
-            return [node.char];
-        }
-
-        return Object.keys(node.children).reduce((acc, key) => {
-            return acc.concat(...this._getAllWordsFromNode(node.children[key])
-                .map(word => node.char + word)
-            );
-        }, []);
+        return node.hasChildren() ? Object.keys(node.children).reduce((acc, key) => {
+                return acc.concat(...this._getAllWordsFromNode(node.children[key])
+                    .map(word => node.char + word)
+                );
+            }, [])
+            : [node.char];
     }
 
     _deleteWord(node, word, charIndex) {
