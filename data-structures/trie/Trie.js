@@ -73,14 +73,9 @@ class Trie {
         }
 
         return Object.keys(node.children).reduce((acc, key) => {
-            const char = key;
-            const childNode = node.children[char];
-
-            acc.push(...this._getAllWordsFromNode(childNode)
+            return acc.concat(...this._getAllWordsFromNode(node.children[key])
                 .map(word => node.char + word)
             );
-
-            return acc;
         }, []);
     }
 
