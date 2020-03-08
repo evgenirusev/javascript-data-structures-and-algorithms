@@ -37,4 +37,12 @@ describe('Trie', () => {
             expect(trie.hasWord('x')).toBe(false);
         });
     });
+
+    it('should have correct words from the given prefix', () => {
+        trie.insertWord('abcd');
+        trie.insertWord('abba');
+        trie.insertWord('axyz');
+
+        expect(trie.getWordsWithPrefix('ab')).toEqual(['abcd','abba']);
+    });
 });

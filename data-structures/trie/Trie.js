@@ -74,7 +74,7 @@ class Trie {
 
         this._deleteWord(childNode, word, charIndex + 1);
 
-        if (!childNode.isCompletedWord && !this._hasChildren(childNode)) {
+        if (!this._hasChildren(childNode) && !childNode.isCompletedWord) {
             delete node.children[char];
         }
     }
