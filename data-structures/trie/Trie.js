@@ -1,11 +1,3 @@
-class Node {
-    constructor(char) {
-        this.char = char;
-        this.isCompletedWord = false;
-        this.children = {};
-    }
-}
-
 class Trie {
     constructor() {
         this.root = new Node(null);
@@ -57,7 +49,45 @@ class Trie {
         this._deleteWord(this.root, word, 0);
     }
 
-    getWordsWithPrefix() { }
+    getWordsWithPrefix(prefix) {
+        let node = this.root;
+        let charIndex = 0;
+        while (charIndex < prefix.length) {
+            const char = prefix.charAt(charIndex);
+            const childNode = node.children[char];
+
+            if (!childNode) {
+                throw `No such prefix exists in the Trie - '${prefix}'`;
+            }
+
+            node = childNode;
+            charIndex++;
+        }
+
+        const prefixWithoutLastChar = prefix.slice(0, -1);
+        return this._getAllWordsFromNode(node).map(word => prefixWithoutLastChar + word);
+    }
+
+    _getAllWordsFromNode(node) {
+        if (!node.hasChildren()) {
+            return [node.char];
+        }
+
+        const words = [];
+        const objectKeys = Object.keys(node.children);
+
+        for (let i = 0; i < objectKeys.length; i++) {
+            const char = objectKeys[i];
+            const childNode = node.children[char];
+            words.push(...this._getAllWordsFromNode(childNode));
+        }
+
+        for (let i = 0; i < words.length; i++) {
+            words[i] = node.char + words[i];
+        }
+
+        return words;
+    }
 
     _deleteWord(node, word, charIndex) {
         if (charIndex >= word.length) {
@@ -74,13 +104,22 @@ class Trie {
 
         this._deleteWord(childNode, word, charIndex + 1);
 
-        if (!this._hasChildren(childNode) && !childNode.isCompletedWord) {
+        if (!childNode.hasChildren() && !childNode.isCompletedWord) {
             delete node.children[char];
         }
     }
+}
 
-    _hasChildren(node) {
-        return Object.keys(node.children).length > 0;
+// Extract
+class Node {
+    constructor(char) {
+        this.char = char;
+        this.isCompletedWord = false;
+        this.children = {};
+    }
+
+    hasChildren() {
+        return Object.keys(this.children).length > 0;
     }
 }
 
