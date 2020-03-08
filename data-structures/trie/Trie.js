@@ -69,13 +69,13 @@ class Trie {
         const childNode = node.children[char];
 
         if (!childNode) {
-            throw `The word ${word} does not exist in the Trie!`;
+            throw `The word '${word}' does not exist in the Trie!`;
         }
 
         this._deleteWord(childNode, word, charIndex + 1);
 
-        if (!childNode.isCompletedWord && this._hasChildren(childNode)) {
-            delete node.children[charIndex + 1];
+        if (!childNode.isCompletedWord && !this._hasChildren(childNode)) {
+            delete node.children[char];
         }
     }
 

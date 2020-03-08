@@ -18,11 +18,11 @@ describe('Trie', () => {
     });
 
     it('should successfuly delete words', () => {
-        trie.insertWord('foo');
+        trie.insertWord('for');
         trie.insertWord('bar');
 
-        trie.deleteWord('foo');
-        expect(trie.hasWord('foo')).toBe(false);
+        trie.deleteWord('for');
+        expect(trie.hasWord('for')).toBe(false);
         expect(trie.hasWord('bar')).toBe(true);
 
         trie.deleteWord('bar');
