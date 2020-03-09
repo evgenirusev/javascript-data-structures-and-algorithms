@@ -70,10 +70,10 @@ class Trie {
 
     _getAllWordsFromNode(node) {
         return node.hasChildren() ? Object.keys(node.children).reduce((acc, key) => {
-                return acc.concat(...this._getAllWordsFromNode(node.children[key])
-                    .map(word => node.char + word)
-                );
-            }, [])
+            return acc.concat(...this._getAllWordsFromNode(node.children[key])
+                .map(word => node.char + word)
+            );
+        }, [])
             : [node.char];
     }
 
@@ -98,7 +98,6 @@ class Trie {
     }
 }
 
-// Extract
 class Node {
     constructor(char) {
         this.char = char;

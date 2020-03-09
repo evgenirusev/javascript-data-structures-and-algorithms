@@ -38,24 +38,25 @@ describe('Trie', () => {
         });
     });
 
-    it('should have correct words from the given prefix', () => {
-        trie.insertWord('abcd');
-        trie.insertWord('abba');
-        trie.insertWord('axyz');
-
-        expect(trie.getWordsWithPrefix('ab')).toEqual(['abcd', 'abba']);
+    describe("getWordsWithPrefix", () => {
+        it('should have correct words from the given prefix', () => {
+            trie.insertWord('abcd');
+            trie.insertWord('abba');
+            trie.insertWord('axyz');
+    
+            expect(trie.getWordsWithPrefix('ab')).toEqual(['abcd', 'abba']);
+        });
+    
+        it('should have correct words from the given prefix', () => {
+            trie.insertWord('abca');
+            trie.insertWord('abccd');
+            trie.insertWord('abcsm');
+            trie.insertWord('abcsnp');
+            trie.insertWord('abcsnza');
+            trie.insertWord('axz');
+            trie.insertWord('ayz');
+    
+            expect(trie.getWordsWithPrefix('abc')).toEqual(["abca", "abccd", "abcsm", "abcsnp", "abcsnza"]);
+        });
     });
-
-    it('should have correct words from the given prefix', () => {
-        trie.insertWord('abca');
-        trie.insertWord('abccd');
-        trie.insertWord('abcsm');
-        trie.insertWord('abcsnp');
-        trie.insertWord('abcsnza');
-        trie.insertWord('axz');
-        trie.insertWord('ayz');
-
-        expect(trie.getWordsWithPrefix('abc')).toEqual(["abca", "abccd", "abcsm", "abcsnp", "abcsnza"]);
-    });
-
 });
