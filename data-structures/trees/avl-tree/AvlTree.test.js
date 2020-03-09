@@ -1,5 +1,5 @@
 const AvlTree = require("./AvlTree");
-const { insertMockValues } = require("../../../unit-test-utils/treeUnitTestUtils");
+const insertMockValues = require("../../../unit-test-utils/treeUnitTestUtils");
 
 describe("AvlTree", () => {
     let tree;
@@ -8,17 +8,13 @@ describe("AvlTree", () => {
         tree = new AvlTree();
     });
 
-    describe("Avl Tree traversal", () => {
-
-        // reusable abstraction to test tree traversals without violating encapsulation
-        const generateTraversalTest = (procedure, valuesToInsert, assertionResult) => {
-            it(`should execute the callback for each value ${procedure}`, () => {
-                const result = [];
-                const mockCallback = (arr) => (val) => arr.push(val);
-                const curriedCallbackMock = mockCallback(result);
+    describe("AvlTree traversal", () => {
+        const generateTraversalTest = (operation, valuesToInsert, assertionResult) => {
+            it(`should execute the callback for each value ${operation}`, () => {
                 insertMockValues(tree, valuesToInsert);
 
-                tree[procedure](curriedCallbackMock);
+                const result = [];
+                tree[operation](result.push.bind(result));
                 expect(result).toEqual(assertionResult);
             });
         }
@@ -61,14 +57,14 @@ describe("AvlTree", () => {
         it("should delete the specified node", () => {
             insertMockValues(tree, [5, 2, 10, 1, 3, 0]);
             tree.remove(2);
-    
+
             expect(tree.find(2)).toBe(null);
         });
 
         it("should delete the specified node", () => {
             insertMockValues(tree, [1, 0, 6, 7, 4, 5]);
             tree.remove(7);
-    
+
             expect(tree.find(7)).toBe(null);
         });
 
@@ -76,11 +72,9 @@ describe("AvlTree", () => {
             const valueToRemove = 10;
             insertMockValues(tree, [5, 2, 10, 1, 3]);
             tree.remove(valueToRemove);
-    
+
             const result = [];
-            const mockCallback = (arr) => (val) => arr.push(val);
-            const curriedCallbackMock = mockCallback(result);
-            tree.preorder(curriedCallbackMock);
+            tree.preorder(result.push.bind(result));
 
             expect(tree.find(valueToRemove)).toBe(null);
             expect(result).toEqual([2, 1, 5, 3]);

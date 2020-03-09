@@ -1,5 +1,5 @@
 const BinarySearchTree = require("./BinarySearchTree");
-const { insertMockValues } = require("../../../unit-test-utils/treeUnitTestUtils");
+const insertMockValues = require("../../../unit-test-utils/treeUnitTestUtils");
 
 describe("BinarySearchTree", () => {
     const mockValues = [25, 15, 50, 10, 22, 35, 70, 4, 12, 18, 24, 31, 44, 66, 90];
@@ -10,23 +10,19 @@ describe("BinarySearchTree", () => {
     });
 
     describe("Tree traversal", () => {
-
-        // reusable abstraction to test tree traversals without violating encapsulation
-        const generateTraversalTest = (procedure, assertionResult) => {
-            it(`should execute the callback for each value ${procedure}`, () => {
-                const result = [];
-                const mockCallback = (arr) => (val) => arr.push(val);
-                const curriedCallbackMock = mockCallback(result);
+        const generateTraversalTest = (operation, assertionResult) => {
+            it(`should execute the callback for each value ${operation}`, () => {
                 insertMockValues(tree, mockValues);
 
-                tree[procedure](curriedCallbackMock);
+                const result = [];
+                tree[operation](result.push.bind(result));
                 expect(result).toEqual(assertionResult);
             });
         }
 
-        generateTraversalTest("inorder", [4, 10, 12, 15, 18, 22, 24, 25, 31, 35, 44, 50, 66, 70, 90]);
-        generateTraversalTest("preorder", [25, 15, 10, 4, 12, 22, 18, 24, 50, 35, 31, 44, 70, 66, 90]);
-        generateTraversalTest("postorder", [4, 12, 10, 18, 24, 22, 15, 31, 44, 35, 66, 90, 70, 50, 25]);
+        generateTraversalTest('inorder', [4, 10, 12, 15, 18, 22, 24, 25, 31, 35, 44, 50, 66, 70, 90]);
+        generateTraversalTest('preorder', [25, 15, 10, 4, 12, 22, 18, 24, 50, 35, 31, 44, 70, 66, 90]);
+        generateTraversalTest('postorder', [4, 12, 10, 18, 24, 22, 15, 31, 44, 35, 66, 90, 70, 50, 25]);
     });
 
     it("should insert and find the min value", () => {
@@ -55,9 +51,7 @@ describe("BinarySearchTree", () => {
             tree.remove(25);
 
             const result = [];
-            const mockCallback = (arr) => (val) => arr.push(val);
-            const curriedCallbackMock = mockCallback(result);
-            tree.inorder(curriedCallbackMock);
+            tree.inorder(result.push.bind(result));
 
             expect(result).toEqual([10, 30]);
         });
@@ -67,13 +61,7 @@ describe("BinarySearchTree", () => {
             tree.remove(25);
 
             const result = [];
-            const mockCallback = function (arr) {
-                return function (val) {
-                    arr.push(val);
-                }
-            }
-            const curriedCallbackMock = mockCallback(result);
-            tree.inorder(curriedCallbackMock);
+            tree.inorder(result.push.bind(result));
 
             expect(result).toEqual([5, 10, 15]);
         });
@@ -83,9 +71,7 @@ describe("BinarySearchTree", () => {
             tree.remove(25);
 
             const result = [];
-            const mockCallback = (arr) => (val) => arr.push(val);
-            const curriedCallbackMock = mockCallback(result);
-            tree.inorder(curriedCallbackMock);
+            tree.inorder(result.push.bind(result));
 
             expect(result).toEqual([4, 5, 7, 10, 15, 50]);
         });
@@ -95,9 +81,7 @@ describe("BinarySearchTree", () => {
             tree.remove(10);
 
             const result = [];
-            const mockCallback = (arr) => (val) => arr.push(val);
-            const curriedCallbackMock = mockCallback(result);
-            tree.inorder(curriedCallbackMock);
+            tree.inorder(result.push.bind(result));
 
             expect(result).toEqual([4, 5, 7, 15, 25, 50]);
         });
@@ -107,9 +91,7 @@ describe("BinarySearchTree", () => {
             tree.remove(5);
 
             const result = [];
-            const mockCallback = (arr) => (val) => arr.push(val);
-            const curriedCallbackMock = mockCallback(result);
-            tree.inorder(curriedCallbackMock);
+            tree.inorder(result.push.bind(result));
 
             expect(result).toEqual([10]);
         });
@@ -163,13 +145,13 @@ describe("BinarySearchTree", () => {
         expect(tree.lowestCommonaAncestor(10, 14)).toBe(12);
     });
 
-    it("lowest common anscestor should be 12", () => {
+    it("lowest common anscestor should be 8", () => {
         insertMockValues(tree, [20, 8, 22, 4, 12, 10, 14]);
 
         expect(tree.lowestCommonaAncestor(14, 8)).toBe(8);
     });
 
-    it("lowest common anscestor should be 12", () => {
+    it("lowest common anscestor should be 20", () => {
         insertMockValues(tree, [20, 8, 22, 4, 12, 10, 14]);
 
         expect(tree.lowestCommonaAncestor(10, 22)).toBe(20);

@@ -4,4 +4,4 @@ const insertMockValues = (tree, values) => {
     });
 }
 
-module.exports.insertMockValues = insertMockValues;
+module.exports = insertMockValues;
