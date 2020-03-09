@@ -1,5 +1,5 @@
 const RedBlackTree = require("./RedBlackTree");
-const { insertMockValues } = require("../../../unit-test-utils/treeUnitTestUtils");
+const insertMockValues = require("../../../unit-test-utils/treeUnitTestUtils");
 
 describe("RedBlackTree", () => {
     let tree;
@@ -9,16 +9,12 @@ describe("RedBlackTree", () => {
     });
 
     describe("Red Black Tree traversal", () => {
-
-        // reusable abstraction to test tree traversals without violating encapsulation
         const generateTraversalTest = (procedure, valuesToInsert, assertionResult) => {
             it(`should execute the callback for each value ${procedure}`, () => {
                 const result = [];
-                const mockCallback = (arr) => (val) => arr.push(val);
-                const curriedCallbackMock = mockCallback(result);
                 insertMockValues(tree, valuesToInsert);
 
-                tree[procedure](curriedCallbackMock);
+                tree[procedure](result.push.bind(result));
                 expect(result).toEqual(assertionResult);
             });
         }
@@ -38,11 +34,9 @@ describe("RedBlackTree", () => {
             const valueToRemove = 2;
             insertMockValues(tree, [5, 2, 8, 4]);
             tree.remove(valueToRemove);
-    
+
             const result = [];
-            const mockCallback = (arr) => (val) => arr.push(val);
-            const curriedCallbackMock = mockCallback(result);
-            tree.preorder(curriedCallbackMock);
+            tree.preorder(result.push.bind(result));
 
             expect(tree.find(valueToRemove)).toBe(null);
             expect(result).toEqual([5, 4, 8]);
