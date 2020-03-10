@@ -16,5 +16,10 @@ describe("IntervalTree", () => {
         intervalTree.insert(new Interval(10, 15));
         intervalTree.insert(new Interval(25, 30));
         intervalTree.insert(new Interval(60, 72));
+
+        const result = [];
+        intervalTree.inorder(result.push.bind(result));
+        expect(result[0].start).toEqual(0);
+        expect(result[0].end).toEqual(1);
     });
 });
