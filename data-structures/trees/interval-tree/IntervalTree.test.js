@@ -9,17 +9,29 @@ describe("IntervalTree", () => {
     });
 
     it("should insert into the interval tree and execute the callback inorder", () => {
-        intervalTree.insert(new Interval(20, 36));
-        intervalTree.insert(new Interval(3, 41));
-        intervalTree.insert(new Interval(29, 99));
-        intervalTree.insert(new Interval(0, 1));
-        intervalTree.insert(new Interval(10, 15));
-        intervalTree.insert(new Interval(25, 30));
-        intervalTree.insert(new Interval(60, 72));
-
+        const intervals = [
+            new Interval(20, 36),
+            new Interval(3, 41),
+            new Interval(29, 99),
+            new Interval(0, 1),
+            new Interval(10, 15),
+            new Interval(25, 30),
+            new Interval(60, 72)
+        ];
+        intervals.forEach(interval => intervalTree.insert(interval));
+        
         const result = [];
         intervalTree.inorder(result.push.bind(result));
-        expect(result[0].start).toEqual(0);
-        expect(result[0].end).toEqual(1);
+
+        const expectedResult = [
+            new Interval(0, 1),
+            new Interval(3, 41),
+            new Interval(10, 15),
+            new Interval(20, 36),
+            new Interval(25, 30),
+            new Interval(29, 99),
+            new Interval(60, 72)
+        ];
+        expect(expectedResult).toEqual(expected);
     });
 });
