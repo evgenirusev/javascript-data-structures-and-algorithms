@@ -51,6 +51,13 @@ describe("IntervalTree", () => {
         expect(intervalTree.findAnyOverlapping(interval)).toEqual(new Interval(20, 36));
     });
 
+    it("should find an interval which is overlapping - hit center", () => {
+        insertMockValues(intervalTree, intervals);
+        const interval = new Interval(25, 27);
+
+        expect(intervalTree.findAnyOverlapping(interval)).toEqual(new Interval(20, 36));
+    });
+
     it("should't find an interval which is overlapping", () => {
         insertMockValues(intervalTree, intervals);
         const interval = new Interval(-1, -2);
