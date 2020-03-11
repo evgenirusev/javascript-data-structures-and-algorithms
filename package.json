@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/EvgeniRusev/javascript-data-structures-and-algorithms#readme",
   "devDependencies": {
-    "@types/jest": "^25.1.2",
     "jest": "^24.9.0"
   }
 }

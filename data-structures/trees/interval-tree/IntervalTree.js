@@ -7,10 +7,15 @@ class IntervalTree {
         this._inorderRecursive(this.root, cb);
     }
 
-    preorder() { }
-    postorder() { }
-    findAny(start, end) { }
-    findAll(start, end) { }
+    findAnyOverlapping(interval) {}
+
+    findAllOverlapping(interval) { }
+
+    contains(interval) {}
+
+    findMax() {}
+
+    remove(interval) {}
 
     _insert(node, interval) {
         if (!node) {
