@@ -34,13 +34,13 @@ describe("IntervalTree", () => {
             new Interval(29, 99),
             new Interval(60, 72)
         ];
-        expect(expectedResult).toEqual(expected);
+        expect(result).toEqual(expectedResult);
     });
 
     it("should find an interval which is overlapping", () => {
         insertMockValues(intervalTree, intervals);
         const interval = new Interval(10, 25);
 
-        expect(interval).toEqual(tree.findAnyOverlapping(new Interval(20, 36)));
+        expect(intervalTree.findAnyOverlapping(interval)).toEqual(new Interval(20, 36));
     });
 });

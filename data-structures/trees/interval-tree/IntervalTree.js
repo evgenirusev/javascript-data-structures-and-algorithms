@@ -7,15 +7,17 @@ class IntervalTree {
         this._inorderRecursive(this.root, cb);
     }
 
-    findAnyOverlapping(interval) {}
+    findAnyOverlapping(interval) {
+        return this._findAnyOverlapping(this.root, interval);
+    }
 
     findAllOverlapping(interval) { }
 
-    contains(interval) {}
+    contains(interval) { }
 
-    findMax() {}
+    findMax() { }
 
-    remove(interval) {}
+    remove(interval) { }
 
     _insert(node, interval) {
         if (!node) {
@@ -41,6 +43,28 @@ class IntervalTree {
         this._inorderRecursive(node.left, cb);
         cb(node.interval);
         this._inorderRecursive(node.right, cb);
+    }
+
+    _findAnyOverlapping(node, interval) {
+        if (!node) {
+            return null;
+        }
+
+        if (this._areOverlapping(node.interval, interval)) {
+            return node.interval;
+        }
+
+        if (interval.start < node.interval.start) {
+            return this._findAnyOverlapping(interval.start < node.left);
+        }
+
+        if (interval.start > node.interval.start) {
+            return this._findAnyOverlapping(interval.start < node.right);
+        }
+    }
+
+    _areOverlapping(interval1, interval2) {
+        return interval1.start < interval2.end && interval1.end > interval2.start;
     }
 }
 
