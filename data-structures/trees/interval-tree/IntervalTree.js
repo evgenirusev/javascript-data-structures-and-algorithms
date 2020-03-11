@@ -49,7 +49,7 @@ class IntervalTree {
         if (!node) {
             return null;
         }
-
+        
         if (this._areOverlapping(node.interval, interval)) {
             return node.interval;
         }
@@ -64,6 +64,10 @@ class IntervalTree {
     }
 
     _areOverlapping(interval1, interval2) {
+        if (!interval1 && !interval2) {
+            return false;
+        }
+
         return interval1.start < interval2.end && interval1.end > interval2.start;
     }
 }

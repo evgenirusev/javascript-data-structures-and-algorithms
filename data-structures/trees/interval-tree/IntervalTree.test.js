@@ -37,10 +37,24 @@ describe("IntervalTree", () => {
         expect(result).toEqual(expectedResult);
     });
 
-    it("should find an interval which is overlapping", () => {
+    it("should find an interval which is overlapping - hit low", () => {
         insertMockValues(intervalTree, intervals);
         const interval = new Interval(10, 25);
 
         expect(intervalTree.findAnyOverlapping(interval)).toEqual(new Interval(20, 36));
+    });
+
+    it("should find an interval which is overlapping - hit high", () => {
+        insertMockValues(intervalTree, intervals);
+        const interval = new Interval(30, 40);
+
+        expect(intervalTree.findAnyOverlapping(interval)).toEqual(new Interval(20, 36));
+    });
+
+    it("should't find an interval which is overlapping", () => {
+        insertMockValues(intervalTree, intervals);
+        const interval = new Interval(-1, -2);
+
+        expect(intervalTree.findAnyOverlapping(interval)).toEqual(null);
     });
 });
