@@ -18,7 +18,7 @@ class IntervalTree {
     }
 
     contains(interval) {
-        
+        return this._contains(this.root, interval);
     }
 
     remove(interval) { }
@@ -89,6 +89,28 @@ class IntervalTree {
         }
 
         this._findAllOverlapping(node.right, interval, overlappingIntervals);
+    }
+
+    _contains(node, interval) {
+        if (!node) {
+            return false;
+        }
+
+        if (this._intervalsMatch(node.interval, interval)) {
+            return true;
+        }
+
+        if (interval.start < node.interval.start) {
+            return this._contains(node.left, interval);
+        } else if (interval.start > node.interval.start) {
+            return this._contains(node.right, interval);
+        }
+
+        return false;
+    }
+
+    _intervalsMatch(interval1, interval2) {
+        return interval1.start === interval2.start && interval1.end === interval2.end;
     }
 }
 

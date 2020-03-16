@@ -41,28 +41,28 @@ describe("IntervalTree", () => {
         it("should find an interval which is overlapping - hit low", () => {
             insertMockValues(intervalTree, intervals);
             const interval = new Interval(10, 25);
-    
+
             expect(intervalTree.findAnyOverlapping(interval)).toEqual(new Interval(20, 36));
         });
-    
+
         it("should find an interval which is overlapping - hit high", () => {
             insertMockValues(intervalTree, intervals);
             const interval = new Interval(30, 40);
-    
+
             expect(intervalTree.findAnyOverlapping(interval)).toEqual(new Interval(20, 36));
         });
-    
+
         it("should find an interval which is overlapping - hit center", () => {
             insertMockValues(intervalTree, intervals);
             const interval = new Interval(25, 27);
-    
+
             expect(intervalTree.findAnyOverlapping(interval)).toEqual(new Interval(20, 36));
         });
-    
+
         it("should't find an interval which is overlapping", () => {
             insertMockValues(intervalTree, intervals);
             const interval = new Interval(-1, -2);
-    
+
             expect(intervalTree.findAnyOverlapping(interval)).toEqual(null);
         });
     });
@@ -70,29 +70,29 @@ describe("IntervalTree", () => {
     describe("contains", () => {
         it("should contain the interval", () => {
             insertMockValues(intervalTree, intervals);
-            const interval = new Interval(3, 14);
-            
+            const interval = new Interval(3, 41);
+
             expect(intervalTree.contains(interval)).toBe(true);
         });
-    
+
         it("should contain the interval", () => {
             insertMockValues(intervalTree, intervals);
             const interval = new Interval(25, 30);
-            
+
             expect(intervalTree.contains(interval)).toBe(true);
         });
-    
+
         it("shouldn't contain the interval", () => {
             insertMockValues(intervalTree, intervals);
             const interval = new Interval(99, 150);
-            
+
             expect(intervalTree.contains(interval)).toBe(false);
         });
-    
+
         it("shouldn't contain the interval", () => {
             insertMockValues(intervalTree, intervals);
             const interval = new Interval(3, 42);
-            
+
             expect(intervalTree.contains(interval)).toEqual(false);
         });
     });
@@ -112,7 +112,7 @@ describe("IntervalTree", () => {
     it("should find all intervals which are overlapping", () => {
         insertMockValues(intervalTree, intervals);
         const interval = new Interval(7, 80);
-        
+
         expect(intervalTree.findAllOverlapping(interval)).toEqual([
             new Interval(3, 41),
             new Interval(10, 15),
