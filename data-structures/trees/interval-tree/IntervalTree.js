@@ -11,7 +11,25 @@ class IntervalTree {
         return this._findAnyOverlapping(this.root, interval);
     }
 
-    findAllOverlapping(interval) { }
+    findAllOverlapping(interval) {
+        const overlappingIntervals = [];
+        this._findAllOverlapping(this.root, interval, overlappingIntervals);
+        return overlappingIntervals;
+    }
+
+    _findAllOverlapping(node, interval, overlappingIntervals) {
+        if (!node) {
+            return;
+        }
+
+        this._findAllOverlapping(node.left, interval, overlappingIntervals);
+
+        if (this._areOverlapping(interval, node.interval)) {
+            overlappingIntervals.push(node.interval);
+        }
+
+        this._findAllOverlapping(node.right, interval, overlappingIntervals);
+    }
 
     contains(interval) { }
 
