@@ -15,9 +15,9 @@ class IntervalTree {
 
     contains(interval) { }
 
-    findMax() { }
-
     remove(interval) { }
+
+    findLongest() { }
 
     _insert(node, interval) {
         if (!node) {
@@ -49,7 +49,7 @@ class IntervalTree {
         if (!node) {
             return null;
         }
-        
+
         if (this._areOverlapping(node.interval, interval)) {
             return node.interval;
         }

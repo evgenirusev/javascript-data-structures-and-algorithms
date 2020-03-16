@@ -58,10 +58,30 @@ describe("IntervalTree", () => {
         expect(intervalTree.findAnyOverlapping(interval)).toEqual(new Interval(20, 36));
     });
 
+    it("should find an interval which is overlapping - hit leaf low", () => {
+        insertMockValues(intervalTree, intervals);
+        const interval = new Interval(-1, 1);
+
+        expect(intervalTree.findAnyOverlapping(interval)).toEqual(new Interval(0, 1));
+    });
+
     it("should't find an interval which is overlapping", () => {
         insertMockValues(intervalTree, intervals);
         const interval = new Interval(-1, -2);
 
         expect(intervalTree.findAnyOverlapping(interval)).toEqual(null);
+    });
+
+    it("should find all intervals which are overlapping", () => {
+        insertMockValues(intervalTree, intervals);
+        const interval = new Interval(-1, -2);
+
+        intervalTree.findAllOverlapping(interval).toEqual([
+            new Interval(3, 41),
+            new Interval(20, 36),
+            new Interval(25, 30),
+            new Interval(29, 99),
+            new Interval(60, 72)
+        ]);
     });
 });
