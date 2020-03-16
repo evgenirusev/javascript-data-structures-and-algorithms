@@ -68,12 +68,26 @@ describe("IntervalTree", () => {
     it("should find all intervals which are overlapping", () => {
         insertMockValues(intervalTree, intervals);
         const interval = new Interval(16, 35);
-        
+
         expect(intervalTree.findAllOverlapping(interval)).toEqual([
             new Interval(3, 41),
             new Interval(20, 36),
             new Interval(25, 30),
             new Interval(29, 99)
+        ]);
+    });
+
+    it("should find all intervals which are overlapping", () => {
+        insertMockValues(intervalTree, intervals);
+        const interval = new Interval(7, 80);
+        
+        expect(intervalTree.findAllOverlapping(interval)).toEqual([
+            new Interval(3, 41),
+            new Interval(10, 15),
+            new Interval(20, 36),
+            new Interval(25, 30),
+            new Interval(29, 99),
+            new Interval(60, 72)
         ]);
     });
 });

@@ -17,21 +17,9 @@ class IntervalTree {
         return overlappingIntervals;
     }
 
-    _findAllOverlapping(node, interval, overlappingIntervals) {
-        if (!node) {
-            return;
-        }
-
-        this._findAllOverlapping(node.left, interval, overlappingIntervals);
-
-        if (this._areOverlapping(interval, node.interval)) {
-            overlappingIntervals.push(node.interval);
-        }
-
-        this._findAllOverlapping(node.right, interval, overlappingIntervals);
+    contains(interval) {
+        
     }
-
-    contains(interval) { }
 
     remove(interval) { }
 
@@ -87,6 +75,20 @@ class IntervalTree {
         }
 
         return interval1.start < interval2.end && interval1.end > interval2.start;
+    }
+
+    _findAllOverlapping(node, interval, overlappingIntervals) {
+        if (!node) {
+            return;
+        }
+
+        this._findAllOverlapping(node.left, interval, overlappingIntervals);
+
+        if (this._areOverlapping(interval, node.interval)) {
+            overlappingIntervals.push(node.interval);
+        }
+
+        this._findAllOverlapping(node.right, interval, overlappingIntervals);
     }
 }
 
