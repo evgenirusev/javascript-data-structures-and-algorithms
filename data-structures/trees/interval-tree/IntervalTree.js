@@ -21,10 +21,6 @@ class IntervalTree {
         return this._contains(this.root, interval);
     }
 
-    remove(interval) { }
-
-    findLongest() { }
-
     _insert(node, interval) {
         if (!node) {
             return new Node(interval);
