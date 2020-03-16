@@ -90,4 +90,32 @@ describe("IntervalTree", () => {
             new Interval(60, 72)
         ]);
     });
+
+    it("should contain the interval", () => {
+        insertMockValues(intervalTree, intervals);
+        const interval = new Interval(3, 14);
+        
+        expect(intervalTree.contains(interval)).toBe(true);
+    });
+
+    it("should contain the interval", () => {
+        insertMockValues(intervalTree, intervals);
+        const interval = new Interval(25, 30);
+        
+        expect(intervalTree.contains(interval)).toBe(true);
+    });
+
+    it("shouldn't contain the interval", () => {
+        insertMockValues(intervalTree, intervals);
+        const interval = new Interval(99, 150);
+        
+        expect(intervalTree.contains(interval)).toBe(false);
+    });
+
+    it("shouldn't contain the interval", () => {
+        insertMockValues(intervalTree, intervals);
+        const interval = new Interval(3, 42);
+        
+        expect(intervalTree.contains(interval)).toEqual(false);
+    });
 });
