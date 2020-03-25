@@ -73,8 +73,7 @@ class Trie {
             return acc.concat(...this._getAllWordsFromNode(node.children[key])
                 .map(word => node.char + word)
             );
-        }, [])
-            : [node.char];
+        }, []) : [node.char];
     }
 
     _deleteWord(node, word, charIndex) {
