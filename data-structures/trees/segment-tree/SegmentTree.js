@@ -1,11 +1,12 @@
 class SegmentTree {
     constructor(array) {
+        this.array = array;
         this.tree = [];
-        this._buildSegmentTree(array, 0, 0, array.length - 1);
+        this._buildSegmentTree(this.array, 0, 0, this.array.length - 1);
     }
 
     rangeQuery(queryLeft, queryRight) {
-        return this._rangeQuery(0, 0, this.tree.length - 1, queryLeft, queryRight);
+        return this._rangeQuery(0, 0, this.array.length - 1, queryLeft, queryRight);
     }
 
     _rangeQuery(nodeIndex, start, end, queryLeft, queryRight) {
@@ -25,7 +26,7 @@ class SegmentTree {
 
     _buildSegmentTree(array, nodeIndex, start, end) {
         if (start === end) {
-            this.tree[start] = array[start];
+            this.tree[nodeIndex] = array[start];
         } else {
             const mid = this._mid(start, end);
             const leftChild = this._leftChild(nodeIndex);
