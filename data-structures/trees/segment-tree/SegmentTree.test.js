@@ -7,6 +7,6 @@ describe("SegmentTree", () => {
         const array = [1, 2, 3, 4, 5];
         segmentTree = new SegmentTree(array);
 
-        expect(segmentTree.rangeQuery(0, array.length)).toBe(15);
+        expect(segmentTree.rangeQuery(0, array.length - 1)).toBe(15);
     });
 });

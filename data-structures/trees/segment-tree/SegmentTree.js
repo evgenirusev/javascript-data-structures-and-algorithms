@@ -1,21 +1,18 @@
 class SegmentTree {
     constructor(array) {
-        this._buildSegmentTree(array, 0, array.length);
         this.tree = [];
+        this._buildSegmentTree(array, 0, 0, array.length - 1);
     }
 
     rangeQuery(queryLeft, queryRight) {
-        const start = 0;
-        const end = this.tree.length;
-
-        if (queryLeft < start || queryRight > end) {
-            throw 'Invalid argument!';
-        }
-
-        this._rangeQuery(0, start, end, queryLeft, queryRight);
+        return this._rangeQuery(0, 0, this.tree.length - 1, queryLeft, queryRight);
     }
 
     _rangeQuery(nodeIndex, start, end, queryLeft, queryRight) {
+        if (queryLeft < start || queryRight > end) {
+            return 0;
+        }
+
         if (queryLeft <= start && end <= queryRight) {
             return this.tree[nodeIndex];
         }
@@ -28,14 +25,14 @@ class SegmentTree {
 
     _buildSegmentTree(array, nodeIndex, start, end) {
         if (start === end) {
-            this.tree[start] = array[nodeIndex];
+            this.tree[start] = array[start];
         } else {
-            const mid = this._mid(start, end)
+            const mid = this._mid(start, end);
             const leftChild = this._leftChild(nodeIndex);
             const rightChild = this._rightChild(nodeIndex);
 
-            this._buildSegmentTree(array, leftChild, start + 1, mid);
-            this._buildSegmentTree(array, rightChild, mid, end);
+            this._buildSegmentTree(array, leftChild, start, mid);
+            this._buildSegmentTree(array, rightChild, mid + 1, end);
             this.tree[nodeIndex] = this.tree[leftChild] + this.tree[rightChild];
         }
     }
