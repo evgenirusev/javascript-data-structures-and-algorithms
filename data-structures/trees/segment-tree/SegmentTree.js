@@ -10,7 +10,7 @@ class SegmentTree {
     }
 
     _rangeQuery(nodeIndex, start, end, queryLeft, queryRight) {
-        if (queryLeft < start || queryRight > end) {
+        if (queryRight < start || end < queryLeft){
             return 0;
         }
 
