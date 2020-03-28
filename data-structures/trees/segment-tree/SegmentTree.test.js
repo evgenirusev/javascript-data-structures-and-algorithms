@@ -12,10 +12,10 @@ describe("SegmentTree", () => {
         expect(segmentTree.rangeQuery(0, array.length - 1)).toBe(105);
     });
 
-    it("range query should return 0", () => {
+    it("range query should throw due to invalid args", () => {
         const array = [1, 2, 3, 4, 5];
         segmentTree = new SegmentTree(array);
 
-        expect(segmentTree.rangeQuery()).toThrowError();
+        expect(() => segmentTree.rangeQuery()).toThrowError();
     });
 });
