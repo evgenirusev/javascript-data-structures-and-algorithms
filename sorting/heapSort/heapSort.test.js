@@ -1,20 +1,21 @@
 const heapSort = require("./heapSort");
+const testSortingUtil = require("../../mocks/testSortingUtil");
+const arrayFactoryUtils = require("../../mocks/arrayFactoryUtils");
 
 describe("heapSort", () => {
-    it("should sort in ascending order", () => {
-        const arr = [2, 8, 5, 3, 9, 1];
-        const sorted = [1, 2, 3, 5, 8, 9];
-        
-        heapSort(arr);
-        expect(arr).toEqual(sorted);
-    });
+    function generateSortingTest(arr, cmp) {
+        it("should mergeSort the array correctly", () => {
+            expect(
+                testSortingUtil(heapSort, arr, cmp)
+            ).toBe(true);
+        });
+    }
 
-    it("should sort in descending order", () => {
-        const arr = [2, 8, 5, 3, 9, 1];
-        const sorted = [9, 8, 5, 3, 2, 1];
-        const cmp = (a, b) => b - a;
-        
-        heapSort(arr, cmp);
-        expect(arr).toEqual(sorted);
-    });
+    Object.values(arrayFactoryUtils)
+        .forEach((arrayFactoryCallback) => {
+            generateSortingTest(arrayFactoryCallback());
+        });
+
+    const desc = (a, b) => b - a;
+    generateSortingTest(arrayFactoryUtils.getUnsortedArray(), desc);
 });

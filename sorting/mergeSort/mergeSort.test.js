@@ -12,8 +12,8 @@ describe("mergeSort", () => {
     }
 
     Object.values(arrayFactoryUtils)
-        .forEach((arrayGeneratorCallback) => {
-            generateSortingTest(arrayGeneratorCallback());
+        .forEach((arrayFactoryCallback) => {
+            generateSortingTest(arrayFactoryCallback());
         });
 
     const desc = (a, b) => b - a;

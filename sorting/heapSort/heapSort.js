@@ -5,6 +5,8 @@ function heapSort(arr, cmp) {
     
     buildHeap(arr, cmp);
     sortHeap(arr, cmp);
+
+    return arr;
 }
 
 function buildHeap(arr, cmp) {
