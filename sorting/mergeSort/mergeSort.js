@@ -9,14 +9,15 @@ function mergeSortRecursive(arr, start, end) {
         mergeSortRecursive(arr, start, mid);
         mergeSortRecursive(arr, mid + 1, end);
 
-        merge(arr, start, mid, end);
+        mergeArrays(arr, start, mid, end);
     }
 }
 
-function merge(arr, start, mid, end) {
+function mergeArrays(arr, start, mid, end) {
     const leftArray = [];
     const rightArray = [];
 
+    // Consider using a single loop
     for (let i = start; i <= mid; i++) {
         leftArray.push(arr[i]);
     }
@@ -47,7 +48,8 @@ function merge(arr, start, mid, end) {
 }
 
 function shouldInsertRightValue(leftValue, rightValue) {
-    return typeof leftValue === "undefined" || (typeof rightValue !== "undefined" && rightValue < leftValue)
+    return typeof leftValue === "undefined"
+        || (typeof rightValue !== "undefined" && rightValue < leftValue)
 }
 
 module.exports = mergeSort;
