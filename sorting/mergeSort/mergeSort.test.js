@@ -10,11 +10,10 @@ describe("mergeSort", () => {
     });
 
     it("should sort in descending order", () => {
-        const arr = [2, 8, 5, 3, 9, 1];
-        const sorted = [9, 8, 5, 3, 2, 1];
-        const cmp = (a, b) => b - a;
+        const desc = (a, b) => b - a;
 
-        mergeSort(arr, cmp);
-        expect(arr).toEqual(sorted);
+        expect(
+            testSortingUtil(mergeSort, arrayMocks.notSortedArray, desc)
+        ).toBe(true);
     });
 });
