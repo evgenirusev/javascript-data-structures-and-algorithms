@@ -1,6 +1,15 @@
 const mergeSort = require("./mergeSort");
 const testSortingUtil = require("../../mocks/testSortingUtil");
-const arrayMocksFactory = require("../../mocks/arrayFactoryReferenceSafe");
+const {
+    getUnsortedArray,
+    getSortedArray,
+    getReverseArray,
+    getEqualArray,
+    getNegativeArray,
+    getNegativeSortedArray,
+    getOneElementArray,
+    getTwoElementArray
+} = require("../../mocks/arrayMockFactory");
 
 describe("mergeSort", () => {
     function generateSortingTest(arr, cmp) {
@@ -10,14 +19,16 @@ describe("mergeSort", () => {
             ).toBe(true);
         });
     }
-    
-    generateSortingTest(arrayMocksFactory.unsortedArray);
-    generateSortingTest(arrayMocksFactory.sortedArray);
-    generateSortingTest(arrayMocksFactory.reverseArray);
-    generateSortingTest(arrayMocksFactory.equalArray);
-    generateSortingTest(arrayMocksFactory.negativeArray);
-    generateSortingTest(arrayMocksFactory.negativeSortedArray);
+
+    generateSortingTest(getUnsortedArray());
+    generateSortingTest(getSortedArray());
+    generateSortingTest(getReverseArray());
+    generateSortingTest(getEqualArray());
+    generateSortingTest(getNegativeArray());
+    generateSortingTest(getNegativeSortedArray());
+    generateSortingTest(getOneElementArray());
+    generateSortingTest(getTwoElementArray());
 
     const desc = (a, b) => b - a;
-    generateSortingTest(arrayMocksFactory.unsortedArray, desc);
+    generateSortingTest(getUnsortedArray(), desc);
 });
