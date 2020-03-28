@@ -41,8 +41,8 @@ function merge(arr, start, mid, end) {
         }
     }
 
-    for(let i = start; i <= end; i++) {
-        arr[i] = tempArray[i];
+    for(let i = start, j = 0; i <= end; i++, j++) {
+        arr[i] = tempArray[j];
     }
 }
 
