@@ -12,8 +12,8 @@ describe("bubbleSort", () => {
     }
 
     Object.values(arrayFactoryUtils)
-        .forEach((arrayFactoryCallback) => {
-            generateSortingTest(arrayFactoryCallback());
+        .forEach((generateArray) => {
+            generateSortingTest(generateArray());
         });
 
     const desc = (a, b) => b - a;
