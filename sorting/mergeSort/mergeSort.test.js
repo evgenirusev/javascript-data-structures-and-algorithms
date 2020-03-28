@@ -1,12 +1,12 @@
 const mergeSort = require("./mergeSort");
-const testSortingUtil = require("../../mocks/testSortingUtil");
+const isSortingAlgorithmValid = require("../../mocks/isSortingAlgorithmValid");
 const arrayFactoryUtils = require("../../mocks/arrayFactoryUtils");
 
 describe("mergeSort", () => {
     function generateSortingTest(arr, cmp) {
         it("should mergeSort the array correctly", () => {
             expect(
-                testSortingUtil(mergeSort, arr, cmp)
+                isSortingAlgorithmValid(mergeSort, arr, cmp)
             ).toBe(true);
         });
     }

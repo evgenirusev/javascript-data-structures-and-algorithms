@@ -6,6 +6,8 @@ function bubble(arr, cmp) {
             }
         }
     }
+
+    return arr;
 }
 
 function swap(arr, i, j) {

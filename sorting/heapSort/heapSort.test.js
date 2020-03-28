@@ -1,12 +1,12 @@
 const heapSort = require("./heapSort");
-const testSortingUtil = require("../../mocks/testSortingUtil");
+const isSortingAlgorithmValid = require("../../mocks/isSortingAlgorithmValid");
 const arrayFactoryUtils = require("../../mocks/arrayFactoryUtils");
 
 describe("heapSort", () => {
     function generateSortingTest(arr, cmp) {
         it("should mergeSort the array correctly", () => {
             expect(
-                testSortingUtil(heapSort, arr, cmp)
+                isSortingAlgorithmValid(heapSort, arr, cmp)
             ).toBe(true);
         });
     }
