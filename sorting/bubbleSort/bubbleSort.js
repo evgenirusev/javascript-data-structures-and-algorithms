@@ -1,4 +1,4 @@
-function bubble(arr, cmp) {
+function bubbleSort(arr, cmp) {
     if (typeof cmp !== "function") {
         cmp = (a, b) => a - b;
     }
@@ -16,8 +16,9 @@ function bubble(arr, cmp) {
 
 function swap(arr, i, j) {
     const temp = arr[i];
+
     arr[i] = arr[j];
     arr[j] = temp;
 }
 
-module.exports = bubble;
+module.exports = bubbleSort;
