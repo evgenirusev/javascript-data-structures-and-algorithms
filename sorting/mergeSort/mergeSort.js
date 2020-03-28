@@ -22,28 +22,27 @@ function mergeArrays(arr, cmp, start, mid, end) {
     const leftArray = [];
     const rightArray = [];
 
-    // Consider using a single loop
-    for (let i = start; i <= mid; i++) {
-        leftArray.push(arr[i]);
-    }
-
-    for (let i = mid + 1; i <= end; i++) {
-        rightArray.push(arr[i]);
+    for (let i = start; i <= end; i++) {
+        if (i <= mid) {
+            leftArray.push(arr[i]);
+        } else {
+            rightArray.push(arr[i]);
+        }
     }
 
     const tempArray = [];
-    let i = 0;
-    let j = 0;
+    let leftIndex = 0;
+    let rightIndex = 0;
     while (tempArray.length !== (leftArray.length + rightArray.length)) {
-        const leftValue = leftArray[i];
-        const rightValue = rightArray[j];
+        const leftValue = leftArray[leftIndex];
+        const rightValue = rightArray[rightIndex];
 
         if (shouldInsertRightValue(cmp, leftValue, rightValue)) {
             tempArray.push(rightValue);
-            j++;
+            rightIndex++;
         } else {
             tempArray.push(leftValue);
-            i++;
+            leftIndex++;
         }
     }
 
