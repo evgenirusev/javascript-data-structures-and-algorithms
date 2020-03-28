@@ -1,19 +1,23 @@
-function mergeSort(arr) {
-    mergeSortRecursive(arr, 0, arr.length - 1);
+function mergeSort(arr, cmp) {
+    if (typeof cmp !== "function") {
+        cmp = (a, b) => a - b;
+    }
+
+    mergeSortRecursive(arr, cmp, 0, arr.length - 1);
 }
 
-function mergeSortRecursive(arr, start, end) {
+function mergeSortRecursive(arr, cmp, start, end) {
     if (start < end) {
         const mid = Math.floor((start + end) / 2);
 
-        mergeSortRecursive(arr, start, mid);
-        mergeSortRecursive(arr, mid + 1, end);
+        mergeSortRecursive(arr, cmp, start, mid);
+        mergeSortRecursive(arr, cmp, mid + 1, end);
 
-        mergeArrays(arr, start, mid, end);
+        mergeArrays(arr, cmp, start, mid, end);
     }
 }
 
-function mergeArrays(arr, start, mid, end) {
+function mergeArrays(arr, cmp, start, mid, end) {
     const leftArray = [];
     const rightArray = [];
 
@@ -33,7 +37,7 @@ function mergeArrays(arr, start, mid, end) {
         const leftValue = leftArray[i];
         const rightValue = rightArray[j];
 
-        if (shouldInsertRightValue(leftValue, rightValue)) {
+        if (shouldInsertRightValue(cmp, leftValue, rightValue)) {
             tempArray.push(rightValue);
             j++;
         } else {
@@ -47,9 +51,9 @@ function mergeArrays(arr, start, mid, end) {
     }
 }
 
-function shouldInsertRightValue(leftValue, rightValue) {
+function shouldInsertRightValue(cmp, leftValue, rightValue) {
     return typeof leftValue === "undefined"
-        || (typeof rightValue !== "undefined" && rightValue < leftValue)
+        || (typeof rightValue !== "undefined" && cmp(rightValue, leftValue) < 0)
 }
 
 module.exports = mergeSort;
