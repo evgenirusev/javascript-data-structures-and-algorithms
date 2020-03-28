@@ -32,7 +32,7 @@ function merge(arr, start, mid, end) {
         const leftValue = leftArray[i];
         const rightValue = rightArray[j];
 
-        if (typeof leftValue === "undefined" || (typeof rightValue !== "undefined" && rightValue < leftValue)) {
+        if (shouldInsertRightValue(leftValue, rightValue)) {
             tempArray.push(rightValue);
             j++;
         } else {
@@ -41,9 +41,13 @@ function merge(arr, start, mid, end) {
         }
     }
 
-    for(let i = start, j = 0; i <= end; i++, j++) {
+    for (let i = start, j = 0; i <= end; i++, j++) {
         arr[i] = tempArray[j];
     }
+}
+
+function shouldInsertRightValue(leftValue, rightValue) {
+    return typeof leftValue === "undefined" || (typeof rightValue !== "undefined" && rightValue < leftValue)
 }
 
 module.exports = mergeSort;
