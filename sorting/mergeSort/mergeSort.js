@@ -4,6 +4,7 @@ function mergeSort(arr, cmp) {
     }
 
     mergeSortRecursive(arr, cmp, 0, arr.length - 1);
+    return arr;
 }
 
 function mergeSortRecursive(arr, cmp, start, end) {
