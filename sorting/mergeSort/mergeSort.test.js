@@ -3,47 +3,17 @@ const testSortingUtil = require("../../mocks/testSortingUtil");
 const arrayMocks = require("../../mocks/arrayMocks");
 
 describe("mergeSort", () => {
-    it("should sort in ascending order", () => {
-        expect(
-            testSortingUtil(mergeSort, arrayMocks.notSortedArray)
-        ).toBe(true);
-    });
+    function generateSortingTest(arr, cmp) {
+        it("should sort the array correctly", () => {
+            expect(
+                testSortingUtil(mergeSort, arr, cmp)
+            ).toBe(true);
+        });
+    }
 
-    it("should sort in ascending order", () => {
-        expect(
-            testSortingUtil(mergeSort, arrayMocks.reverseArray)
-        ).toBe(true);
-    });
+    Object.values(arrayMocks)
+        .forEach(generateSortingTest);
 
-    it("should sort in ascending order", () => {
-        expect(
-            testSortingUtil(mergeSort, arrayMocks.notSortedArray)
-        ).toBe(true);
-    });
-
-    it("should sort in ascending order", () => {
-        expect(
-            testSortingUtil(mergeSort, arrayMocks.equalArray)
-        ).toBe(true);
-    });
-
-    it("should sort in ascending order", () => {
-        expect(
-            testSortingUtil(mergeSort, arrayMocks.negativeArray)
-        ).toBe(true);
-    });
-
-    it("should sort in ascending order", () => {
-        expect(
-            testSortingUtil(mergeSort, arrayMocks.negativeArraySorted)
-        ).toBe(true);
-    });
-
-    it("should sort in descending order", () => {
-        const desc = (a, b) => b - a;
-
-        expect(
-            testSortingUtil(mergeSort, arrayMocks.notSortedArray, desc)
-        ).toBe(true);
-    });
+    const desc = (a, b) => b - a;
+    generateSortingTest(arrayMocks.unsortedArray, desc);
 });
