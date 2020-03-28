@@ -9,6 +9,36 @@ describe("mergeSort", () => {
         ).toBe(true);
     });
 
+    it("should sort in ascending order", () => {
+        expect(
+            testSortingUtil(mergeSort, arrayMocks.reverseArray)
+        ).toBe(true);
+    });
+
+    it("should sort in ascending order", () => {
+        expect(
+            testSortingUtil(mergeSort, arrayMocks.notSortedArray)
+        ).toBe(true);
+    });
+
+    it("should sort in ascending order", () => {
+        expect(
+            testSortingUtil(mergeSort, arrayMocks.equalArray)
+        ).toBe(true);
+    });
+
+    it("should sort in ascending order", () => {
+        expect(
+            testSortingUtil(mergeSort, arrayMocks.negativeArray)
+        ).toBe(true);
+    });
+
+    it("should sort in ascending order", () => {
+        expect(
+            testSortingUtil(mergeSort, arrayMocks.negativeArraySorted)
+        ).toBe(true);
+    });
+
     it("should sort in descending order", () => {
         const desc = (a, b) => b - a;
 
