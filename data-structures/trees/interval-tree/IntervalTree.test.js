@@ -1,6 +1,6 @@
 const IntervalTree = require("./IntervalTree");
 const Interval = require("./Interval");
-const insertMockValues = require("../../../unit-test-utils/treeUnitTestUtils");
+const insertMockValues = require("../../../mocks/treeUnitTestUtils");
 
 describe("IntervalTree", () => {
     let intervalTree;

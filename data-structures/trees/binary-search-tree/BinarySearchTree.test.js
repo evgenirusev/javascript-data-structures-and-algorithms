@@ -1,5 +1,5 @@
 const BinarySearchTree = require("./BinarySearchTree");
-const insertMockValues = require("../../../unit-test-utils/treeUnitTestUtils");
+const insertMockValues = require("../../../mocks/treeUnitTestUtils");
 
 describe("BinarySearchTree", () => {
     const mockValues = [25, 15, 50, 10, 22, 35, 70, 4, 12, 18, 24, 31, 44, 66, 90];

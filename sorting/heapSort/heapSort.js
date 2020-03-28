@@ -2,7 +2,7 @@ function heapSort(arr, cmp) {
     if (typeof cmp !== "function") {
         cmp = (a, b) => a - b;
     }
-    
+
     buildHeap(arr, cmp);
     sortHeap(arr, cmp);
 
@@ -10,13 +10,13 @@ function heapSort(arr, cmp) {
 }
 
 function buildHeap(arr, cmp) {
-    for(let i = (arr.length / 2) - 1; i >= 0; i--) {
+    for (let i = (arr.length / 2) - 1; i >= 0; i--) {
         heapify(arr, arr.length, i, cmp);
     }
 }
 
 function sortHeap(arr, cmp) {
-    for(let i = arr.length - 1; i > 0; i--) {
+    for (let i = arr.length - 1; i > 0; i--) {
         swap(arr, 0, i);
         heapify(arr, i, 0, cmp);
     }

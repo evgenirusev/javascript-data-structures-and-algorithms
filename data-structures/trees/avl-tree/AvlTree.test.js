@@ -1,5 +1,5 @@
 const AvlTree = require("./AvlTree");
-const insertMockValues = require("../../../unit-test-utils/treeUnitTestUtils");
+const insertMockValues = require("../../../mocks/treeUnitTestUtils");
 
 describe("AvlTree", () => {
     let tree;
