@@ -1,6 +1,6 @@
 const quickSort = require("./quickSort");
-const isSortingAlgorithmValid = require("../../mocks/isSortingAlgorithmValid");
-const arrayFactoryUtils = require("../../mocks/arrayFactoryUtils");
+const isSortingAlgorithmValid = require("../../../mocks/isSortingAlgorithmValid");
+const arrayFactoryUtils = require("../../../mocks/arrayFactoryUtils");
 
 describe("quickSort", () => {
     function generateSortingTest(arr, cmp) {
@@ -15,7 +15,4 @@ describe("quickSort", () => {
         .forEach((generateArray) => {
             generateSortingTest(generateArray());
         });
-
-    const desc = (a, b) => b - a;
-    generateSortingTest(arrayFactoryUtils.getUnsortedArray(), desc);
 });

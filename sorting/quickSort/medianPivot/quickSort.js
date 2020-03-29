@@ -22,17 +22,19 @@ function partition(arr, cmp, left, right) {
     i = left;
     j = right - 1;
 
-    while (i < j) {
+    while (i <= j) {
         while (cmp(arr[i], arr[right]) < 0) {
             i++;
         }
 
-        while (i <= j && cmp(arr[j], arr[right]) > 0) {
+        while (cmp(arr[j], arr[right]) > 0) {
             j--;
         }
 
-        if (i < j) {
+        if (i <= j) {
             swap(arr, i, j);
+            i++;
+            j--;
         } else {
             swap(arr, i, right);
         }
