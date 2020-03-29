@@ -27,10 +27,6 @@ function partition(arr, cmp, left, right) {
             i++;
         }
 
-        if (i >= j) {
-            return right;
-        }
-
         while (i <= j && cmp(arr[j], arr[right]) > 0) {
             j--;
         }
