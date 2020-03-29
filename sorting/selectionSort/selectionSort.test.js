@@ -1,6 +1,6 @@
 const selectionSort = require("./selectionSort");
-const isSortingAlgorithmValid = require("../../../mocks/isSortingAlgorithmValid");
-const arrayFactoryUtils = require("../../../mocks/arrayFactoryUtils");
+const isSortingAlgorithmValid = require("../../mocks/isSortingAlgorithmValid");
+const arrayFactoryUtils = require("../../mocks/arrayFactoryUtils");
 
 describe("selectionSort", () => {
     function generateSortingTest(arr, cmp) {
