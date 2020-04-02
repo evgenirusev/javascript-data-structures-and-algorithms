@@ -12,7 +12,6 @@ function countingSort(array) {
         countArray[i] += countArray[i - 1];
     }
 
-
     for (let i = array.length - 1; i >= 0; i--) {
         output[countArray[array[i]] - 1] = array[i];
     }
