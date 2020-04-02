@@ -1,7 +1,6 @@
 function countingSort(array) {
     const output = [];
     const maxValue = Math.max(...array);
-
     const countArray = new Array(maxValue + 1).fill(0);
 
     array.forEach(num => {

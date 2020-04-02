@@ -4,7 +4,7 @@ const arrayFactoryUtils = require("../../mocks/arrayFactoryUtils");
 describe("countingSort", () => {
     it("should sort two element array", () => {
         expect(countingSort(arrayFactoryUtils.getTwoElementArray()))
-            .toEqual(arrayFactoryUtils.getSortedArray());
+            .toEqual([1, 2]);
     });
 
     it("should sort the array", () => {
