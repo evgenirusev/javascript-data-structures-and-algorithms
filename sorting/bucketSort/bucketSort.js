@@ -1,10 +1,6 @@
-function bucketSort(array, cmp) {
-    if (typeof cmp !== "function") {
-        cmp = (a, b) => a - b;
-    }
-
+function bucketSort(array) {
     const buckets = parseIntoBuckets(array);
-    sortBuckets(buckets, cmp);
+    sortBuckets(buckets);
     return mergeBucketsIntoArray(buckets, array);
 }
 
@@ -21,18 +17,18 @@ function parseIntoBuckets(array) {
     return buckets;
 }
 
-function sortBuckets(buckets, cmp) {
+function sortBuckets(buckets) {
     buckets.forEach(bucket => {
         if (typeof bucket !== undefined) {
-            insertionSort(bucket, cmp);
+            insertionSort(bucket);
         }
     });
 }
 
-function insertionSort(arr, cmp) {
+function insertionSort(arr) {
     for (let i = 1; i < arr.length; i++) {
         for (let j = i; j >= 0; j--) {
-            if (cmp(arr[j], arr[j - 1]) > 0) {
+            if (arr[j] < arr[j - 1]) {
                 swap(arr, j, j - 1);
             }
         }
