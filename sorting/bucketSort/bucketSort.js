@@ -10,9 +10,11 @@ function bucketSort(arr, cmp) {
 
 function parseIntoBuckets(array) {
     const buckets = [];
+    const maxElement = Math.max(...array);
 
     array.forEach(num => {
-        const bucketIndex = Math.floor((arr.length - 1) * num / Math.max(...array));
+        const bucketIndex = Math.floor((array.length - 1) * num / maxElement);
+        buckets[bucketIndex] = buckets[bucketIndex] || [];
         buckets[bucketIndex].push(num);
     });
 
