@@ -25,6 +25,18 @@ function sortBuckets(buckets) {
     });
 }
 
+function mergeBucketsIntoArray(buckets, array) {
+    let index = 0;
+    buckets.forEach(bucket => {
+        bucket.forEach(num => {
+            array[index] = num;
+            index++;
+        });
+    });
+
+    return array;
+}
+
 function insertionSort(arr) {
     for (let i = 1; i < arr.length; i++) {
         for (let j = i; j >= 0; j--) {
@@ -39,18 +51,6 @@ function swap(arr, index1, index2) {
     const temp = arr[index1];
     arr[index1] = arr[index2];
     arr[index2] = temp;
-}
-
-function mergeBucketsIntoArray(buckets, array) {
-    let index = 0;
-    buckets.forEach(bucket => {
-        bucket.forEach(num => {
-            array[index] = num;
-            index++;
-        });
-    });
-
-    return array;
 }
 
 module.exports = bucketSort;
