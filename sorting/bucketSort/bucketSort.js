@@ -1,11 +1,11 @@
-function bucketSort(arr, cmp) {
+function bucketSort(array, cmp) {
     if (typeof cmp !== "function") {
         cmp = (a, b) => a - b;
     }
 
-    const buckets = parseIntoBuckets(arr);
+    const buckets = parseIntoBuckets(array);
     sortBuckets(buckets);
-    return mergeBuckets(buckets);
+    return mergeBucketsIntoArray(buckets, array);
 }
 
 function parseIntoBuckets(array) {
@@ -41,12 +41,18 @@ function insertionSort(arr) {
 
 function swap(arr, index1, index2) {
     const temp = arr[index1];
-    arr[index1] = index2;
+    arr[index1] = arr[index2];
     arr[index2] = temp;
 }
 
-function mergeBuckets(buckets) {
+function mergeBucketsIntoArray(buckets, array) {
+    buckets.forEach(bucket => {
+        bucket.forEach(num => {
+            array.push(num);
+        });
+    });
 
+    return array;
 }
 
 module.exports = bucketSort;
