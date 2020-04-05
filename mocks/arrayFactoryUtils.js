@@ -34,6 +34,10 @@ function getLargeNumberArray() {
     return [...[203, 14, 532, 8005, 748, 3, 12043, 258, 91, 47, 23, 70]];
 }
 
+function getSortedLargeNumberArray() {
+    return [...[3, 14, 23, 47, 70, 91, 203, 258, 532, 748, 8005, 12043]];
+}
+
 module.exports = {
     getUnsortedArray,
     getSortedArray,
@@ -43,5 +47,6 @@ module.exports = {
     getNegativeSortedArray,
     getOneElementArray,
     getTwoElementArray,
-    getLargeNumberArray
+    getLargeNumberArray,
+    getSortedLargeNumberArray
 }

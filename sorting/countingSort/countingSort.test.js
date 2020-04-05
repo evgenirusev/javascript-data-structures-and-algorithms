@@ -16,4 +16,9 @@ describe("countingSort", () => {
         expect(countingSort(arrayFactoryUtils.getReverseArray()))
             .toEqual(arrayFactoryUtils.getSortedArray());
     });
+
+    it("should sort two element array", () => {
+        expect(countingSort(arrayFactoryUtils.getLargeNumberArray()))
+            .toEqual(arrayFactoryUtils.getSortedLargeNumberArray());
+    });
 });
