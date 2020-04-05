@@ -1,4 +1,4 @@
-const lsd = require("./radixSort");
+const lsd = require("./lsd");
 const arrayFactoryUtils = require("../../mocks/arrayFactoryUtils");
 
 describe("lsd", () => {
