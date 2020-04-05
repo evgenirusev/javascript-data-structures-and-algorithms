@@ -1,4 +1,4 @@
-function radixSort(array) {
+function lsd(array) {
     const maxValue = Math.max(...array);
 
     for (let divider = 1; divider <= maxValue; divider *= 10) {
@@ -41,4 +41,4 @@ function getCurrentDigit(number, divider) {
     return Math.floor((number / divider) % 10) || 0;
 }
 
-module.exports = radixSort;
+module.exports = lsd;
