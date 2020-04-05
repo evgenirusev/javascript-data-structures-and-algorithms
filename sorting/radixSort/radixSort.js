@@ -1,15 +1,22 @@
-const countingSort = require("../countingSort/countingSort");
-
 function radixSort(array) {
     const maxValue = Math.max(...array);
 
     for (let divider = 1; divider < maxValue; divider += 10) {
+        const output = [];
         const maxDigit = 9;
         const countArray = new Array(maxDigit).fill(0);
 
-        for (let i = 0; i <= array.length; i++) {
-            const currentDigit = getCurrentDigit(array[i], divider);
+        array.forEach(num => {
+            const currentDigit = getCurrentDigit(num, divider);
             countArray[currentDigit]++;
+        });
+
+        for (let i = 1; i < countArray.length; i++) {
+            output[countArray[array[i]] - 1] = array[i];
+        }
+
+        for (let i = 0; i < array.length; i++) {
+            array[i] = output[i];
         }
     }
 
@@ -20,4 +27,4 @@ function getCurrentDigit(number, divider) {
     return Math.floor((number / divider) % 10) || 0;
 }
 
-module.exports = countingSort;
+module.exports = radixSort;
