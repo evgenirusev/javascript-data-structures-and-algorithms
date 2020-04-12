@@ -20,7 +20,7 @@ function binarySearchRecursive(arr, cmp, num, left, right) {
     if (cmp(num, arr[mid]) > 0) {
         return binarySearchRecursive(arr, cmp, num, mid + 1, right);
     } else {
-        return binarySearchRecursive(arr, cmp, num, left, mid);
+        return binarySearchRecursive(arr, cmp, num, left, mid - 1);
     }
 }
 

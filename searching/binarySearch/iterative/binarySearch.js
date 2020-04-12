@@ -6,7 +6,7 @@ function binarySearch(arr, num, cmp) {
     let left = 0;
     let right = arr.length - 1;
 
-    while (left < right) {
+    while (left <= right) {
         let mid = Math.floor((left + right) / 2);
 
         if (arr[mid] === num) {
@@ -16,7 +16,7 @@ function binarySearch(arr, num, cmp) {
         if (cmp(num, arr[mid]) > 0) {
             left = mid + 1;
         } else {
-            right = mid;
+            right = mid - 1;
         }
     }
 
