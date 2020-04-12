@@ -7,11 +7,11 @@ function binarySearch(arr, num, cmp) {
 }
 
 function binarySearchRecursive(arr, cmp, num, left, right) {
-    if (right <= right) {
+    if (right <= left) {
         return false;
     }
 
-    const mid = Math.floor(left, right);
+    const mid = Math.floor((left + right) / 2);
 
     if (num === arr[mid]) {
         return true;
