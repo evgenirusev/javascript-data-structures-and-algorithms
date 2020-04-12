@@ -2,27 +2,17 @@ const binarySearch = require("./binarySearch");
 const arrayFactoryUtils = require("../../mocks/arrayFactoryUtils");
 
 describe("binarySearch", () => {
-    it("should find the correct element", () => {
-        expect(binarySearch(arrayFactoryUtils.getTwoElementArray(), 1)).toEqual(true);
-    });
+    function generateSearchingTest(testCaseName, array, num, assertionResult) {
+        it(testCaseName, () => {
+            expect(binarySearch(array, num))
+                .toEqual(assertionResult);
+        });
+    }
 
-    it("should find left most element", () => {
-        expect(binarySearch(arrayFactoryUtils.getSortedArray(), 1)).toEqual(true);
-    });
-
-    it("should't find non existing element", () => {
-        expect(binarySearch(arrayFactoryUtils.getSortedArray(), 50)).toEqual(false);
-    });
-
-    it("should find the", () => {
-        expect(binarySearch(arrayFactoryUtils.getSortedArray(), 3)).toEqual(true);
-    });
-
-    it("should find the correct element", () => {
-        expect(binarySearch(arrayFactoryUtils.getSortedArray(), 20)).toEqual(true);
-    });
-
-    it("should't find element non existing element", () => {
-        expect(binarySearch(arrayFactoryUtils.getSortedArray(), 0)).toEqual(false);
-    });
+    generateSearchingTest("should find an element in two element array", arrayFactoryUtils.getTwoElementArray(), 1, true);
+    generateSearchingTest("should find left most element", arrayFactoryUtils.getSortedArray(), 1, true);
+    generateSearchingTest("should find right most element", arrayFactoryUtils.getSortedArray(), 20, true);
+    generateSearchingTest("should't find non existing element", arrayFactoryUtils.getSortedArray(), 50, false);
+    generateSearchingTest("should find an element", arrayFactoryUtils.getSortedArray(), 0, false);
+    generateSearchingTest("should find an element", arrayFactoryUtils.getSortedArray(), 3, true);
 });
