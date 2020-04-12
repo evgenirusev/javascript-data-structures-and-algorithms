@@ -1,5 +1,5 @@
 const binarySearch = require("./binarySearch");
-const arrayFactoryUtils = require("../../mocks/arrayFactoryUtils");
+const arrayFactoryUtils = require("../../../mocks/arrayFactoryUtils");
 
 describe("binarySearch", () => {
     function generateSearchingTest(testCaseName, array, num, assertionResult) {
