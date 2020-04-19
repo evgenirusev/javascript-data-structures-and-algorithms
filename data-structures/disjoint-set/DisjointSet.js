@@ -27,6 +27,13 @@ class DisjointSet {
     areConnected(id1, id2) {
         return this.IDsToNodesMap[id1].setId === this.IDsToNodesMap[id2].setId;
     }
+
+    addNode(node) {
+        this.IDsToNodesMap[node.id] = {
+            node,
+            setId: node.id
+        }
+    }
 }
 
 module.exports = DisjointSet;
