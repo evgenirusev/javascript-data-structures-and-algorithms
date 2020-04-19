@@ -3,7 +3,7 @@ class QuickUnion {
         this.IDsToNodesMap = nodes.reduce((acc, node) => {
             acc[node.id] = {
                 node,
-                setId: node.id
+                root: node.id
             }
 
             return acc;
@@ -15,7 +15,9 @@ class QuickUnion {
             throw 'passed ID does not exist!';
         }
 
-        this.IDsToNodesMap[id1].setId = id2;
+        const id1Root = this._getRoot(id1);
+        const id2Root = this._getRoot(id2);
+        this.IDsToNodesMap[id1Root].root = id2Root;
     }
 
     areConnected(id1, id2) {
@@ -25,13 +27,13 @@ class QuickUnion {
     addNode(node) {
         this.IDsToNodesMap[node.id] = {
             node,
-            setId: node.id
+            root: node.id
         }
     }
 
     _getRoot(id) {
-        while (id !== this.IDsToNodesMap[id].setId) {
-            id = this.IDsToNodesMap[id].setId;
+        while (id !== this.IDsToNodesMap[id].root) {
+            id = this.IDsToNodesMap[id].root;
         }
 
         return id;
