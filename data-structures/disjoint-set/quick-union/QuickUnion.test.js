@@ -1,7 +1,7 @@
-const DisjointSet = require("./DisjointSet");
+const QuickUnion = require("./QuickUnion");
 
-describe('DisjointSet', () => {
-    let disjointSet;
+describe('QuickUnion', () => {
+    let QuickUnion;
     let mockNodes;
 
     beforeEach(() => {
@@ -24,27 +24,27 @@ describe('DisjointSet', () => {
             },
         ];
 
-        disjointSet = new DisjointSet(mockNodes);
+        QuickUnion = new QuickUnion(mockNodes);
     });
 
     it('should be connected', () => {
-        disjointSet.union(1, 2);
-        disjointSet.union(2, 3);
-        expect(disjointSet.areConnected(1, 2)).toBe(true);
-        expect(disjointSet.areConnected(1, 3)).toBe(true);
-        expect(disjointSet.areConnected(3, 2)).toBe(true);
+        QuickUnion.union(1, 2);
+        QuickUnion.union(2, 3);
+        expect(QuickUnion.areConnected(1, 2)).toBe(true);
+        expect(QuickUnion.areConnected(1, 3)).toBe(true);
+        expect(QuickUnion.areConnected(3, 2)).toBe(true);
     });
 
     it('should be connected', () => {
-        disjointSet.addNode(
+        QuickUnion.addNode(
             {
                 id: 5,
                 data: 123
             }
         );
 
-        disjointSet.union(1, 5);
-        disjointSet.union(1, 2);
-        expect(disjointSet.areConnected(2, 5)).toBe(true);
+        QuickUnion.union(1, 5);
+        QuickUnion.union(1, 2);
+        expect(QuickUnion.areConnected(2, 5)).toBe(true);
     });
 });
