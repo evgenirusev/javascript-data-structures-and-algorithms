@@ -1,6 +1,6 @@
-const UnionFind = require("./UnionFind");
+const DisjointSet = require("./DisjointSet");
 
-describe('UnionFind', () => {
+describe('DisjointSet', () => {
     it('should be connected', () => {
         const nodes = [
             {
@@ -13,8 +13,8 @@ describe('UnionFind', () => {
             }
         ];
 
-        const unionFind = new UnionFind(nodes);
-        unionFind.union(1, 2);
-        expect(unionFind.areConnected(1, 2)).toBe(true);
+        const disjointSet = new DisjointSet(nodes);
+        disjointSet.union(1, 2);
+        expect(disjointSet.areConnected(1, 2)).toBe(true);
     });
 });

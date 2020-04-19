@@ -1,4 +1,4 @@
-class UnionFind {
+class DisjointSet {
     constructor(nodes) {
         this.IDsToNodesMap = nodes.reduce((acc, node) => {
             acc[node.id] = {
@@ -29,4 +29,4 @@ class UnionFind {
     }
 }
 
-module.exports = UnionFind;
+module.exports = DisjointSet;
