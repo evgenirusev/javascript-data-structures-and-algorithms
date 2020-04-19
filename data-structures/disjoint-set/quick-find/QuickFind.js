@@ -12,7 +12,7 @@ class QuickFind {
 
     union(id1, id2) {
         if (this.IDsToNodesMap.id1 || this.IDsToNodesMap.id2) {
-            throw 'passed ID does not exist!'; 
+            throw 'passed ID does not exist!';
         }
 
         const setId = this.IDsToNodesMap[id1].setId;
