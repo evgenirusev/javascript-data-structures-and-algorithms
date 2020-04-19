@@ -33,10 +33,6 @@ class QuickUnion {
 
     _getRoot(id) {
         while (id !== this.IDsToNodesMap[id].root) {
-            this.IDsToNodesMap[id].root = this.IDsToNodesMap[
-                this.IDsToNodesMap[id].root
-            ].root;
-            
             id = this.IDsToNodesMap[id].root;
         }
 

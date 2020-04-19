@@ -1,6 +1,6 @@
-const BalancedQuickUnionTree = require("../balanced-quick-union-tree/BalancedQuickUnionTree");
+const QuickUnion = require("../quick-union/QuickUnion");
 
-class PathCompressedQuickUnion extends BalancedQuickUnionTree {
+class PathCompressedQuickUnion extends QuickUnion {
     constructor(nodes) {
         super(nodes);
         this.height = new Array(nodes.length).fill(0);
@@ -26,6 +26,18 @@ class PathCompressedQuickUnion extends BalancedQuickUnionTree {
     addNode(node) {
         super.addNode(node);
         this.height[node.id] = 0;
+    }
+
+    _getRoot(id) {
+        while (id !== this.IDsToNodesMap[id].root) {
+            this.IDsToNodesMap[id].root = this.IDsToNodesMap[
+                this.IDsToNodesMap[id].root
+            ].root;
+
+            id = this.IDsToNodesMap[id].root;
+        }
+
+        return id;
     }
 }
 
