@@ -27,7 +27,6 @@ class BalancedQuickUnionTree extends QuickUnionTree {
         super.addNode(node);
         this.height[node.id] = 0;
     }
-
 }
 
 module.exports = BalancedQuickUnionTree;
