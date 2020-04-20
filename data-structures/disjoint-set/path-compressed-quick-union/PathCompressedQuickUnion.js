@@ -30,9 +30,11 @@ class PathCompressedQuickUnion extends QuickUnion {
 
     _getRoot(id) {
         while (id !== this.IDsToNodesMap[id].root) {
-            this.IDsToNodesMap[id].root = this.IDsToNodesMap[
+            // Path compression
+            const parentRoot = this.IDsToNodesMap[
                 this.IDsToNodesMap[id].root
             ].root;
+            this.IDsToNodesMap[id].root = parentRoot;
 
             id = this.IDsToNodesMap[id].root;
         }
