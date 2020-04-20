@@ -14,7 +14,7 @@ class PathCompressedQuickUnion extends QuickUnion {
         const id1Root = this._getRoot(id1);
         const id2Root = this._getRoot(id2);
 
-        if (this.height[id1Root] > this.height[id2Root]) {
+        if (this.height[id1Root] < this.height[id2Root]) {
             this.IDsToNodesMap[id1Root].root = id2Root;
             this.height[id1Root + 1];
         } else {
