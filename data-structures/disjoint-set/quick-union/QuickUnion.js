@@ -32,6 +32,10 @@ class QuickUnion {
     }
 
     _getRoot(id) {
+        if (typeof this.IDsToNodesMap[id] === "undefined") {
+            throw `Node with ID '${id}' does not exist!`;
+        }
+
         while (id !== this.IDsToNodesMap[id].root) {
             id = this.IDsToNodesMap[id].root;
         }

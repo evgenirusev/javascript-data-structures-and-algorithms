@@ -12,39 +12,39 @@ describe('PathCompressedQuickUnion', () => {
             },
             {
                 id: 2,
-                data: 12
+                data: 10
             },
             {
                 id: 3,
-                data: 4
+                data: 15
             },
             {
                 id: 4,
-                data: 55
+                data: 20
             },
             {
                 id: 5,
-                data: 47
+                data: 25
             },
             {
                 id: 6,
-                data: 61
+                data: 30
             },
             {
                 id: 7,
-                data: 91
+                data: 35
             },
             {
                 id: 8,
-                data: 12
+                data: 40
             },
             {
                 id: 9,
-                data: 13
+                data: 45
             },
         ];
 
-        pathCompressedQuickUnion = new PathCompressedQuickUnion(mockNodes);
+        pathCompressedQuickUnion = new PathCompressedQuickUnion(mockNodes, (a, b) => a.data - b.data);
     });
 
     it('should be connected', () => {
@@ -65,7 +65,7 @@ describe('PathCompressedQuickUnion', () => {
         const idsToInsert = [
             [3, 4],
             [4, 9],
-            [8, 0],
+            [8, 1],
             [2, 3],
             [5, 6],
             [5, 9],
@@ -73,7 +73,6 @@ describe('PathCompressedQuickUnion', () => {
             [4, 8],
             [6, 1]
         ];
-
         idsToInsert.forEach(ids => {
             pathCompressedQuickUnion.union(ids[0], ids[1]);
         });
@@ -88,7 +87,7 @@ describe('PathCompressedQuickUnion', () => {
         const idsToInsert = [
             [3, 4],
             [4, 9],
-            [8, 0],
+            [8, 1],
             [2, 3],
             [5, 6],
             [5, 9]

@@ -1,9 +1,22 @@
-const QuickUnion = require("../quick-union/QuickUnion");
+class PathCompressedQuickUnion {
+    constructor(nodes, cmp) {
+        if (typeof cmp === "undefined") {
+            cmp = (a, b) => a.id - b.id;
+        }
 
-class PathCompressedQuickUnion extends QuickUnion {
-    constructor(nodes) {
-        super(nodes);
+        this.idsToRootWithLargestValueMap = [];
         this.height = new Array(nodes.length).fill(0);
+        this._cmp = cmp;
+
+        this.IDsToNodesMap = nodes.reduce((acc, node) => {
+            acc[node.id] = {
+                node,
+                root: node.id
+            }
+            this.idsToRootWithLargestValueMap[node.id] = node.id;
+
+            return acc;
+        }, {});
     }
 
     union(id1, id2) {
@@ -15,20 +28,29 @@ class PathCompressedQuickUnion extends QuickUnion {
         const id2Root = this._getRoot(id2);
 
         if (this.height[id1Root] < this.height[id2Root]) {
-            this.IDsToNodesMap[id1Root].root = id2Root;
-            this.height[id1Root + 1];
+            this._changeRootAndIncrementHeight(id1, id2);
         } else {
-            this.IDsToNodesMap[id2Root].root = id1Root;
-            this.height[id2Root + 1];
+            this._changeRootAndIncrementHeight(id2, id1);
         }
     }
 
+    areConnected(id1, id2) {
+        return this._getRoot(id1) === this._getRoot(id2);
+    }
+
     addNode(node) {
-        super.addNode(node);
+        this.IDsToNodesMap[node.id] = {
+            node,
+            root: node.id
+        }
         this.height[node.id] = 0;
     }
 
     _getRoot(id) {
+        if (typeof this.IDsToNodesMap[id] === "undefined") {
+            throw `Node with ID '${id}' does not exist!`;
+        }
+
         while (id !== this.IDsToNodesMap[id].root) {
             // Path compression
             const parentRoot = this.IDsToNodesMap[
@@ -40,6 +62,18 @@ class PathCompressedQuickUnion extends QuickUnion {
         }
 
         return id;
+    }
+
+    _changeRootAndIncrementHeight(id1, id2) {
+        const node1 = this.IDsToNodesMap[id1];
+        const node2 = this.IDsToNodesMap[id2];
+
+        node1.root = id2;
+        this.height[id1 + 1];
+
+        if (this._cmp(node1, node2) > 0) {
+            this.idsToRootWithLargestValueMap[node2] = node1;
+        }
     }
 }
 
