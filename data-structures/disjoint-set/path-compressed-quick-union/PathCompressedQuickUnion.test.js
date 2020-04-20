@@ -72,32 +72,13 @@ describe('PathCompressedQuickUnion', () => {
             [7, 3],
             [4, 8],
             [6, 1]
-        ];
+        ]; 
         idsToInsert.forEach(ids => {
             pathCompressedQuickUnion.union(ids[0], ids[1]);
         });
 
-        expect(pathCompressedQuickUnion.highestValueInSet(1)).toBe(9);
-        expect(pathCompressedQuickUnion.highestValueInSet(2)).toBe(9);
-        expect(pathCompressedQuickUnion.highestValueInSet(5)).toBe(9);
-        expect(pathCompressedQuickUnion.highestValueInSet(9)).toBe(9);
-    });
-
-    it('should find the largest number in a set', () => {
-        const idsToInsert = [
-            [3, 4],
-            [4, 9],
-            [8, 1],
-            [2, 3],
-            [5, 6],
-            [5, 9]
-        ];
-        idsToInsert.forEach(ids => {
-            pathCompressedQuickUnion.union(ids[0], ids[1]);
-        });
-
-        expect(pathCompressedQuickUnion.highestValueInSet(2)).toBe(9);
-        expect(pathCompressedQuickUnion.highestValueInSet(3)).toBe(9);
-        expect(pathCompressedQuickUnion.highestValueInSet(9)).toBe(9);
+        expect(pathCompressedQuickUnion.highestValueInSet(1)).toBe(45);
+        expect(pathCompressedQuickUnion.highestValueInSet(5)).toBe(45);
+        expect(pathCompressedQuickUnion.highestValueInSet(9)).toBe(45);
     });
 });
