@@ -3,9 +3,9 @@ function selectionSort(array, cmp) {
         cmp = (a, b) => a - b;
     }
 
-    for (let i = 0; i < array.length; i++) {
+    for (let i = 0; i < array.length - 1; i++) {
         let currentMinimum = i;
-        let currentIndex = i;
+        let currentIndex = i + 1;
         while (currentIndex < array.length) {
             if (cmp(array[currentIndex], array[currentMinimum]) < 0) {
                 currentMinimum = currentIndex;
