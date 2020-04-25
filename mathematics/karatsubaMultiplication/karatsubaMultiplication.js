@@ -1,4 +1,4 @@
-function karatsubaMultiplication(x, y) {
+function multiply(x, y) {
     const xDigitCount = getDigitCount(x);
     const yDigitCount = getDigitCount(y);
 
@@ -6,11 +6,17 @@ function karatsubaMultiplication(x, y) {
         return x * y;
     }
 
+    // x
     const a = getFirstHalfDigits(x, xDigitCount);
     const b = getSecondHalfDigits(x, xDigitCount);
+    const aMultiplier = Math.pow(10, getDigitCount(b));
+
+    // y
     const c = getFirstHalfDigits(y, yDigitCount);
-    const d = getSecondHalfDigits(y, xDigitCount);
-    const multiplier = Math.pow(10, getDigitCount(a));
+    const d = getSecondHalfDigits(y, yDigitCount);
+    const bMultiplier = Math.pow(10, getDigitCount(d));
+    
+    return (aMultiplier * bMultiplier) * multiply(a, c) + aMultiplier * d + bMultiplier * multiply(b, c) + multiply(b, d);
 }
 
 function getDigitCount(n) {
@@ -38,4 +44,4 @@ function getNumberHalf(n, digitsCount, operation) {
     );
 }
 
-module.exports = karatsubaMultiplication;
+module.exports = multiply;
