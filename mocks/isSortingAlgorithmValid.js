@@ -9,7 +9,7 @@ function isSortingAlgorithmValid(sortingCallback, array, cmp) {
     if (resultArray === expectedArray) {
         return true;
     } else {
-        throw `Invalid sorting algorithm. Expected - ${expectedArray} Received - ${resultArray}`;
+        throw `Invalid sorting algorithm. Array to be sorted - ${array}\n Expected - ${expectedArray}\n Received - ${resultArray}`;
     }
 }
 
