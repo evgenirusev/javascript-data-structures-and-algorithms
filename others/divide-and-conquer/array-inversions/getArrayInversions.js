@@ -1,15 +1,19 @@
 function getArrayInversions(arr) {
-    let numberOfInversions = 0;
+    sortAndCountInversions(arr, 0, arr.length - 1);
+}
 
-    for (let i = arr.length - 1; i >= 1; i--) {
-        for (let j = i - 1; j >= 0; j--) {
-            if (arr[i] < arr[j]) {
-                numberOfInversions++;
-            }
-        }
+function sortAndCountInversions(arr, left, right) {
+    if (arr.length <= 1) {
+        return 0;
     }
 
-    return numberOfInversions;
+    const mid = Math.floor(n / 2);
+
+    const leftInvCount = sortAndCountInversions(arr, left, mid);
+    const rightInvCount = sortAndCountInversions(arr, mid + 1, right);
+    const splitInvCount = countSplitInversions(arr, left, right);
+
+    return leftInvCount + rightInvCount + splitInvCount;
 }
 
 module.exports = getArrayInversions;
