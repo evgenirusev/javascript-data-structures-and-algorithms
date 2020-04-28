@@ -20,23 +20,23 @@ function mergeSortRecursive(arr, cmp, start, end) {
 
 function mergeArrays(arr, cmp, start, mid, end) {
     const leftToRightArrLength = (end - start) + 1;
-    const auxArray = [];
+    const auxiliaryArray = [];
 
     let leftCounter = start;
     let rightCounter = mid + 1;
-    while (auxArray.length < leftToRightArrLength) {
+    while (auxiliaryArray.length < leftToRightArrLength) {
         if (shouldPushLeft(arr, cmp, leftCounter, rightCounter, mid, end)) {
-            auxArray.push(arr[leftCounter]);
+            auxiliaryArray.push(arr[leftCounter]);
             leftCounter++;
         } else {
-            auxArray.push(arr[rightCounter]);
+            auxiliaryArray.push(arr[rightCounter]);
             rightCounter++;
         }
     }
 
     let auxArrayCounter = 0;
     for (let i = start; i <= end; i++) {
-        arr[i] = auxArray[auxArrayCounter];
+        arr[i] = auxiliaryArray[auxArrayCounter];
         auxArrayCounter++;
     }
 }
