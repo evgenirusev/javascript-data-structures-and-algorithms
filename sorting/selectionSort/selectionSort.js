@@ -26,4 +26,5 @@ function swap(array, left, right) {
     array[left] = array[right];
     array[right] = temp;
 }
+
 module.exports = selectionSort;

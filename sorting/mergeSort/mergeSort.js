@@ -19,41 +19,31 @@ function mergeSortRecursive(arr, cmp, start, end) {
 }
 
 function mergeArrays(arr, cmp, start, mid, end) {
-    const leftArray = [];
-    const rightArray = [];
+    const leftToRightArrLength = (end - start) + 1;
+    const auxArray = [];
 
+    let leftCounter = start;
+    let rightCounter = mid + 1;
+    while (auxArray.length < leftToRightArrLength) {
+        if (shouldPushLeft(arr, cmp, leftCounter, rightCounter, mid, end)) {
+            auxArray.push(arr[leftCounter]);
+            leftCounter++;
+        } else {
+            auxArray.push(arr[rightCounter]);
+            rightCounter++;
+        }
+    }
+
+    let auxArrayCounter = 0;
     for (let i = start; i <= end; i++) {
-        if (i <= mid) {
-            leftArray.push(arr[i]);
-        } else {
-            rightArray.push(arr[i]);
-        }
-    }
-
-    const tempArray = [];
-    let leftIndex = 0;
-    let rightIndex = 0;
-    while (tempArray.length !== (leftArray.length + rightArray.length)) {
-        const leftValue = leftArray[leftIndex];
-        const rightValue = rightArray[rightIndex];
-
-        if (shouldInsertRightValue(cmp, leftValue, rightValue)) {
-            tempArray.push(rightValue);
-            rightIndex++;
-        } else {
-            tempArray.push(leftValue);
-            leftIndex++;
-        }
-    }
-
-    for (let i = start, j = 0; i <= end; i++, j++) {
-        arr[i] = tempArray[j];
+        arr[i] = auxArray[auxArrayCounter];
+        auxArrayCounter++;
     }
 }
 
-function shouldInsertRightValue(cmp, leftValue, rightValue) {
-    return typeof leftValue === "undefined"
-        || (typeof rightValue !== "undefined" && cmp(rightValue, leftValue) < 0)
+function shouldPushLeft(arr, cmp, leftCounter, rightCounter, mid, end) {
+    return rightCounter > end 
+        || (leftCounter < mid + 1 && cmp(arr[leftCounter], arr[rightCounter]) < 0);
 }
 
 module.exports = mergeSort;
