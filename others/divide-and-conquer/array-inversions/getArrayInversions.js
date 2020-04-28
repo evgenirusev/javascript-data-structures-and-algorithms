@@ -1,25 +1,23 @@
-const insertionSort = require('../../../sorting/insertionSort');
-
 function getArrayInversions(arr, cmp) {
     if (typeof cmp !== "function") {
         cmp = (a, b) => a - b;
     }
 
-    sortAndCountInversions(arr, cmp, 0, arr.length - 1);
+    return sortAndCountInversions(arr, cmp, 0, arr.length - 1);
 }
 
 function sortAndCountInversions(arr, cmp, left, right) {
-    if (arr.length <= 1) {
+    if (left >= right) {
         return 0;
     }
 
-    const mid = Math.floor(n / 2);
+    const mid = Math.floor((left + right) / 2);
 
-    const leftInvCount = sortAndCountInversions(arr, left, mid);
-    const rightInvCount = sortAndCountInversions(arr, mid + 1, right);
+    const leftInvCount = sortAndCountInversions(arr, cmp, left, mid);
+    const rightInvCount = sortAndCountInversions(arr, cmp, mid + 1, right); 
 
-    insertionSort(arr, left, mid);
-    insertionSort(arr, mid + 1, right);
+    insertionSort(arr, cmp, left, mid);
+    insertionSort(arr, cmp, mid + 1, right);
 
     const splitInvCount = countSplitInvAndMerge(arr, cmp, left, mid, right);
 
@@ -56,6 +54,28 @@ function countSplitInvAndMerge(arr, cmp, start, mid, end) {
 function shouldPushLeft(arr, cmp, leftCounter, rightCounter, mid, end) {
     return rightCounter > end
         || (leftCounter < mid + 1 && cmp(arr[leftCounter], arr[rightCounter]) < 0);
+}
+
+function insertionSort(array, left, right, cmp) {
+    if (typeof cmp !== "function") {
+        cmp = (a, b) => a - b;
+    }
+
+    for (let i = left + 1; i <= right; i++) {
+        let current = i;
+        while (cmp(array[current], array[current - 1]) < 0 && current > left) {
+            swap(array, current, current - 1);
+            current--;
+        }
+    }
+
+    return array;
+}
+
+function swap(arr, i, j) {
+    const temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
 }
 
 module.exports = getArrayInversions;
