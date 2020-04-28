@@ -3,8 +3,8 @@ function isSortingAlgorithmValid(sortingCallback, array, cmp) {
         cmp = (a, b) => a - b;
     }
 
+    const expectedArray = [...array].sort(cmp).toString();
     const resultArray = sortingCallback(array, cmp).toString();
-    const expectedArray = array.sort(cmp).toString();
 
     if (resultArray === expectedArray) {
         return true;
