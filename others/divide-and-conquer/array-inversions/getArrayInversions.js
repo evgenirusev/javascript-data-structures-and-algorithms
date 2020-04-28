@@ -1,8 +1,14 @@
-function getArrayInversions(arr) {
-    sortAndCountInversions(arr, 0, arr.length - 1);
+const insertionSort = require('../../../sorting/insertionSort');
+
+function getArrayInversions(arr, cmp) {
+    if (typeof cmp !== "function") {
+        cmp = (a, b) => a - b;
+    }
+
+    sortAndCountInversions(arr, cmp, 0, arr.length - 1);
 }
 
-function sortAndCountInversions(arr, left, right) {
+function sortAndCountInversions(arr, cmp, left, right) {
     if (arr.length <= 1) {
         return 0;
     }
@@ -12,36 +18,44 @@ function sortAndCountInversions(arr, left, right) {
     const leftInvCount = sortAndCountInversions(arr, left, mid);
     const rightInvCount = sortAndCountInversions(arr, mid + 1, right);
 
-    merge(arr, left, mid);
-    merge(arr, mid + 1, right);
+    insertionSort(arr, left, mid);
+    insertionSort(arr, mid + 1, right);
 
-    const splitInvCount = countSplitInversions(arr, left, right);
+    const splitInvCount = countSplitInvAndMerge(arr, cmp, left, mid, right);
 
     return leftInvCount + rightInvCount + splitInvCount;
 }
 
-function merge(arr, left, right) {
-    const mid = Math.floor((left + right) / 2);
-    const leftToRightArrLength = (right - left + 1);
-    const auxArray = [];
+function countSplitInvAndMerge(arr, cmp, start, mid, end) {
+    const leftToRightArrLength = (end - start) + 1;
+    const auxiliaryArray = [];
 
-    let leftCounter = left;
+    let inversionsCount = 0;
+    let leftCounter = start;
     let rightCounter = mid + 1;
-    while (auxArray.length < leftToRightArrLength) {
-        if (arr[leftCounter] < arr[rightCounter]) {
-            auxArray.push(arr[leftCounter]);
+    while (auxiliaryArray.length < leftToRightArrLength) {
+        if (shouldPushLeft(arr, cmp, leftCounter, rightCounter, mid, end)) {
+            auxiliaryArray.push(arr[leftCounter]);
             leftCounter++;
         } else {
-            auxArray.push(arr[rightCounter]);
+            auxiliaryArray.push(arr[rightCounter]);
+            inversionsCount += mid + 1 - leftCounter;
             rightCounter++;
         }
     }
 
     let auxArrayCounter = 0;
-    for (let i = left; i <= right; i++) {
-        arr[i] = auxArray[auxArrayCouter];
+    for (let i = start; i <= end; i++) {
+        arr[i] = auxiliaryArray[auxArrayCounter];
         auxArrayCounter++;
     }
+
+    return inversionsCount;
+}
+
+function shouldPushLeft(arr, cmp, leftCounter, rightCounter, mid, end) {
+    return rightCounter > end
+        || (leftCounter < mid + 1 && cmp(arr[leftCounter], arr[rightCounter]) < 0);
 }
 
 module.exports = getArrayInversions;
