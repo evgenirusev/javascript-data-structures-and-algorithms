@@ -1,6 +1,6 @@
-const multiplyMatrices = require("./multiplyMatrices");
+const strassenMatrixMultiplication = require("./strassenMatrixMultiplication");
 
-describe("multiplyMatrices", () => {
+describe("strassenMatrixMultiplication", () => {
     it("should multiply the matrices correctly", () => {
         const m1 = [
             [1, 2, 3],
@@ -13,7 +13,7 @@ describe("multiplyMatrices", () => {
             [3, 2, 1]
         ];
         
-        expect(multiplyMatrices(m1, m2)).toEqual(
+        expect(strassenMatrixMultiplication(m1, m2)).toEqual(
             [30, 24, 18],
             [6, 69, 54],
             [138, 114, 90]
