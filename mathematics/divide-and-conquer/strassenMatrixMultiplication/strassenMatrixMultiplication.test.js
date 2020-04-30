@@ -11,7 +11,7 @@ describe("strassenMatrixMultiplication", () => {
             [7, 8]
         ];
 
-        expect(iterativeMatrixMultiplication(m1, m2)).toEqual(
+        expect(strassenMatrixMultiplication(m1, m2)).toEqual(
             [
                 [19, 22],
                 [43, 50]
@@ -31,7 +31,7 @@ describe("strassenMatrixMultiplication", () => {
             [3, 2, 1]
         ];
 
-        expect(iterativeMatrixMultiplication(m1, m2)).toEqual(
+        expect(strassenMatrixMultiplication(m1, m2)).toEqual(
             [
                 [30, 23, 19],
                 [84, 65, 58],
@@ -54,7 +54,7 @@ describe("strassenMatrixMultiplication", () => {
             [13, 14, 15, 16]
         ];
 
-        expect(iterativeMatrixMultiplication(m1, m2)).toEqual(
+        expect(strassenMatrixMultiplication(m1, m2)).toEqual(
             [
                 [90, 100, 110, 120],
                 [202, 228, 254, 280],
