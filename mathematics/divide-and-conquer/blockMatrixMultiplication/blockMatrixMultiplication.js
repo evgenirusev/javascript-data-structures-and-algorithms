@@ -12,7 +12,7 @@ function blockMatrixMultiplication(matrix1, matrix2) {
 function multiply(matrix1, matrix2, size) {
     const result = initMatrix(size);
     if (size === 1) {
-        return matrix1[0][0] + matrix2[0][0];
+        result[0][0] = matrix1[0][0] * matrix2[0][0];
     } else {
         const { a, b, c, d, e, f, g, h } = createSubMatrices(size / 2);
 
@@ -34,22 +34,29 @@ function multiply(matrix1, matrix2, size) {
             }
         }
 
-        const ae = multiply(a, e, n / 2);
-        const bg = multiply(b, g, n / 2);
-        const af = multiply(a, f, n / 2);
-        const bh = multiply(b, h, n / 2);
+        const ae = multiply(a, e, size / 2);
+        const bg = multiply(b, g, size / 2);
+        const af = multiply(a, f, size / 2);
+        const bh = multiply(b, h, size / 2);
 
-        const ce = multiply(c, e, n / 2);
-        const dg = multiply(d, g, n / 2);
-        const cf = multiply(c, f, n / 2);
-        const dh = multiply(d, h, n / 2);
+        const ce = multiply(c, e, size / 2);
+        const dg = multiply(d, g, size / 2);
+        const cf = multiply(c, f, size / 2);
+        const dh = multiply(d, h, size / 2);
 
         const c1 = addMatrices(ae, bg);
         const c2 = addMatrices(af, bh);
         const c3 = addMatrices(ce, dg);
         const c4 = addMatrices(cf, dh);
 
-        
+        for (let row = 0; row < size / 2; row++) {
+            for (let col = 0; col < size / 2; col++) {
+                result[row][col] = c1[row][col];
+                result[row][col + size / 2] = c2[row][col];
+                result[row + size / 2][col] = c3[row][col];
+                result[row + size / 2][col + size / 2] = c4[row][col];
+            }
+        }
     }
 
     return result;
@@ -60,8 +67,13 @@ function initMatrix(size) {
 }
 
 function createSubMatrices(size) {
-    return Object.values({ a: null, b: null, c: null, d: null, e: null, f: null, g: null, h: null })
-        .map(emptyMatrix => initMatrix(size));
+    matrices = { a: null, b: null, c: null, d: null, e: null, f: null, g: null, h: null };
+
+    Object.keys(matrices).forEach(matrix => {
+        matrices[matrix] = initMatrix(size);
+    });
+
+    return matrices;
 }
 
 function addMatrices(matrix1, matrix2) {
