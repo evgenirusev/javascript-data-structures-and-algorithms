@@ -28,18 +28,31 @@ function multiply(matrix1, matrix2, size) {
                 }
             }
         }
+        
     }
 
     return result;
 }
 
-function createSubMatrices(size) {
-    return Object.values({ a: null, b: null, c: null, d: null, e: null, f: null, g: null, h: null })
-        .map(matrix => initMatrix(size));
-}
-
 function initMatrix(size) {
     return [...Array(size)].map(e => Array(size).fill(0));
+}
+
+function createSubMatrices(size) {
+    return Object.values({ a: null, b: null, c: null, d: null, e: null, f: null, g: null, h: null })
+        .map(emptyMatrix => initMatrix(size));
+}
+
+function addMatrices(matrix1, matrix2) {
+    const result = initMatrix(matrix1.length);
+
+    for (let row = 0; row < matrix1.length; row++) {
+        for (let col = 0; col < matrix2[0].length; col++) {
+            result[row][col] = matrix1[row][col] + matrix2[row][col];
+        }
+    }
+
+    return result;
 }
 
 module.exports = blockMatrixMultiplication;
