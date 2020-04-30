@@ -1,7 +1,12 @@
-function blockMatrixMultiplication(m1, m2) {
-    // todo handle with n === odd
+const iterativeMatrixMultiplication = require("../../iterativeMatrixMultiplication/iterativeMatrixMultiplication");
 
+function blockMatrixMultiplication(matrix1, matrix2) {
+    // use iterative approach as a fallback for handling odd matrices
+    if (matrix1.length % 2 === 1) {
+        return iterativeMatrixMultiplication(matrix1, matrix2);
+    }
 
+    return multiply(matrix1, matrix2, matrix1.length);
 }
 
 function multiply(matrix1, matrix2, size) {
@@ -28,6 +33,22 @@ function multiply(matrix1, matrix2, size) {
                 }
             }
         }
+
+        const ae = multiply(a, e, n / 2);
+        const bg = multiply(b, g, n / 2);
+        const af = multiply(a, f, n / 2);
+        const bh = multiply(b, h, n / 2);
+
+        const ce = multiply(c, e, n / 2);
+        const dg = multiply(d, g, n / 2);
+        const cf = multiply(c, f, n / 2);
+        const dh = multiply(d, h, n / 2);
+
+        const c1 = addMatrices(ae, bg);
+        const c2 = addMatrices(af, bh);
+        const c3 = addMatrices(ce, dg);
+        const c4 = addMatrices(cf, dh);
+
         
     }
 
