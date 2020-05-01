@@ -14,11 +14,7 @@ function sortAndCountInversions(arr, cmp, left, right) {
     const mid = Math.floor((left + right) / 2);
 
     const leftInvCount = sortAndCountInversions(arr, cmp, left, mid);
-    const rightInvCount = sortAndCountInversions(arr, cmp, mid + 1, right); 
-
-    insertionSort(arr, cmp, left, mid);
-    insertionSort(arr, cmp, mid + 1, right);
-
+    const rightInvCount = sortAndCountInversions(arr, cmp, mid + 1, right);
     const splitInvCount = countSplitInvAndMerge(arr, cmp, left, mid, right);
 
     return leftInvCount + rightInvCount + splitInvCount;
@@ -54,28 +50,6 @@ function countSplitInvAndMerge(arr, cmp, start, mid, end) {
 function shouldPushLeft(arr, cmp, leftCounter, rightCounter, mid, end) {
     return rightCounter > end
         || (leftCounter < mid + 1 && cmp(arr[leftCounter], arr[rightCounter]) < 0);
-}
-
-function insertionSort(array, left, right, cmp) {
-    if (typeof cmp !== "function") {
-        cmp = (a, b) => a - b;
-    }
-
-    for (let i = left + 1; i <= right; i++) {
-        let current = i;
-        while (cmp(array[current], array[current - 1]) < 0 && current > left) {
-            swap(array, current, current - 1);
-            current--;
-        }
-    }
-
-    return array;
-}
-
-function swap(arr, i, j) {
-    const temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
 }
 
 module.exports = getArrayInversions;
