@@ -1,12 +1,12 @@
-const lomotoQuickSort = require("./lomotoQuickSort");
+const quickSort = require("./quickSort");
 const isSortingAlgorithmValid = require("../../../mocks/isSortingAlgorithmValid");
 const arrayFactoryUtils = require("../../../mocks/arrayFactoryUtils");
 
-describe("lomotoQuickSort", () => {
+describe("quickSort ", () => {
     function generateSortingTest(arr, cmp) {
-        it("should lomotoQuickSort the array correctly", () => {
+        it("should quickSort  the array correctly", () => {
             expect(
-                isSortingAlgorithmValid(lomotoQuickSort, arr, cmp)
+                isSortingAlgorithmValid(quickSort, arr, cmp)
             ).toBe(true);
         });
     }

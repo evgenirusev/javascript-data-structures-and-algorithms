@@ -1,19 +1,19 @@
-function lomotoQuickSort(arr, cmp) {
+function quickSort(arr, cmp) {
     if (typeof cmp !== "function") {
         cmp = (a, b) => a - b;
     }
 
-    lomotoQuickSortRecursive(arr, cmp, 0, arr.length - 1);
+    quickSortRecursive(arr, cmp, 0, arr.length - 1);
 
     return arr;
 }
 
-function lomotoQuickSortRecursive(arr, cmp, left, right) {
+function quickSortRecursive(arr, cmp, left, right) {
     if (left < right) {
         const pivot = partition(arr, cmp, left, right);
 
-        lomotoQuickSortRecursive(arr, cmp, left, pivot - 1);
-        lomotoQuickSortRecursive(arr, cmp, pivot + 1, right);
+        quickSortRecursive(arr, cmp, left, pivot - 1);
+        quickSortRecursive(arr, cmp, pivot + 1, right);
     }
 }
 
@@ -38,4 +38,4 @@ function swap(arr, i, j) {
     arr[j] = temp;
 }
 
-module.exports = lomotoQuickSort;
+module.exports = quickSort;
