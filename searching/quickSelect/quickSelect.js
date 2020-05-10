@@ -17,10 +17,10 @@ function quickSelectRecursive(arr, left, right, kthLargest) {
         return arr[pivot];
     }
 
-    if (pivot + 1 < kthLargest) {
-        return quickSelectRecursive(arr, left, pivot - 1);
+    if (pivot + 1 > kthLargest) {
+        return quickSelectRecursive(arr, left, pivot - 1, kthLargest);
     } else {
-        return quickSelectRecursive(arr, pivot + 1, right);
+        return quickSelectRecursive(arr, pivot + 1, right, kthLargest);
     }
 }
 
