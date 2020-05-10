@@ -18,11 +18,11 @@ function quickSortRecursive(arr, cmp, left, right) {
 }
 
 function partition(arr, cmp, left, right) {
-    const pivot = left;
+    const pivot = arr[left];
 
     let i = left + 1;
     for (let j = i; j <= right; j++) {
-        if (cmp(arr[j], arr[pivot]) < 0) {
+        if (cmp(arr[j], pivot) < 0) {
             if (j !== i) {
                 swap(arr, i, j);
             }

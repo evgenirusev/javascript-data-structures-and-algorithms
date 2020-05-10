@@ -35,11 +35,11 @@ function adjustMedianForPivot(arr, cmp, left, right) {
 }
 
 function partition(arr, cmp, left, right) {
-    const pivot = right;
+    const pivot = arr[right];
 
     let i = left;
-    for (let j = left; j < pivot; j++) {
-        if (cmp(arr[j], arr[pivot]) < 0) {
+    for (let j = left; j < right; j++) {
+        if (cmp(arr[j], pivot) < 0) {
             swap(arr, i, j);
             i++;
         }
