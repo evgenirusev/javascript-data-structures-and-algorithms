@@ -5,7 +5,9 @@ This repository consists of self-written TDD implementations of the most popular
 ## Data Structures
 
 * [Graph](src/data-structures/graphs)
-    * [Adjacency List Representation](src/data-structures/graphs/adjacency-list-graph)
+    * [Undirected](src/data-structures/graphs/undirected)
+        * [Adjacency List Representation](src/data-structures/graphs/undirected/adjacency-list-graph)
+        * [Adjacency Matrix Representation](src/data-structures/graphs/undirected/adjacency-matrix-graph)
 * [Heap](src/data-structures/heaps)
     * [Binary Heap](src/data-structures/heaps/binary-heap)
 * [Disjoint Set](src/data-structures/disjoint-sets)
