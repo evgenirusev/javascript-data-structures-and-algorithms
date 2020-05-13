@@ -1,5 +1,5 @@
 const lsd = require("./lsd");
-const arrayFactoryUtils = require("../../mocks/arrayFactoryUtils");
+const arrayFactoryUtils = require("../../../mocks/arrayFactoryUtils");
 
 describe("lsd", () => {
     it("should sort two element array", () => {
