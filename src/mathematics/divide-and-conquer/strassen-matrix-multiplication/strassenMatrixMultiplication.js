@@ -1,4 +1,4 @@
-const iterativeMatrixMultiplication = require("../../iterativeMatrixMultiplication/iterativeMatrixMultiplication");
+const iterativeMatrixMultiplication = require("../../iterative-matrix-multiplication/iterativeMatrixMultiplication");
 
 const add = (a, b) => a + b;
 const sub = (a, b) => a - b;

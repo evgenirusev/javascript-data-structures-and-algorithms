@@ -1,4 +1,4 @@
-const iterativeMatrixMultiplication = require("../../iterativeMatrixMultiplication/iterativeMatrixMultiplication");
+const iterativeMatrixMultiplication = require("../../iterative-matrix-multiplication/iterativeMatrixMultiplication");
 
 function blockMatrixMultiplication(matrix1, matrix2) {
     // use iterative approach as a fallback for handling odd matrices
