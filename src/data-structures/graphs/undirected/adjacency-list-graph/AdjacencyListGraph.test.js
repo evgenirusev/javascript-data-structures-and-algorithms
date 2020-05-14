@@ -4,7 +4,12 @@ describe("AdjacencyListGraph", () => {
     let graph;
 
     beforeEach(() => {
-        graph = new AdjacencyListGraph(5);
+        graph = new AdjacencyListGraph();
+        const verticesToInsert = [0, 1, 2, 3]
+        verticesToInsert.forEach(vertice => {
+            graph.addVertice(vertice);
+        });
+
         graph.addEdge(0, 1);
         graph.addEdge(0, 2);
         graph.addEdge(1, 2);
@@ -13,8 +18,7 @@ describe("AdjacencyListGraph", () => {
     });
 
     it("should add edges and retrive the correct amout of vertices", () => {
-        graph = new AdjacencyListGraph(5);
-        expect(graph.getNumerOfVertices()).toBe(5);
+        expect(graph.getNumerOfVertices()).toBe(4);
     });
 
     it("should add edges retrieve the correct edges", () => {
