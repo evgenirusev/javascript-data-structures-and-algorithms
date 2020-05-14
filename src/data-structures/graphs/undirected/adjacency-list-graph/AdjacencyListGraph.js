@@ -4,7 +4,7 @@ class AdjacencyListGraph {
     }
 
     addVertice(vertice) {
-        this._adjacent[vertice] = new Set();
+        this._adjacent[vertice.key] = new Set();
     }
 
     getNumerOfVertices() {
