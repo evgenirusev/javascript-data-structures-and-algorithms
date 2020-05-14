@@ -1,14 +1,14 @@
 class AdjacencyMatrixGraph {
     constructor(numberOfVertices) {
-        // todo
+        this.graph = [...Array(numberOfVertices)].map(e => Array(numberOfVertices));
     }
 
     getNumerOfVertices() {
-        // todo
+        return this.graph.length;
     }
 
     addEdge(vertice1, vertice2) {
-        // todo
+        
     }
 
     getEdges(vertice) {
