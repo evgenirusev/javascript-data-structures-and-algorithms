@@ -15,7 +15,7 @@ class AdjacencyListGraph {
         this._vertices[vertice2].add(vertice1);
     }
 
-    getEdges(vertice) {
+    getAdjacent(vertice) {
         this._validateVertice(vertice);
         return [...this._vertices[vertice]];
     }

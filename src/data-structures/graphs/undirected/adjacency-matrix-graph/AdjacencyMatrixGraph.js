@@ -15,7 +15,7 @@ class AdjacencyMatrixGraph {
         this._graph[vertice2][vertice1] = true;
     }
 
-    getEdges(vertice) {
+    getAdjacent(vertice) {
         this._validateVertice(vertice);
 
         let edges = [];
@@ -30,7 +30,7 @@ class AdjacencyMatrixGraph {
 
     degree(vertice) {
         this._validateVertice(vertice);
-        return this.getEdges(vertice).length;
+        return this.getAdjacent(vertice).length;
     }
 
     _validateVertice(vertice) {

@@ -18,9 +18,9 @@ describe("AdjacencyListGraph", () => {
     });
 
     it("should add edges retrieve the correct edges", () => {
-        expect(graph.getEdges(0)).toEqual([1, 2]);
-        expect(graph.getEdges(1)).toEqual([0, 2, 3]);
-        expect(graph.getEdges(3)).toEqual([1]);
+        expect(graph.getAdjacent(0)).toEqual([1, 2]);
+        expect(graph.getAdjacent(1)).toEqual([0, 2, 3]);
+        expect(graph.getAdjacent(3)).toEqual([1]);
     });
 
     it("should retrieve the correct vertice degrees", () => {
