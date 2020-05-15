@@ -7,12 +7,11 @@ describe("AdjacencyListGraph", () => {
 
     beforeEach(() => {
         graph = new AdjacencyListGraph();
-
         const verticesToInsert = {
-            testKey1: new Vertex("testKey1", 'test 1'),
-            testKey2: new Vertex("testKey2", 'test 2'),
-            testKey3: new Vertex("testKey3", 'test 3'),
-            testKey4: new Vertex("testKey4", 'test 4')
+            testKey1: new Vertex("testKey1", 'testVal1'),
+            testKey2: new Vertex("testKey2", 'testVal2'),
+            testKey3: new Vertex("testKey3", 'testVal3'),
+            testKey4: new Vertex("testKey4", 'testVal4')
         };
 
         Object.values(verticesToInsert).forEach(vertex => {
@@ -40,5 +39,10 @@ describe("AdjacencyListGraph", () => {
         expect(graph.degree("testKey1")).toBe(2);
         expect(graph.degree("testKey2")).toBe(3);
         expect(graph.degree("testKey4")).toBe(1);
+    });
+
+    it("should have the correct values", () => {
+        expect(graph.getVertex("testKey1").value).toBe("testVal1");
+        expect(graph.getVertex("testKey2").value).toBe("testVal2");
     });
 });

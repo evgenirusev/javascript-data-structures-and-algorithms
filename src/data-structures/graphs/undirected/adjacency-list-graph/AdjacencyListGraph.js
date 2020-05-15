@@ -27,6 +27,10 @@ class AdjacencyListGraph {
         this._adjacent[edge.endVertexKey].push(edge);
     }
 
+    getVertex(vertexKey) {
+        return this._vertices[vertexKey];
+    }
+
     getAdjacent(vertexKey) {
         this._validateVertexKey(vertexKey);
 
@@ -40,7 +44,9 @@ class AdjacencyListGraph {
     }
 
     degree(vertexKey) {
-        return new Set(this._getAdjKeys(vertexKey)).size;
+        return new Set(
+            this._getAdjKeys(vertexKey)
+        ).size;
     }
 
     _getAdjKeys(vertexKey) {
