@@ -1,6 +1,6 @@
 class AdjacencyListGraph {
     constructor() {
-        this._adjacent = {};
+        this._adjacencyList = {};
         this._vertices = {};
     }
 
@@ -15,16 +15,16 @@ class AdjacencyListGraph {
     addEdge(edge) {
         this._validateEdge(edge);
 
-        if (!this._adjacent[edge.startVertexKey]) {
-            this._adjacent[edge.startVertexKey] = [];
+        if (!this._adjacencyList[edge.startVertexKey]) {
+            this._adjacencyList[edge.startVertexKey] = [];
         }
 
-        if (!this._adjacent[edge.endVertexKey]) {
-            this._adjacent[edge.endVertexKey] = [];
+        if (!this._adjacencyList[edge.endVertexKey]) {
+            this._adjacencyList[edge.endVertexKey] = [];
         }
 
-        this._adjacent[edge.startVertexKey].push(edge);
-        this._adjacent[edge.endVertexKey].push(edge);
+        this._adjacencyList[edge.startVertexKey].push(edge);
+        this._adjacencyList[edge.endVertexKey].push(edge);
     }
 
     getVertex(vertexKey) {
@@ -49,8 +49,12 @@ class AdjacencyListGraph {
         ).size;
     }
 
+    getEdges(vertexKey) {
+        return this._adjacencyList[vertexKey];
+    }
+
     _getAdjKeys(vertexKey) {
-        return this._adjacent[vertexKey].map(edge => {
+        return this._adjacencyList[vertexKey].map(edge => {
             if (edge.endVertexKey === vertexKey) {
                 return edge.startVertexKey;
             }
