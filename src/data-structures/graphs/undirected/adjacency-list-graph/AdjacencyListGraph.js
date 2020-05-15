@@ -1,7 +1,7 @@
 class AdjacencyListGraph {
     constructor() {
+        this._adjacent = {};
         this._vertices = {};
-        this._edges = new Set();
     }
 
     addVertice(vertex) {
@@ -14,28 +14,43 @@ class AdjacencyListGraph {
 
     addEdge(edge) {
         this._validateEdge(edge);
-        this._edges.add(edge);
+
+        if (!this._adjacent[edge.startVertexKey]) {
+            this._adjacent[edge.startVertexKey] = [];
+        }
+
+        if (!this._adjacent[edge.endVertexKey]) {
+            this._adjacent[edge.endVertexKey] = [];
+        }
+
+        this._adjacent[edge.startVertexKey].push(edge);
+        this._adjacent[edge.endVertexKey].push(edge);
     }
 
     getAdjacent(vertexKey) {
         this._validateVertexKey(vertexKey);
 
-        // todo: refactor
-        return Array.from(new Set([...this._edges].reduce((acc, edge) => {
-            if (edge.startVertexKey === vertexKey) {
-                return acc.concat(edge.endVertexKey);
+        return this._getAdjKeys(vertexKey).reduce((adjVertices, key) => {
+            if (adjVertices.indexOf(key) < 0) {
+                adjVertices.push(this._vertices[key].key);
             }
 
-            if (edge.endVertexKey === vertexKey) {
-                return acc.concat(edge.startVertexKey);
-            }
-
-            return acc;
-        }, [])));
+            return adjVertices;
+        }, []);
     }
 
     degree(vertexKey) {
-        return this.getAdjacent(vertexKey).length;
+        return new Set(this._getAdjKeys(vertexKey)).size;
+    }
+
+    _getAdjKeys(vertexKey) {
+        return this._adjacent[vertexKey].map(edge => {
+            if (edge.endVertexKey === vertexKey) {
+                return edge.startVertexKey;
+            }
+
+            return edge.endVertexKey;
+        })
     }
 
     _validateEdge(edge) {
@@ -43,9 +58,9 @@ class AdjacencyListGraph {
         this._validateVertexKey(edge.endVertexKey);
     }
 
-    _validateVertexKey(vertex) {
-        if (!this._vertexExists(vertex) || typeof vertex === "undefined") {
-            throw `invalid vertex ${vertex}`;
+    _validateVertexKey(vertexKey) {
+        if (typeof vertexKey === "undefined" || !this._vertexExists(vertexKey)) {
+            throw `invalid vertex ${vertexKey}`;
         }
     }
 
