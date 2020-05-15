@@ -1,43 +1,53 @@
 class AdjacencyListGraph {
     constructor() {
-        this._adjacent = {};
+        this._vertices = {};
+        this._edges = new Set();
     }
 
-    addVertice(vertice) {
-        this._adjacent[vertice.key] = new Set();
+    addVertice(vertix) {
+        this._vertices[vertix.key] = vertix;
     }
 
     getNumerOfVertices() {
-        return Object.keys(this._adjacent).length;
+        return Object.keys(this._vertices).length;
     }
 
-    addEdge(vertice1, vertice2) {
-        this._validateVertice(vertice1);
-        this._validateVertice(vertice2);
-
-        this._adjacent[vertice1].add(vertice2);
-        this._adjacent[vertice2].add(vertice1);
+    addEdge(edge) {
+        this._validateEdge(edge);
+        this._edges.add(edge);
     }
 
-    getAdjacent(vertice) {
-        this._validateVertice(vertice);
-        return [...this._adjacent[vertice]];
+    getAdjacent(vertex) {
+        this._validateVertix(vertex);
+
+        return [...this._edges].reduce((acc, edge, []) => {
+            if (edge.startVertexKey === vertex.key) {
+                return acc.concat(edge.endVertexKey);
+            }
+
+            if (edge.endVertexKey === vertex.key) {
+                return acc.concat(edge.startVertexKey);
+            }
+        });
     }
 
-    degree(vertice) {
-        this._validateVertice(vertice);
+    degree(vertex) {
 
-        return [...this._adjacent[vertice]].length;
     }
 
-    _validateVertice(vertice) {
-        if (!this._verticeExist(vertice) || typeof vertice == "undefined") {
-            throw `invalid vertice ${vertice}`;
+    _validateEdge(edge) {
+        this._validateVertix(edge.startVertexKey);
+        this._validateVertix(edge.endVertexKey);
+    }
+
+    _validateVertix(vertex) {
+        if (!this._vertixExists(vertex.key) || typeof vertex == "undefined") {
+            throw `invalid vertix ${vertex}`;
         }
     }
 
-    _verticeExist(vertice) {
-        return typeof this._adjacent[vertice] !== "undefined";
+    _vertixExists(vertexKey) {
+        return typeof this._vertices[vertexKey] !== "undefined";
     }
 }
 
