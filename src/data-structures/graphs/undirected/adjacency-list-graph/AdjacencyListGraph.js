@@ -4,8 +4,8 @@ class AdjacencyListGraph {
         this._edges = new Set();
     }
 
-    addVertice(vertix) {
-        this._vertices[vertix.key] = vertix;
+    addVertice(vertex) {
+        this._vertices[vertex.key] = vertex;
     }
 
     getNumerOfVertices() {
@@ -18,7 +18,7 @@ class AdjacencyListGraph {
     }
 
     getAdjacent(vertex) {
-        this._validateVertix(vertex);
+        this._validateVertexKey(vertex);
 
         return [...this._edges].reduce((acc, edge, []) => {
             if (edge.startVertexKey === vertex.key) {
@@ -32,21 +32,23 @@ class AdjacencyListGraph {
     }
 
     degree(vertex) {
-
+        return [...this._edges].filter(edge => {
+            return edge.startVertexKey === vertex.key || edge.endVertexKey === vertex.key;
+        }).length;
     }
 
     _validateEdge(edge) {
-        this._validateVertix(edge.startVertexKey);
-        this._validateVertix(edge.endVertexKey);
+        this._validateVertexKey(edge.startVertexKey);
+        this._validateVertexKey(edge.endVertexKey);
     }
 
-    _validateVertix(vertex) {
-        if (!this._vertixExists(vertex.key) || typeof vertex == "undefined") {
-            throw `invalid vertix ${vertex}`;
+    _validateVertexKey(vertex) {
+        if (!this._vertexExists(vertex) || typeof vertex === "undefined") {
+            throw `invalid vertex ${vertex}`;
         }
     }
 
-    _vertixExists(vertexKey) {
+    _vertexExists(vertexKey) {
         return typeof this._vertices[vertexKey] !== "undefined";
     }
 }
