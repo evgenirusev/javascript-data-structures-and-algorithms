@@ -17,24 +17,25 @@ class AdjacencyListGraph {
         this._edges.add(edge);
     }
 
-    getAdjacent(vertex) {
-        this._validateVertexKey(vertex);
+    getAdjacent(vertexKey) {
+        this._validateVertexKey(vertexKey);
 
-        return [...this._edges].reduce((acc, edge, []) => {
-            if (edge.startVertexKey === vertex.key) {
+        // todo: refactor
+        return Array.from(new Set([...this._edges].reduce((acc, edge) => {
+            if (edge.startVertexKey === vertexKey) {
                 return acc.concat(edge.endVertexKey);
             }
 
-            if (edge.endVertexKey === vertex.key) {
+            if (edge.endVertexKey === vertexKey) {
                 return acc.concat(edge.startVertexKey);
             }
-        });
+
+            return acc;
+        }, [])));
     }
 
-    degree(vertex) {
-        return [...this._edges].filter(edge => {
-            return edge.startVertexKey === vertex.key || edge.endVertexKey === vertex.key;
-        }).length;
+    degree(vertexKey) {
+        return this.getAdjacent(vertexKey).length;
     }
 
     _validateEdge(edge) {
