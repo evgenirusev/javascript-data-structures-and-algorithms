@@ -4,6 +4,13 @@ const Edge = require("../../edge/Edge");
 
 describe("AdjacencyListGraph", () => {
     let graph;
+    const edges = [
+        new Edge("testKey1", "testKey2", 1),
+        new Edge("testKey1", "testKey3", 2),
+        new Edge("testKey2", "testKey3", 3),
+        new Edge("testKey2", "testKey4", 4),
+        new Edge("testKey4", "testKey2", 5)
+    ];
 
     beforeEach(() => {
         graph = new AdjacencyListGraph();
@@ -18,11 +25,11 @@ describe("AdjacencyListGraph", () => {
             graph.addVertex(vertex);
         });
 
-        graph.addEdge(new Edge("testKey1", "testKey2", 1));
-        graph.addEdge(new Edge("testKey1", "testKey3", 2));
-        graph.addEdge(new Edge("testKey2", "testKey3", 3));
-        graph.addEdge(new Edge("testKey2", "testKey4", 4));
-        graph.addEdge(new Edge("testKey4", "testKey2", 5));
+        graph.addEdge(edges[0]);
+        graph.addEdge(edges[1]);
+        graph.addEdge(edges[2]);
+        graph.addEdge(edges[3]);
+        graph.addEdge(edges[4]);
     });
 
     it("should add edges and retrive the correct amout of vertices", () => {
@@ -74,5 +81,9 @@ describe("AdjacencyListGraph", () => {
             expect(graph.getAdjacent("testKey2")).toEqual(["testKey3"]);
             expect(graph.getAdjacent("testKey4")).toEqual([]);
         });
+    });
+
+    it("should get all the edges", () => {
+        expect(graph.allEdges.length).toEqual(edges);
     });
 });
