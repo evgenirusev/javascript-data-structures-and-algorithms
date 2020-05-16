@@ -1,7 +1,7 @@
 class Edge {
-    constructor(startVertexKey, endVertexKey, weight = null) {
-        this._startVertexKey = startVertexKey;
-        this._endVertexKey = endVertexKey;
+    constructor(start, end, weight = null) {
+        this._start = start;
+        this._end = end;
         this._weight = weight;
     }
 
@@ -9,12 +9,12 @@ class Edge {
         return this._weight;
     }
 
-    get startVertexKey() {
-        return this._startVertexKey;
+    get start() {
+        return this._start;
     }
 
-    get endVertexKey() {
-        return this._endVertexKey;
+    get end() {
+        return this._end;
     }
 }
 

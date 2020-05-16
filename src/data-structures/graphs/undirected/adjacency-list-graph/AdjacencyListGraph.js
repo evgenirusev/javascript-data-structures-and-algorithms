@@ -1,6 +1,6 @@
 class AdjacencyListGraph {
     constructor() {
-        this._adjacencyList = {};
+        this._edges = [];
         this._vertices = {};
     }
 
@@ -14,17 +14,7 @@ class AdjacencyListGraph {
 
     addEdge(edge) {
         this._validateEdge(edge);
-
-        if (!this._adjacencyList[edge.startVertexKey]) {
-            this._adjacencyList[edge.startVertexKey] = [];
-        }
-
-        if (!this._adjacencyList[edge.endVertexKey]) {
-            this._adjacencyList[edge.endVertexKey] = [];
-        }
-
-        this._adjacencyList[edge.startVertexKey].push(edge);
-        this._adjacencyList[edge.endVertexKey].push(edge);
+        this._edges.push(edge);
     }
 
     getVertex(vertexKey) {
@@ -33,72 +23,57 @@ class AdjacencyListGraph {
 
     getAdjacent(vertexKey) {
         this._validateVertexKey(vertexKey);
-
-        return this._getAdjKeys(vertexKey).reduce((adjVertices, key) => {
-            if (adjVertices.indexOf(key) < 0) {
-                adjVertices.push(this._vertices[key].key);
-            }
-
-            return adjVertices;
-        }, []);
+        return [...new Set(
+            this.getEdges(vertexKey)
+        )];
     }
 
     degree(vertexKey) {
-        return new Set(
-            this._getAdjKeys(vertexKey)
-        ).size;
+        this._validateVertexKey(vertexKey);
+        return this.getEdges(vertexKey).length;
     }
 
     removeAllEdgesInBetween(startVertexKey, endVertexKey) {
-        this._removeAllEdgesEitherWay(startVertexKey, endVertexKey);
-        this._removeAllEdgesEitherWay(endVertexKey, startVertexKey);
-    }
+        const edgesToRemove = this._edges
+            .filter(edge => this._edgeMatchesKeysEitherWay(edge, startVertexKey, endVertexKey));
 
-    _removeAllEdgesEitherWay(startVertexKey, endVertexKey) {
-        const edges = this.getEdges(startVertexKey);
-
-        for (let i = 0; i < edges.length; i++) {
-            const edge = edges[i];
-            if (this._edgeMatchesKeysEitherWay(edge, startVertexKey, endVertexKey)) {
-                const indexToRemove = edges.indexOf(edge);
-                edges.splice(indexToRemove, 1);
-                i--;
-            }
+        while (edgesToRemove.length > 0) {
+            this._edges.splice(this._edges.indexOf(edgesToRemove.pop()), 1);
         }
     }
 
     getEdges(vertexKey) {
-        return this._adjacencyList[vertexKey];
-    }
-
-    _getAdjKeys(vertexKey) {
-        return this._adjacencyList[vertexKey].map(edge => {
-            if (edge.endVertexKey === vertexKey) {
-                return edge.startVertexKey;
+        return this._edges.reduce((acc, edge) => {
+            if (edge.start.key === vertexKey) {
+                acc.push(edge.end);
             }
 
-            return edge.endVertexKey;
-        })
+            if (edge.end.key === vertexKey) {
+                acc.push(edge.start);
+            }
+
+            return acc;
+        }, []);
     }
 
     _validateEdge(edge) {
-        this._validateVertexKey(edge.startVertexKey);
-        this._validateVertexKey(edge.endVertexKey);
+        this._validateVertexKey(edge.start);
+        this._validateVertexKey(edge.end);
     }
 
-    _validateVertexKey(vertexKey) {
-        if (typeof vertexKey === "undefined" || !this._vertexExists(vertexKey)) {
-            throw `invalid vertex ${vertexKey}`;
+    _validateVertexKey(vertex) {
+        if (typeof vertex === "undefined" || !this._vertexExists(vertex)) {
+            throw `invalid vertex ${vertex}`;
         }
     }
 
-    _vertexExists(vertexKey) {
-        return typeof this._vertices[vertexKey] !== "undefined";
+    _vertexExists(vertex) {
+        return typeof this._vertices[vertex] !== "undefined";
     }
 
     _edgeMatchesKeysEitherWay(edge, vertexKey1, vertexKey2) {
-        return edge.startVertexKey === vertexKey1 && edge.endVertexKey === vertexKey2
-            || edge.endVertexKey === vertexKey1 && edge.startVertexKey === vertexKey2;
+        return edge.start.key === vertexKey1 && edge.end.key === vertexKey2
+            || edge.end.key === vertexKey1 && edge.start.key === vertexKey2;
     }
 }
 
