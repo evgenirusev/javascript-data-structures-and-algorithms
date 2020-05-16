@@ -15,7 +15,7 @@ describe("AdjacencyListGraph", () => {
         };
 
         Object.values(verticesToInsert).forEach(vertex => {
-            graph.addVertice(vertex);
+            graph.addVertex(vertex);
         });
 
         graph.addEdge(new Edge("testKey1", "testKey2", 1));

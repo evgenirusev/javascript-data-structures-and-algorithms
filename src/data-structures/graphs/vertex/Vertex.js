@@ -1,5 +1,5 @@
 class Vertex {
-    constructor(key, value) {
+    constructor(key, value = null) {
         this._key = key;
         this._value = value;
     }

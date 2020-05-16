@@ -4,7 +4,7 @@ class AdjacencyListGraph {
         this._vertices = {};
     }
 
-    addVertice(vertex) {
+    addVertex(vertex) {
         this._vertices[vertex.key] = vertex;
     }
 
