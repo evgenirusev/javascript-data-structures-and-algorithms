@@ -1,6 +1,6 @@
 class AdjacencyListGraph {
     constructor() {
-        this._adjacencyList = {};
+        this._edges = [];
         this._vertices = {};
     }
 
@@ -14,17 +14,7 @@ class AdjacencyListGraph {
 
     addEdge(edge) {
         this._validateEdge(edge);
-
-        if (!this._adjacencyList[edge.startVertexKey]) {
-            this._adjacencyList[edge.startVertexKey] = [];
-        }
-
-        if (!this._adjacencyList[edge.endVertexKey]) {
-            this._adjacencyList[edge.endVertexKey] = [];
-        }
-
-        this._adjacencyList[edge.startVertexKey].push(edge);
-        this._adjacencyList[edge.endVertexKey].push(edge);
+        this._edges.push(edge);
     }
 
     getVertex(vertexKey) {
@@ -34,12 +24,16 @@ class AdjacencyListGraph {
     getAdjacent(vertexKey) {
         this._validateVertexKey(vertexKey);
 
-        return this._getAdjKeys(vertexKey).reduce((adjVertices, key) => {
-            if (adjVertices.indexOf(key) < 0) {
-                adjVertices.push(this._vertices[key].key);
+        return this._edges.reduce((acc, edge) => {
+            if (edge.start.key === vertexKey && acc.indexOf(edge.end) < 0) {
+                acc.push(edge.end);
             }
 
-            return adjVertices;
+            if (edge.end.key === vertexKey && acc.indexOf(edge.start) < 0) {
+                acc.push(edge.start);
+            }
+
+            return acc;
         }, []);
     }
 
@@ -82,18 +76,18 @@ class AdjacencyListGraph {
     }
 
     _validateEdge(edge) {
-        this._validateVertexKey(edge.startVertexKey);
-        this._validateVertexKey(edge.endVertexKey);
+        this._validateVertexKey(edge.start);
+        this._validateVertexKey(edge.end);
     }
 
-    _validateVertexKey(vertexKey) {
-        if (typeof vertexKey === "undefined" || !this._vertexExists(vertexKey)) {
-            throw `invalid vertex ${vertexKey}`;
+    _validateVertexKey(vertex) {
+        if (typeof vertex === "undefined" || !this._vertexExists(vertex)) {
+            throw `invalid vertex ${vertex}`;
         }
     }
 
-    _vertexExists(vertexKey) {
-        return typeof this._vertices[vertexKey] !== "undefined";
+    _vertexExists(vertex) {
+        return typeof this._vertices[vertex] !== "undefined";
     }
 
     _edgeMatchesKeysEitherWay(edge, vertexKey1, vertexKey2) {
