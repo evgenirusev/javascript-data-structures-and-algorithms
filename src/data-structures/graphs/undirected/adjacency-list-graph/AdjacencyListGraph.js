@@ -23,29 +23,33 @@ class AdjacencyListGraph {
 
     getAdjacent(vertexKey) {
         this._validateVertexKey(vertexKey);
-
-        return this._edges.reduce((acc, edge) => {
-            if (edge.start.key === vertexKey && acc.indexOf(edge.end) < 0) {
-                acc.push(edge.end);
-            }
-
-            if (edge.end.key === vertexKey && acc.indexOf(edge.start) < 0) {
-                acc.push(edge.start);
-            }
-
-            return acc;
-        }, []);
+        return [...new Set(
+            this._getVertexEdges(vertexKey)
+        )];
     }
 
     degree(vertexKey) {
-        return new Set(
-            this._getAdjKeys(vertexKey)
-        ).size;
+        this._validateVertexKey(vertexKey);
+        return this._getVertexEdges(vertexKey).length;
     }
 
     removeAllEdgesInBetween(startVertexKey, endVertexKey) {
         this._removeAllEdgesEitherWay(startVertexKey, endVertexKey);
         this._removeAllEdgesEitherWay(endVertexKey, startVertexKey);
+    }
+
+    _getVertexEdges(vertexKey) {
+        return this._edges.reduce((acc, edge) => {
+            if (edge.start.key === vertexKey) {
+                acc.push(edge.end);
+            }
+
+            if (edge.end.key === vertexKey) {
+                acc.push(edge.start);
+            }
+
+            return acc;
+        }, []);
     }
 
     _removeAllEdgesEitherWay(startVertexKey, endVertexKey) {
@@ -63,16 +67,6 @@ class AdjacencyListGraph {
 
     getEdges(vertexKey) {
         return this._adjacencyList[vertexKey];
-    }
-
-    _getAdjKeys(vertexKey) {
-        return this._adjacencyList[vertexKey].map(edge => {
-            if (edge.endVertexKey === vertexKey) {
-                return edge.startVertexKey;
-            }
-
-            return edge.endVertexKey;
-        })
     }
 
     _validateEdge(edge) {

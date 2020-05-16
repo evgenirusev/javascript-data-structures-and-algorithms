@@ -42,11 +42,11 @@ describe("AdjacencyListGraph", () => {
         expect(graph.getAdjacent("testKey4")).toEqual([mockVertices.testKey2]);
     });
 
-    // it("should retrieve the correct vertice degrees", () => {
-    //     expect(graph.degree("testKey1")).toBe(2);
-    //     expect(graph.degree("testKey2")).toBe(3);
-    //     expect(graph.degree("testKey4")).toBe(1);
-    // });
+    it("should retrieve the correct vertice degrees", () => {
+        expect(graph.degree("testKey1")).toBe(2);
+        expect(graph.degree("testKey2")).toBe(4);
+        expect(graph.degree("testKey4")).toBe(2);
+    });
 
     // it("should have the correct values", () => {
     //     expect(graph.getVertex("testKey1").value).toBe("testVal1");
