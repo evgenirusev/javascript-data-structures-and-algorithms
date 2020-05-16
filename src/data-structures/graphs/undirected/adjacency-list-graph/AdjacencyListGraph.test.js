@@ -12,7 +12,7 @@ describe("AdjacencyListGraph", () => {
             testKey2: new Vertex("testKey2", 'testVal2'),
             testKey3: new Vertex("testKey3", 'testVal3'),
             testKey4: new Vertex("testKey4", 'testVal4')
-        };
+        };Send 
 
         Object.values(verticesToInsert).forEach(vertex => {
             graph.addVertex(vertex);
@@ -48,5 +48,14 @@ describe("AdjacencyListGraph", () => {
 
     it("should get the edges", () => {
         expect(graph.getEdges("testKey1").length).toBe(2);
+    });
+
+    it("should remove the edges", () => {
+        graph.removeEdgeByKeys("testKey1", "testKey2");
+        graph.removeEdgeByKeys("testKey4", "testKey2");
+        
+        expect(graph.getAdjacent("testKey1")).toEqual(["testKey3"]);
+        expect(graph.getAdjacent("testKey2")).toEqual(["testKey1", "testKey3"]);
+        expect(graph.getAdjacent("testKey4")).toEqual([]);
     });
 });
