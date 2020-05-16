@@ -49,25 +49,22 @@ class AdjacencyListGraph {
         ).size;
     }
 
-    removeEdgeByKeys(startVertexKey, endVertexKey) {
-        const adjList = this.getEdges(startVertexKey);
+    removeAllEdgesInBetween(startVertexKey, endVertexKey) {
+        this._removeAllEdgesEitherWay(startVertexKey, endVertexKey);
+        this._removeAllEdgesEitherWay(endVertexKey, startVertexKey);
+    }
 
-        if (typeof adjList === "undefined") {
-            return false;
+    _removeAllEdgesEitherWay(startVertexKey, endVertexKey) {
+        const edges = this.getEdges(startVertexKey);
+
+        for (let i = 0; i < edges.length; i++) {
+            const edge = edges[i];
+            if (this._edgeMatchesKeysEitherWay(edge, startVertexKey, endVertexKey)) {
+                const indexToRemove = edges.indexOf(edge);
+                edges.splice(indexToRemove, 1);
+                i--;
+            }
         }
-
-        const edgeIndex = adjList.indexOf(
-            adjList.find(edge => {
-                return edge.startVertexKey === startVertexKey && edge.endVertexKey === endVertexKey
-            })
-        );
-
-        if (edgeIndex < 0) {
-            return false;
-        }
-
-        adjList.splice(edgeIndex, 1);
-        return true;
     }
 
     getEdges(vertexKey) {
@@ -97,6 +94,11 @@ class AdjacencyListGraph {
 
     _vertexExists(vertexKey) {
         return typeof this._vertices[vertexKey] !== "undefined";
+    }
+
+    _edgeMatchesKeysEitherWay(edge, vertexKey1, vertexKey2) {
+        return edge.startVertexKey === vertexKey1 && edge.endVertexKey === vertexKey2
+            || edge.endVertexKey === vertexKey1 && edge.startVertexKey === vertexKey2;
     }
 }
 

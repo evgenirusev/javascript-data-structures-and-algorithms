@@ -51,16 +51,11 @@ describe("AdjacencyListGraph", () => {
     });
 
     it("should remove the edges by key", () => {
-        expect(graph.removeEdgeByKeys("testKey1", "testKey2")).toBe(true);
-        expect(graph.removeEdgeByKeys("testKey4", "testKey2")).toBe(true);
-        expect(graph.removeEdgeByKeys("invalid key", "invalid key2")).toBe(false);
+        graph.removeAllEdgesInBetween("testKey1", "testKey2");
+        graph.removeAllEdgesInBetween("testKey4", "testKey2");
         
         expect(graph.getAdjacent("testKey1")).toEqual(["testKey3"]);
         expect(graph.getAdjacent("testKey2")).toEqual(["testKey3"]);
         expect(graph.getAdjacent("testKey4")).toEqual([]);
-    });
-
-    it("should't remove an edge which doesn't exist", () => {
-        expect(graph.removeEdgeByKeys("invalid key", "invalid key2")).toBe(false);
     });
 });
