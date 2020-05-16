@@ -56,6 +56,10 @@ class AdjacencyListGraph {
         }, []);
     }
 
+    get allEdges() {
+        return this._edges;
+    }
+
     _validateEdge(edge) {
         this._validateVertexKey(edge.start);
         this._validateVertexKey(edge.end);

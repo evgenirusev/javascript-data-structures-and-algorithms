@@ -59,17 +59,16 @@ describe("AdjacencyListGraph", () => {
         expect(graph.getEdges("testKey4").length).toBe(2);
     });
 
-    describe("removeAllEdgesInBetween", () => {
-        it("should remove the edges by key", () => {
-        });
+    it("should remove the edges by key", () => {
+        graph.removeAllEdgesInBetween("testKey1", "testKey2");
+        graph.removeAllEdgesInBetween("testKey4", "testKey2");
 
-        it("should remove the edges by key", () => {
-            graph.removeAllEdgesInBetween("testKey1", "testKey2");
-            graph.removeAllEdgesInBetween("testKey4", "testKey2");
+        expect(graph.getAdjacent("testKey1")).toEqual([mockVertices.testKey3]);
+        expect(graph.getAdjacent("testKey2")).toEqual([mockVertices.testKey3]);
+        expect(graph.getAdjacent("testKey4")).toEqual([]);
+    });
 
-            expect(graph.getAdjacent("testKey1")).toEqual([mockVertices.testKey3]);
-            expect(graph.getAdjacent("testKey2")).toEqual([mockVertices.testKey3]);
-            expect(graph.getAdjacent("testKey4")).toEqual([]);
-        });
+    it("should return all edges", () => {
+        expect(graph.allEdges).toEqual(edges);
     });
 });
