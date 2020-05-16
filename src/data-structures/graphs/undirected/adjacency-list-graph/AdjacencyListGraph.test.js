@@ -72,8 +72,4 @@ describe("AdjacencyListGraph", () => {
             expect(graph.getAdjacent("testKey4")).toEqual([]);
         });
     });
-
-    // it("should get all the edges", () => {
-    //     expect(graph.allEdges.length).toEqual(edges);
-    // });
 });
