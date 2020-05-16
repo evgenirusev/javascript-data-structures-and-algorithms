@@ -24,13 +24,13 @@ class AdjacencyListGraph {
     getAdjacent(vertexKey) {
         this._validateVertexKey(vertexKey);
         return [...new Set(
-            this._getVertexEdges(vertexKey)
+            this.getEdges(vertexKey)
         )];
     }
 
     degree(vertexKey) {
         this._validateVertexKey(vertexKey);
-        return this._getVertexEdges(vertexKey).length;
+        return this.getEdges(vertexKey).length;
     }
 
     removeAllEdgesInBetween(startVertexKey, endVertexKey) {
@@ -38,7 +38,7 @@ class AdjacencyListGraph {
         this._removeAllEdgesEitherWay(endVertexKey, startVertexKey);
     }
 
-    _getVertexEdges(vertexKey) {
+    getEdges(vertexKey) {
         return this._edges.reduce((acc, edge) => {
             if (edge.start.key === vertexKey) {
                 acc.push(edge.end);
@@ -63,10 +63,6 @@ class AdjacencyListGraph {
                 i--;
             }
         }
-    }
-
-    getEdges(vertexKey) {
-        return this._adjacencyList[vertexKey];
     }
 
     _validateEdge(edge) {

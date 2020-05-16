@@ -48,14 +48,16 @@ describe("AdjacencyListGraph", () => {
         expect(graph.degree("testKey4")).toBe(2);
     });
 
-    // it("should have the correct values", () => {
-    //     expect(graph.getVertex("testKey1").value).toBe("testVal1");
-    //     expect(graph.getVertex("testKey2").value).toBe("testVal2");
-    // });
+    it("should have the correct values", () => {
+        expect(graph.getVertex("testKey1").value).toBe("testVal1");
+        expect(graph.getVertex("testKey2").value).toBe("testVal2");
+    });
 
-    // it("should get the edges", () => {
-    //     expect(graph.getEdges("testKey1").length).toBe(2);
-    // });
+    it("should get the edges", () => {
+        expect(graph.getEdges("testKey1").length).toBe(2);
+        expect(graph.getEdges("testKey2").length).toBe(4);
+        expect(graph.getEdges("testKey4").length).toBe(2);
+    });
 
     // describe("removeAllEdgesInBetween", () => {
     //     it("should remove the edges by key", () => {
