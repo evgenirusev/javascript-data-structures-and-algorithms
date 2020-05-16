@@ -49,6 +49,27 @@ class AdjacencyListGraph {
         ).size;
     }
 
+    removeEdgeByKeys(startVertexKey, endVertexKey) {
+        const adjList = this.getEdges(startVertexKey);
+
+        if (typeof adjList === "undefined") {
+            return false;
+        }
+
+        const edgeIndex = adjList.indexOf(
+            adjList.find(edge => {
+                return edge.startVertexKey === startVertexKey && edge.endVertexKey === endVertexKey
+            })
+        );
+
+        if (edgeIndex < 0) {
+            return false;
+        }
+
+        adjList.splice(edgeIndex, 1);
+        return true;
+    }
+
     getEdges(vertexKey) {
         return this._adjacencyList[vertexKey];
     }
