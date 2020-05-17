@@ -1,6 +1,6 @@
 const AdjacencyListGraph = require("./AdjacencyListGraph");
 const Vertex = require("../../../vertex/Vertex");
-const Edge = require("../../../edge/Edge");
+const Edge = require("../../../weighted-edge/Edge");
 
 describe("AdjacencyListGraph", () => {
     let graph;

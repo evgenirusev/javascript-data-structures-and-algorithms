@@ -1,6 +1,6 @@
-const EdgeListGraph = require("./EdgeListGraph");
-const Vertex = require("../../../vertex/Vertex");
-const Edge = require("../../../weighted-edge/Edge");
+const Graph = require("./Graph");
+const Vertex = require("../../vertex/Vertex");
+const Edge = require("../../weighted-edge/Edge");
 
 describe("Graph", () => {
     let graph;
@@ -19,7 +19,7 @@ describe("Graph", () => {
     ];
 
     beforeEach(() => {
-        graph = new EdgeListGraph();
+        graph = new Graph();
 
         Object.values(mockVertices).forEach(vertex => {
             graph.addVertex(vertex);
@@ -42,10 +42,10 @@ describe("Graph", () => {
         expect(graph.getAdjacent("testKey4")).toEqual([mockVertices.testKey2]);
     });
 
-    it("should retrieve the correct vertice adjacentCounts", () => {
-        expect(graph.adjacentCount("testKey1")).toBe(2);
-        expect(graph.adjacentCount("testKey2")).toBe(4);
-        expect(graph.adjacentCount("testKey4")).toBe(2);
+    it("should retrieve the correct vertice degrees", () => {
+        expect(graph.degree("testKey1")).toBe(2);
+        expect(graph.degree("testKey2")).toBe(4);
+        expect(graph.degree("testKey4")).toBe(2);
     });
 
     it("should have the correct values", () => {

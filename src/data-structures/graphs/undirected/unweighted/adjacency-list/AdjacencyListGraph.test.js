@@ -49,29 +49,12 @@ describe("AdjacencyListGraph", () => {
         expect(graph.getEdges("testKey1").length).toBe(2);
     });
 
-    describe("removeAllEdgesInBetween", () => {
-        // it("should remove the edges by key", () => {
-        //     graph = new AdjacencyListGraph();
-        //     const verticesToInsert = {
-        //         testKey1: new Vertex("testKey1", 'testVal1'),
-        //         testKey2: new Vertex("testKey2", 'testVal2')
-        //     };
+    it("should remove the edges by key", () => {
+        graph.removeAllEdgesInBetween("testKey1", "testKey2");
+        graph.removeAllEdgesInBetween("testKey4", "testKey2");
 
-        //     Object.values(verticesToInsert).forEach(vertex => {
-        //         graph.addVertex(vertex);
-        //     });
-
-        //     graph.addEdge(new Edge("testKey1", "testKey2"));
-        //     graph.addEdge(new Edge("testKey2", "testKey1"));
-        // });
-
-        it("should remove the edges by key", () => {
-            graph.removeAllEdgesInBetween("testKey1", "testKey2");
-            graph.removeAllEdgesInBetween("testKey4", "testKey2");
-
-            expect(graph.getAdjacent("testKey1")).toEqual(["testKey3"]);
-            expect(graph.getAdjacent("testKey2")).toEqual(["testKey3"]);
-            expect(graph.getAdjacent("testKey4")).toEqual([]);
-        });
+        expect(graph.getAdjacent("testKey1")).toEqual(["testKey3"]);
+        expect(graph.getAdjacent("testKey2")).toEqual(["testKey3"]);
+        expect(graph.getAdjacent("testKey4")).toEqual([]);
     });
 });
