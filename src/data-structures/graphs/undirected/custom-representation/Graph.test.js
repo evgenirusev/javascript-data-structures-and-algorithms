@@ -1,8 +1,8 @@
-const AdjacencyListGraph = require("./AdjacencyListGraph");
+const Graph = require("./Graph");
 const Vertex = require("../../vertex/Vertex");
 const Edge = require("../../edge/Edge");
 
-describe("AdjacencyListGraph", () => {
+describe("Graph", () => {
     let graph;
     const mockVertices = {
         testKey1: new Vertex("testKey1", 'testVal1'),
@@ -19,7 +19,7 @@ describe("AdjacencyListGraph", () => {
     ];
 
     beforeEach(() => {
-        graph = new AdjacencyListGraph();
+        graph = new Graph();
 
         Object.values(mockVertices).forEach(vertex => {
             graph.addVertex(vertex);

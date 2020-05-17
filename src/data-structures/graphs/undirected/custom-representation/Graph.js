@@ -1,4 +1,4 @@
-class AdjacencyListGraph {
+class Graph {
     constructor() {
         this._edges = [];
         this._vertices = {};
@@ -81,4 +81,4 @@ class AdjacencyListGraph {
     }
 }
 
-module.exports = AdjacencyListGraph;
+module.exports = Graph;
