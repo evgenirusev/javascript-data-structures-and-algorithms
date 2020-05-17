@@ -43,7 +43,7 @@ class AdjacencyListGraph {
         }, []);
     }
 
-    degree(vertexKey) {
+    adjacentCount(vertexKey) {
         return new Set(
             this._getAdjKeys(vertexKey)
         ).size;

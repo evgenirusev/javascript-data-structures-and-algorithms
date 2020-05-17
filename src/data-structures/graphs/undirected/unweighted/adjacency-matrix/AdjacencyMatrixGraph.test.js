@@ -23,9 +23,9 @@ describe("AdjacencyMatrixGraph", () => {
         expect(graph.getAdjacent(3)).toEqual([1]);
     });
 
-    it("should retrieve the correct vertice degrees", () => {
-        expect(graph.degree(0)).toBe(2);
-        expect(graph.degree(1)).toBe(3);
-        expect(graph.degree(3)).toBe(1);
+    it("should retrieve the correct vertice adjacentCounts", () => {
+        expect(graph.adjacentCount(0)).toBe(2);
+        expect(graph.adjacentCount(1)).toBe(3);
+        expect(graph.adjacentCount(3)).toBe(1);
     });
 });

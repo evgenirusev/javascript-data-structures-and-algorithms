@@ -16,24 +16,37 @@ class AdjacencyListGraph {
         this._validateVertexKey(start);
         this._validateVertexKey(end);
 
+        if (!this._adjacencyList[start]) {
+            this._adjacencyList[start] = [];
+        }
+
+        if (!this._adjacencyList[end]) {
+            this._adjacencyList[end] = [];
+        }
+
         this._adjacencyList[start].push(end);
         this._adjacencyList[end].push(start);
     }
 
     getVertex(vertexKey) {
+        this._validateVertexKey(vertexKey);
         return this._vertices[vertexKey];
     }
 
     getAdjacent(vertexKey) {
         this._validateVertexKey(vertexKey);
-        return this._adj[vertexkey];
+        return [...new Set(
+            this._adjacencyList[vertexKey]
+        )];
     }
 
-    degree(vertexKey) {
-        return this._getAdjKeys(vertexKey).length;
+    adjacentCount(vertexKey) {
+        this._validateVertexKey(vertexKey);
+        return this.getAdjacent(vertexKey).length;
     }
 
     getEdges(vertexKey) {
+        this._validateVertexKey(vertexKey);
         return this._adjacencyList[vertexKey];
     }
 
@@ -41,7 +54,8 @@ class AdjacencyListGraph {
         this._validateVertexKey(vertexKey1);
         this._validateVertexKey(vertexKey2);
 
-
+        this._removeAdjacentKeys(vertexKey1, vertexKey2);
+        this._removeAdjacentKeys(vertexKey2, vertexKey1);
     }
 
     _removeAdjacentKeys(vertexKey1, vertexKey2) {
@@ -55,10 +69,6 @@ class AdjacencyListGraph {
         while (adjToRemove.length > 0) {
             this._adjacencyList[vertexKey1].splice(adjToRemove.pop(), 1);
         }
-    }
-
-    _getAdjKeys(vertexKey) {
-        return this._adjacencyList[vertexKey];
     }
 
     _validateVertexKey(vertexKey) {

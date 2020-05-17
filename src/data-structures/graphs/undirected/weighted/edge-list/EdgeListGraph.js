@@ -28,7 +28,7 @@ class EdgeListGraph {
         )];
     }
 
-    degree(vertexKey) {
+    adjacentCount(vertexKey) {
         this._validateVertexKey(vertexKey);
         return this.getEdges(vertexKey).length;
     }

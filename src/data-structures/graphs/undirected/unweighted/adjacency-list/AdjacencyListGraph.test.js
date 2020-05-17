@@ -1,5 +1,5 @@
 const AdjacencyListGraph = require("./AdjacencyListGraph");
-const Vertex = require("../../vertex/Vertex")
+const Vertex = require("../../../vertex/Vertex")
 
 describe("AdjacencyListGraph", () => {
     let graph;
@@ -34,10 +34,10 @@ describe("AdjacencyListGraph", () => {
         expect(graph.getAdjacent("testKey4")).toEqual(["testKey2"]);
     });
 
-    it("should retrieve the correct vertice degrees", () => {
-        expect(graph.degree("testKey1")).toBe(2);
-        expect(graph.degree("testKey2")).toBe(3);
-        expect(graph.degree("testKey4")).toBe(1);
+    it("should retrieve the correct vertice adjacentCounts", () => {
+        expect(graph.adjacentCount("testKey1")).toBe(2);
+        expect(graph.adjacentCount("testKey2")).toBe(3);
+        expect(graph.adjacentCount("testKey4")).toBe(1);
     });
 
     it("should have the correct values", () => {
@@ -50,20 +50,20 @@ describe("AdjacencyListGraph", () => {
     });
 
     describe("removeAllEdgesInBetween", () => {
-        it("should remove the edges by key", () => {
-            graph = new AdjacencyListGraph();
-            const verticesToInsert = {
-                testKey1: new Vertex("testKey1", 'testVal1'),
-                testKey2: new Vertex("testKey2", 'testVal2')
-            };
+        // it("should remove the edges by key", () => {
+        //     graph = new AdjacencyListGraph();
+        //     const verticesToInsert = {
+        //         testKey1: new Vertex("testKey1", 'testVal1'),
+        //         testKey2: new Vertex("testKey2", 'testVal2')
+        //     };
 
-            Object.values(verticesToInsert).forEach(vertex => {
-                graph.addVertex(vertex);
-            });
+        //     Object.values(verticesToInsert).forEach(vertex => {
+        //         graph.addVertex(vertex);
+        //     });
 
-            graph.addEdge(new Edge("testKey1", "testKey2"));
-            graph.addEdge(new Edge("testKey2", "testKey1"));
-        });
+        //     graph.addEdge(new Edge("testKey1", "testKey2"));
+        //     graph.addEdge(new Edge("testKey2", "testKey1"));
+        // });
 
         it("should remove the edges by key", () => {
             graph.removeAllEdgesInBetween("testKey1", "testKey2");

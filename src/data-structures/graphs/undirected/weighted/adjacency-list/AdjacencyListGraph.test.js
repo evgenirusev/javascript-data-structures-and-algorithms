@@ -1,6 +1,6 @@
 const AdjacencyListGraph = require("./AdjacencyListGraph");
-const Vertex = require("../../vertex/Vertex");
-const Edge = require("../../edge/Edge");
+const Vertex = require("../../../vertex/Vertex");
+const Edge = require("../../../edge/Edge");
 
 describe("AdjacencyListGraph", () => {
     let graph;
@@ -42,10 +42,10 @@ describe("AdjacencyListGraph", () => {
         expect(graph.getAdjacent("testKey4")).toEqual(["testKey2"]);
     });
 
-    it("should retrieve the correct vertice degrees", () => {
-        expect(graph.degree("testKey1")).toBe(2);
-        expect(graph.degree("testKey2")).toBe(3);
-        expect(graph.degree("testKey4")).toBe(1);
+    it("should retrieve the correct vertice adjacentCounts", () => {
+        expect(graph.adjacentCount("testKey1")).toBe(2);
+        expect(graph.adjacentCount("testKey2")).toBe(3);
+        expect(graph.adjacentCount("testKey4")).toBe(1);
     });
 
     it("should have the correct values", () => {

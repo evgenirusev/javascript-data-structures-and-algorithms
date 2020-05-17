@@ -28,7 +28,7 @@ class AdjacencyMatrixGraph {
         return edges;
     }
 
-    degree(vertice) {
+    adjacentCount(vertice) {
         this._validateVertice(vertice);
         return this.getAdjacent(vertice).length;
     }
