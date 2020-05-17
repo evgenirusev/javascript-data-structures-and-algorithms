@@ -1,6 +1,6 @@
-const Graph = require("./Graph");
-const Vertex = require("../../vertex/Vertex");
-const Edge = require("../../edge/Edge");
+const EdgeListGraph = require("./EdgeListGraph");
+const Vertex = require("../../../vertex/Vertex");
+const Edge = require("../../../edge/Edge");
 
 describe("Graph", () => {
     let graph;
@@ -19,7 +19,7 @@ describe("Graph", () => {
     ];
 
     beforeEach(() => {
-        graph = new Graph();
+        graph = new EdgeListGraph();
 
         Object.values(mockVertices).forEach(vertex => {
             graph.addVertex(vertex);

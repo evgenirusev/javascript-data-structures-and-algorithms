@@ -1,4 +1,4 @@
-class Graph {
+class EdgeListGraph {
     constructor() {
         this._edges = [];
         this._vertices = {};
@@ -34,11 +34,15 @@ class Graph {
     }
 
     removeAllEdgesInBetween(startVertexKey, endVertexKey) {
-        const edgesToRemove = this._edges
-            .filter(edge => this._edgeMatchesKeysEitherWay(edge, startVertexKey, endVertexKey));
+        const edgesToRemove = [];
+        this._edges.forEach((edge, i) => {
+            if (this._edgeMatchesKeysEitherWay(edge, startVertexKey, endVertexKey)) {
+                edgesToRemove.push(i);
+            }
+        });
 
         while (edgesToRemove.length > 0) {
-            this._edges.splice(this._edges.indexOf(edgesToRemove.pop()), 1);
+            this._edges.splice(edgesToRemove.pop(), 1);
         }
     }
 
@@ -81,4 +85,4 @@ class Graph {
     }
 }
 
-module.exports = Graph;
+module.exports = EdgeListGraph;
