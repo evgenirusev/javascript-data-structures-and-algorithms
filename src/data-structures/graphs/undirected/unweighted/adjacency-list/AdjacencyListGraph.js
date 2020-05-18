@@ -2,10 +2,12 @@ class AdjacencyListGraph {
     constructor() {
         this._adjacencyList = {};
         this._vertices = {};
+        this._verticesCount = 0;
     }
 
     addVertex(vertex) {
         this._vertices[vertex.key] = vertex;
+        this._verticesCount++;
     }
 
     getNumerOfVertices() {
@@ -56,6 +58,10 @@ class AdjacencyListGraph {
 
         this._removeAdjacentKeys(vertexKey1, vertexKey2);
         this._removeAdjacentKeys(vertexKey2, vertexKey1);
+    }
+
+    get verticesCount() {
+        return this._verticesCount;
     }
 
     _removeAdjacentKeys(vertexKey1, vertexKey2) {
