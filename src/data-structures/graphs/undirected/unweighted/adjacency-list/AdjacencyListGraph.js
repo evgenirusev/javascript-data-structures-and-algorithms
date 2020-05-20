@@ -69,7 +69,12 @@ class AdjacencyListGraph {
         }
 
         delete this._adjacencyList[vertexKey];
+        delete this._vertices[vertexKey];
         this._verticesCount--;
+    }
+
+    get allVertices() {
+        return Object.values(this._vertices);
     }
 
     _removeAdjacentKeys(vertexKey1, vertexKey2) {

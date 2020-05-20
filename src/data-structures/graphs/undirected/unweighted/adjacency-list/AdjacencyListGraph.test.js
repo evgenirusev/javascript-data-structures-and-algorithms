@@ -62,11 +62,17 @@ describe("AdjacencyListGraph", () => {
         expect(graph.verticesCount).toBe(4);
     });
 
-    it("should count the vertices", () => {
+    it("should remove the vertex", () => {
         graph.removeVertex("testKey2");
 
         expect(graph.verticesCount).toBe(3);
         expect(graph.getAdjacent("testKey1")).toEqual(["testKey3"]);
         expect(graph.getAdjacent("testKey4")).toEqual([]);
+    });
+
+    it("should get all vertices", () => {
+        const vertices = graph.allVertices;
+
+        expect(vertices.length).toBe(4);
     });
 });
