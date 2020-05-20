@@ -10,10 +10,6 @@ class AdjacencyListGraph {
         this._verticesCount++;
     }
 
-    getNumerOfVertices() {
-        return Object.keys(this._vertices).length;
-    }
-
     addEdge(start, end) {
         this._validateVertexKey(start);
         this._validateVertexKey(end);
@@ -62,6 +58,18 @@ class AdjacencyListGraph {
 
     get verticesCount() {
         return this._verticesCount;
+    }
+
+    removeVertex(vertexKey) {
+        this._validateVertexKey(vertexKey);
+
+        const vertexEdges = this.getEdges(vertexKey);
+        while (vertexEdges.length > 0) {
+            this.removeAllEdgesInBetween(vertexKey, vertexEdges[0]);
+        }
+
+        delete this._adjacencyList[vertexKey];
+        this._verticesCount--;
     }
 
     _removeAdjacentKeys(vertexKey1, vertexKey2) {

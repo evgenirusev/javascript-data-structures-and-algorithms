@@ -25,7 +25,7 @@ describe("AdjacencyListGraph", () => {
     });
 
     it("should add edges and retrive the correct amout of vertices", () => {
-        expect(graph.getNumerOfVertices()).toBe(4);
+        expect(graph.verticesCount).toBe(4);
     });
 
     it("should add edges retrieve the correct edges", () => {
@@ -65,7 +65,7 @@ describe("AdjacencyListGraph", () => {
     it("should count the vertices", () => {
         graph.removeVertex("testKey2");
 
-        expect(graph.getNumerOfVertices()).toBe(3);
+        expect(graph.verticesCount).toBe(3);
         expect(graph.getAdjacent("testKey1")).toEqual(["testKey3"]);
         expect(graph.getAdjacent("testKey4")).toEqual([]);
     });
