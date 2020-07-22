@@ -1,7 +1,6 @@
-const Stack = require("../../stacks/linked-list-implementation/Stack.js");
+const Stack = require("../../stacks/linked-list-implementation");
 
 class Queue {
-    // todo: fix imports once unit tests are successful
     constructor() {
         this.inputStack = new Stack();
         this.outputStack = new Stack();
