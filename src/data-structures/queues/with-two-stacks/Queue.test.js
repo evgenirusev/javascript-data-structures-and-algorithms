@@ -1,4 +1,4 @@
-const Queue = require("./Queue");
+const Queue = require("./Queue.js");
 
 describe("Queue", () => {
     let queue;
@@ -8,9 +8,9 @@ describe("Queue", () => {
     });
 
     it("should enqueue the elements", () => {
-        quque.enqueue(1);
-        quque.enqueue(2);
-        quque.enqueue(3);
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
 
         expect(queue.dequeue()).toBe(1);
         expect(queue.dequeue()).toBe(2);

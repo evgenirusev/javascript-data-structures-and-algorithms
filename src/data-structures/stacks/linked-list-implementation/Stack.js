@@ -19,6 +19,10 @@ class Stack {
     size() {
         return this.linkedList.size();
     }
+
+    isEmpty() {
+        return this.size() < 1;
+    }
 }
 
 module.exports = Stack;
