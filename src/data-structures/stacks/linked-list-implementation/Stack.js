@@ -8,4 +8,17 @@ class Stack {
     push(val) {
         this.linkedList.addToHead(val);
     }
+
+    pop() {
+        let result = this.linkedList.peekHead();
+        this.linkedList.deleteFromHead();
+
+        return result;
+    }
+
+    size() {
+        return this.linkedList.size();
+    }
 }
+
+module.exports = Stack;
