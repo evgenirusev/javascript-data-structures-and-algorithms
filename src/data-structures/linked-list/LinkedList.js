@@ -1,4 +1,4 @@
-class LinkedList {
+class Stack {
     constructor() {
         this.head = null;
         this.tail = null;
