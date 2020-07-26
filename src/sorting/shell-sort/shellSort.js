@@ -3,10 +3,13 @@ function shellSort(array, cmp) {
         cmp = (a, b) => a - b;
     }
 
-    for (let interval = array.length / 2; interval > 0; interval /= 2) {
-        for (let right = interval; right < array.length; right++) {
+    let n = array.length / 2;
+    let innerLoopEnd = array.length % 2 === 0 ? array.length : array.length - 1;
+    for (let interval = n; interval > 0; interval /= 2) {
+        for (let right = interval; right < innerLoopEnd; right++) {
             let left = right - interval;
-            if (left < interval && array[right] < array[left]) {
+
+            if (array[right] < array[left]) {
                 swap(array, left, right);
             }
         }
@@ -20,10 +23,4 @@ function swap(array, left, right) {
     array[right] = temp;
 }
 
-let arr = [9, 8, 3, 7, 5, 6, 4, 1];
-
-shellSort(arr);
-
-arr.forEach(x => {
-    console.log(x);
-});
+module.exports = shellSort;
