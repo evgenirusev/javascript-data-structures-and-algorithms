@@ -6,14 +6,14 @@ function shellSort(array, cmp) {
     let n = array.length / 2;
     let innerLoopEnd = array.length % 2 === 0 ? array.length : array.length - 1;
     for (let interval = n; interval > 0; interval /= 2) {
-        for (let right = interval; right < innerLoopEnd; right++) {
-            let left = right - interval;
-
-            if (array[right] < array[left]) {
-                swap(array, left, right);
+        for (let i = interval; i < innerLoopEnd; i++) {
+            for (let j = i; j >= 0 && cmp(array[j], array[j - interval]) < 0; j -= interval) {
+                swap(array, j, j - interval);
             }
         }
     }
+
+    return array;
 }
 
 function swap(array, left, right) {
