@@ -10,7 +10,7 @@ function shellSort(array, cmp) {
             for (let j = i; j >= 0 && cmp(array[j], array[j - interval]) < 0; j -= interval) {
                 swap(array, j, j - interval);
             }
-        }
+       }
     }
 
     return array;
