@@ -1,13 +1,18 @@
 function bitonicArraySearch(array, n) {
+    return findBoundry(array);
+}
+
+function findBoundry(array) {
     let left = 0;
         right = array.length - 1;
         mid = Math.floor((left + right) / 2);
 
-    while (!isIndexAtBoundry(array, mid)) {
-        if (isBoundryRightSide(array, mid)) {
-            left = mid + 1;
+    while (!isSequenceBoundry(array, mid)) {
+        console.log("adfasd");
+        if (isBoundryLeftSide(array, mid)) {
+            right = mid - 1;
         } else {
-            rigt = mid - 1;
+            left = mid + 1;
         }
 
         mid = Math.floor(
@@ -18,14 +23,13 @@ function bitonicArraySearch(array, n) {
     return mid;
 }
 
-function isIndexAtBoundry(array, index) {
-    return array[index] < array[index - 1]
+function isSequenceBoundry(array, index) {
+    return array[index] > array[index - 1]
         && array[index] > array[index + 1];
 }
 
-function isBoundryRightSide(array, index) {
-    return array[index] < array[index + 1]
-        array[index] > array[index - 1];
+function isBoundryLeftSide(array, index) {
+    return array[index] < array[index - 1];
 }
 
 module.exports = bitonicArraySearch;
