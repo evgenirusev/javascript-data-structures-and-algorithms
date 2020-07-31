@@ -2,10 +2,10 @@ const bitonicArraySearch = require("./bitonicArraySearch.js");
 
 describe("bitonicArraySearch", () => {
     it("should find the element with descending sequence boundry being on the right", () => {
-        const bitonicArray = [-3, 9, 8, 20, 17, 5, 1];
+        const bitonicArray = [3, 9, 14, 20, 17, 5, 1];
 
+        expect(bitonicArraySearch(bitonicArray, 3)).toBe(true);
         expect(bitonicArraySearch(bitonicArray, 9)).toBe(true);
-        expect(bitonicArraySearch(bitonicArray, -3)).toBe(true);
         expect(bitonicArraySearch(bitonicArray, 5)).toBe(true);
         expect(bitonicArraySearch(bitonicArray, 1)).toBe(true);
         expect(bitonicArraySearch(bitonicArray, 20)).toBe(true);
@@ -22,8 +22,8 @@ describe("bitonicArraySearch", () => {
     });
 
     it("shouldn't find the element", () => {
-        const bitonicArray = [-3, 9, 8, 20, 17, 5, 1];
+        const bitonicArray = [3, 9, 8, 20, 17, 5, 1];
 
-        expect(bitonicArraySearch(bitonicArray, 100), false);
+        expect(bitonicArraySearch(bitonicArray, 100)).toBe(false);
     });
 });
