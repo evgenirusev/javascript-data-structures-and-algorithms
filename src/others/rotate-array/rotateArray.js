@@ -1,5 +1,5 @@
 function rotateArray(array, rotationsCount) { 
-    let clonedArray = [...array]; 
+    let clonedArray = [...array];
     for (let i = 0; i < array.length; i++) {
         let rotatedValueIndex = i - rotationsCount;
 
