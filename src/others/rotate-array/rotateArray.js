@@ -1,13 +1,22 @@
 function rotateArray(array, rotationsCount) { 
-    let clonedArray = [...array];
-    for (let i = 0; i < array.length; i++) {
-        let rotatedValueIndex = i - rotationsCount;
+    let tempElements = [];
+    for (let i = 0; i < rotationsCount; i++) {
+        tempElements.push(array[i]);
+    }
 
-        if (rotatedValueIndex < 0) {
-            rotatedValueIndex = array.length + rotatedValueIndex;
+    const lastIndex = array.length - 1;
+    for (let i = lastIndex; i >= rotationsCount; i--) {
+        let currentElementIndex = i + rotationsCount;
+
+        if (currentElementIndex > lastIndex) {
+            currentElementIndex -= lastIndex;
         }
 
-        array[i] = clonedArray[rotatedValueIndex];
+        array[i] = array[currentElementIndex];
+    }
+
+    for (let i = array.length - rotationsCount; i < array.length; i++) {
+        array[i] = tempElements[i];
     }
 
     return array;
