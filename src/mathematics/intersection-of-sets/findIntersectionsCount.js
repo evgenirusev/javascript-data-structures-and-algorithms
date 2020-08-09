@@ -1,3 +1,5 @@
+const sort = require("../../sorting/insertion-sort/insertionSort")
+
 const pointCmp = (point1, point2) => {
     if (point1.x === point2.x) {
         if (point1.y === point2.y) {
@@ -11,7 +13,10 @@ const pointCmp = (point1, point2) => {
 }
 
 function findIntersectionsCount(set1, set2) {
+    sort(set1, pointCmp);
+    sort(set2, pointCmp);
 
+    console.log("test");
 }
 
 module.exports = findIntersectionsCount;

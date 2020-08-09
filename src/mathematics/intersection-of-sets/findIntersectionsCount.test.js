@@ -1,6 +1,5 @@
 const findIntersectionsCount = require("./findIntersectionsCount.js");
-const Point = require("../../data-structures/mathematics/Point");
-const quickSort = require("../../sorting/quick-sort/hoare-median-pivot/quickSort.js")
+const Point = require("../../data-structures/mathematics/Point/Point");
 
 describe('findIntersectionsCount', () => {
     it("should find the intersecting points", () => {

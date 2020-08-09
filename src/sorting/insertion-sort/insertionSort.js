@@ -5,7 +5,7 @@ function insertionSort(array, cmp) {
 
     for (let i = 1; i < array.length; i++) {
         let current = i;
-        while (cmp(array[current], array[current - 1]) < 0) {
+        while (current > 0 && cmp(array[current], array[current - 1]) < 0) {
             swap(array, current, current - 1);
             current--;
         }
