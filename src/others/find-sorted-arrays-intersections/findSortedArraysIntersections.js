@@ -1,21 +1,19 @@
 function findSortedArraysIntersections(array1, array2) {
-    let map = {};
+    let i = 0,
+        j = 0,
+        intersections = [];
 
-    array1.forEach(x => {
-        if (typeof map[x] === "undefined") {
-            map[x] = 1;
+    while (i < array1.length && j < array2.length) {
+        if (array1[i] < array2[j]) {
+            i++;
+        } else if (array1[i] > array2[j]) {
+            j++;
         } else {
-            map[x]++;
+            intersections.push(array1[i]);
+            i++;
+            j++;
         }
-    });
-
-    const intersections = [];
-    array2.forEach(x => {
-        if (typeof map[x] !== "undefined") {
-            intersections.push(x);
-            map[x]--;
-        }
-    });
+    }
 
     return intersections;
 }
