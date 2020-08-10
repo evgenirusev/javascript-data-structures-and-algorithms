@@ -13,17 +13,25 @@ const pointCmp = (point1, point2) => {
 }
 
 function findIntersectionsCount(set1, set2) {
-    sort(set1, pointCmp);
-    sort(set2, pointCmp);
+    const set1PointsCount = {};
+    set1.forEach(point => {
+        const key = `${point.x}${point.y}`;
+        if (typeof set1PointsCount[key] === "undefined") {
+            set1PointsCount[key] = 1;
+        } else {
+            set1PointsCount[key]++;
+        }
+    });
 
     let intersectionsCount = 0;
-    let set2Index = 0;
-    for (let set1Index = 0; set1Index < set1.length; set1Index++) {
-        if (set1[set1Index].compareTo(set2[set2Index]) > 0) {
+    set2.forEach(point => {
+        const key = `${point.x}${point.y}`;
+        const value = set1PointsCount[key];
+        if (typeof value !== "undefined" && typeof value !== 0) {
             intersectionsCount++;
-            set2Index++;
+            set1PointsCount[key]--;
         }
-    }
+    });
 
     return intersectionsCount;
 }
