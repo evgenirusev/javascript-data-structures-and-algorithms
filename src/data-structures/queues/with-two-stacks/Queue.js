@@ -1,4 +1,4 @@
-const Stack = require("../../stacks/linked-list-implementation");
+const Stack = require("../../stacks/linked-list-implementation/Stack");
 
 class Queue {
     constructor() {
