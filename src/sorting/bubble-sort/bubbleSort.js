@@ -3,14 +3,6 @@ function bubbleSort(arr, cmp) {
         cmp = (a, b) => a - b;
     }
 
-    // for (let i = 0; i < arr.length; i++) {
-        // for (let j = i + 1; j < arr.length; j++) {
-            // if (cmp(arr[i], arr[j]) > 0) {
-                // swap(arr, i, j);
-            // }
-        // }
-    // }
-
     for (let i = 0; i < arr.length; i++) {
         for (let j = 0; j < arr.length - i; j++) {
             if (cmp(arr[j], arr[j + 1]) > 0) {
