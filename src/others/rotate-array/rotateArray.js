@@ -1,21 +1,22 @@
 function rotateArray(array, rotationsCount) { 
     const positionsCount = rotationsCount % array.length;
-    const lastIndex = array.length - 1;
+    reverse(array, 0, array.length - 1);
+    reverse(array, 0, positionsCount - 1);
+    reverse(array, positionsCount, array.length - 1);
 
-    const lastElements = [];
-    for (let i = array.length - positionsCount; i < array.length; i++) {
-        lastElements.push(array[i]);
-    }
-
-    for (let i = lastIndex; i >= positionsCount; i--) {
-        array[i] = array[i - positionsCount];
-    }
-
-    for (let i = 0; i < positionsCount; i++) {
-        array[i] = lastElements[i];
-    }
-    
     return array;
+}
+
+function reverse(array, from, to) {
+    for (let i = from, j = to; i < j; i++, j--) {
+        swap(array, i, j);
+    }
+}
+
+function swap(array, i, j) {
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
 }
 
 module.exports = rotateArray;
