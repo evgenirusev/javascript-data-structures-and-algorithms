@@ -1,15 +1,20 @@
 function rotateArray(array, rotationsCount) { 
-    const auxArray = [...array];
+    const positionsCount = rotationsCount % array.length;
     const lastIndex = array.length - 1;
 
-    for (let i = 0; i < rotationsCount; i++) {
-        array[i] = array[array.length - rotationsCount + i];
+    const lastElements = [];
+    for (let i = array.length - positionsCount; i < array.length; i++) {
+        lastElements.push(array[i]);
     }
 
-    for (let i = rotationsCount; i < array.length; i++) {
-        array[i] = auxArray[i - rotationsCount];
+    for (let i = lastIndex; i >= positionsCount; i--) {
+        array[i] = array[i - positionsCount];
     }
 
+    for (let i = 0; i < positionsCount; i++) {
+        array[i] = lastElements[i];
+    }
+    
     return array;
 }
 
