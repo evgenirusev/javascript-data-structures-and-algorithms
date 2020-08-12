@@ -26,5 +26,10 @@ describe("rotateArray", () => {
             expect(rotateArray([1, 2, 3], 3))
                 .toEqual([1, 2, 3]);
         });
+
+        it("should rotate the array 4 times", () => {
+            expect(rotateArray([1, 2, 3], 4))
+                .toEqual([3, 1, 2]);
+        });
     });
 });

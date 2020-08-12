@@ -1,13 +1,13 @@
 function rotateArray(array, rotationsCount) { 
+    const auxArray = [...array];
+    const lastIndex = array.length - 1;
+
     for (let i = 0; i < rotationsCount; i++) {
-        const lastIndex = array.length - 1;
-        const lastValue = array[lastIndex];
+        array[i] = array[array.length - rotationsCount + i];
+    }
 
-        for (let j = lastIndex; j > 0; j--) {
-            array[j] = array[j - 1];
-        }
-
-        array[0] = lastValue;
+    for (let i = rotationsCount; i < array.length; i++) {
+        array[i] = auxArray[i - rotationsCount];
     }
 
     return array;
