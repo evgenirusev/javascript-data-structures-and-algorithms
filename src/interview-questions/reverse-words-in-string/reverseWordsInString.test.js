@@ -5,7 +5,6 @@ describe('reverseWordsInString', () => {
         const str = "ab abc abcd";
         expect(reverseWordsInString(str)).toEqual("abcd abc ab");
     });
-    
 
     it("should correctly reverse even amount of strings", () => {
         const str = "ab abc abcd 123";
