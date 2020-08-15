@@ -19,7 +19,7 @@ function reverseWordsInString(str) {
         }
     }
 
-    return result.slice(0, -1);
+    return result + currentWord;
 }
 
 module.exports = reverseWordsInString;
