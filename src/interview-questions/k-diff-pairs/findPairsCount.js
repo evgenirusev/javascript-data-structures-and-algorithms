@@ -9,8 +9,7 @@ function findPairsCount(array, k) {
 
     let count = 0;
     array.forEach(x => {
-        const leftOver = x - k;
-        if (map[leftOver]) {
+        if (map[x - k]) {
             count++;
         }
     });
