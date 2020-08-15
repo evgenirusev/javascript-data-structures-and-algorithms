@@ -10,5 +10,10 @@ describe('reverseWordsInString', () => {
         const str = "ab abc abcd 123";
         expect(reverseWordsInString(str)).toEqual("123 abcd abc ab");
     });
+
+    it("should correctly reverse string with spaces", () => {
+        const str = "  ab cd    123   ";
+        expect(reverseWordsInString(str)).toEqual("123 cd ab");
+    });
 });
 
