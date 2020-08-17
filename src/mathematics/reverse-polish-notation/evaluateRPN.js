@@ -20,9 +20,7 @@ function evaluateRPN(operations) {
         }
     });
 
-    return Math.floor(
-        stack.pop()
-    );
+    return stack.pop();
 }
 
 module.exports = evaluateRPN;
