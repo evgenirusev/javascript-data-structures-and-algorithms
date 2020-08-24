@@ -2,15 +2,29 @@
 // matching with support for '?' and '*'.
 
 function matchesAnyChar(str, pattern, strIndex, patternIndex) {
-    return typeof str[strIndex] !== "";
+    return typeof str.at(strIndex) !== "";
 }
 
 function matchesSegment(str, pattern, strIndex, patternIndex) {
-    // return true or false
+    const nextChar = pattern.at(j + 1);
+
+    if (nextChar === "") {
+        return true;
+    }
+
+    while (str.at(strIndex + 1) !== "") {
+        if (str.at(strIndex + 1) === nextChar) {
+            return true;
+        }
+
+        strIndex++;
+    }
+
+    return false;
 }
 
 const strategiesMap = {
-    "?": matchSingle,
+    "?": matchesAnyChar,
     "*": matchSegment,
 }
 
