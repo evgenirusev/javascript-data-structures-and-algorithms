@@ -1,51 +1,57 @@
 // Given an input string (s) and a pattern (p), implement wildcard pattern 
 // matching with support for '?' and '*'.
 
-function matchesAnyChar(str, pattern, strIndex, patternIndex) {
-    return typeof str.at(strIndex) !== "";
+function getNextStrIndexIfMatchSingleChar(str, pattern, strIndex, patternIndex) {
+    return typeof str.at(strIndex) === "" ? -1 : 1;
 }
 
-function matchesSegment(str, pattern, strIndex, patternIndex) {
+function getNextStrIndexIfMatchSegment(str, pattern, strIndex, patternIndex) {
     const nextChar = pattern.at(j + 1);
 
     if (nextChar === "") {
-        return true;
+        return str.length;
     }
 
-    while (str.at(strIndex + 1) !== "") {
-        if (str.at(strIndex + 1) === nextChar) {
-            return true;
+    let currentStrIndex = strIndex + 1;
+    while (str.at(currentStrIndex) !== "") {
+        if (str.at(currentStrIndex) === nextChar) {
+            return currentStrIndex;
         }
 
-        strIndex++;
+        currentStrIndex++;
     }
 
-    return false;
+    return -1;
 }
 
 const strategiesMap = {
-    "?": matchesAnyChar,
-    "*": matchSegment,
+    "?": getNextStrIndexIfMatchSingleChar,
+    "*": getNextStrIndexIfMatchSegment,
 }
 
 function isMatch(str, pattern) {
-    let i = 0;
+    let strIndex = 0;
     for (let j = 0; j < pattern.length; j++) {
         const patternChar = pattern.at(j);
 
         if (strategiesMap[patternChar]) {
-            // strategy pattern for exstensibility
-            if (!strategiesMap[patternChar](str, pattern, i, j)) {
+            const nextStrIndex = strategiesMap[patternChar];
+
+            if (nextStrIndex === -1) {
                 return false;
+            } else {
+                strIndex = nextStrIndex;
             }
         } else {
             if (patternChar !== str.at(i)) {
                 return false;
             }
+
+            strIndex++;
         }
     }
 
     return true;
 }
 
-module.exports = isMatch
+module.exports = isMatch;
