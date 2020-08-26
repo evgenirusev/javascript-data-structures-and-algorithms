@@ -2,19 +2,19 @@
 // matching with support for '?' and '*'.
 
 function getNextStrIndexIfMatchSingleChar(str, pattern, strIndex, patternIndex) {
-    return typeof str.at(strIndex) === "" ? -1 : 1;
+    return typeof str.charAt(strIndex) === "" ? -1 : 1;
 }
 
 function getNextStrIndexIfMatchSegment(str, pattern, strIndex, patternIndex) {
-    const nextChar = pattern.at(j + 1);
+    const nextChar = pattern.charAt(j + 1);
 
     if (nextChar === "") {
         return str.length;
     }
 
     let currentStrIndex = strIndex + 1;
-    while (str.at(currentStrIndex) !== "") {
-        if (str.at(currentStrIndex) === nextChar) {
+    while (str.charAt(currentStrIndex) !== "") {
+        if (str.charAt(currentStrIndex) === nextChar) {
             return currentStrIndex;
         }
 
@@ -32,7 +32,7 @@ const strategiesMap = {
 function isMatch(str, pattern) {
     let strIndex = 0;
     for (let j = 0; j < pattern.length; j++) {
-        const patternChar = pattern.at(j);
+        const patternChar = pattern.charAt(j);
 
         if (strategiesMap[patternChar]) {
             const nextStrIndex = strategiesMap[patternChar];
@@ -43,7 +43,7 @@ function isMatch(str, pattern) {
                 strIndex = nextStrIndex;
             }
         } else {
-            if (patternChar !== str.at(i)) {
+            if (patternChar !== str.charAt(strIndex)) {
                 return false;
             }
 
