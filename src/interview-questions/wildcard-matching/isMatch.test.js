@@ -20,4 +20,8 @@ describe('isMatch', () => {
    it("shouldn't match", () => {
        expect(isMatch("acdcb", "*a?b")).toBe(false);
    }); 
+
+   it("shouldn't match", () => {
+       expect(isMatch("abefcdgiescdfimde", "ab*cd?i*de")).toBe(false);
+   }); 
 });
