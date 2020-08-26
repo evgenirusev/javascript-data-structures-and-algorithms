@@ -15,9 +15,9 @@ describe('isMatch', () => {
 
    it('should match', () => {
        expect(isMatch("adceb", "*a*b")).toBe(true);
-   }); 
+   });
 
    it("shouldn't match", () => {
-       expect(isMatch("acdcb", "*a*b")).toBe(false);
+       expect(isMatch("acdcb", "*a?b")).toBe(false);
    }); 
 });

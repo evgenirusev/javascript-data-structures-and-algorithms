@@ -6,13 +6,13 @@ function getNextStrIndexIfMatchSingleChar(str, pattern, strIndex, patternIndex) 
 }
 
 function getNextStrIndexIfMatchSegment(str, pattern, strIndex, patternIndex) {
-    const nextChar = pattern.charAt(j + 1);
+    const nextChar = pattern.charAt(patternIndex + 1);
 
     if (nextChar === "") {
         return str.length;
     }
 
-    let currentStrIndex = strIndex + 1;
+    let currentStrIndex = strIndex;
     while (str.charAt(currentStrIndex) !== "") {
         if (str.charAt(currentStrIndex) === nextChar) {
             return currentStrIndex;
@@ -31,11 +31,11 @@ const strategiesMap = {
 
 function isMatch(str, pattern) {
     let strIndex = 0;
-    for (let j = 0; j < pattern.length; j++) {
-        const patternChar = pattern.charAt(j);
+    for (let patternIndex = 0; patternIndex < pattern.length; patternIndex++) {
+        const patternChar = pattern.charAt(patternIndex);
 
         if (strategiesMap[patternChar]) {
-            const nextStrIndex = strategiesMap[patternChar];
+            const nextStrIndex = strategiesMap[patternChar](str, pattern, strIndex, patternIndex);
 
             if (nextStrIndex === -1) {
                 return false;
@@ -51,7 +51,7 @@ function isMatch(str, pattern) {
         }
     }
 
-    return true;
+    return strIndex < str.length ? false : true;
 }
 
 module.exports = isMatch;
