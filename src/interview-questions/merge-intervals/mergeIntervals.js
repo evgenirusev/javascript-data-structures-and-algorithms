@@ -1,3 +1,5 @@
+// Given a collection of intervals, merge all overlapping intervals.
+
 function mergeIntervals(intervals) {
     let intervalIndex = 0;
     while (intervalIndex < intervals.length - 1) {
@@ -5,8 +7,10 @@ function mergeIntervals(intervals) {
         const interval2 = intervals[intervalIndex + 1];
 
         if (areOverlapping(interval1, interval2)) {
-            mergeIntoInterval2(interval1, interval2);
+            mergeIntoInterval2(intervals, intervalIndex, intervalIndex + 1);
         }
+
+        intervalIndex++;
     }
 
     return intervals.filter(interval => interval);
