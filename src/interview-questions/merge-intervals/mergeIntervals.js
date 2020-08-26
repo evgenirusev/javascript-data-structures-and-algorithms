@@ -18,7 +18,7 @@ function mergeIntervals(intervals) {
 
 function areOverlapping(interval1, interval2) {
     return interval1[1] >= interval2[0] 
-        || interval1[0] === interval[0];
+        || interval1[0] === interval2[0];
 }
 
 function mergeIntoInterval2(intervals, interval1Index, interval2Index) {
