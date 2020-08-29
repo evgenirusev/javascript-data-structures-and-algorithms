@@ -25,7 +25,7 @@ function mergeIntoInterval2(intervals, interval1Index, interval2Index) {
     const interval1 = intervals[interval1Index];
     const interval2 = intervals[interval2Index];
 
-    interval2[0] = interval1[0];
+    interval2[0] = interval1[0] < interval2[0] ? interval1[0] : interval2[0];
     interval2[1] = interval1[1] < interval2[1] ? interval2[1] : interval2[1];
 
     intervals[interval1Index] = null;
