@@ -2,18 +2,20 @@
 // Assume strings are of equal lengths
 
 function areStringsIsomorphic(str1, str2) {
-    let charsMap = {};
+    const charsMap = {};
 
-    str1.split("")
-        .forEach((c, i) => {
-            if (typeof charsMap[c] === "undefined") {
-                charsMap[c] = str2.charAt(i);
-            } else {
-                if (charsMap[c] !== str2.charAt(i)) {
-                    return false;
-                }
+    for (let i = 0; i < str1.length; i++) {
+        const char1 = str1.charAt(i);
+        const char2 = str2.charAt(i);
+
+        if (typeof charsMap[char1] === "undefined") {
+            charsMap[char1] = char2;
+        } else {
+            if (charsMap[char1] !== char2) {
+                return false;
             }
-        });
+        }
+    }
 
     return true;
 }
