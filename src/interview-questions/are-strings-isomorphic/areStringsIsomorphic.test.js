@@ -8,4 +8,8 @@ describe('areStringsIsomorphic', () => {
     it("shouldn't be isomorphic", () => {
         expect(areStringsIsomorphic("foo", "bar")).toEqual(false);
     });
+
+    it("shouldn't be isomorphic", () => {
+        expect(areStringsIsomorphic("ab", "aa")).toEqual(false);
+    });
 });
