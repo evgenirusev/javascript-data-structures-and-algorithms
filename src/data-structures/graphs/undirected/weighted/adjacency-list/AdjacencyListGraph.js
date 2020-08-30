@@ -12,7 +12,7 @@ class AdjacencyListGraph {
         return Object.keys(this.vertices).length;
     }
 
-    addEdge(edge) {
+    addEdge(start, end, val = null) {
     }
 
     getVertex(vertexKey) {

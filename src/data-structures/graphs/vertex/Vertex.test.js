@@ -6,6 +6,7 @@ describe("Vertex", () => {
         const key = "1";
         const vertex = new Vertex(key, { test: "test" });
 
+        expect(vertex).toBe(key);
         expect(vertex.key).toBe(key);
         expect(vertex.value).toEqual(value);
         expect(vertex.toString()).toEqual(key);
