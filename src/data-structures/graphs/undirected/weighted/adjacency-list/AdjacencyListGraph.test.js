@@ -4,13 +4,6 @@ const Edge = require("../../../weighted-edge/Edge");
 
 describe("AdjacencyListGraph", () => {
     let graph;
-    const edges = [
-        new Edge("testKey1", "testKey2", 1),
-        new Edge("testKey1", "testKey3", 2),
-        new Edge("testKey2", "testKey3", 3),
-        new Edge("testKey2", "testKey4", 4),
-        new Edge("testKey4", "testKey2", 5)
-    ];
 
     beforeEach(() => {
         graph = new AdjacencyListGraph();
@@ -25,11 +18,11 @@ describe("AdjacencyListGraph", () => {
             graph.addVertex(vertex);
         });
 
-        graph.addEdge(edges[0]);
-        graph.addEdge(edges[1]);
-        graph.addEdge(edges[2]);
-        graph.addEdge(edges[3]);
-        graph.addEdge(edges[4]);
+        graph.addEdge("testKey1", "testKey2", 1);
+        graph.addEdge("testKey1", "testKey3", 2);
+        graph.addEdge("testKey2", "testKey3", 3);
+        graph.addEdge("testKey2", "testKey4", 4);
+        graph.addEdge("testKey4", "testKey2", 5);
     });
 
     it("should add edges and retrive the correct amout of vertices", () => {
@@ -69,8 +62,10 @@ describe("AdjacencyListGraph", () => {
                 graph.addVertex(vertex);
             });
 
-            graph.addEdge(new Edge("testKey1", "testKey2"));
-            graph.addEdge(new Edge("testKey2", "testKey1"));
+            graph.addEdge("testKey1", "testKey2");
+            graph.addEdge("testKey2", "testKey1");
+            // TODO: WHY ISN'T THERE AN ASSERTION HERE?!?
+            // REFACTOR
         });
 
         it("should remove the edges by key", () => {
