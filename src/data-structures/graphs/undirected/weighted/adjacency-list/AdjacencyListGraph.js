@@ -1,23 +1,22 @@
 class AdjacencyListGraph {
-    // time to refactor this mess!! :)
-    // ideas:
-    //      use the object hash for the vertex key
-    //      determine whether you require Edge class for param interface of addEdge
     constructor() {
         this.adjList = {};
         this.vertices = {};
     }
 
     addVertex(vertex) {
+        this.vertices[vertex] = vertex;
     }
 
     getNumerOfVertices() {
+        return Object.keys(this.vertices).length;
     }
 
     addEdge(edge) {
     }
 
     getVertex(vertexKey) {
+        return this.vertices[vertex];
     }
 
     getAdjacent(vertexKey) {
