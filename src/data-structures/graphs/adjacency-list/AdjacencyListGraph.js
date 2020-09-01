@@ -12,6 +12,14 @@ class AdjacencyListGraph {
         this.adjList[vertex] = new LinkedList();
     }
 
+    get vertices() {
+        return this.vertices;
+    }
+
+    getVertex(vertexKey) {
+        return this.vertices[vertex];
+    }
+
     getNumerOfVertices() {
         return Object.keys(this.vertices).length;
     }
@@ -20,8 +28,7 @@ class AdjacencyListGraph {
         this.adjList[start].addToTail(edge);
     }
 
-    getVertex(vertexKey) {
-        return this.vertices[vertex];
+    getEdges(vertexKey) {
     }
 
     incomingEdgesOf(vertex) {
@@ -34,9 +41,6 @@ class AdjacencyListGraph {
     }
 
     outDegreeOf(vertex) {
-    }
-
-    getEdges(vertexKey) {
     }
 
     setEdgeWeight(vertexKey) {
