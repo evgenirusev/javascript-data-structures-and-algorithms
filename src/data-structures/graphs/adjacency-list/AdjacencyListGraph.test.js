@@ -5,22 +5,22 @@ const Edge = require("../edge/Edge.js");
 describe("AdjacencyListGraph", () => {
     let graph;
     const edges = [ 
-        new Edge("key1", "key2", 1),    
-        new Edge("key1", "key3", 2),    
-        new Edge("key2", "key3", 3),    
-        new Edge("key2", "key4", 4),    
-        new Edge("key4", "key2", 5) 
+        new Edge("key0", "key1", 1),
+        new Edge("key0", "key2", 2),
+        new Edge("key1", "key2", 3),
+        new Edge("key1", "key3", 4),
+        new Edge("key3", "key1", 5) 
     ];
-    const verticesToInsert = {
-        testKey1: new Vertex("key1", "val1"),
-        testKey2: new Vertex("key2", "val2"),
-        testKey3: new Vertex("key3", "val3"),
-        testKey4: new Vertex("key4", "val4")
+    const vertices = {
+        testKey1: new Vertex("key0", "val0"),
+        testkey1: new Vertex("key1", "val1"),
+        testkey2: new Vertex("key2", "val2"),
+        testkey3: new Vertex("key3", "val3")
     };
 
     beforeEach(() => {
         graph = new AdjacencyListGraph();
-        Object.values(verticesToInsert).forEach(vertex => {
+        Object.values(vertices).forEach(vertex => {
             graph.addVertex(vertex);
         });
 
@@ -36,56 +36,58 @@ describe("AdjacencyListGraph", () => {
     });
 
     it("should retrieve the correct incoming edges", () => {
-        expect(graph.incomingEdgesOf("key1")).toEqual([]);
-        expect(graph.inDegreeOf("key2")).toEqual([edges[0], edges[4]]);
-        expect(graph.inDegreeOf("key3")).toEqual([edges[1], edges[2]]);
+        expect(graph.incomingEdgesOf(vertices[0])).toEqual([]);
+        expect(graph.incomingEdgesOf(vertices[1])).toEqual([edges[0], edges[4]]);
+        expect(graph.incomingEdgesOf(vertices[2])).toEqual([edges[1], edges[2]]);
+        expect(graph.incomingEdgesOf(vertices[3])).toEqual([edges[1]]);
     });
 
     it("should retrieve the correct outgoing edges", () => {
-        expect(graph.inDegreeOf("key1")).toEqual([]);
-        expect(graph.inDegreeOf("key2")).toEqual([edges[0], edges[4]]);
-        expect(graph.inDegreeOf("key3")).toEqual([edges[1], edges[2]]);
+        expect(graph.outgoingEdgesOf(vertices[0])).toEqual([edges[1], edges[2]]);
+        expect(graph.outgoingEdgesOf(vertices[1])).toEqual([edges[2], edges[3]]);
+        expect(graph.outgoingEdgesOf(vertices[2])).toEqual([]);
+        expect(graph.outgoingEdgesOf(vertices[3])).toEqual([edges[1]]);
     });
 
     it("should retrieve the correct vertice adjacentCounts", () => {
-        expect(graph.adjacentCount("key1")).toBe(2);
-        expect(graph.adjacentCount("key2")).toBe(3);
-        expect(graph.adjacentCount("key4")).toBe(1);
+        expect(graph.adjacentCount("key0")).toBe(2);
+        expect(graph.adjacentCount("key1")).toBe(3);
+        expect(graph.adjacentCount("key3")).toBe(1);
     });
 
     it("should have the correct values", () => {
-        expect(graph.getVertex("key1").value).toBe("testVal1");
-        expect(graph.getVertex("key2").value).toBe("testVal2");
+        expect(graph.getVertex("key0").value).toBe("val0");
+        expect(graph.getVertex("key1").value).toBe("val1");
     });
 
     it("should get the edges", () => {
-        expect(graph.getEdges("key1").length).toBe(2);
+        expect(graph.getEdges("key0").length).toBe(2);
     });
 
     describe("removeAllEdgesInBetween", () => {
         it("should remove the edges by key", () => {
             // REFACTOR
             graph = new AdjacencyListGraph();
-            const verticesToInsert = {
-                testKey1: new Vertex("key1", "val1"),
-                testKey2: new Vertex("key2", "val2")
+            const vertices = {
+                testKey1: new Vertex("key0", "val1"),
+                testkey1: new Vertex("key1", "val2")
             };
 
-            Object.values(verticesToInsert).forEach(vertex => {
+            Object.values(vertices).forEach(vertex => {
                 graph.addVertex(vertex);
             });
 
-            graph.addEdge(new Edge("key1", "key2"));
-            graph.addEdge(new Edge("key1", "key2"));
+            graph.addEdge(new Edge("key0", "key1"));
+            graph.addEdge(new Edge("key0", "key1"));
         });
 
         it("should remove the edges by key", () => {
-            graph.removeAllEdgesInBetween("key1", "key2");
-            graph.removeAllEdgesInBetween("key4", "key2");
+            graph.removeAllEdgesInBetween("key0", "key1");
+            graph.removeAllEdgesInBetween("key3", "key1");
 
-            expect(graph.getAdjacent("key1")).toEqual(["key3"]);
-            expect(graph.getAdjacent("key2")).toEqual(["key3"]);
-            expect(graph.getAdjacent("key4")).toEqual([]);
+            expect(graph.getAdjacent("key0")).toEqual(["key2"]);
+            expect(graph.getAdjacent("key1")).toEqual(["key2"]);
+            expect(graph.getAdjacent("key3")).toEqual([]);
         });
     });
 });
