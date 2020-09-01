@@ -11,16 +11,15 @@ describe("AdjacencyListGraph", () => {
         new Edge("key2", "key4", 4),    
         new Edge("key4", "key2", 5) 
     ];
+    const verticesToInsert = {
+        testKey1: new Vertex("key1", "val1"),
+        testKey2: new Vertex("key2", "val2"),
+        testKey3: new Vertex("key3", "val3"),
+        testKey4: new Vertex("key4", "val4")
+    };
 
     beforeEach(() => {
         graph = new AdjacencyListGraph();
-        const verticesToInsert = {
-            testKey1: new Vertex("key1", "val1"),
-            testKey2: new Vertex("key2", "val2"),
-            testKey3: new Vertex("key3", "val3"),
-            testKey4: new Vertex("key4", "val4")
-        };
-
         Object.values(verticesToInsert).forEach(vertex => {
             graph.addVertex(vertex);
         });
@@ -36,10 +35,16 @@ describe("AdjacencyListGraph", () => {
         expect(graph.getNumerOfVertices()).toBe(4);
     });
 
-    it("should add edges retrieve the correct edges", () => {
-        expect(graph.getAdjacent("key1")).toEqual(["key2", "key3"]);
-        expect(graph.getAdjacent("key2")).toEqual(["key1", "key3", "key4"]);
-        expect(graph.getAdjacent("key4")).toEqual(["key2"]);
+    it("should retrieve the correct incoming edges", () => {
+        expect(graph.incomingEdgesOf("key1")).toEqual([]);
+        expect(graph.inDegreeOf("key2")).toEqual([edges[0], edges[4]]);
+        expect(graph.inDegreeOf("key3")).toEqual([edges[1], edges[2]]);
+    });
+
+    it("should retrieve the correct outgoing edges", () => {
+        expect(graph.inDegreeOf("key1")).toEqual([]);
+        expect(graph.inDegreeOf("key2")).toEqual([edges[0], edges[4]]);
+        expect(graph.inDegreeOf("key3")).toEqual([edges[1], edges[2]]);
     });
 
     it("should retrieve the correct vertice adjacentCounts", () => {
