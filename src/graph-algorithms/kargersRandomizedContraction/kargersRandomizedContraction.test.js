@@ -1,5 +1,5 @@
-const Graph = require("../../data-structures/graphs/undirected/unweighted/adjacency-list/AdjacencyListGraph");
-const Vertex = require("../../data-structures/graphs/vertex/Vertex");
+const Graph = require("../../data-structures/graphs/adjacency-list/AdjacencyListGraph.js");
+const Vertex = require("../../data-structures/graphs/vertex/Vertex.js");
 const kargersRandomizedContraction = require("./kargersRandomizedContraction");
 const fs = require("fs");
 

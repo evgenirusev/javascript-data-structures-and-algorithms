@@ -1,5 +1,5 @@
-const LinkedList = require("../../../../linked-list/LinkedList.js");
-const Edge = require("../../../weighted-edge/Edge");
+const LinkedList = require("../../linked-list/LinkedList.js");
+const Edge = require("../edge/Edge.js"); 
 
 class AdjacencyListGraph {
     constructor() {
@@ -16,44 +16,33 @@ class AdjacencyListGraph {
         return Object.keys(this.vertices).length;
     }
 
-    addEdge(start, end, val = null) {
-        this.adjList[start].addToTail(
-            new Edge(start, end, val)
-        );
+    addEdge(edge) {
+        this.adjList[start].addToTail(edge);
     }
 
     getVertex(vertexKey) {
         return this.vertices[vertex];
     }
 
-    getAdjacent(vertexKey) {
+    incomingEdgesOf(vertex) {
     }
 
-    adjacentCount(vertexKey) {
+    outgoingEdgesOf(vertex) {
     }
 
-    removeAllEdgesInBetween(start, end) {
+    inDegreeOf(vertex) {
     }
 
-    _removeAllEdgesEitherWay(start, end) {
+    outDegreeOf(vertex) {
     }
 
     getEdges(vertexKey) {
     }
 
-    _getAdjKeys(vertexKey) {
+    setEdgeWeight(vertexKey) {
     }
 
-    _validateEdge(edge) {
-    }
-
-    _validateVertexKey(vertexKey) {
-    }
-
-    _vertexExists(vertexKey) {
-    }
-
-    _edgeMatchesKeysEitherWay(edge, vertexKey1, vertexKey2) {
+    removeEdge() {
     }
 }
 

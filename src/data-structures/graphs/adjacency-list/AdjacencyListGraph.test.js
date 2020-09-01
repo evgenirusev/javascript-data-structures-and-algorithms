@@ -1,9 +1,16 @@
 const AdjacencyListGraph = require("./AdjacencyListGraph");
-const Vertex = require("../../../vertex/Vertex");
-const Edge = require("../../../weighted-edge/Edge");
+const Vertex = require("../vertex/Vertex.js");
+const Edge = require("../edge/Edge.js");
 
 describe("AdjacencyListGraph", () => {
     let graph;
+    const edges = [ 
+        new Edge("key1", "key2", 1),    
+        new Edge("key1", "key3", 2),    
+        new Edge("key2", "key3", 3),    
+        new Edge("key2", "key4", 4),    
+        new Edge("key4", "key2", 5) 
+    ];
 
     beforeEach(() => {
         graph = new AdjacencyListGraph();
@@ -18,11 +25,11 @@ describe("AdjacencyListGraph", () => {
             graph.addVertex(vertex);
         });
 
-        graph.addEdge("key1", "key2", 1);
-        graph.addEdge("key1", "key3", 2);
-        graph.addEdge("key2", "key3", 3);
-        graph.addEdge("key2", "key4", 4);
-        graph.addEdge("key4", "key2", 5);
+        graph.addEdge(edges[0]);
+        graph.addEdge(edges[1]);
+        graph.addEdge(edges[2]);
+        graph.addEdge(edges[3]);
+        graph.addEdge(edges[4]);
     });
 
     it("should add edges and retrive the correct amout of vertices", () => {
@@ -52,6 +59,7 @@ describe("AdjacencyListGraph", () => {
 
     describe("removeAllEdgesInBetween", () => {
         it("should remove the edges by key", () => {
+            // REFACTOR
             graph = new AdjacencyListGraph();
             const verticesToInsert = {
                 testKey1: new Vertex("key1", "val1"),
@@ -62,10 +70,8 @@ describe("AdjacencyListGraph", () => {
                 graph.addVertex(vertex);
             });
 
-            graph.addEdge("key1", "key2");
-            graph.addEdge("key2", "key1");
-            // TODO: WHY ISN'T THERE AN ASSERTION HERE?!?
-            // REFACTOR
+            graph.addEdge(new Edge("key1", "key2"));
+            graph.addEdge(new Edge("key1", "key2"));
         });
 
         it("should remove the edges by key", () => {
