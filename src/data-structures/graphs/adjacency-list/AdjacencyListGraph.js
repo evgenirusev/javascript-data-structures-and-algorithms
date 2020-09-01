@@ -1,3 +1,6 @@
+const LinkedList = require("../../../../linked-list/LinkedList.js");
+const Edge = require("../../../weighted-edge/Edge");
+
 class AdjacencyListGraph {
     constructor() {
         this.adjList = {};
@@ -6,6 +9,7 @@ class AdjacencyListGraph {
 
     addVertex(vertex) {
         this.vertices[vertex] = vertex;
+        this.adjList[vertex] = new LinkedList();
     }
 
     getNumerOfVertices() {
@@ -13,6 +17,9 @@ class AdjacencyListGraph {
     }
 
     addEdge(start, end, val = null) {
+        this.adjList[start].addToTail(
+            new Edge(start, end, val)
+        );
     }
 
     getVertex(vertexKey) {
