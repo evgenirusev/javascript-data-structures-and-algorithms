@@ -17,8 +17,9 @@ class AdjacencyListGraph {
     }
 
     get allEdges(vertexKey) {
-        // return Object.values(this.adjList)
-        // TODO: need to extend linked list before mplementing this.
+        return Object.values(this.adjList)
+            .map(ll => ll.toArray())
+            .flat();
     }
 
     getVertex(vertexKey) {
