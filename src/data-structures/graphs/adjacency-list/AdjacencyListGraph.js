@@ -13,7 +13,7 @@ class AdjacencyListGraph {
     }
 
     get allVertices() {
-        return this.vertices;
+        return Object.values(this.vertices);
     }
 
     get allEdges() {
@@ -38,6 +38,7 @@ class AdjacencyListGraph {
     }
 
     outgoingEdgesOf(vertex) {
+        return this.adjList[vertex].toArray();
     }
 
     inDegreeOf(vertex) {
