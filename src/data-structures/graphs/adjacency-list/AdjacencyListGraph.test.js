@@ -12,10 +12,10 @@ describe("AdjacencyListGraph", () => {
         new Edge("key3", "key1", 5) 
     ];
     const vertices = {
-        testKey1: new Vertex("key0", "val0"),
-        testkey1: new Vertex("key1", "val1"),
-        testkey2: new Vertex("key2", "val2"),
-        testkey3: new Vertex("key3", "val3")
+        key0: new Vertex("key0", "val0"),
+        key1: new Vertex("key1", "val1"),
+        key2: new Vertex("key2", "val2"),
+        key3: new Vertex("key3", "val3")
     };
 
     beforeEach(() => {
@@ -32,23 +32,20 @@ describe("AdjacencyListGraph", () => {
     });
 
     it("edges and vertices should have been added successfully", () => {
-        graph.
+        expect(graph.allVertices).toEqual(vertices);
     });
 
-    it("should retrieve the correct incoming edges", () => {
-        expect(graph.incomingEdgesOf(vertices[0])).toEqual([]);
-        expect(graph.incomingEdgesOf(vertices[1])).toEqual([edges[0], edges[4]]);
-        expect(graph.incomingEdgesOf(vertices[2])).toEqual([edges[1], edges[2]]);
-        expect(graph.incomingEdgesOf(vertices[3])).toEqual([edges[1]]);
-    });
+    // it("should retrieve the correct incoming edges", () => {
+        // expect(graph.incomingEdgesOf(vertices[0])).toEqual([]);
+        // expect(graph.incomingEdgesOf(vertices[1])).toEqual([edges[0], edges[4]]);
+        // expect(graph.incomingEdgesOf(vertices[2])).toEqual([edges[1], edges[2]]);
+        // expect(graph.incomingEdgesOf(vertices[3])).toEqual([edges[1]]);
+    // });
 
-    it("should retrieve the correct incoming edges", () => {
-        expect(graph.incomingEdgesOf(vertices[0])).toEqual([]);
-        expect(graph.incomingEdgesOf(vertices[1])).toEqual([edges[0], edges[4]]);
-        expect(graph.incomingEdgesOf(vertices[2])).toEqual([edges[1], edges[2]]);
-        expect(graph.incomingEdgesOf(vertices[3])).toEqual([edges[1]]);
-    });
-
-    it("should add vertices", () => {
-    });
+    // it("should retrieve the correct incoming edges", () => {
+        // expect(graph.incomingEdgesOf(vertices[0])).toEqual([]);
+        // expect(graph.incomingEdgesOf(vertices[1])).toEqual([edges[0], edges[4]]);
+        // expect(graph.incomingEdgesOf(vertices[2])).toEqual([edges[1], edges[2]]);
+        // expect(graph.incomingEdgesOf(vertices[3])).toEqual([edges[1]]);
+    // });
 });

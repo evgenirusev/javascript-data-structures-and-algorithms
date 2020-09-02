@@ -12,7 +12,7 @@ class AdjacencyListGraph {
         this.adjList[vertex] = new LinkedList();
     }
 
-    get vertices() {
+    get allVertices() {
         return this.vertices;
     }
 
@@ -25,7 +25,7 @@ class AdjacencyListGraph {
     }
 
     addEdge(edge) {
-        this.adjList[start].addToTail(edge);
+        this.adjList[edge.start].addToTail(edge);
     }
 
     getEdges(vertexKey) {
