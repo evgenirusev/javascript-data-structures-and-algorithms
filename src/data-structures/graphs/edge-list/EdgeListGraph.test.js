@@ -1,6 +1,6 @@
 const EdgeListGraph = require("./EdgeListGraph");
-const Vertex = require("../../../vertex/Vertex");
-const Edge = require("../../../weighted-edge/Edge");
+const Vertex = require("../vertex/Vertex.js");
+const Edge = require("../edge/Edge.js");
 
 describe("Graph", () => {
     let graph;

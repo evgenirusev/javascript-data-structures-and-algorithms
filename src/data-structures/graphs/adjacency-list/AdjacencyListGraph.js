@@ -16,7 +16,7 @@ class AdjacencyListGraph {
         return this.vertices;
     }
 
-    get allEdges(vertexKey) {
+    get allEdges() {
         return Object.values(this.adjList)
             .map(ll => ll.toArray())
             .flat();
