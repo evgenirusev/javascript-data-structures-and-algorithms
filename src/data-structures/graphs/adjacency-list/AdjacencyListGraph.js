@@ -16,6 +16,11 @@ class AdjacencyListGraph {
         return this.vertices;
     }
 
+    get allEdges(vertexKey) {
+        // return Object.values(this.adjList)
+        // TODO: need to extend linked list before mplementing this.
+    }
+
     getVertex(vertexKey) {
         return this.vertices[vertex];
     }
@@ -26,9 +31,6 @@ class AdjacencyListGraph {
 
     addEdge(edge) {
         this.adjList[edge.start].addToTail(edge);
-    }
-
-    getEdges(vertexKey) {
     }
 
     incomingEdgesOf(vertex) {
