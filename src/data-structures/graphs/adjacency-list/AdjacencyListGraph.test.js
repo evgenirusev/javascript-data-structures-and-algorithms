@@ -52,4 +52,9 @@ describe("AdjacencyListGraph", () => {
         expect(graph.outgoingEdgesOf(vertices[2])).toEqual([]);
         expect(graph.outgoingEdgesOf(vertices[3])).toEqual([edges[4]]);
     });
+
+    it("should remove edge", () => {
+        graph.removeEdge(edges[0]);
+        expect(graph.incomingEdgesOf(vertices[1])).toEqual([edges[4]]);
+    });
 });

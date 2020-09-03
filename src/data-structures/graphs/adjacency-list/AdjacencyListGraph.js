@@ -44,16 +44,17 @@ class AdjacencyListGraph {
     }
 
     inDegreeOf(vertex) {
+        return this.incomingEdgesOf(vertex).length;
     }
 
     outDegreeOf(vertex) {
+        return this.outgoingEdgesOf(vertex).length;
     }
 
-    setEdgeWeight(vertexKey) {
-    }
-
-    removeEdge() {
+    removeEdge(edge) {
+        this.adjList[edge.start]
     }
 }
 
 module.exports = AdjacencyListGraph;
+
