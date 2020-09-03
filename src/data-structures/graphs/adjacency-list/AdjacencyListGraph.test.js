@@ -43,7 +43,7 @@ describe("AdjacencyListGraph", () => {
         expect(graph.incomingEdgesOf(vertices[0])).toEqual([]);
         expect(graph.incomingEdgesOf(vertices[1])).toEqual([edges[0], edges[4]]);
         expect(graph.incomingEdgesOf(vertices[2])).toEqual([edges[1], edges[2]]);
-        expect(graph.incomingEdgesOf(vertices[3])).toEqual([edges[1]]);
+        expect(graph.incomingEdgesOf(vertices[3])).toEqual([edges[3]]);
     });
 
     it("should retrieve the correct outgoing edges", () => {

@@ -35,6 +35,8 @@ class AdjacencyListGraph {
     }
 
     incomingEdgesOf(vertex) {
+        return this.allEdges
+            .filter(edge => edge.end === vertex.key);
     }
 
     outgoingEdgesOf(vertex) {
