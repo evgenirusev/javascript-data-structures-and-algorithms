@@ -99,4 +99,15 @@ describe("LinkedList", () => {
 
         expect(linkedList.valueExists(2)).toBe(true);
     });
+
+    it("should remove value", () => {
+        linkedList.addToTail(1);
+        linkedList.addToTail(2);
+        linkedList.addToTail(3);
+        
+        linkedList.remove(2);
+
+        expect(linkedList.valueExists(2)).toBe(false);
+        expect(linkedList.size()).toBe(2);
+    });
 });
