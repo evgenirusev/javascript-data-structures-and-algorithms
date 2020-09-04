@@ -52,7 +52,7 @@ class AdjacencyListGraph {
     }
 
     removeEdge(edge) {
-        this.adjList[edge.start]
+        this.adjList[edge.start].remove(edge);
     }
 }
 
