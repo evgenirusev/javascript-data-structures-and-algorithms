@@ -101,13 +101,14 @@ describe("LinkedList", () => {
     });
 
     it("should remove value", () => {
-        linkedList.addToTail(1);
-        linkedList.addToTail(2);
-        linkedList.addToTail(3);
-        
+        const values = [1, 2, 3, 4, 5];
+
+        values.forEach(val => {
+            linkedList.addToTail(val);
+        });
+
         linkedList.remove(2);
 
-        expect(linkedList.valueExists(2)).toBe(false);
-        expect(linkedList.size()).toBe(2);
+        expect(linkedList.toArray()).toEqual([1, 3, 4, 5]);
     });
 });
