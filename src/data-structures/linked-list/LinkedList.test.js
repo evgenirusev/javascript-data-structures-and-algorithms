@@ -120,5 +120,14 @@ describe("LinkedList", () => {
 
             expect(linkedList.toArray()).toEqual([]);
         });
+
+        it("should remove value", () => {
+            linkedList.addToTail(1);
+            linkedList.addToTail(2);
+
+            linkedList.remove(2);
+
+            expect(linkedList.toArray()).toEqual([1]);
+        });
     });
 });
