@@ -4,8 +4,8 @@ class LinkedList {
         this.tail = null;
     }
 
-    addToTail(val) {
-        const node = new Node(val);
+    addToTail(value) {
+        const node = new Node(value);
         if (!this.tail) {
             this.tail = node;
             this.head = this.tail;
@@ -17,8 +17,8 @@ class LinkedList {
         this.tail = node;
     }
 
-    addToHead(val) {
-        const node = new Node(val);
+    addToHead(value) {
+        const node = new Node(value);
         if (!this.head) {
             this.head = node;
             this.tail = this.head;
@@ -31,11 +31,11 @@ class LinkedList {
     }
 
     peekHead() {
-        return this.head.val;
+        return this.head.value;
     }
 
     peekTail() {
-        return this.tail.val;
+        return this.tail.value;
     }
 
     deleteFromHead() {
@@ -84,7 +84,7 @@ class LinkedList {
     inorder(cb) {
         let current = this.head;
         while (current) {
-            cb(current.val);
+            cb(current.value);
             current = current.next;
         }
     }
@@ -93,7 +93,7 @@ class LinkedList {
         let result = [];
         let current = this.head;
         while (current) {
-            result.push(current.val);
+            result.push(current.value);
             current = current.next;
         }
 
@@ -116,11 +116,11 @@ class LinkedList {
         }
     }
 
-    valueExists(val) {
+    valueExists(value) {
         let current = this.head;
 
         while (current) {
-            if (current.val === val) {
+            if (current.value === value) {
                 return true;
             }
 
@@ -129,11 +129,41 @@ class LinkedList {
 
         return false;
     }
+
+    remove(value) {
+        if (this.head.value === value) {
+            if (this.head === this.tail) {
+                this.tail = null;
+            }
+            this.head.next.prev = null;
+            this.head = null;
+            
+            return true;
+        }
+
+        if (this.tail.value === value) {
+            this.tail.prev.next = null;
+            return true;
+        }
+
+        let current = this.head;
+        while (current) {
+            if (current.value === value) {
+                current.prev.next = current.next;
+                current.next.prev = current.prev.prev;
+                return true;
+            }
+
+            current = current.next;
+        }
+        
+        return false;
+    }
 }
 
 class Node {
-    constructor(val) {
-        this.val = val;
+    constructor(value) {
+        this.value = value;
         this.next = null;
         this.prev = null;
     }
