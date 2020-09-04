@@ -91,4 +91,12 @@ describe("LinkedList", () => {
 
         expect(linkedList.toArray()).toEqual(reversed);
     });
+
+    it("should find the value", () => {
+        linkedList.addToTail(1);
+        linkedList.addToTail(2);
+        linkedList.addToTail(3);
+
+        expect(linkedList.valueExists(2)).toBe(true);
+    });
 });

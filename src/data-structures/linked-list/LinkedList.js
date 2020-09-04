@@ -115,13 +115,27 @@ class LinkedList {
             this.head = temp.prev;
         }
     }
+
+    valueExists(val) {
+        let current = this.head;
+
+        while (current) {
+            if (current.val === val) {
+                return true;
+            }
+
+            current = current.next;
+        }
+
+        return false;
+    }
 }
 
 class Node {
     constructor(val) {
         this.val = val;
-        this.left = null;
-        this.right = null;
+        this.next = null;
+        this.prev = null;
     }
 }
 

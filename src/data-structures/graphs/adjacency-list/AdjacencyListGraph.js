@@ -57,4 +57,3 @@ class AdjacencyListGraph {
 }
 
 module.exports = AdjacencyListGraph;
-
