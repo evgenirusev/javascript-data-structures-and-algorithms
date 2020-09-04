@@ -134,8 +134,10 @@ class LinkedList {
         if (this.head.value === value) {
             if (this.head === this.tail) {
                 this.tail = null;
+            } else {
+                this.head.next.prev = null;
             }
-            this.head.next.prev = null;
+
             this.head = null;
             
             return true;

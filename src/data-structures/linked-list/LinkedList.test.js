@@ -100,15 +100,25 @@ describe("LinkedList", () => {
         expect(linkedList.valueExists(2)).toBe(true);
     });
 
-    it("should remove value", () => {
-        const values = [1, 2, 3, 4, 5];
+    describe("remove operation", () => {
+        it("should remove value", () => {
+            const values = [1, 2, 3, 4, 5];
 
-        values.forEach(val => {
-            linkedList.addToTail(val);
+            values.forEach(val => {
+                linkedList.addToTail(val);
+            });
+
+            linkedList.remove(2);
+
+            expect(linkedList.toArray()).toEqual([1, 3, 4, 5]);
         });
 
-        linkedList.remove(2);
+        it("should remove value", () => {
+            linkedList.addToTail(2);
 
-        expect(linkedList.toArray()).toEqual([1, 3, 4, 5]);
+            linkedList.remove(2);
+
+            expect(linkedList.toArray()).toEqual([]);
+        });
     });
 });
