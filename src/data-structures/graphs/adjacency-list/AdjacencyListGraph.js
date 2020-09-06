@@ -2,9 +2,10 @@ const LinkedList = require("../../linked-list/LinkedList.js");
 const Edge = require("../edge/Edge.js"); 
 
 class AdjacencyListGraph {
-    constructor() {
+    constructor(undirected = false) {
         this.adjList = {};
         this.vertices = {};
+        this.undirected = undirected;
     }
 
     addVertex(vertex) {
@@ -32,6 +33,12 @@ class AdjacencyListGraph {
 
     addEdge(edge) {
         this.adjList[edge.start].addToTail(edge);
+
+        if (this.undirected) {
+            this.adjList[edge.end].addToTail(
+                new Edge(edge.end, edge.start, edge.weight)
+            );
+        }
     }
 
     incomingEdgesOf(vertex) {

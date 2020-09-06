@@ -64,9 +64,9 @@ describe("AdjacencyListGraph", () => {
         graph.addVertex(new Vertex("key1", "val1"));
         graph.addEdge(new Edge("key0", "key1"));
 
-        expect(graph.allEdges()).toEqual(
+        expect(graph.allEdges).toEqual([
             new Edge("key0", "key1"),
             new Edge("key1", "key0")
-        );
+        ]);
     });
 });
