@@ -24,7 +24,7 @@ class AdjacencyListGraph {
     }
 
     getVertex(vertexKey) {
-        return this.vertices[vertex];
+        return this.vertices[vertexKey];
     }
 
     getNumerOfVertices() {
@@ -62,6 +62,10 @@ class AdjacencyListGraph {
         this.adjList[edge.start].remove(edge);
 
         if (this.undirected) {
+            if (!this.adjList[edge.end]) {
+                throw 'no such edge!';
+            }
+
             this.adjList[edge.end].remove(
                 new Edge(edge.end, edge.start, edge.weight)
             );

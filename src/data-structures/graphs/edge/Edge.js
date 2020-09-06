@@ -16,6 +16,10 @@ class Edge {
     get end() {
         return this._end;
     }
+
+    toString() {
+        return `${this.start}->${this.end}->${this.weight}`;
+    }
 }
 
 module.exports = Edge;

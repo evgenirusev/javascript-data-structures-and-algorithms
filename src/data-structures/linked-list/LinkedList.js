@@ -1,5 +1,6 @@
 class LinkedList { 
-    constructor() {
+    constructor(cmp = (a, b) => a - b) {
+        this.cmp = cmp;
         this.head = null;
         this.tail = null;
     }
@@ -131,7 +132,7 @@ class LinkedList {
     }
 
     remove(value) {
-        if (this.head.value === value) {
+        if (this.cmp(this.head.value, value) === 0) {
             if (this.head === this.tail) {
                 this.tail = null;
             } else {
@@ -143,14 +144,14 @@ class LinkedList {
             return true;
         }
 
-        if (this.tail.value === value) {
+        if (this.cmp(this.tail.value, value) === 0) {
             this.tail.prev.next = null;
             return true;
         }
 
         let current = this.head;
         while (current) {
-            if (current.value === value) {
+            if (this.cmp(current.value, value) === 0) {
                 current.prev.next = current.next;
                 current.next.prev = current.prev.prev;
                 return true;
