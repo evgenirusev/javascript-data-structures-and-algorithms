@@ -58,15 +58,26 @@ describe("AdjacencyListGraph", () => {
         expect(graph.incomingEdgesOf(vertices[1])).toEqual([edges[4]]);
     });
 
-    it("should be undirected", () => {
-        graph = new AdjacencyListGraph(true);
-        graph.addVertex(new Vertex("key0", "val0"));
-        graph.addVertex(new Vertex("key1", "val1"));
-        graph.addEdge(new Edge("key0", "key1"));
+    describe("undirected graph", () => {
+        it("should be undirected", () => {
+            graph = new AdjacencyListGraph(true);
+            graph.addVertex(new Vertex("key0", "val0"));
+            graph.addVertex(new Vertex("key1", "val1"));
+            graph.addEdge(new Edge("key0", "key1"));
 
-        expect(graph.allEdges).toEqual([
-            new Edge("key0", "key1"),
-            new Edge("key1", "key0")
-        ]);
+            expect(graph.allEdges).toEqual([
+                new Edge("key0", "key1"),
+                new Edge("key1", "key0")
+            ]);
+        });
+
+        it("should remove edges from both sides", () => {
+            graph = new AdjacencyListGraph(true);
+            graph.addVertex(new Vertex("key0", "val0"));
+            graph.addVertex(new Vertex("key1", "val1"));
+            graph.addEdge(new Edge("key0", "key1"));
+
+            expect(graph.allEdges).toEqual([]);
+        });
     });
 });

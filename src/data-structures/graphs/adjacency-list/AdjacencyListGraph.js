@@ -60,6 +60,12 @@ class AdjacencyListGraph {
 
     removeEdge(edge) {
         this.adjList[edge.start].remove(edge);
+
+        if (this.undirected) {
+            this.adjList[edge.end].remove(
+                new Edge(edge.end, edge.start, edge.weight)
+            );
+        }
     }
 }
 
