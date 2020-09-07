@@ -1,4 +1,4 @@
-const Graph = require("../../data-structures/graphs/adjacency-list/AdjacencyListGraph.js");
+const Graph = require("./kargersAlgorithmGraph/kargersAlgorithmGraph.js");
 const Vertex = require("../../data-structures/graphs/vertex/Vertex.js");
 const kargersRandomizedContraction = require("./kargersRandomizedContraction");
 const fs = require("fs");
