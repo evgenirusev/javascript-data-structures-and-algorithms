@@ -71,13 +71,15 @@ describe("AdjacencyListGraph", () => {
             ]);
         });
 
-        // it("should remove edges from both sides", () => {
-            // graph = new AdjacencyListGraph(true);
-            // graph.addVertex(new Vertex("key0", "val0"));
-            // graph.addVertex(new Vertex("key1", "val1"));
-            // graph.addEdge(new Edge("key0", "key1"));
+        it("should remove edges from both sides", () => {
+            graph = new AdjacencyListGraph(true);
+            graph.addVertex(new Vertex("key0", "val0"));
+            graph.addVertex(new Vertex("key1", "val1"));
+            graph.addEdge(new Edge("key0", "key1"));
 
-            // expect(graph.allEdges).toEqual([]);
-        // });
+            graph.removeEdge(new Edge("key0", "key1"));
+
+            expect(graph.allEdges).toEqual([]);
+        });
     });
 });

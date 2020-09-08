@@ -1,6 +1,9 @@
 const LinkedList = require("../../linked-list/LinkedList.js");
 const Edge = require("../edge/Edge.js"); 
 
+const edgeEqualityComparator = (edge1, edge2) => 
+    JSON.stringify(edge1) === JSON.stringify(edge2) ? 0 : -1;
+
 class AdjacencyListGraph {
     constructor(undirected = false) {
         this.adjList = {};
@@ -10,7 +13,7 @@ class AdjacencyListGraph {
 
     addVertex(vertex) {
         this.vertices[vertex] = vertex;
-        this.adjList[vertex] = new LinkedList();
+        this.adjList[vertex] = new LinkedList(edgeEqualityComparator);
     }
 
     get allVertices() {
