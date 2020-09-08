@@ -132,34 +132,34 @@ class LinkedList {
     }
 
     remove(value) {
-        if (this.cmp(this.head.value, value) === 0) {
-            if (this.head === this.tail) {
-                this.tail = null;
-            } else {
+        if (this.cmp(value, this.head.value) === 0) {
+            if (this.head.next) {
                 this.head.next.prev = null;
+                this.head = this.head.next;
+            } else {
+                this.head = null;
             }
 
-            this.head = null;
-            
-            return true;
-        }
-
-        if (this.cmp(this.tail.value, value) === 0) {
-            this.tail.prev.next = null;
             return true;
         }
 
         let current = this.head;
         while (current) {
-            if (this.cmp(current.value, value) === 0) {
+            if (this.cmp(value, current.value) === 0) {
                 current.prev.next = current.next;
-                current.next.prev = current.prev.prev;
-                return true;
-            }
 
-            current = current.next;
+                if (current.next) {
+                    current.next.prev = current.prev;
+                } else {
+                    this.tail = current.prev;
+                }
+
+                return true;
+            } else {
+                current = current.next;
+            }
         }
-        
+
         return false;
     }
 }
