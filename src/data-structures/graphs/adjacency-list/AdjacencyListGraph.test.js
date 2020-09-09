@@ -81,5 +81,17 @@ describe("AdjacencyListGraph", () => {
 
             expect(graph.allEdges).toEqual([]);
         });
+
+        it("should remove all edges between the given 2 vertices", () => {
+            graph = new AdjacencyListGraph(true);
+            graph.addVertex(new Vertex("key0", "val0"));
+            graph.addVertex(new Vertex("key1", "val1"));
+            graph.addEdge(new Edge("key0", "key1"));
+            graph.addEdge(new Edge("key0", "key1"));
+
+            graph.removeAllEdgesBetween("key0", "key1");
+
+            expect(graph.allEdges).toEqual([]);
+        });
     });
 });
