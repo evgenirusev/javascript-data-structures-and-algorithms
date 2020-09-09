@@ -138,6 +138,7 @@ class LinkedList {
                 this.head = this.head.next;
             } else {
                 this.head = null;
+                this.tail = null;
             }
 
             return true;
@@ -164,7 +165,7 @@ class LinkedList {
     }
 
     removeAllWithValue(val) {
-        while(this.remove(val)) {
+        while(this.head && this.remove(val)) {
             this.remove(val);
         }
     }

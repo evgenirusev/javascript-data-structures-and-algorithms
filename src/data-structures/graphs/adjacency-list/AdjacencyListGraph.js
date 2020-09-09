@@ -76,7 +76,8 @@ class AdjacencyListGraph {
     }
 
     removeAllEdgesBetween(key1, key2) {
-
+        this.adjList[key1].removeAllWithValue(new Edge(key1, key2));
+        this.adjList[key2].removeAllWithValue(new Edge(key2, key1));
     }
 }
 
