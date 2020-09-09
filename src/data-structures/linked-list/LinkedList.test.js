@@ -129,5 +129,17 @@ describe("LinkedList", () => {
 
             expect(linkedList.toArray()).toEqual([1]);
         });
+
+        it("remove all with the given value", () => {
+            linkedList.addToTail(2);
+            linkedList.addToTail(5);
+            linkedList.addToTail(2);
+            linkedList.addToTail(3);
+            linkedList.addToTail(2);
+
+            linkedList.removeAllWithValue(2);
+
+            expect(linkedList.toArray()).toEqual([5, 3]);
+        });
     });
 });
