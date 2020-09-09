@@ -162,6 +162,12 @@ class LinkedList {
 
         return false;
     }
+
+    removeAllWithValue(val) {
+        while(this.remove(val)) {
+            this.remove(val);
+        }
+    }
 }
 
 class Node {
