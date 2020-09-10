@@ -17,7 +17,7 @@ module.exports = function generateGraph() {
         new Vertex("k9", "v9"),
         new Vertex("k10", "v10"),
         new Vertex("k11", "v11"),
-        new Vertex("k12", "v112")
+        new Vertex("k12", "v12")
     ];
     const edges = [ 
         new Edge("k1", "k2", 8),
