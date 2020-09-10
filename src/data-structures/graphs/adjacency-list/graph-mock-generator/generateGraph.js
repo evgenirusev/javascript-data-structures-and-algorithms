@@ -1,4 +1,6 @@
 const Graph = require('../AdjacencyListGraph.js');
+const Vertex = require("../../vertex/Vertex.js");
+const Edge = require("../../edge/Edge.js");
 
 // check ./graph.png to get an intuition for the graph
 module.exports = function generateGraph() {
