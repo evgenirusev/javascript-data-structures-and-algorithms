@@ -24,11 +24,9 @@ describe("AdjacencyListGraph", () => {
             graph.addVertex(vertex);
         });
 
-        graph.addEdge(edges[0]);
-        graph.addEdge(edges[1]);
-        graph.addEdge(edges[2]);
-        graph.addEdge(edges[3]);
-        graph.addEdge(edges[4]);
+        edges.forEach(edge => {
+            graph.addEdge(edge);
+        });
     });
 
     it("vertices should have been added successfully", () => {

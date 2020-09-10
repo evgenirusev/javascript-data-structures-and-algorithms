@@ -18,6 +18,47 @@ module.exports = function generateGraph() {
         new Vertex("k12", "v112")
     ];
     const edges = [ 
-    ];
-}
+        new Edge("k1", "k2", 8),
+        new Edge("k1", "k3", 3),
+        new Edge("k1", "k6", 13),
 
+        new Edge("k2", "k3", 2),
+        new Edge("k2", "k4", 1),
+
+        new Edge("k3", "k2", 3),
+        new Edge("k3", "k4", 9),
+        new Edge("k3", "k5", 2),
+
+        new Edge("k4", "k5", 4),
+        new Edge("k4", "k7", 6),
+        new Edge("k4", "k8", 2),
+        new Edge("k4", "k12"),
+
+        new Edge("k5", "k1", 5),
+        new Edge("k5", "k4", 6),
+        new Edge("k5", "k6", 5),
+        new Edge("k5", "k9", 4),
+
+        new Edge("k6", "k9", 7),
+        new Edge("k6", "k7", 1),
+
+        new Edge("k7", "k8", 4),
+        new Edge("k7", "k12"),
+
+        new Edge("k8", "k9", 1),
+
+        new Edge("k9", "k7", 5),
+
+        new Edge("k10", "k1"),
+    ];
+
+    vertices.forEach(vertex => {
+        graph.addVertex(vertex);
+    });
+
+    edges.forEach(edge => {
+        graph.addEdge(edge);
+    });
+
+    return graph;
+}
