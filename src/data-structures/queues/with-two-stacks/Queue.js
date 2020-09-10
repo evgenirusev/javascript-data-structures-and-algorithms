@@ -25,6 +25,10 @@ class Queue {
 
         return this.outputStack.pop();
     }
+
+    isEmpty() {
+        return this.inputStack.isEmpty();
+    }
 }
 
 module.exports = Queue;
