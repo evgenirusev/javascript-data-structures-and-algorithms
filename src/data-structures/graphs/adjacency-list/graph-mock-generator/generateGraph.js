@@ -1,6 +1,6 @@
 const Graph = require('../AdjacencyListGraph.js');
 
-// check /graph.png to get an intuition for the graph
+// check ./graph.png to get an intuition for the graph
 module.exports = function generateGraph() {
     const graph = new Graph();
     const vertices = [
