@@ -4,10 +4,10 @@ function breadthFirstSearch(graph, sourceVertex) {
     const visited = {};
     const result = [];
 
-    let current = sourceVertex;
     const queue = new Queue();
-    queue.enqueue(current);
-    do {
+    queue.enqueue(sourceVertex);
+    let current;
+    while (!queue.isEmpty()) {
         current = queue.dequeue();
         result.push(current.value);
 
@@ -20,7 +20,7 @@ function breadthFirstSearch(graph, sourceVertex) {
                 );
             }
         });
-    } while (!queue.isEmpty());
+    } 
 
     return result;
 }
