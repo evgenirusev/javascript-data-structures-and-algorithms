@@ -44,6 +44,7 @@ class LinkedList {
             throw 'The linked list is already empty!';
         }
 
+        const result = this.head.value;
         if (this.head.next) {
             this.head = this.head.next;
             this.head.prev = null;
@@ -51,6 +52,8 @@ class LinkedList {
             this.head = null;
             this.tail = null;
         }
+
+        return result;
     }
 
     deleteFromTail() {
@@ -58,6 +61,7 @@ class LinkedList {
             throw 'The linked list is already empty!';
         }
 
+        const result = this.tail.value;
         if (this.tail.prev) {
             this.tail = this.tail.prev;
             this.tail.next = null;
@@ -65,6 +69,8 @@ class LinkedList {
             this.tail = null;
             this.head = null;
         }
+
+        return result;
     }
 
     isEmpty() {
