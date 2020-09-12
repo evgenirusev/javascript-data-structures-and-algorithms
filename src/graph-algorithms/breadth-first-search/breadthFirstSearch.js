@@ -1,4 +1,4 @@
-const Queue = require('../../data-structures/queues/with-two-stacks/Queue.js');
+const Queue = require('../../data-structures/queues/with-linked-list/Queue.js');
 
 function breadthFirstSearch(graph, sourceVertex) {
     const visited = {};
@@ -6,6 +6,7 @@ function breadthFirstSearch(graph, sourceVertex) {
 
     const queue = new Queue();
     queue.enqueue(sourceVertex);
+    visited[sourceVertex.key] = true;
     let current;
     while (!queue.isEmpty()) {
         current = queue.dequeue();
@@ -25,4 +26,4 @@ function breadthFirstSearch(graph, sourceVertex) {
     return result;
 }
 
-module.exports = breadthFirstSearch
+module.exports = breadthFirstSearch;
