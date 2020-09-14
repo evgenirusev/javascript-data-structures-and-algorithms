@@ -17,6 +17,10 @@ class Edge {
         return this._end;
     }
 
+    setWeight(weight) {
+        this._weight = weight;
+    }
+
     toString() {
         return `${this.start}->${this.end}->${this.weight}`;
     }

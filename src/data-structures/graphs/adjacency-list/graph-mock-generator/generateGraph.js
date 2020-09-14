@@ -3,7 +3,7 @@ const Vertex = require("../../vertex/Vertex.js");
 const Edge = require("../../edge/Edge.js");
 
 // check ./graph.png to get an intuition for the graph
-module.exports = function generateGraph() {
+function generateWeightedGraph() {
     const graph = new Graph();
     const vertices = [
         new Vertex("k1", "v1"),
@@ -64,3 +64,15 @@ module.exports = function generateGraph() {
 
     return graph;
 }
+
+function generateUnweightedGraph() {
+    const graph = generateWeightedGraph();
+    graph.allEdges.forEach(edge => {
+        edge.setWeight(null);
+    });
+
+    return graph;
+}
+
+module.exports.generateWeightedGraph = generateWeightedGraph;
+module.exports.generateUnweightedGraph = generateUnweightedGraph;
