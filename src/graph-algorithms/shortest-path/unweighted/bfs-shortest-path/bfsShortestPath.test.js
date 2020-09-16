@@ -5,6 +5,6 @@ describe('bfsShortestPath', () => {
    it('should find the shortest path', () => {
        const graph = graphMockGenerators.generateUnweightedGraph();
 
-       expect(graph, graph.getVertex("k1"), graph.getVertex("k5")).toBe(2);
+       expect(bfsShortestPath(graph, graph.getVertex("k1"), graph.getVertex("k5"))).toBe(2);
    }); 
 });
