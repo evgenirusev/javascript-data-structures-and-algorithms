@@ -1,6 +1,6 @@
 const Queue = require('../../../../data-structures/queues/with-linked-list/Queue.js');
 
-function breadthFirstSearch(graph, sourceVertex, destVertex) {
+function bfsShortestPathDistance(graph, sourceVertex, destVertex) {
     const visitedKeyToPathLength = {};
 
     const queue = new Queue();
@@ -32,4 +32,4 @@ function breadthFirstSearch(graph, sourceVertex, destVertex) {
     throw 'path or vertex does not exist!';
 }
 
-module.exports = breadthFirstSearch;
+module.exports = bfsShortestPathDistance;
