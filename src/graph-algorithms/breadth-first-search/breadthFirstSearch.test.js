@@ -1,5 +1,5 @@
 const breadthFirstSearch = require('./breadthFirstSearch')
-const graphMockGenerators = require('../../data-structures/graphs/adjacency-list/graph-mock-generator/generateGraph.js');
+const graphMockGenerators = require('../../data-structures/graphs/adjacency-list/graph-mock-generator/graphGenerator.js');
 
 describe('breadthFirstSearch', () => {
     it('should traverse the graph in BFS order', () => {

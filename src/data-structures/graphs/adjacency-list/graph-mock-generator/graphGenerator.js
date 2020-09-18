@@ -74,5 +74,15 @@ function generateUnweightedGraph() {
     return graph;
 }
 
+function generateAsyclicGraph() {
+    const graph = generateWeightedGraph();
+    graph.allEdges.forEach(edge => {
+        edge.setWeight(null);
+    });
+
+    return graph;
+}
+
 module.exports.generateWeightedGraph = generateWeightedGraph;
 module.exports.generateUnweightedGraph = generateUnweightedGraph;
+module.exports.generateAsyclicGraph = generateAsyclicGraph;

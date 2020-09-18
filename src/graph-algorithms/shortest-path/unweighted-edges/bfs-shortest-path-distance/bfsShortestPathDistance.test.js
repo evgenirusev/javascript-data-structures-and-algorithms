@@ -1,4 +1,4 @@
-const graphMockGenerators = require('../../../../data-structures/graphs/adjacency-list/graph-mock-generator/generateGraph.js');
+const graphMockGenerators = require('../../../../data-structures/graphs/adjacency-list/graph-mock-generator/graphGenerator.js');
 const bfsShortestPathDistance = require('./bfsShortestPathDistance')
 
 describe('bfsShortestPathDistance', () => { 
