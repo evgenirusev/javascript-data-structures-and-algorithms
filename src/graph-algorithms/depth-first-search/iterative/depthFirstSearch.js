@@ -1,4 +1,4 @@
-const Stack = require('../../data-structures/stacks/linked-list-implementation/Stack.js');
+const Stack = require('../../../data-structures/stacks/linked-list-implementation/Stack.js');
 
 function depthFirstSearch(graph, sourceVertex) {
     const visited = {};
