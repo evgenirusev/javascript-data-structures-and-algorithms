@@ -1,5 +1,5 @@
 const depthFirstSearch = require('./depthFirstSearch');
-const graphGenerator = require('../../../data-structures/graphs/adjacency-list/graph-mock-generator/graphGenerator.js');
+const graphGenerator = require('../../../data-structures/graphs/graph-mock-generator/graphGenerator.js');
 
 describe('depthFirstSearch', () => {
     it('should traverse the graph in DFS order', () => {
