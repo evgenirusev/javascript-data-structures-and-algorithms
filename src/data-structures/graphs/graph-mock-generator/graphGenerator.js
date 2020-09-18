@@ -77,8 +77,17 @@ function generateUnweightedGraph() {
 function generateAsyclicGraph() {
     const graph = generateWeightedGraph();
     const edgesToRemove = [
-        new Edge("");
+        new Edge("k5", "k1", 5),
+        new Edge("k3", "k2", 3),
+        new Edge("k5", "k6", 5),
+        new Edge("k7", "k5", 3),
+        new Edge("k8", "k9", 1),
+        new Edge("k4", "k4", 5)
     ];
+
+    edgesToRemove.forEach(edge => {
+        graph.removeEdge(edge);
+    });
 
     return graph;
 }
