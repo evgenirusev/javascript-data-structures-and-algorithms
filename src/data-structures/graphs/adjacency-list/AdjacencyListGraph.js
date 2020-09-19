@@ -16,6 +16,15 @@ class AdjacencyListGraph {
         this.adjList[vertex] = new LinkedList(edgeEqualityComparator);
     }
 
+    removeVertex(vertexKey) {
+        this.outgoingEdgesOf(this.vertices[vertexKey]).forEach(edge => {
+            this.removeAllEdgesBetween(edge.start, edge.end)
+        });
+
+        delete this.vertices[vertexKey];
+        delete this.adjList[vertexKey];
+    }
+
     get allVertices() {
         return Object.values(this.vertices);
     }
