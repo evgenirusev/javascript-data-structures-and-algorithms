@@ -46,6 +46,7 @@ function generateWeightedGraph() {
 
         new Edge("k7", "k8", 4),
         new Edge("k7", "k12"),
+        new Edge("k7", "k5", 3),
 
         new Edge("k8", "k9", 1),
 

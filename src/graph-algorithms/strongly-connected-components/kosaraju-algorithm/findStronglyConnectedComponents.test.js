@@ -5,7 +5,7 @@ const Edge = require('../../../data-structures/graphs/edge/Edge.js');
 describe('kosarajuAlgorithm', () => { 
     it('should find the strongly connected components', () => {
         const graph = graphGenerator.generateUnweightedGraph();
-        graph.removeEdge(new Edge("k1", "k6", 13));
+        graph.removeEdge(new Edge("k5", "k1", null));
 
         expect(findStronglyConnectedComponents(graph)).toEqual([
             [1],

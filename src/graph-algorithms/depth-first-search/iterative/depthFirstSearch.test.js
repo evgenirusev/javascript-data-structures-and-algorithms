@@ -6,6 +6,6 @@ describe('depthFirstSearch', () => {
         const graph = graphGenerator.generateWeightedGraph();
 
         expect(depthFirstSearch(graph, graph.getVertex("k1")))
-            .toEqual(["v1", "v6","v7","v12", "v8","v9","v3","v5","v4","v2"]);
+            .toEqual(["v1", "v6", "v7", "v5", "v4", "v12", "v8", "v9", "v3", "v2"]);
     });
 });
