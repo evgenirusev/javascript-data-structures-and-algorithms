@@ -37,10 +37,12 @@ function findSCCs(graph, vertices) {
     vertices.forEach(vertex => {
         if (!visited[vertex.key]) {
             visited[vertex.key] = true;
-            result.push([currentVertex.value]);
+            SCCs.push([vertex.value]);
             findSCCsRecursive(graph, vertex, visited, SCCs);
         }
     });
+
+    return SCCs;
 }
 
 function findSCCsRecursive(graph, vertex, visited, SCCs) {
@@ -48,7 +50,7 @@ function findSCCsRecursive(graph, vertex, visited, SCCs) {
         if (!visited[edge.end]) {
             visited[edge.end] = true;
             const currentVertex = graph.getVertex(edge.end);
-            result.slice(-1)
+            SCCs.slice(-1)
                 .push(currentVertex.value);
             findSCCsRecursive(graph, currentVertex, visited, SCCs);
             SCCs.push([]);
