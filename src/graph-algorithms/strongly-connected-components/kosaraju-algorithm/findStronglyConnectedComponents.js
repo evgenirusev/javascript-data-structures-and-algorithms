@@ -34,13 +34,15 @@ function findSCCs(graph, vertices) {
     const SCCs = [];
     const visited = {};
 
-    vertices.forEach(vertex => {
+    while(vertices.length > 0) {
+        const vertex = vertices.pop();
+
         if (!visited[vertex.key]) {
             visited[vertex.key] = true;
             SCCs.push([vertex.value]);
             findSCCsRecursive(graph, vertex, visited, SCCs);
         }
-    });
+    }
 
     return SCCs;
 }
@@ -50,10 +52,8 @@ function findSCCsRecursive(graph, vertex, visited, SCCs) {
         if (!visited[edge.end]) {
             visited[edge.end] = true;
             const currentVertex = graph.getVertex(edge.end);
-            SCCs.slice(-1)
-                .push(currentVertex.value);
+            SCCs[SCCs.length - 1].push(currentVertex.value);
             findSCCsRecursive(graph, currentVertex, visited, SCCs);
-            SCCs.push([]);
         }
     });
 }

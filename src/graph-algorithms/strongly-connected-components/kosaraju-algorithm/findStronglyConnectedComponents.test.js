@@ -6,14 +6,15 @@ describe('kosarajuAlgorithm', () => {
     it('should find the strongly connected components', () => {
         const graph = graphGenerator.generateUnweightedGraph();
         graph.removeEdge(new Edge("k5", "k1", null));
+        graph.addEdge(new Edge("k1", "k10", null));
+        // graph.removeVertex("k10");
 
         expect(findStronglyConnectedComponents(graph)).toEqual([
-            [1],
-            [10],
-            [2, 3],
-            [4,5,8,9,6],
-            [12],
-            [11]
+            ["v12"],
+            ["v11"],
+            ["v8","v9", "v7","v5","v4","v6"],
+            ["v3", "v2"],
+            ["v10", "v1"]
         ]);
     }); 
 });
