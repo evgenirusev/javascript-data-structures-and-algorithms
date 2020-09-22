@@ -4,7 +4,6 @@ function topologicalSort(graph) {
 
     graph.allVertices.forEach(vertex => {
         if (!visited[vertex.key]) {
-            visited[vertex.key] = true;
             result.push(vertex.value);
             topologicalSortRecurse(result, visited, graph, vertex);
         }
@@ -14,9 +13,8 @@ function topologicalSort(graph) {
 }
 
 function topologicalSortRecurse(result, visited, graph, vertex) {
-    const edges = graph.outgoingEdgesOf(vertex);
-
-    edges.forEach(edge => {
+    visited[vertex.key] = true;
+    graph.outgoingEdgesOf(vertex).forEach(edge => {
         if (!visited[edge.end]) {
             visited[edge.end] = true;
 
