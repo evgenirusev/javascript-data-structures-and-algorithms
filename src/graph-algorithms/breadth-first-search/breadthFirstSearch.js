@@ -12,8 +12,7 @@ function breadthFirstSearch(graph, sourceVertex) {
         current = queue.dequeue();
         result.push(current.value);
 
-        const outgoingEdges = graph.outgoingEdgesOf(current);
-        outgoingEdges.forEach(edge => {
+        graph.outgoingEdgesOf(current).forEach(edge => {
             if (!visited[edge.end]) {
                 visited[edge.end] = true;
                 queue.enqueue(
