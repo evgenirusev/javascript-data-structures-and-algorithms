@@ -12,8 +12,7 @@ function depthFirstSearch(graph, sourceVertex) {
         current = stack.pop();
         result.push(current.value);
 
-        const outgoingEdges = graph.outgoingEdgesOf(current);
-        outgoingEdges.forEach(edge => {
+        graph.outgoingEdgesOf(current).forEach(edge => {
             if (!visited[edge.end]) {
                 visited[edge.end] = true;
                 stack.push(
