@@ -1,6 +1,6 @@
 # Javascript Data Structures And Algorithms
 
-This repository consists of self-written TDD implementations of the most popular data structures and algorithms.
+TDD Implementations of advanced data structures and algorithms.
 
 ## Algorithms
 
