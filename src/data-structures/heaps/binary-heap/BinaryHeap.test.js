@@ -39,7 +39,7 @@ describe("BinaryHeap", () => {
         expect(heap.top).toBe(lowestValue);
     });
 
-    it("(max heap) should be empty", () => {
+    it("should be empty", () => {
         const maxHeapComparator = (a, b) => b - a;
         heap = new BinaryHeap(maxHeapComparator);
         const valuesToInsert = [5, 13, 32, 4, 6];

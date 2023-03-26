@@ -32,6 +32,10 @@ class BinaryHeap {
         return this.heap[0];
     }
 
+    get isEmpty() {
+        return this.heap.length <= 0
+    }
+
     _heapifyUpIterative(index) {
         let parent = this._parent(index);
         while (this._cmp(this.heap[parent], this.heap[index]) > 0) {
