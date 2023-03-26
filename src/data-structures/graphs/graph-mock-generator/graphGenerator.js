@@ -34,7 +34,7 @@ function generateWeightedGraph() {
         new Edge("k4", "k5", 4),
         new Edge("k4", "k7", 6),
         new Edge("k4", "k8", 2),
-        new Edge("k4", "k12"),
+        new Edge("k4", "k12", 1),
 
         new Edge("k5", "k1", 5),
         new Edge("k5", "k4", 6),
@@ -45,14 +45,14 @@ function generateWeightedGraph() {
         new Edge("k6", "k7", 1),
 
         new Edge("k7", "k8", 4),
-        new Edge("k7", "k12"),
+        new Edge("k7", "k12", 1),
         new Edge("k7", "k5", 3),
 
         new Edge("k8", "k9", 1),
 
         new Edge("k9", "k7", 5),
 
-        new Edge("k10", "k1"),
+        new Edge("k10", "k1", 1),
     ];
 
     vertices.forEach(vertex => {
