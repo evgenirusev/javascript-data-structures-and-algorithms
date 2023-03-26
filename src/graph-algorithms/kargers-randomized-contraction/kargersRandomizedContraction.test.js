@@ -6,7 +6,7 @@ const fs = require("fs");
 describe("kargersRandomizedContraction", () => {
     it("remaining vertices should be 2 & should compute number of connecting edges between the two remaining vertices.", () => {
         const isNotEmptyString = (str) => str !== "";
-        var graphEntries = fs.readFileSync(__dirname + "/GraphMock.txt")
+        let graphEntries = fs.readFileSync(__dirname + "/GraphMock.txt")
             .toString()
             .split("\n")
             .map(graphEntryString => graphEntryString
