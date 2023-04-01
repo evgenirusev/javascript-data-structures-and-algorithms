@@ -71,7 +71,7 @@ class BinaryHeap {
             let priorityIndex = this._left(index);
             const right = this._right(index);
 
-            if (right && this._cmp(this.heap[priorityIndex], this.heap[right]) > 0) {
+            if (this.heap[right] && this._cmp(this.heap[priorityIndex], this.heap[right]) > 0) {
                 priorityIndex = right;
             }
 
