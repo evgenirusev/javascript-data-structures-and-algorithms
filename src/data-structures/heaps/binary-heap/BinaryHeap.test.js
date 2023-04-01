@@ -7,7 +7,7 @@ describe("BinaryHeap", () => {
         heap = new BinaryHeap();
     });
 
-    it("(min heap) should extract the minumum values correctly", () => {
+    it("(min heap) should extract the minimum values correctly", () => {
         const valuesToInsert = [5, 13, 32, 4, 6];
         valuesToInsert.forEach(heap.insert.bind(heap));
 
@@ -40,7 +40,7 @@ describe("BinaryHeap", () => {
     });
 
     it("should be empty", () => {
-        const maxHeapComparator = (a, b) => b - a;
+        const maxHeapComparator = (a, b) => a - b;
         heap = new BinaryHeap(maxHeapComparator);
         const valuesToInsert = [5, 13, 32, 4, 6];
         valuesToInsert.forEach(heap.insert.bind(heap));

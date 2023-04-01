@@ -23,8 +23,15 @@ class BinaryHeap {
             throw 'The heap is empty!';
         }
 
-        const result = this.heap.shift();
-        this._heapifyDown(0);
+        const result = this.heap[0];
+
+        if (this.heap.length == 1) {
+            this.heap.pop();
+        } else {
+            this.heap[0] = this.heap.pop();
+            this._heapifyDown(0);
+        }
+        
         return result;
     }
 

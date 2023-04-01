@@ -3,14 +3,15 @@ const BinaryHeap = require('../../../data-structures/heaps/binary-heap/BinaryHea
 function getShortestPaths(graph, sourceVertex) {
     const visited = {};
     const distances = {};
-    Object.keys(graph.allVertices).forEach(vertex => {
+    graph.allVertices.forEach(vertex => {
         distances[vertex] = Infinity;
     });
-    const heap = new BinaryHeap((a, b) => b.distance - a.distance);
+    const heap = new BinaryHeap((a, b) => a.distance - b.distance);
 
     heap.insert({ vertex: sourceVertex, distance: 0 });
+    distances[sourceVertex] = 0;
     while (!heap.isEmpty) {
-        const currentVertex = heap.extract();
+        const currentVertex = heap.extract().vertex;
         visited[currentVertex] = true;
 
         graph.outgoingEdgesOf(currentVertex).forEach(edge => {
