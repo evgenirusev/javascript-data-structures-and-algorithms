@@ -19,9 +19,9 @@ describe("HashTable", () => {
         hashTable.put('key1', 1);
         hashTable.put('key2', 2);
 
-        hashTable.remove('key2');
+        hashTable.remove('key1');
 
-        expect(hashTable.get('key1')).toBeUndefined();
+        expect(hashTable.get('key1')).toBe(null);
         expect(hashTable.get('key2')).toBe(2);
     });
 });
