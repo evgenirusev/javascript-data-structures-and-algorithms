@@ -1,12 +1,11 @@
-const primFindMinimumWeightTree = require('./primFindMinimumWeightTree');
-const graphGenerator = require('../../../data-structures/graphs/graph-mock-generator');
-const Edge = require('../../../data-structures/graphs/edge/Edge.js');
+const primFindMinimumWeightTree = require('./prim.js');
+const graphGenerator = require('../../../data-structures/graphs/graph-mock-generator/graphGenerator.js');
 
 describe('primFindMinimumWeightTree', () => { 
     it('should return the minimum weight tree', () => {
         const graph = graphGenerator.generateWeightedGraph();
 
-        expect(primFindMinimumWeightTree(graph))
-            .toEqual(["v1", "v3", "v5", "v9", "v7", "v8", "v2", "v4", "v12", "v6", "v10", "v11"]);
-    }); 
+        expect(primFindMinimumWeightTree(graph, graph.getVertex("k1")))
+            .toEqual(["k1","k3","k5","k2","k4","k12","k8","k9","k7","k6"]);
+    });
 });
