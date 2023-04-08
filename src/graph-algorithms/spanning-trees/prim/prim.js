@@ -2,10 +2,10 @@ const BinaryHeap = require('../../../data-structures/heaps/binary-heap/BinaryHea
 
 function primFindMinimumWeightTree(graph, sourceVertex) {
     const parents = [];
-    const visited = { };
+    const visited = {};
     const heap = new BinaryHeap((a, b) => a.distance - b.distance);
 
-    heap.insert({ vertex: sourceVertex.key, distance: 0 });
+    heap.insert({ vertex: sourceVertex, distance: 0 });
     let currentVertex;
     while (!heap.isEmpty) {
         currentVertex = heap.extract().vertex;
@@ -14,12 +14,12 @@ function primFindMinimumWeightTree(graph, sourceVertex) {
             continue;
 
         visited[currentVertex] = true;
-        parents.push(currentVertex);
+        parents.push(currentVertex.key);
         
         graph.outgoingEdgesOf(currentVertex).forEach(edge => {
             if (!visited[edge.end]) {
                 heap.insert({
-                    vertex: edge.end,
+                    vertex: graph.getVertex(edge.end),
                     distance: edge.weight
                 });
             }
