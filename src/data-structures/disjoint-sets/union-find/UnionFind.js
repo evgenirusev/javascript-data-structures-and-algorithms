@@ -22,14 +22,14 @@ class UnionFind {
         let rootKey2 = this.findRoot(key2);
 
         if (rootKey1 === rootKey2) {
-          return;
+            return;
         }
         if (this.rank[rootKey1] < this.rank[rootKey2]) {
-          [rootKey1, rootKey2] = [rootKey2, rootKey1];
+            [rootKey1, rootKey2] = [rootKey2, rootKey1];
         }
         this.parent[rootKey2] = rootKey1;
         if (this.rank[rootKey1] === this.rank[rootKey2]) {
-          this.rank[rootKey1]++;
+            this.rank[rootKey1]++;
         }
     }
 }
