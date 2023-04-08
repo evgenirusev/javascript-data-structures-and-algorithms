@@ -34,4 +34,20 @@ describe('UnionFind', () => {
         expect(unionFind.findRoot("k2")).toBe("k2");
         expect(unionFind.findRoot("k7")).toBe("k2");
     });
+
+    it('should return correct roots', () => {
+        unionFind.union("k6", "k7");
+        unionFind.union("k2", "k4");
+        unionFind.union("k8", "k9");
+        // unionFind.union("k4", "k8") - We remove this connection from the previous test
+        unionFind.union("k2", "k3");
+        unionFind.union("k7", "k8");
+
+        expect(unionFind.findRoot("k6")).toBe("k6");
+        expect(unionFind.findRoot("k2")).toBe("k2");
+        expect(unionFind.findRoot("k8")).toBe("k6");
+        expect(unionFind.findRoot("k4")).toBe("k2");
+        expect(unionFind.findRoot("k2")).toBe("k2");
+        expect(unionFind.findRoot("k7")).toBe("k6");
+    });
 });
