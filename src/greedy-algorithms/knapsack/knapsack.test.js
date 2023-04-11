@@ -1,3 +1,5 @@
+const knapsack = require("./knapsack");
+
 describe('knapsack', () => {
     it('should return the maximum value for the given items', () => {
       const itemValues = [1, 2, 5, 6];
