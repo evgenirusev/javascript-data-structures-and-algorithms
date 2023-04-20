@@ -1,3 +1,5 @@
-class Practice { }
+function execute() {
 
-module.exports = Practice;
+}
+
+module.exports = execute;

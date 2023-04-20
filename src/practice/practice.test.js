@@ -1,6 +1,6 @@
-const Practice = require("./practice");
+const execute = require("./practice");
 
-describe("Practice", () => {
+describe("execute", () => {
     it("should work as expected", () => {
         
     });
