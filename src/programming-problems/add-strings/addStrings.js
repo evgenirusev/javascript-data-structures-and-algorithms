@@ -7,8 +7,10 @@ function addStrings(num1, num2) {
     let num1Digit = num1[num1.length - i];
     let num2Digit = num2[num2.length - i];
     let remainder = 0;
-    while(num1Digit != null || num2Digit != null) {
+    while(num1Digit != null || num2Digit != null) { // TODO: consider different base case
         let digitSum = remainder;
+        if (remainder)
+            remainder = 0;
 
         if (num1Digit != null)
             digitSum += parseInt(num1Digit);
@@ -26,6 +28,10 @@ function addStrings(num1, num2) {
         i++;
         num1Digit = num1[num1.length - i];
         num2Digit = num2[num2.length - i];
+    }
+    
+    if (remainder) {
+        result[result.length - i] = 1;
     }
     
     return result.join('');
