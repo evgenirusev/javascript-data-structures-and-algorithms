@@ -1,38 +1,22 @@
 // https://leetcode.com/problems/add-strings
-
 function addStrings(num1, num2) {
     const result = new Array(Math.max(num1.length, num2.length) + 1);
 
-    let i = 1;
-    let num1Digit = num1[num1.length - i];
-    let num2Digit = num2[num2.length - i];
+    let i = num1.length - 1;
+    let j = num2.length - 1;
     let remainder = 0;
-    while(num1Digit != null || num2Digit != null) { // TODO: consider different base case
-        let digitSum = remainder;
-        if (remainder)
-            remainder = 0;
-
-        if (num1Digit != null)
-            digitSum += parseInt(num1Digit);
-
-        if (num2Digit != null)
-            digitSum += parseInt(num2Digit);
-
-        if (digitSum > 9) {
-            result[result.length - i] = digitSum % 10;
-            remainder = 1;
-        } else {
-            result[result.length - i] = digitSum;
-        }
-
-        i++;
-        num1Digit = num1[num1.length - i];
-        num2Digit = num2[num2.length - i];
+    for (let k = result.length - 1; k >= 0; k--, i--, j--) {
+        const sum = ((parseInt(num1[i]) || 0) + (parseInt(num2[j]) || 0)) + remainder;
+        
+        remainder = sum > 9 ? 1 : 0;
+        
+        result[k] = 0;
+        if (sum)
+            result[k] += sum % 10;
     }
     
-    if (remainder) {
-        result[result.length - i] = 1;
-    }
+    if (!result[0])
+        delete result[0];
     
     return result.join('');
 }
