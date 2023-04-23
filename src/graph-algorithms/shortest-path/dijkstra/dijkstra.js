@@ -1,5 +1,8 @@
 const BinaryHeap = require('../../../data-structures/heaps/binary-heap/BinaryHeap');
 
+// Time complexity of Dijkstra with Min Priority Queue - O(V + E*log(V)) 
+// where V is the number of vertices and E is the number of edges.
+// This is the optimized Dijkstra improved from O(V^2) due to Min Priority Queue.
 function getShortestPaths(graph, sourceVertex) {
     const visited = {};
     const distances = {};

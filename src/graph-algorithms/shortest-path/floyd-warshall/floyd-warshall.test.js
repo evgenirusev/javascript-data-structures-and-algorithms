@@ -1,6 +1,5 @@
 const floydWarshall = require('./floyd-warshall')
-const Graph = require("../../../data-structures/graphs/adjacency-list/AdjacencyListGraph")
-const Vertex = require("../../../data-structures/graphs/vertex/Vertex.js");
+const Graph = require("../../../data-structures/graphs/adjacency-list/AdjacencyListGraph");
 const Edge = require('../../../data-structures/graphs/edge/Edge');
 
 describe('floydWarshall', () => {
