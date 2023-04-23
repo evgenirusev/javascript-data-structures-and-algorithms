@@ -10,7 +10,7 @@ describe('bellmanFord', () => {
             graph.addVertex(new Vertex(vertexKey));
         });
 
-        graph.addEdge(
+        [
             new Edge('A', 'B', 6),
             new Edge('A', 'C', 4),
             new Edge('A', 'D', 5),
@@ -23,9 +23,10 @@ describe('bellmanFord', () => {
             new Edge('D', 'C', -2),
             new Edge('D', 'F', -1),
 
-            new Edge('E', 'F', 3),
-        );
-
+            new Edge('E', 'F', 3)
+        ].forEach(edge => {
+            graph.addEdge(edge);
+        });
         
         expect(bellmanFord(graph, 'A')).toEqual({
             'A': 0,
