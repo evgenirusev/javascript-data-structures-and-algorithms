@@ -17,7 +17,20 @@ function bellmanFord(graph, sourceVertex) {
         });
     }
 
+    checkForNegativeSycle(graph, distances);
+
     return distances;
+}
+
+function checkForNegativeSycle(graph, distances) {
+    graph.allVertices.forEach(vertex => {
+        graph.outgoingEdgesOf(vertex).forEach(edge => {
+            const totalDistance = edge.weight + distances[vertex];
+            if (totalDistance < distances[edge.end]) {
+                throw new Error("Negative weight cycle detected");
+            }
+        });
+    });
 }
 
 module.exports = bellmanFord;
