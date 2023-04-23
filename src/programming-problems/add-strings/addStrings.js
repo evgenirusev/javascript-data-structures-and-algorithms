@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/add-strings
+
 function addStrings(num1, num2) {
+    // Because strings are immutable and cost O(n) to re-create, we're creating an array to store the result.
     const result = new Array(Math.max(num1.length, num2.length) + 1);
 
     let i = num1.length - 1;
