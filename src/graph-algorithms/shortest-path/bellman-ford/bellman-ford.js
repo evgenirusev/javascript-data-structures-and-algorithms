@@ -10,7 +10,7 @@ function bellmanFord(graph, sourceVertex) {
         relaxVertices(graph, distances);
     }
 
-    checkForNegativeSycle(graph, distances);
+    checkForNegativeCycle(graph, distances);
 
     return distances;
 }
@@ -26,7 +26,7 @@ function relaxVertices(graph, distances) {
     });
 }
 
-function checkForNegativeSycle(graph, distances) {
+function checkForNegativeCycle(graph, distances) {
     graph.allVertices.forEach(vertex => {
         graph.outgoingEdgesOf(vertex).forEach(edge => {
             const totalDistance = edge.weight + distances[vertex];
