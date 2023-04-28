@@ -4,23 +4,23 @@ function nQueenProblem(n) {
     const boards = new Array(n).fill([]);
 
     for (let row = 0; row < n; row++) {
-        backtrack(row + 1, n, boards[0]);
+        placeQueenOnRow(row, n, boards[row]);
     }
 
     return boards;
 }
 
-function backtrack(row, n, board) {
+function placeQueenOnRow(row, n, board) {
     for (let col = 0; col < n; col++) {
         if (canPlaceQueen(row, col, board, n)) {
             board[row][col] = 'Q';
-            backtrack(row + 1, n, board);
+            placeQueenOnRow(row + 1, n, board);
         }
     }
 }
 
 function canPlaceQueen(row, col, board, n) {
-    const highestIndex = Math.max(n, n - row);
+    const highestIndex = Math.max(row, n - row);
 
     for (let i = 1; i < highestIndex; i++) {
         const topLeft = board[row - i][col - i];
