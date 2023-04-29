@@ -9,7 +9,7 @@ describe('nQueenProblem', () => {
 		expect(nQueenProblem(4)).toEqual(
 			[
 				['.Q..', '...Q', 'Q...', '..Q.'],
-				['..Q.', 'Q...', '...Q', '.Q..'],
+				['..Q.', 'Q...', '...Q', '.Q..']
 			]
 		);
 	});

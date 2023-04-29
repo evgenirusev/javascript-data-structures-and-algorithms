@@ -27,13 +27,16 @@ function canPlaceQueen(row, col, boards, n) {
     const highestIndex = Math.max(row, n - row);
 
     for (let i = 1; i < highestIndex; i++) {
-        const topLeft = boards[row - i][col - i];
-        const bottomRight = boards[i + row][col + i];
-        const topRight = boards[row - i][col + i];
-        const bottomLeft = boards[row + 1][col - i];
-
-        if (topLeft == 'Q' || bottomRight == 'Q' 
-        || topRight == 'Q' || bottomLeft == 'Q')
+        const topCell = boards[row - i] && boards[row - i][col];
+        const bottomCell = boards[row + i] && boards[row + i][col];
+    
+        const topLeft = boards[row - i] && boards[row - i][col - i];
+        const bottomRight = boards[i + row] && boards[i + row][col + i];
+        const topRight = boards[row - i] && boards[row - i][col + i];
+        const bottomLeft = boards[row + 1] && boards[row + 1][col - i];
+    
+        if (topCell == 'Q' || bottomCell == 'Q' || topLeft == 'Q' 
+            || bottomRight == 'Q' || topRight == 'Q' || bottomLeft == 'Q')
             return false;
     }
 
