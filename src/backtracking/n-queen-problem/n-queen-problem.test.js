@@ -1,4 +1,4 @@
-const nQueenProblem = require('./nQueenProblem');
+const nQueenProblem = require('./n-queen-problem');
 
 describe('nQueenProblem', () => {
 	it('returns correct number of solutions for n = 1', () => {

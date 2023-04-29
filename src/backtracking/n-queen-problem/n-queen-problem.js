@@ -1,7 +1,7 @@
 https://leetcode.com/problems/n-queens/
 
 function nQueenProblem(n) {
-    const boards = new Array(n).fill([]);
+    const boards = Array(n).fill().map(() => Array(n).fill('.'));
 
     for (let row = 0; row < n; row++) {
         placeQueenOnRow(row, n, boards[row]);
@@ -29,31 +29,11 @@ function canPlaceQueen(row, col, board, n) {
         const bottomLeft = board[row + 1][col - i];
 
         if (topLeft == 'Q' || bottomRight == 'Q' 
-        || topRight == 'Q' || bottomLeft == 'Q') {
+        || topRight == 'Q' || bottomLeft == 'Q')
             return false;
-        }
     }
 
     return true;
 }
 
-// 33:
-
-// 00
-// 11
-// 22
-
-// 24
-// 15
-// 06
-
-// 44
-// 55
-// 66
-
-// 42
-// 51
-// 60
-
 module.exports = nQueenProblem;
-  

@@ -10,11 +10,7 @@ function breadthFirstSearch(graph, sourceVertex) {
         visited[currentNode] = true;
         result.push(currentNode.value);
 
-<<<<<<< Updated upstream
-        graph.outgoingEdgesOf(current).forEach(edge => {
-=======
         graph.outgoingEdgesOf(currentNode).forEach(edge => {
->>>>>>> Stashed changes
             if (!visited[edge.end]) {
                 queue.push(edge.end);
             }
