@@ -1,6 +1,7 @@
-https://leetcode.com/problems/n-queens/
+// https://leetcode.com/problems/n-queens/
 
 function nQueenProblem(n) {
+    
     const boards = Array(n).fill().map(() => Array(n).fill('.'));
 
     for (let row = 0; row < n; row++) {
