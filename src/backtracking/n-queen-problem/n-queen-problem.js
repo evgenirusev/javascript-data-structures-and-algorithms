@@ -37,11 +37,10 @@ function placeQueen(board, row, n, results) {
 
 function canPlaceQueen(board, row, col, n) {
     const highestIndex = Math.max(row, n - row);
-
+    
     for (let i = 1; i <= highestIndex; i++) {
         if (
                board[row - i] && board[row - i][col] == 'Q' // top cell
-            || board[row + i] && board[row + i][col] == 'Q' // bottom cell
             || board[row - i] && board[row - i][col - i] == 'Q' // top left diag
             || board[i + row] && board[i + row][col + i] == 'Q' // bottom right diag
             || board[row - i] && board[row - i][col + i] == 'Q' // top right diag
