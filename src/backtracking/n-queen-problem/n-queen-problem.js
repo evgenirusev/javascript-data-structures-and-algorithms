@@ -20,20 +20,17 @@ function nQueenProblem(n) {
     return result;
 }
 
-function placeQueen(board, row, n, results, queensCount) {
+function placeQueen(board, row, n, results) {
+    if (row === n) {
+        results.push(board.map(row => row.join('')));
+        return;
+    }
+
     for (let col = 0; col < n; col++) {
         if (canPlaceQueen(board, row, col, n)) {
             board[row][col] = 'Q';
-            queensCount++;
-
-            if (row == n - 1 && queensCount == n) {
-                results.push(board.map(row => row.join('')));
-            } else {
-                placeQueen(board, row + 1, n, results, queensCount);
-            }
-
+            placeQueen(board, row + 1, n, results);
             board[row][col] = '.';
-            queensCount--;
         }
     }
 }
