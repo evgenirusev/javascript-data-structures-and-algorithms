@@ -39,16 +39,14 @@ function canPlaceQueen(board, row, col, n) {
     const highestIndex = Math.max(row, n - row);
 
     for (let i = 1; i <= highestIndex; i++) {
-        const topCell = board[row - i] && board[row - i][col];
-        const bottomCell = board[row + i] && board[row + i][col];
-
-        const topLeft = board[row - i] && board[row - i][col - i];
-        const bottomRight = board[i + row] && board[i + row][col + i];
-        const topRight = board[row - i] && board[row - i][col + i];
-        const bottomLeft = board[row + 1] && board[row + 1][col - i];
-    
-        if (topCell == 'Q' || bottomCell == 'Q' || topLeft == 'Q' 
-            || bottomRight == 'Q' || topRight == 'Q' || bottomLeft == 'Q')
+        if (
+               board[row - i] && board[row - i][col] == 'Q' // top cell
+            || board[row + i] && board[row + i][col] == 'Q' // bottom cell
+            || board[row - i] && board[row - i][col - i] == 'Q' // top left diag
+            || board[i + row] && board[i + row][col + i] == 'Q' // bottom right diag
+            || board[row - i] && board[row - i][col + i] == 'Q' // top right diag
+            || board[row + 1] && board[row + 1][col - i] == 'Q' // bottom left diag
+            )
             return false;
     }
 
