@@ -26,7 +26,7 @@ describe('Traveling Salesman Problem - bruteforce solution', () => {
 
     it('should return the shortest path', () => {
         const result = bruteForceTSP(graph);
-        expect(result.distance).toBe(20);
-        expect(result.path).toEqual(['A', 'C', 'E', 'D', 'B', 'A']);
+        expect(result.distance).toBe(17);
+        expect(result.path).toEqual(['A', 'B', 'D', 'E', 'C', 'A']);
     });
 });
