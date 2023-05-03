@@ -27,6 +27,6 @@ describe('Traveling Salesman Problem - held karp dynamic programming', () => {
     it('should return the shortest path', () => {
         const result = heldKarp(graph);
         expect(result.distance).toBe(17);
-        expect(result.path).toEqual(['A', 'B', 'D', 'E', 'C', 'A']);
+        expect(result.path).toEqual(['A', 'B', 'D', 'E', 'C']);
     });
 });
