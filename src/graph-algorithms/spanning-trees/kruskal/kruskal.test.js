@@ -6,5 +6,5 @@ describe('kruskalFindMinimumWeightTree', () => {
         const graph = graphGenerator.generateWeightedGraph();
         expect(kruskalFindMinimumWeightTree(graph.allEdges, graph.allVertices.map(vertex => vertex.key)))
             .toEqual(['k4','k12','k7','k12','k9','k1','k3','k5','k8','k3']);
-    }); 
+    });
 });
