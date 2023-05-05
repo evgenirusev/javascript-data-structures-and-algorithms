@@ -2,7 +2,6 @@ const LinkedList = require("../../linked-list/LinkedList.js");
 
 class Queue {
     constructor() {
-        // could use dependency injection
         this.linkedList = new LinkedList();
     }
 

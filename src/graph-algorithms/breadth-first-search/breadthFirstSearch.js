@@ -4,19 +4,21 @@ function breadthFirstSearch(graph, sourceVertex) {
     const result = [];
     const visited = {};
 
-    const queue = [];
-    let currentNode = sourceVertex;
-    while (currentNode != null) {
-        visited[currentNode] = true;
-        result.push(currentNode.value);
+    const queue = new Queue();
 
-        graph.outgoingEdgesOf(currentNode).forEach(edge => {
-            if (!visited[edge.end]) {
-                queue.push(edge.end);
-            }
-        });
+    queue.enqueue(sourceVertex.key);
+    visited[sourceVertex.key] = true;
+    while(!queue.isEmpty()) {
+        const currentVertex = queue.dequeue();
+        result.push(graph.getVertex(currentVertex).value);
 
-        currentNode = queue.shift();
+        graph.outgoingEdgesOf(currentVertex)
+            .map(edge => edge.end)
+            .filter(destinationVertex => !visited[destinationVertex])
+            .forEach(vertexKey => {
+                visited[vertexKey] = true;
+                queue.enqueue(vertexKey);
+            });
     }
 
     return result;

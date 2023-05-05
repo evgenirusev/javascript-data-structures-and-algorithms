@@ -1,6 +1,5 @@
 function reverseWordsInString(str) {
-    return str
-            .split(/\s+/)
+    return str.split(/\s+/)
             .reverse()
             .join(" ")
             .trim();
