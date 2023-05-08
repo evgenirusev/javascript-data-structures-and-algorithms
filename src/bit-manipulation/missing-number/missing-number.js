@@ -9,16 +9,13 @@ function missingNumber(nums) {
     return missing;
 }
 
-// Sum approach - O(n) time O(1) space
+// Sum approach - O(n) time O(1) space 
 // function missingNumber(nums) {
-//     let indexSum = 0;
-//     let numsSum = 0;
+//     let res = nums.length;
 //     for (let i = 0; i < nums.length; i++) {
-//         indexSum += i;
-//         numsSum += nums[i];
+//         res += (i - nums[i])
 //     }
-//     indexSum += nums.length;
-//     return indexSum - numsSum;
-// };
+//     return res;
+// }
 
 module.exports = missingNumber;
