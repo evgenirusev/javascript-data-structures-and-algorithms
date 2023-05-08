@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/missing-number
 
+// XOR approach - O(n) time O(1) space
 function missingNumber(nums) {
     let missing = nums.length;
     for (let i = 0; i < nums.length; i++) {
@@ -8,7 +9,7 @@ function missingNumber(nums) {
     return missing;
 }
 
-// Sum approach - O(n) time O()
+// Sum approach - O(n) time O(1) space
 // function missingNumber(nums) {
 //     let indexSum = 0;
 //     let numsSum = 0;
