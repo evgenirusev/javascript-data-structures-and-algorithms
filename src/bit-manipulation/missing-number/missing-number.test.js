@@ -1,4 +1,4 @@
-const missingNumber = require('./missing-number'); // Assuming the implementation is in a separate file
+const missingNumber = require('./missing-number');
 
 describe('missingNumber', () => {
     it('Example 1: [3, 0, 1] => 2', () => {
