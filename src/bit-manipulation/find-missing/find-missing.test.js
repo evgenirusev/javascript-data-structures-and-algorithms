@@ -1,4 +1,4 @@
-const findMissing = require('./findMissing');
+const findMissing = require('./find-missing');
 
 describe('findMissing', () => {
     it('should be 1', () => {
