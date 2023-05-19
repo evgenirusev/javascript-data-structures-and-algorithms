@@ -1,5 +1,6 @@
 // https://leetcode.com/problems/contains-duplicate-ii/description/
 
+// Sliding window approach - O(n) time, O(k) space
 function containsNearbyDuplicate(arr, k) {
     if (k === 0)
         return false;
@@ -21,5 +22,7 @@ function containsNearbyDuplicate(arr, k) {
 
     return false;
 }
+
+// Brute force - O(n*k) time and O(k) space
 
 module.exports = containsNearbyDuplicate;
