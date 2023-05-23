@@ -1,4 +1,4 @@
-const isValidSudoku = require('./solution'); // Assuming you have a separate file for your solution
+const isValidSudoku = require('./validMatrix');
 
 describe('Leetcode Problem 36: Valid Sudoku', () => {
     it('should return true for a valid Sudoku board', () => {
