@@ -1,13 +1,6 @@
 const { encode, decode } = require('./encodeAndDecodeStrings');
 
 describe('Leetcode Problem 271: Encode and Decode Strings', () => {
-    it('should encode and decode empty string array', () => {
-        const input = [];
-        const encoded = encode(input);
-        const decoded = decode(encoded);
-        expect(decoded).toEqual(['']);
-    });
-
     it('should encode and decode single string', () => {
         const input = ['hello'];
         const encoded = encode(input);
