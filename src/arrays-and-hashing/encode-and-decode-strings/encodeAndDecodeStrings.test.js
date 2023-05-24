@@ -1,4 +1,4 @@
-const { encode, decode } = require('./solution');
+const { encode, decode } = require('./encodeAndDecodeStrings');
 
 describe('Leetcode Problem 271: Encode and Decode Strings', () => {
     it('should encode and decode empty string array', () => {
