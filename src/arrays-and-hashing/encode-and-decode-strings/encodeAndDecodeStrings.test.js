@@ -21,4 +21,11 @@ describe('Leetcode Problem 271: Encode and Decode Strings', () => {
         const decoded = decode(encoded);
         expect(decoded).toEqual(input);
     });
+
+    it('should encode and decode strings with special characters', () => {
+        const input = ['!@#$%^&*()_+-=', '1234567890'];
+        const encoded = encode(input);
+        const decoded = decode(encoded);
+        expect(decoded).toEqual(input);
+    });
 });
