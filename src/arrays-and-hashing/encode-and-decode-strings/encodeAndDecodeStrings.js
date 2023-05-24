@@ -1,14 +1,11 @@
 /**
  * Encodes a list of strings to a single string.
- *
+ * https://leetcode.com/problems/encode-and-decode-strings
  * @param {string[]} strs
  * @return {string}
  */
 var encode = function(strs) {
-    return strs.split(' ').reduce((output, str) => {
-        output.push(`é${str.length}È${str}`);
-        return output;
-    }, []).join(''); // Using array because strings are immutable & cost O(n) on concat
+    return strs.join('é');
 };
 
 /**
@@ -18,10 +15,12 @@ var encode = function(strs) {
  * @return {string[]}
  */
 var decode = function(s) {
-    
+    return s.split('é');
 };
 
 /**
  * Your functions will be called as such:
  * decode(encode(strs));
  */
+
+module.exports = { encode, decode }
