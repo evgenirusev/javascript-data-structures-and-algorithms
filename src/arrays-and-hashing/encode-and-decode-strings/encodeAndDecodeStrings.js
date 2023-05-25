@@ -31,7 +31,7 @@ function decode(s) {
     }
     return output;
 };
-
+ 
 function stringToInt(bytesStr) {
     let result = 0;
     for (const b of bytesStr) {
