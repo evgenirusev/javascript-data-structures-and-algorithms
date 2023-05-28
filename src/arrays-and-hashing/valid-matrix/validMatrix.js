@@ -1,3 +1,10 @@
+/**
+ * Solution with Sets
+ * Time O(ROWS * COLS) | Space O(ROWS * COLS)
+ * https://leetcode.com/problems/valid-sudoku/
+ * @param {character[][]} board
+ * @return {boolean}
+ */
 var isValidSudoku = (board) => {
     const rowsSet = Array(board.length).fill().map(set => new Set());
     const colsSet = Array(board.length).fill().map(set => new Set());
