@@ -1,3 +1,4 @@
+// Two pointer implementation - O(n) time and O(1) space
 var isPalindrome = function(s) {
     for (let i = 0, j = s.length - 1; i < j; i++, j--) {
         while (i < j && !isValidChar(s.charAt(i))) {
