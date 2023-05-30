@@ -6,6 +6,36 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
+function threeSum(nums) {
+    nums.sort((a, b) => a - b);
+    const result = [];
+    let L = 0;
+    let M = 1;
+    let R = nums.length - 1;
+    while (nums[L] <= 0) {
+        while (M < R) {
+            const sum = nums[L] + nums[M] + nums[R];
+            if (sum === 0) {
+                result.push([nums[L], nums[M], nums[R]]);
+                M++;
+            } else if (sum > 0) {
+                R--;
+            } else if (sum < 0) {
+                M++;
+            }
+        }
+
+        do {
+            L++;
+        } while (nums[L] === nums[L - 1] && L < R);
+            
+
+        M = L + 1;
+        R = nums.length - 1;
+    }
+
+    return result;
+};
 
 // Cases:
 // [0,0,0]
@@ -22,39 +52,5 @@
     // M < R
 // Base cases for L:
     // L > 0
-
-var threeSum = function(nums) {
-    nums.sort((a, b) => a - b);
-    const usedVariations = new Set();
-
-    const result = [];
-    let L = 0;
-    let M = 1;
-    let R = nums.length - 1;
-    while (nums[L] <= 0) {
-        while (M < R) {
-            const sum = nums[L] + nums[M] + nums[R];
-            if (sum === 0) {
-                const variation = `${nums[L]}${nums[M]}${nums[R]}`;
-                if (!usedVariations.has(variation)) {
-                    result.push([nums[L], nums[M], nums[R]]);
-                    usedVariations.add(variation);
-                }
-
-                M++;
-            } else if (sum > 0) {
-                R--;
-            } else if (sum < 0) {
-                M++;
-            }
-        }
-
-        L++;
-        M = L + 1;
-        R = nums.length - 1;
-    }
-
-    return result;
-};
 
 module.exports = threeSum;
