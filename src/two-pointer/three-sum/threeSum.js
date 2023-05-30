@@ -9,31 +9,27 @@
 function threeSum(nums) {
     nums.sort((a, b) => a - b);
     const result = [];
-    let L = 0;
-    let M = 1;
-    let R = nums.length - 1;
-    while (nums[L] <= 0) {
-        while (M < R) {
-            const sum = nums[L] + nums[M] + nums[R];
-            if (sum === 0) {
-                result.push([nums[L], nums[M], nums[R]]);
-                M++;
-            } else if (sum > 0) {
-                R--;
-            } else if (sum < 0) {
-                M++;
+
+    for (let L = 0; L < nums.length && nums[L] <= 0; L++) {
+        if (L == 0 || nums[L] !== nums[L - 1]) {
+            let M = L + 1, R = nums.length - 1;
+
+            while (M < R) {
+                const sum = nums[L] + nums[M] + nums[R];
+                if (sum > 0) {
+                    R--;
+                } else if (sum < 0) {
+                    M++;
+                } else {
+                    result.push([nums[L], nums[M++], nums[R--]]);
+
+                    while (M < R && nums[M] == nums[M - 1])
+                        M++;
+                }
             }
         }
-
-        do {
-            L++;
-        } while (nums[L] === nums[L - 1] && L < R);
-            
-
-        M = L + 1;
-        R = nums.length - 1;
     }
-
+    
     return result;
 };
 
