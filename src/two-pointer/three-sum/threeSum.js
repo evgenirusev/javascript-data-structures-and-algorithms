@@ -1,6 +1,6 @@
 /**
  * https://leetcode.com/problems/3sum
- * Solution using sorting
+ * Solution using sorting and 2Sum subproblems
  * Time complexity - O(n^2)
  * Space complexity - O(n)
  * @param {number[]} nums
