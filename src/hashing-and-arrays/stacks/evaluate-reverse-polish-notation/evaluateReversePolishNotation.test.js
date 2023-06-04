@@ -1,4 +1,4 @@
-const evalRPN = require('./evalRPN');
+const evalRPN = require('./evaluateReversePolishNotation');
 
 describe('evalRPN', () => {
   it('should evaluate the reverse Polish notation expression correctly', () => {
@@ -14,10 +14,5 @@ describe('evalRPN', () => {
   it('should handle decimal numbers', () => {
     const tokens = ['10', '6', '9', '3', '+', '-11', '*', '/', '*', '17', '+', '5', '+'];
     expect(evalRPN(tokens)).toBe(22);
-  });
-
-  it('should handle division with negative numbers', () => {
-    const tokens = ['-78', '-33', '/', '33', '3', '/', '+'];
-    expect(evalRPN(tokens)).toBe(11);
   });
 });
