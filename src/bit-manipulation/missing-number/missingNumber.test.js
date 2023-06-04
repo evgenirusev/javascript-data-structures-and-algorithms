@@ -1,4 +1,4 @@
-const missingNumber = require('./missing-number');
+const missingNumber = require('./missingNumber');
 
 describe('missingNumber', () => {
     it('Example 1: [3, 0, 1] => 2', () => {

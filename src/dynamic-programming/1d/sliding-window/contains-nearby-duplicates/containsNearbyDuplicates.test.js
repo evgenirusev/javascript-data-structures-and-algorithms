@@ -1,4 +1,4 @@
-const containsNearbyDuplicate = require('./contains-nearby-duplicates.js');
+const containsNearbyDuplicate = require('./containsNearbyDuplicates.js');
 
 describe('containsNearbyDuplicate', () => {
 	it('returns true when there are nearby duplicates', () => {

@@ -1,4 +1,4 @@
-const bellmanFord = require('./bellman-ford')
+const bellmanFord = require('./bellmanFord')
 const Graph = require("../../../data-structures/graphs/adjacency-list/AdjacencyListGraph")
 const Vertex = require("../../../data-structures/graphs/vertex/Vertex.js");
 const Edge = require('../../../data-structures/graphs/edge/Edge');

@@ -1,4 +1,4 @@
-const isValid = require('./isValid');
+const isValid = require('./validParanthesis');
 
 describe("isValid", () => {
     it('should return true for a valid string', () => {
@@ -17,5 +17,3 @@ describe("isValid", () => {
         expect(isValid("")).toBe(true);
     });
 });
-
-module.exports = isValid;

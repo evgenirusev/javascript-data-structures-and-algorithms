@@ -1,4 +1,4 @@
-const findDisappearedNumbers = require('./find-disappeared-nums');
+const findDisappearedNumbers = require('./findDisappearedNums');
 
 describe('findDisappearedNumbers', () => {
     it('should find 5 and 6', () => {

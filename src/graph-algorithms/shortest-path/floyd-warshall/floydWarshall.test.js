@@ -1,4 +1,4 @@
-const floydWarshall = require('./floyd-warshall')
+const floydWarshall = require('./floydWarshall')
 const Graph = require("../../../data-structures/graphs/adjacency-list/AdjacencyListGraph");
 const Edge = require('../../../data-structures/graphs/edge/Edge');
 

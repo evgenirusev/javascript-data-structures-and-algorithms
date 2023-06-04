@@ -1,4 +1,4 @@
-const { HuffmanCoding } = require("./huffman-coding");
+const { HuffmanCoding } = require("./huffmanCoding");
 
 describe("HuffmanCoding", () => {
   it("should encode and decode successfully", () => {

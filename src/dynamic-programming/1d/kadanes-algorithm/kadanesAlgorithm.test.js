@@ -1,4 +1,4 @@
-const kadanes = require('./kadanes-algorithm');
+const kadanes = require('./kadanesAlgorithm');
 
 describe('kadanes algorithm', () => {
   it('returns the maximum sum of a subarray', () => {

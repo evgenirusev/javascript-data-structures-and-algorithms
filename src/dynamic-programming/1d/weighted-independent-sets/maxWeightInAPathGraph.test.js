@@ -1,4 +1,4 @@
-const maxWeightInAPathGraph = require("./max-weight-in-a-path-graph");
+const maxWeightInAPathGraph = require("./maxWeightInAPathGraph");
 
 describe("maxWeightInAPathGraph", () => {
   it("should return the max weight for the path graph", () => {
