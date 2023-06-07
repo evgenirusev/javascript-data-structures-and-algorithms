@@ -1,3 +1,10 @@
+/**
+ * Time complexity - O(n)
+ * Space complexity - O(1) (excluding the output array)
+ * https://leetcode.com/problems/daily-temperatures/
+ * @param {number[]} temperatures
+ * @return {number[]}
+ */
 function dailyTemperatures(temperatures) {
     const answer = new Array(temperatures.length).fill(0);
     const stack = [];
