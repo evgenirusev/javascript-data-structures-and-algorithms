@@ -1,3 +1,11 @@
+/**
+ * Time complexity - log(n*m)
+ * Time complexity - O(1)
+ * https://leetcode.com/problems/search-a-2d-matrix/
+ * @param {number[][]} matrix
+ * @param {number} target
+ * @return {boolean}
+ */
 function searchMatrix(matrix, target) {
     const targetArray = searchForTargetRow(matrix, target);
 
