@@ -1,14 +1,12 @@
 /**
- * Double binary search solution - easiest for interviews.
+ * https://leetcode.com/problems/search-a-2d-matrix/
+ * 
+ * Solution - double binary search - easiest for interviews.
  * Time complexity - log(n*m)
  * Time complexity - O(1)
  * 
- * The other approach is probably better, but a bit hard to come up with the formula
- * during an interview. The essense of it is running a single binary search by converting
- * the indices with the following formulas:
- *      pivotIdx = Math.floor((left + right) / 2);
- *      pivotElement = matrix[Math.floor(pivotIdx / n)][pivotIdx % n];
- * https://leetcode.com/problems/search-a-2d-matrix/
+ * Alternative solution is further down
+ * 
  * @param {number[][]} matrix
  * @param {number} target
  * @return {boolean}
@@ -58,6 +56,39 @@ function binarySearchIterative(arr, target) {
     }
 
     return -1;
+}
+
+/**
+ * This is the alternative approach and it's shorter, but a bit hard to come up with the formula
+ * during an interview. The essense of it is running a single binary search by converting
+ * the indices with the following formulas:
+ *      pivotIdx = Math.floor((left + right) / 2);
+ *      pivotElement = matrix[Math.floor(pivotIdx / n)][pivotIdx % n];
+*/
+function searchMatrixSingleBinarySearch(matrix, target) {
+    let m = matrix.length;
+    if (m === 0) {
+      return false;
+    }
+    let n = matrix[0].length;
+  
+    // binary search
+    let left = 0, right = m * n - 1;
+    let pivotIdx, pivotElement;
+    while (left <= right) {
+        pivotIdx = Math.floor((left + right) / 2);
+        pivotElement = matrix[Math.floor(pivotIdx / n)][pivotIdx % n];
+        if (target === pivotElement) {
+            return true;
+        } else {
+            if (target < pivotElement) {
+                right = pivotIdx - 1;
+            } else {
+                left = pivotIdx + 1;
+            }
+        }
+    }
+    return false;
 }
 
 module.exports = searchMatrix;
