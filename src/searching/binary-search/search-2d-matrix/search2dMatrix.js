@@ -1,6 +1,13 @@
 /**
+ * Double binary search solution - easiest for interviews.
  * Time complexity - log(n*m)
  * Time complexity - O(1)
+ * 
+ * The other approach is probably better, but a bit hard to come up with the formula
+ * during an interview. The essense of it is running a single binary search by converting
+ * the indices with the following formulas:
+ *      pivotIdx = Math.floor((left + right) / 2);
+ *      pivotElement = matrix[Math.floor(pivotIdx / n)][pivotIdx % n];
  * https://leetcode.com/problems/search-a-2d-matrix/
  * @param {number[][]} matrix
  * @param {number} target
