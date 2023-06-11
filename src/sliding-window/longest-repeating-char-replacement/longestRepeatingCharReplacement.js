@@ -32,18 +32,4 @@ function characterReplacement(s, k) {
     return globalMax;
 };
 
-function isMostCommonLetter(lettersObject) {
-    let highestValue = -Infinity;
-    let highestLetter = null;
-
-    for (const letter in lettersObject) {
-        if (lettersObject[letter] > highestValue) {
-            highestValue = lettersObject[letter];
-            highestLetter = letter;
-        }
-    }
-
-    return highestLetter;
-}
-
 module.exports = characterReplacement;
