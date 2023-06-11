@@ -1,6 +1,6 @@
-const characterReplacement = require('./characterReplacement');
+const characterReplacement = require('./longestRepeatingCharReplacement');
 
-describe("characterReplacement", () => {
+describe("longestRepeatingCharReplacement", () => {
   it('should return the maximum length of a substring after replacing at most k characters', () => {
     expect(characterReplacement("ABAB", 2)).toBe(4);
     expect(characterReplacement("AABABBA", 1)).toBe(4);
