@@ -1,3 +1,12 @@
+/**
+ * https://leetcode.com/problems/longest-repeating-character-replacement
+ * Sliding window approach
+ * Time complexity - O(N)
+ * Space complexity - O(1)
+ * @param {string} s
+ * @param {number} k
+ * @return {number}
+ */
 function characterReplacement(s, k) {
     const uppercaseLetters = Array.from({ length: 26 }, (_, index) => String.fromCharCode(65 + index));
     const letterOccurrences = {};
