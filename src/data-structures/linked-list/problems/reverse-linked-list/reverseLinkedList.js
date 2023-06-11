@@ -7,6 +7,9 @@
  *     this.next = (next===undefined ? null : next)
  * }
  *
+ * Iterative solution
+ * Time complexity - O(n)
+ * Space complexity - O(1)
  * @param {ListNode} head
  * @return {ListNode}
  */
@@ -22,5 +25,27 @@ function reverseList(head) {
   
     return prev;
 };
-  
+
+/**
+ * Recursive solution
+ * Time complexity - O(n)
+ * Space complexity - O(1)
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var reverseList = function(head) {
+    return recursive(head, null);
+};
+
+function recursive(curr, prev) {
+    if (!curr)
+        return prev;
+    
+    const temp = curr.next;
+    curr.next = prev;
+    prev = curr;
+
+    return recursive(temp, prev);
+}
+
 module.exports = reverseList;
