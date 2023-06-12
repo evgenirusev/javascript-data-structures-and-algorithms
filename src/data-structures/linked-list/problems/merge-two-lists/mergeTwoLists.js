@@ -1,4 +1,7 @@
 /**
+ * https://leetcode.com/problems/merge-two-sorted-lists
+ * Time complexity - O(N + M)
+ * Space complexity - O(1)
  * @param {ListNode} list1
  * @param {ListNode} list2
  * @return {ListNode}
