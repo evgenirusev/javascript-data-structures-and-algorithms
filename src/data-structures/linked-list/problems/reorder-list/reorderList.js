@@ -1,10 +1,5 @@
 // https://leetcode.com/problems/reorder-list
 
-function ListNode(val, next) {
-    this.val = (val === undefined ? 0 : val)
-    this.next = (next === undefined ? null : next)
-}
-
 /**
  * Array solution (not ideal)
  * Time complexity - O(n)
@@ -38,5 +33,10 @@ function reorderList(head) {
 
     return head;
 };
+
+function ListNode(val, next) {
+    this.val = (val === undefined ? 0 : val)
+    this.next = (next === undefined ? null : next)
+}
 
 module.exports = { ListNode, reorderList }
