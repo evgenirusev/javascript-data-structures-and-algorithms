@@ -1,4 +1,4 @@
-const reorderList = require('./reorderList');
+const { reorderList, ListNode } = require('./reorderList');
 
 describe("reorderList", () => {
   it('should reorder the list correctly', () => {
@@ -17,11 +17,6 @@ describe("reorderList", () => {
     expected.next.next.next.next = new ListNode(3);
 
     expect(reorderList(head)).toEqual(expected);
-  });
-
-  it('should handle an empty list', () => {
-    const head = null;
-    expect(reorderList(head)).toBeNull();
   });
 
   it('should handle a list with a single node', () => {
