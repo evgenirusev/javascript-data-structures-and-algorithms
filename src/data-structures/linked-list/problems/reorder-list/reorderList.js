@@ -1,9 +1,14 @@
+// https://leetcode.com/problems/reorder-list
+
 function ListNode(val, next) {
-    this.val = (val===undefined ? 0 : val)
-    this.next = (next===undefined ? null : next)
+    this.val = (val === undefined ? 0 : val)
+    this.next = (next === undefined ? null : next)
 }
 
 /**
+ * Array solution (not ideal)
+ * Time complexity - O(n)
+ * Space complexity - O(n)
  * @param {ListNode} head
  * @return {void} Do not return anything, modify head in-place instead.
  */
