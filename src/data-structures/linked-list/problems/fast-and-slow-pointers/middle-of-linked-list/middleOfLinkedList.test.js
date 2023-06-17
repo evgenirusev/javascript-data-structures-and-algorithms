@@ -1,6 +1,6 @@
-const middleNode = require('./middleNode');
+const middleOfLinkedList = require('./middleOfLinkedList');
 
-describe("middleNode", () => {
+describe("middleOfLinkedList", () => {
     it('returns the middle node for odd number of nodes', () => {
         // Create a sample linked list: 1 -> 2 -> 3 -> 4 -> 5
         const head = {
@@ -21,7 +21,7 @@ describe("middleNode", () => {
         };
 
         // Call the middleNode function
-        const result = middleNode(head);
+        const result = middleOfLinkedList(head);
 
         // Verify the result
         expect(result.val).toBe(3);
@@ -53,7 +53,7 @@ describe("middleNode", () => {
         };
 
         // Call the middleNode function
-        const result = middleNode(head);
+        const result = middleOfLinkedList(head);
 
         // Verify the result
         expect(result.val).toBe(4);
@@ -70,7 +70,7 @@ describe("middleNode", () => {
         };
 
         // Call the middleNode function
-        const result = middleNode(head);
+        const result = middleOfLinkedList(head);
 
         // Verify the result
         expect(result.val).toBe(1);

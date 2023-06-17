@@ -6,7 +6,7 @@
  * @param {ListNode} head
  * @return {ListNode}
  */
-function middleNode(head) {
+function middleOfLinkedList(head) {
     let slow = head;
     let fast = head.next;
 
@@ -23,4 +23,4 @@ function ListNode(val, next) {
     this.next = (next === undefined ? null : next)
 }
 
-module.exports = { ListNode, middleNode };
+module.exports = middleOfLinkedList;
