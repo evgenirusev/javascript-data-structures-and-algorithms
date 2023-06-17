@@ -8,11 +8,11 @@
  */
 function middleOfLinkedList(head) {
     let slow = head;
-    let fast = head.next;
+    let fast = head;
 
-    while (fast != null) {
+    while (fast && fast.next) {
         slow = slow.next;
-        fast = fast.next ? fast.next.next : null;
+        fast = fast.next.next;
     }
 
     return slow;
