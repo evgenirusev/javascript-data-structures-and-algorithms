@@ -9,13 +9,13 @@
 var addTwoNumbers = function(l1, l2) {
     let resultHead = new ListNode(-1);
     let prev = resultHead;
-    let remainder = 0;
-    while (l1 || l2) {
+    let carry = 0;
+    while (l1 || l2 || carry) {
         const l1Val = l1 ? l1.val : 0;
         const l2Val = l2 ? l2.val : 0;
 
-        const sum = l1Val + l2Val + remainder;
-        remainder = sum > 9 ? 1 : 0;
+        const sum = l1Val + l2Val + carry;
+        carry = sum > 9 ? 1 : 0;
         
         const curr = new ListNode();
         prev.next = curr;
@@ -27,12 +27,6 @@ var addTwoNumbers = function(l1, l2) {
 
         if (l2)
             l2 = l2.next;
-    }
-
-    if (remainder > 0) {
-        prev.next = new ListNode();
-        prev.next.val = remainder;
-        remainder = 0;
     }
 
     resultHead = resultHead.next;
