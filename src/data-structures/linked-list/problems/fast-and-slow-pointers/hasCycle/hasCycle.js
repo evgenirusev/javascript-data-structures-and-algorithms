@@ -1,4 +1,12 @@
 /**
+ * https://leetcode.com/problems/linked-list-cycle/
+ * Fast & slow pointers approach
+ * Time complexity - O(n)
+ * Space complexity - O(1)
+ * 
+ * Alternative solution - use a hashmap to check for already visited nodes.
+ * Space complexity is O(n) though so it's not ideal.
+ * 
  * @param {ListNode} head
  * @return {boolean}
  */
