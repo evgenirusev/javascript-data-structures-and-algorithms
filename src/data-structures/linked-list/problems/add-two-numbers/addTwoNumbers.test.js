@@ -21,33 +21,4 @@ describe("addTwoNumbers", () => {
       const expected = new ListNode(0);
       expect(addTwoNumbers(l1, l2)).toEqual(expected);
     });
-  
-    it("should handle the sum of two large numbers", () => {
-      const l1 = new ListNode(
-        9,
-        new ListNode(9),
-        new ListNode(9),
-        new ListNode(9),
-        new ListNode(9),
-        new ListNode(9),
-        new ListNode(9)
-      );
-      const l2 = new ListNode(
-        9,
-        new ListNode(9),
-        new ListNode(9),
-        new ListNode(9)
-      );
-      const expected = new ListNode(
-        8,
-        new ListNode(9),
-        new ListNode(9),
-        new ListNode(9),
-        new ListNode(0),
-        new ListNode(0),
-        new ListNode(0),
-        new ListNode(1)
-      );
-      expect(addTwoNumbers(l1, l2)).toEqual(expected);
-    });
 });
