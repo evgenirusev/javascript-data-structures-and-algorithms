@@ -1,3 +1,5 @@
+const { hasCycle, ListNode } = require('./hasCycle');
+
 describe('hasCycle', () => {
     it('returns false for an empty list', () => {
       const head = null;
@@ -10,7 +12,7 @@ describe('hasCycle', () => {
       head.next.next = new ListNode(3);
       expect(hasCycle(head)).toBe(false);
     });
-  
+
     it('returns true for a list with a cycle', () => {
       const head = new ListNode(1);
       head.next = new ListNode(2);
