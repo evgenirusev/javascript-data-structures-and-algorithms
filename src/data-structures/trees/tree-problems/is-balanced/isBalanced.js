@@ -30,4 +30,19 @@ function dfs(root, isHeightBalanced) {
     return 1 + Math.max(left, right);
 }
 
+// Alternative solution without a extra param:
+// var isBalanced = function(root) {
+//     if (!root)
+//         return true;
+//     return Math.abs(height(root.left) - height(root.right)) < 2
+//         && isBalanced(root.left)
+//         && isBalanced(root.right);
+// };
+
+// function height(root) {
+//     if (!root)
+//         return 0;
+//     return 1 + Math.max(height(root.left), height(root.right));
+// }
+
 module.exports = isBalanced;
