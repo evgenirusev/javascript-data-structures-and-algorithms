@@ -14,21 +14,14 @@
  *     this.right = (right===undefined ? null : right)
  * }
  */
-var maxDepth = function(root) {
-    if (!root)
-        return 0;
-
-    return maxDepthRecursive(root);
-};
-
-function maxDepthRecursive(node) {
+var maxDepth = function(node) {
     if (!node)
         return 0;
-    
+
     return 1 + Math.max(
-            maxDepthRecursive(node.left),
-            maxDepthRecursive(node.right)
-        );
-}
+        maxDepth(node.left),
+        maxDepth(node.right)
+    );
+};
 
 module.exports = maxDepth;

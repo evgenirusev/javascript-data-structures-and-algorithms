@@ -30,7 +30,9 @@ function dfs(root, isHeightBalanced) {
     return 1 + Math.max(left, right);
 }
 
-// Alternative solution without a extra param:
+// Top down recursion alternative solution
+// Time complexity - O(nlogn)
+// Space complexity - O(height)
 // var isBalanced = function(root) {
 //     if (!root)
 //         return true;
