@@ -1,4 +1,7 @@
 /**
+ * https://leetcode.com/problems/same-tree/
+ * Time complexity - O(n)
+ * Space complexity - O(n)
  * @param {TreeNode} p
  * @param {TreeNode} q
  * @return {boolean}
