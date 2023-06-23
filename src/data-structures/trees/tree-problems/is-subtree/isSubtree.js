@@ -1,7 +1,7 @@
 /**
  * https://leetcode.com/problems/subtree-of-another-tree
- * Time complexit - O(n + m)
- * Space complexity - O(n + m)
+ * Time complexit - O(n*m)
+ * Space complexity - O(n*m)
  * @param {TreeNode} root
  * @param {TreeNode} subRoot
  * @return {boolean}
