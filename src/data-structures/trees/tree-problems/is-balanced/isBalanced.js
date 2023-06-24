@@ -7,6 +7,9 @@
  * }
  */
 /**
+ * https://leetcode.com/problems/balanced-binary-tree/
+ * Time complexity - O(n)
+ * Space complexity - O(n)
  * @param {TreeNode} root
  * @return {boolean}
  */
