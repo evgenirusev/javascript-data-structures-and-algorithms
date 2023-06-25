@@ -1,18 +1,18 @@
-const rightSideView = require('./rightSideView');
+const binaryTreeRightSideView = require('./binaryTreeRightSideView');
 const TreeNode = require('../TreeNode');
 
-describe('rightSideView', () => {
+describe('binaryTreeRightSideView', () => {
   it('should return an empty array for an empty tree', () => {
     const root = null;
     const expected = [];
-    const result = rightSideView(root);
+    const result = binaryTreeRightSideView(root);
     expect(result).toEqual(expected);
   });
 
   it('should return the correct right side view for a tree with a single node', () => {
     const root = new TreeNode(1);
     const expected = [1];
-    const result = rightSideView(root);
+    const result = binaryTreeRightSideView(root);
     expect(result).toEqual(expected);
   });
 
@@ -27,7 +27,7 @@ describe('rightSideView', () => {
     root.right.right = new TreeNode(7);
 
     const expected = [1, 3, 7];
-    const result = rightSideView(root);
+    const result = binaryTreeRightSideView(root);
     expect(result).toEqual(expected);
   });
 
@@ -39,7 +39,7 @@ describe('rightSideView', () => {
     root.left.left.right = new TreeNode(5);
 
     const expected = [1, 2, 4, 5];
-    const result = rightSideView(root);
+    const result = binaryTreeRightSideView(root);
     expect(result).toEqual(expected);
   });
 });
