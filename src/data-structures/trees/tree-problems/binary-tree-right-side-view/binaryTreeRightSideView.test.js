@@ -1,5 +1,5 @@
 const rightSideView = require('./rightSideView');
-const TreeNode = require('./TreeNode');
+const TreeNode = require('../TreeNode');
 
 describe('rightSideView', () => {
   it('should return an empty array for an empty tree', () => {
