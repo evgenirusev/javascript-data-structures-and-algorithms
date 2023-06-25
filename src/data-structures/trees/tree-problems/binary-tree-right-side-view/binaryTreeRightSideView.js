@@ -1,5 +1,12 @@
 const Queue = require('../../../queues/with-object-and-pointers/Queue');
 
+/**
+ * https://leetcode.com/problems/binary-tree-right-side-view
+ * Time complexity - O(n)
+ * Space complexity - O(n)
+ * @param {TreeNode} root
+ * @return {number[]}
+ */
 var binaryTreeRightSideView = function(root) {
     const result = []
 
