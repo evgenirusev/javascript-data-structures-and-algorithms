@@ -1,4 +1,7 @@
 /**
+ * https://leetcode.com/problems/count-good-nodes-in-binary-tree
+ * Time complexity - O(n*h) where h is the height of the tree
+ * Space complexity - O(h) where h is the height of the tree
  * @param {TreeNode} root
  * @return {number}
  */
