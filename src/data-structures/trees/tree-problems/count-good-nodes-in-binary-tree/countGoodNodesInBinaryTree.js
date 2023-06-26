@@ -1,30 +1,25 @@
 /**
  * https://leetcode.com/problems/count-good-nodes-in-binary-tree
- * Time complexity - O(n*h) where h is the height of the tree
- * Space complexity - O(h) where h is the height of the tree
+ * Time complexity - O(n) where h is the height of the tree
+ * Space complexity - O(n) where h is the height of the tree
  * @param {TreeNode} root
  * @return {number}
  */
-var countGoodNodesInBinaryTree = function(root) {
+var goodNodes = function(root) {
     const result = [0];
-    dfs(root, [], result);
+    dfs(root, -Infinity, result);
     return result[0];
 };
 
-function dfs(node, path, result) {
+function dfs(node, maxValSoFar, result) {
     if (!node)
         return;
 
-    path.push(node.val);
-    
-    dfs(node.left, path, result);
-
-    if (!path.some(val => val > node.val))
+    if (node.val >= maxValSoFar)
         result[0]++;
-
-    dfs(node.right, path, result);
-
-    path.pop();
+    
+    dfs(node.left, Math.max(maxValSoFar, node.val), result);
+    dfs(node.right, Math.max(maxValSoFar, node.val), result);
 }
 
 module.exports = countGoodNodesInBinaryTree;
