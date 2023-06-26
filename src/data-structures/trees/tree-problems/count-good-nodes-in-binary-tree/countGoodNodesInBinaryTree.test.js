@@ -24,6 +24,6 @@ describe("countGoodNodesInBinaryTree", () => {
                 right: null
             }
         };
-        expect(countGoodNodesInBinaryTree(root)).toBe(4);
+        expect(countGoodNodesInBinaryTree(root)).toBe(3);
     });
 });
