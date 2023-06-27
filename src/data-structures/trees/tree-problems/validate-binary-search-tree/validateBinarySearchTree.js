@@ -2,36 +2,21 @@
  * @param {TreeNode} root
  * @return {boolean}
  */
-var isValidBST = function(root) {
-    const valid = [true];
-    const itemsToCompare = [];
-    isValid(root, valid, itemsToCompare);
-    return valid[0];
+var isValidBST = function(root, min = -Infinity, max = Infinity) {
+    if (root === null)
+        return true;
+
+    if ((root.val <= min) || (max <= root.val))
+        return false;
+
+    return dfs(root, min, max);
 };
 
-function isValid(node, valid, itemsToCompare) {
-    if (!node)
-        return;
+const dfs = (root, min, max) => {
+    const left = isValidBST(root.left, min, root.val);
+    const right = isValidBST(root.right, root.val, max);
 
-    // Todo: extract in a separate function
-    for (const item of itemsToCompare) {
-        if ((item.shouldBeGreater && item.val < node.val) || (!item.shouldBeGreater && item.val > node.val) || item.val === node.val)
-        valid[0] = false
-    }
-    
-    itemsToCompare.push({
-        val: node.val,
-        shouldBeGreater: true
-    });
-    isValid(node.left, valid, itemsToCompare);
-    itemsToCompare.pop();
-
-    itemsToCompare.push({
-        val: node.val,
-        shouldBeGreater: false
-    });
-    isValid(node.right, valid, itemsToCompare);
-    itemsToCompare.pop();
+    return left && right;
 }
 
 module.exports = isValidBST;
