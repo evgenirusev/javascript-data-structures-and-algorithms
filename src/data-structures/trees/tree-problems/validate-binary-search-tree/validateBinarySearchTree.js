@@ -2,21 +2,19 @@
  * @param {TreeNode} root
  * @return {boolean}
  */
-var isValidBST = function(root, min = -Infinity, max = Infinity) {
-    if (root === null)
-        return true;
-
-    if ((root.val <= min) || (max <= root.val))
-        return false;
-
-    return dfs(root, min, max);
+const isValidBST = function(root) {
+    return validate(root, -Infinity, Infinity);
 };
 
-const dfs = (root, min, max) => {
-    const left = isValidBST(root.left, min, root.val);
-    const right = isValidBST(root.right, root.val, max);
+const validate = (node, min, max) => {
+    if (!node)
+        return true;
 
-    return left && right;
-}
+    if (node.val <= min || node.val >= max)
+        return false;
+
+    return validate(node.left, min, node.val) 
+        && validate(node.right, node.val, max);
+};
 
 module.exports = isValidBST;
