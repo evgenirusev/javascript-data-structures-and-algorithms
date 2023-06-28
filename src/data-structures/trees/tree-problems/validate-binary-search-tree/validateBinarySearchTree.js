@@ -1,4 +1,7 @@
 /**
+ * https://leetcode.com/problems/validate-binary-search-tree
+ * Time complexity - O(n)
+ * Space complexity - O(h)
  * @param {TreeNode} root
  * @return {boolean}
  */
