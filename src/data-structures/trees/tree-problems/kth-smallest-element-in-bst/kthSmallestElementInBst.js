@@ -4,18 +4,24 @@
  * @return {number}
  */
 function kthSmallest(root, k) {
-    const result = [];
-    dfs(root, result);
-    return result[k - 1];
-};
+    let currentCount = 0;
+    const stack = [];
+    let curr = root;
+    while (curr !== null || stack.length > 0) {
+        while (curr) {
+            stack.push(curr);
+            curr = curr.left;
+        }
 
-function dfs(node, result) {
-    if (!node)
-        return;
+        curr = stack.pop();
+
+        if (++currentCount === k)
+            return curr.val;
+        
+        curr = curr.right;
+    }
     
-    dfs(node.left, result);
-    result.push(node.val);
-    dfs(node.right, result);
+    return null;
 }
 
 module.exports = kthSmallest;
