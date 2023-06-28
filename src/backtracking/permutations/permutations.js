@@ -11,7 +11,7 @@ function backtrack(curr, nums, result) {
         result.push([...curr]);
         return;
     }
-  
+
     for (let i = 0; i < nums.length; i++) {
         if (curr.includes(nums[i]))
             continue;
