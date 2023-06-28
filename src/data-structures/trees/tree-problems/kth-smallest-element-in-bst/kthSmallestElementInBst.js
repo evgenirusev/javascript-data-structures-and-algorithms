@@ -1,7 +1,7 @@
 /**
  * https://leetcode.com/problems/kth-smallest-element-in-a-bst
- * Time complexity - O(n)
- * Space complexit - O(n)
+ * Time complexity - O(logN)
+ * Space complexity - O(N)
  * @param {TreeNode} root
  * @param {number} k
  * @return {number}
