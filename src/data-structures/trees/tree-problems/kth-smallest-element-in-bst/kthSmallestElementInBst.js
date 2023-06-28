@@ -1,10 +1,12 @@
 /**
+ * https://leetcode.com/problems/kth-smallest-element-in-a-bst
+ * Time complexity - O(n)
+ * Space complexit - O(n)
  * @param {TreeNode} root
  * @param {number} k
  * @return {number}
  */
 function kthSmallest(root, k) {
-    let currentCount = 0;
     const stack = [];
     let curr = root;
     while (curr !== null || stack.length > 0) {
@@ -15,7 +17,7 @@ function kthSmallest(root, k) {
 
         curr = stack.pop();
 
-        if (++currentCount === k)
+        if (--k === 0)
             return curr.val;
         
         curr = curr.right;
