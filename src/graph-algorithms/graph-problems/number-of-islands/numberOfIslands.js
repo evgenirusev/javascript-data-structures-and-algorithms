@@ -1,3 +1,10 @@
+/**
+ * https://leetcode.com/problems/number-of-islands
+ * Time complexity - O(N * M)
+ * Space complexity - O(N * M)
+ * @param {character[][]} grid
+ * @return {number}
+ */
 function numberOfIslands(grid) {
   if (grid === null || grid.length === 0)
     return 0;
