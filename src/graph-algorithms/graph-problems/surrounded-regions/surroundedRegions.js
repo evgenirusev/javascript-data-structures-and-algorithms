@@ -1,4 +1,7 @@
 /**
+ * DFS - single pass approach
+ * Time complexity - O(ROW * COL)
+ * Space complexity - O(ROW * COL)
  * @param {character[][]} board
  * @return {void} Do not return anything, modify board in-place instead.
  */
