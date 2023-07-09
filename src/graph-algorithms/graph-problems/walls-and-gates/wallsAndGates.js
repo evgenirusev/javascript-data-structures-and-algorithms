@@ -17,13 +17,7 @@ var wallsAndGates = function(rooms) {
         distance++;
     }
 
-    // TODO: extract in a function
-    for (let row = 0; row < rooms.length; row++) {
-        for (let col = 0; col < rooms[0].length; col++) {
-            if (rooms[row][col] == Infinity)
-                rooms[row][col] = -1;
-        }
-    }
+    updateUnvisitedRooms(rooms);
 };
 
 function getInitialData(rooms, queue = new Queue()) {
@@ -51,6 +45,14 @@ function progressRooms(queue, rooms, distance) {
     }
 }
 
+function updateUnvisitedRooms(rooms) {
+    for (let row = 0; row < rooms.length; row++) {
+        for (let col = 0; col < rooms[0].length; col++) {
+            if (rooms[row][col] == Infinity)
+                rooms[row][col] = -1;
+        }
+    }
+}
 
 var getNeighbors = (row, rows, col, cols) => [ [ 0, 1 ],[ 0, -1 ], [ 1, 0 ], [ -1, 0 ] ]
     .map(([ _row, _col ]) => [ (row + _row), (col + _col) ])
