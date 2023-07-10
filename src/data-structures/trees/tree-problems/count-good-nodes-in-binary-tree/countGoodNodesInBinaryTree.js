@@ -5,7 +5,7 @@
  * @param {TreeNode} root
  * @return {number}
  */
-var goodNodes = function(root) {
+var countGoodNodesInBinaryTree = function(root) {
     const result = [0];
     dfs(root, -Infinity, result);
     return result[0];

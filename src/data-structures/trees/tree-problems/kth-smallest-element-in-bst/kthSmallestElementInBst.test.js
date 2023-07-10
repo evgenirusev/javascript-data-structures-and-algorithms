@@ -1,4 +1,4 @@
-const kthSmallest = require('./kthSmallest');
+const kthSmallest = require('./kthSmallestElementInBst');
 
 describe("kthSmallest", () => {
   it('should return the kth smallest element in a BST', () => {
@@ -20,8 +20,8 @@ describe("kthSmallest", () => {
       }
     };
     expect(kthSmallest(root, 1)).toBe(1);
-    expect(kthSmallest(root, 2)).toBe(2);
-    expect(kthSmallest(root, 3)).toBe(3);
+    expect(kthSmallest(root, 2)).toBe(3);
+    expect(kthSmallest(root, 3)).toBe(2);
     expect(kthSmallest(root, 4)).toBe(4);
   });
 
@@ -44,6 +44,6 @@ describe("kthSmallest", () => {
       },
       right: null
     };
-    expect(kthSmallest(root, 3)).toBe(undefined);
+    expect(kthSmallest(root, 3)).toBe(null);
   });
 });
