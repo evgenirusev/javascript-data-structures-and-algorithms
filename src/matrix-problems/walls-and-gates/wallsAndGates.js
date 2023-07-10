@@ -1,6 +1,8 @@
-const Queue = require("../../../data-structures/queues/with-object-and-pointers/Queue");
+const Queue = require("../../data-structures/queues/with-object-and-pointers/Queue");
 
 /**
+ * BFS approach
+ * Time O(ROWS * COLS) | Space O(ROWS * COLS)
  * @param {number[][]} rooms
  * @return {void} Do not return anything, modify rooms in-place instead.
  */

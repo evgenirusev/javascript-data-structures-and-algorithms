@@ -1,3 +1,5 @@
+const TreeNode = require('../TreeNode');
+
 /**
  * https://leetcode.com/problems/insert-into-a-binary-search-tree
  * Time complexity - O(H)
@@ -6,15 +8,17 @@
  * @param {number} val
  * @return {TreeNode}
  */
-var insertIntoBST = function(root, val) {
+var insertInBST = function(root, val) {
     if (!root)
         return new TreeNode(val);
     
     if (val < root.val) {
-        root.left = insertIntoBST(root.left, val);
+        root.left = insertInBST(root.left, val);
     } else {
-        root.right = insertIntoBST(root.right, val);
+        root.right = insertInBST(root.right, val);
     }
 
     return root;
 };
+
+module.exports = insertInBST;

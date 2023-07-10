@@ -1,4 +1,4 @@
-const insertIntoBST = require('./insertIntoBST');
+const insertIntoBST = require('./insertInBst');
 
 describe("insertIntoBST", () => {
   it('should insert into an empty BST', () => {
