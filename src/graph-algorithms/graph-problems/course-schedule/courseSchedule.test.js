@@ -1,4 +1,4 @@
-const canFinish = require('./canFinish');
+const canFinish = require('./courseSchedule');
 
 describe("canFinish", () => {
     it('should return true when there are no prerequisites', () => {
