@@ -9,7 +9,7 @@ describe("networkDelayTime", () => {
         ];
         const n = 3;
         const k = 2;
-        expect(networkDelayTime(times, n, k)).toBe(3);
+        expect(networkDelayTime(times, n, k)).toBe(2);
     });
 
     it('should return -1 for an unreachable node', () => {
