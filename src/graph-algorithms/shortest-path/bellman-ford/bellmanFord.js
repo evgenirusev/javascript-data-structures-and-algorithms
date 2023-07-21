@@ -20,7 +20,7 @@ function relaxVertices(graph, distances) {
         graph.outgoingEdgesOf(vertex).forEach(edge => {
             const totalDistance = edge.weight + distances[vertex];
             if (totalDistance < distances[edge.end]) {
-                distances[edge.end] = totalDistance
+                distances[edge.end] = totalDistance;
             }
         });
     });
