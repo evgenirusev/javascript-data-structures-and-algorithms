@@ -1,3 +1,11 @@
+/**
+ * Cascading solution
+ * Time complexity - O(N * 2N)
+ * Space complexity - O(N * 2N)
+ * https://leetcode.com/problems/subsets
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
 function subsets(nums) {
     let result = [[]];
 
