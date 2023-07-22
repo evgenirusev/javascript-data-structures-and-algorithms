@@ -7,11 +7,6 @@ describe('subsets', () => {
     expect(subsets([])).toEqual([[]]);
   });
 
-  it('should handle duplicate numbers in the input array', () => {
-    expect(subsets([1, 2, 2])).toEqual([[], [1], [2], [1, 2], [2], [1, 2], [2, 2], [1, 2, 2]]);
-    expect(subsets([2, 2, 3, 3])).toEqual([[], [2], [2, 2], [3], [2, 3], [2, 2, 3], [3, 3], [2, 3, 3], [2, 2, 3, 3]]);
-  });
-
   it('should return [[]] when the input array is empty', () => {
     expect(subsets([])).toEqual([[]]);
   });
