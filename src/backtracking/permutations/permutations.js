@@ -1,5 +1,4 @@
 // https://leetcode.com/problems/permutations/
-
 function permutations(nums) {
     const result = [];
     backtrack([], nums, result);
@@ -20,6 +19,6 @@ function backtrack(curr, nums, result) {
         backtrack(curr, nums, result);
         curr.pop();
     }
-}  
+}
 
 module.exports = permutations;
