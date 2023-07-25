@@ -1,13 +1,14 @@
-/**
+/*
+ * Dynamic programming approach
+ * Time complexity - O(n)
+ * Space complexity - O(n)
  * @param {number} n
  * @return {number}
  */
 var climbStairs = function(n) {
-    if (n == 2)
-        return 2;
     if (n == 1)
         return 1;
-    
+
     const memo = {};
     memo[n] = 1;
     memo[n - 1] = 1;
