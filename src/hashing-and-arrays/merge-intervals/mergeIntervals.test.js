@@ -9,5 +9,10 @@ describe('mergeIntervals', () => {
     it('should merge intervals', () => {
         expect(mergeIntervals([[1,4],[4,5]]))
             .toEqual([[1,5]]);
+    });
+
+    it('should merge unordered intervals', () => {
+        expect(mergeIntervals([[1,4],[0,0]]))
+            .toEqual([[0,4]]);
     }); 
 });
