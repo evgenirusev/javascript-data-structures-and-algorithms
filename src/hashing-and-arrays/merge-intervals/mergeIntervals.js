@@ -1,34 +1,37 @@
 // Given a collection of intervals, merge all overlapping intervals.
 
-function mergeIntervals(intervals) {
-    let intervalIndex = 0;
-    while (intervalIndex < intervals.length - 1) {
-        const interval1 = intervals[intervalIndex];
-        const interval2 = intervals[intervalIndex + 1];
+/**
+ * https://leetcode.com/problems/merge-intervals/
+ * Time complexity - O(nlogn)
+ * Space complexity - O(n)
+ * @param {number[][]} intervals
+ * @return {number[][]}
+ */
+var mergeIntervals = function(intervals) {
+    intervals.sort(function(a, b) {
+        return a[0] - b[0];
+    });
 
-        if (areOverlapping(interval1, interval2)) {
-            mergeIntoInterval2(intervals, intervalIndex, intervalIndex + 1);
+    const result = [];
+
+    let i = 0;
+    while (i < intervals.length - 1) {
+        let curr = intervals[i],
+            next = intervals[i + 1];
+
+        if (curr[1] < next[0]) {
+            result.push(curr);
+        } else {
+            next[0] = Math.min(curr[0], next[0]);
+            next[1] = Math.max(curr[1], next[1]);
         }
 
-        intervalIndex++;
+        i++;
     }
 
-    return intervals.filter(interval => interval);
-}
+    result.push(intervals[intervals.length - 1])
 
-function areOverlapping(interval1, interval2) {
-    return interval1[1] >= interval2[0] 
-        || interval1[0] === interval2[0];
-}
-
-function mergeIntoInterval2(intervals, interval1Index, interval2Index) {
-    const interval1 = intervals[interval1Index];
-    const interval2 = intervals[interval2Index];
-
-    interval2[0] = interval1[0] < interval2[0] ? interval1[0] : interval2[0];
-    interval2[1] = interval1[1] < interval2[1] ? interval2[1] : interval2[1];
-
-    intervals[interval1Index] = null;
-}
+    return result;
+};
 
 module.exports = mergeIntervals;
