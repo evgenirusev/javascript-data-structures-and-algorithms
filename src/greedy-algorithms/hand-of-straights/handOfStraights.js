@@ -1,3 +1,12 @@
+/**
+ * https://leetcode.com/problems/hand-of-straights/
+ * @param {number[]} hand
+ * @param {number} groupSize
+ * @return {boolean}
+ * 
+ * Time complexity - O(n*k)
+ * Space complexity - O(n*k)
+ */
 var isNStraightHand = function(hand, groupSize) {
     if (hand.length % groupSize !== 0)
         return false;
