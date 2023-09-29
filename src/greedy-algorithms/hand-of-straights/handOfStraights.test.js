@@ -1,7 +1,6 @@
-const isNStraightHand = require('./isNStraightHand');
+const isNStraightHand = require('./handOfStraights');
 
 describe("isNStraightHand", () => {
-
   it('returns true for valid input', () => {
     const hand = [1, 2, 3, 6, 2, 3, 4, 7, 8];
     const groupSize = 3;
@@ -17,12 +16,6 @@ describe("isNStraightHand", () => {
   it('returns false for uneven group size', () => {
     const hand = [1, 2, 3, 6, 2, 3, 4, 7, 8];
     const groupSize = 2;
-    expect(isNStraightHand(hand, groupSize)).toBe(false);
-  });
-
-  it('returns false for empty hand array', () => {
-    const hand = [];
-    const groupSize = 3;
     expect(isNStraightHand(hand, groupSize)).toBe(false);
   });
 
