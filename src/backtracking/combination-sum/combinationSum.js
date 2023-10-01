@@ -13,9 +13,8 @@ function combinationSum(candidates, target) {
             return;
         }
         
-        if (i >= candidates.length || total > target) {
+        if (i >= candidates.length || total > target)
             return;
-        }
 
         cur.push(candidates[i]);
         dfs(i, cur, total + candidates[i]);
