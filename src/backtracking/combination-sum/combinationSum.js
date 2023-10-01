@@ -27,4 +27,29 @@ function combinationSum(candidates, target) {
     return res;
 }
 
+// My initial solution:
+// function combinationSum(candidates, target) {
+//     const result = []
+//     backtrack(result, [], 0, 0, candidates, target);
+//     return result;
+// }
+
+// function backtrack(result, subset, sum, i, candidates, target) {
+//     for (let j = i; j < candidates.length; j++) {
+//         subset.push(candidates[j]);
+//         sum += candidates[j];
+
+//         if (sum > target) {
+            
+//         } else if (sum === target) {
+//             result.push([...subset]);
+//         } else {
+//             backtrack(result, subset, sum, j, candidates, target);
+//         }
+
+//         sum -= candidates[j];
+//         subset.pop();
+//     }
+// }
+
 module.exports = combinationSum;
