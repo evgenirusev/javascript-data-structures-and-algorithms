@@ -32,19 +32,19 @@ function subsets(nums) {
 * Time complexity - O(N * 2N)
 * Space complexity - O(N * 2N)
 */
-function subsets(nums) {
-    let result = [[]];
+// function subsets(nums) {
+//     let result = [[]];
 
-    nums.forEach(n => {
-        let newSubsets = [];
-        result.forEach(subset => {
-            newSubsets.push([...subset, n]);
-        });
+//     nums.forEach(n => {
+//         let newSubsets = [];
+//         result.forEach(subset => {
+//             newSubsets.push([...subset, n]);
+//         });
 
-        result = [...result, ...newSubsets];
-    });
+//         result = [...result, ...newSubsets];
+//     });
 
-    return result;
-}
+//     return result;
+// }
 
 module.exports = subsets;
