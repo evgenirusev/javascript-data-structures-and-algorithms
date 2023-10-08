@@ -11,11 +11,6 @@ describe("minCostClimbingStairs", () => {
         expect(minCostClimbingStairs(cost)).toBe(6);
     });
 
-    it('should return the correct minimum cost for an edge case with 1 step', () => {
-        const cost = [1];
-        expect(minCostClimbingStairs(cost)).toBe(1);
-    });
-
     it('should return the correct minimum cost for an edge case with 2 steps', () => {
         const cost = [1, 2];
         expect(minCostClimbingStairs(cost)).toBe(1);

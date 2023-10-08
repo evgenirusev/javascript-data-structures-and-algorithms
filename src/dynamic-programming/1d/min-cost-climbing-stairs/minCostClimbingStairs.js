@@ -4,18 +4,15 @@
  * @return {number}
  */
 var minCostClimbingStairs = function(cost) {
-    if (cost.length <= 1)
-        return 1;
-    const memo = {};
+    const memo = [];
+    memo[0] = cost[0];
+    memo[1] = cost[1];
 
-    memo[cost.length - 1] = cost[cost.length - 1];
-    memo[cost.length - 2] = cost[cost.length - 2];
-
-    for (let i = cost.length - 3; i >= 0; i--) {
-        memo[i] = Math.min(memo[i + 1], memo[i + 2]) + cost[i];
+    for (let i = 2; i < cost.length; i++) {
+        memo[i] = cost[i] + Math.min(memo[i - 1], memo[i - 2]);
     }
 
-    return Math.min(memo[0], memo[1]);
+    return Math.min(memo[memo.length - 2], memo[memo.length - 1]);
 };
 
 module.exports = minCostClimbingStairs;
