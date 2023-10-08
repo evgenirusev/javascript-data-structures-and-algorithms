@@ -1,3 +1,11 @@
+/**
+ * https://leetcode.com/problems/word-search/
+ * @param {character[][]} board
+ * @param {string} word
+ * @return {boolean}
+ * Time complexity - O(n*3^WordLength)
+ * Space complexity - O(WordLength)
+ */
 var exist = function(board, word) {
     const neighbors = [
         [0, -1],
