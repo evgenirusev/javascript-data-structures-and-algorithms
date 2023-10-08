@@ -8,14 +8,18 @@
 var climbStairs = function(n) {
     if (n == 1)
         return 1;
+    if (n == 2)
+        return 2;
 
-    const memo = {};
-    memo[n] = 1;
-    memo[n - 1] = 1;
+    const memo = [];
+    memo[0] = 1;
+    memo[1] = 2;
 
-    for (let i = n - 2; i >= 0; i--) {
-        memo[i] = memo[i + 1] + memo[i + 2];
+    for (let i = 2; i < n; i++) {
+        memo[i] = memo[i - 1] + memo[i - 2];
     }
 
-    return memo[0];
+    return memo[n - 1];
 };
+
+module.exports = climbStairs;
