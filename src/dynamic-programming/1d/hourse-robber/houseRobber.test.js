@@ -1,4 +1,4 @@
-const rob = require('./rob');
+const rob = require('./houseRobber');
 
 describe("rob function", () => {  
   it('should return the correct result for an array with elements [2, 7, 9, 3, 1]', () => {
