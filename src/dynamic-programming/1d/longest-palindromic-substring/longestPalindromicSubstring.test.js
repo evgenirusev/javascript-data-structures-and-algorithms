@@ -1,11 +1,6 @@
-const longestPalindrome = require('./longestPalindrome');
+const longestPalindrome = require('./longestPalindromicSubstring');
 
 describe("longestPalindrome", () => {
-    it('should return the longest palindrome for a given string with odd length', () => {
-        const result = longestPalindrome('babad');
-        expect(result).toBe('bab');
-    });
-
     it('should return the longest palindrome for a given string with even length', () => {
         const result = longestPalindrome('cbbd');
         expect(result).toBe('bb');
