@@ -1,3 +1,9 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ * Time complexity - O(n)
+ * Space complexity - O(1)
+ */
 function rob(nums) {
     let rob1 = 0;
     let rob2 = 0;
