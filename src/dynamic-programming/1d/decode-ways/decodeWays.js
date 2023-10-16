@@ -1,3 +1,10 @@
+/**
+ * https://leetcode.com/problems/decode-ways/
+ * @param {string} s
+ * @return {number}
+ * Time complexity - O(N)
+ * Space complexity - O(N)
+ */
 function numDecodings(s) {
     const dp = new Array(s.length + 1).fill(0);
     dp[0] = 1;
