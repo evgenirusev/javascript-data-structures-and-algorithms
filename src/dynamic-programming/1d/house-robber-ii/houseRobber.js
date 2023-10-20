@@ -1,3 +1,10 @@
+/**
+ * https://leetcode.com/problems/house-robber-ii
+ * @param {number[]} nums
+ * @return {number}
+ * Time complexity - O(n)
+ * Space complexity - O(1)
+ */
 function rob(nums) {
     if (nums.length === 0 || nums === null) {
         return 0;
