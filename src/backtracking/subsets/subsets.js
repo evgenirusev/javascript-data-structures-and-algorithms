@@ -27,7 +27,7 @@ function subsets(nums) {
     n = nums.length;
 
     for (k = 0; k < n + 1; ++k) {
-      backtrack(0, [], nums);
+        backtrack(0, [], nums);
     }
 
     return output;
