@@ -1,3 +1,10 @@
+/**
+ * https://leetcode.com/problems/subsets-ii
+ * @param {number[]} nums
+ * @return {number[][]}
+ * Time complexity - O(N*N^2)
+ * Space complexity - O(N)
+ */
 function subsets(nums) {
     nums.sort((a, b) => a - b);
     const subsets = [];
