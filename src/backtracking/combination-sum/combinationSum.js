@@ -51,4 +51,30 @@ function combinationSum(candidates, target) {
 //     }
 // }
 
+// Another solution that I came up with on my 3rd try:
+// function combinationSum(candidates, target) {
+//     const res = [];
+//     const set = [];
+
+//     function dfs(i) {
+//         if (set.reduce((acc, curr) => acc + curr, 0) === target) {
+//             res.push([...set]);
+//             return;
+//         }
+
+//         if (sum(set) > target || i >= candidates.length)
+//             return;
+
+//         for (let j = i; j < candidates.length; j++) {
+//             set.push(candidates[j]);
+//             dfs(j);
+//             set.pop();
+//         }
+//     }
+
+//     dfs(0);
+
+//     return res;
+// }
+
 module.exports = combinationSum;
