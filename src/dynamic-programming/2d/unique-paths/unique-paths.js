@@ -19,11 +19,14 @@ function uniquePaths(rows, cols) {
 // Other approaches:
 // Recursive dp - Time: O(2 ^ (n + m)), Space: O(n + m)
 // Brute force - Time: O(n*m), Space: O(n*m)
-/**
- * @param {number} m
- * @param {number} n
- * @return {number}
- */
+function uniquePaths(m, n) {
+    if (m === 1 || n === 1) {
+      return 1;
+    }
+    return uniquePaths(m - 1, n) + uniquePaths(m, n - 1);
+}
+
+// Recursive top-down dp
 // var uniquePaths = (m, n) => {
 //     const paths = Array.from({ length: m }, () => Array(n).fill(-1));
 
