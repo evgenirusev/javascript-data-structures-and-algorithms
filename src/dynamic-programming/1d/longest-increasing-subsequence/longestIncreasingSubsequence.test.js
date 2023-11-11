@@ -1,4 +1,4 @@
-const lengthOfLIS = require('./longestCommonSubsequence');
+const lengthOfLIS = require('./longestIncreasingSubsequence');
 
 describe("lengthOfLIS", () => {
 
