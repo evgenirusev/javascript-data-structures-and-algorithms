@@ -5,35 +5,31 @@
  * @return {number}
  */
 // Caching solution
-function longestCommonSubsequence(text1, text2) {
+const longestCommonSubsequence = (text1, text2) => {
     const memo = Array.from({ length: text1.length + 1 }, () =>
-        Array.from({ length: text2.length + 1 }, () => -1)
+        Array(text2.length + 1).fill(null)
     );
-
-
-    function memoSolve(p1, p2) {
+  
+    const dfs = (p1, p2) => {
         if (p1 === text1.length || p2 === text2.length) {
             return 0;
         }
-
-        if (memo[p1][p2] !== -1) {
+  
+        if (memo[p1][p2] !== null) {
             return memo[p1][p2];
         }
-
-        const option1 = memoSolve(p1 + 1, p2);
-        const firstOccurrence = text2.indexOf(text1[p1], p2);
-        let option2 = 0;
-        if (firstOccurrence !== -1) {
-            option2 = 1 + memoSolve(p1 + 1, firstOccurrence + 1);
+  
+        if (text1[p1] === text2[p2]) {
+            memo[p1][p2] = 1 + dfs(p1 + 1, p2 + 1);
+        } else {
+            memo[p1][p2] = Math.max(dfs(p1, p2 + 1), dfs(p1 + 1, p2));
         }
-
-        const result = Math.max(option1, option2);
-        memo[p1][p2] = result;
-        return result;
-    }
-
-    return memoSolve(0, 0);
-}
+  
+        return memo[p1][p2];
+    };
+  
+    return dfs(0, 0);
+};  
 
 // Brute force recursive solution
 // var longestCommonSubsequence = function(text1, text2) {
