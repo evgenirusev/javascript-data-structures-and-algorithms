@@ -5,16 +5,15 @@
  * @return {number}
  */
 
-// Caching solution
+// Top down DP with caching:
 const longestCommonSubsequence = (text1, text2) => {
     const memo = Array.from({ length: text1.length + 1 }, () =>
         Array(text2.length + 1).fill(null)
     );
-  
+
     const dfs = (i, j) => {
-        if (i === text1.length || j === text2.length) {
+        if (i === text1.length || j === text2.length)
             return 0;
-        }
   
         if (memo[i][j] !== null)
             return memo[i][j];
@@ -30,7 +29,7 @@ const longestCommonSubsequence = (text1, text2) => {
     return dfs(0, 0);
 };  
 
-// Brute force recursive solution
+// Top down Brute force without caching
 // var longestCommonSubsequence = function(text1, text2) {
 //     function dfs(i, j) {
 //         if (i >= text1.length || j >= text2.length)
