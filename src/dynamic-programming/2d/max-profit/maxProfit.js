@@ -1,50 +1,36 @@
 /**
+ * https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown
  * @param {number[]} prices
  * @return {number}
+ * Time complexity - O(N)
+ * Space complexity - O(N)
+ * Top down DFS DP solution:
  */
+function maxProfit(prices) {
+    const n = prices.length;
+    const dp = Array.from({ length: n + 1 }, () => Array(2).fill(undefined));
 
-// Initial approach with top down DP:
-var maxProfit = function(prices) {
-    // action: 0 - buy, 1 - sell, 2 - cooldown
-    const cache = Array.from({ length: prices.length },
-        () => Array.from({ length: 3 }).fill(null)
-    );
+    function dfs(i, buying) {
+        if (i >= n)
+            return 0;
 
-    function dfs(i, buyIndex, action, value) {
-        if (i === prices.length)
-            return value;
+        if (dp[i][buying] !== undefined)
+            return dp[i][buying];
 
-        if (cache[i][action] != null)
-            return cache[i][action];
-
-        let result = value;
-
-        // buy
-        if (action === 0) {
-            result = Math.max(
-                dfs(i + 1, i, 1, value),
-                dfs(i + 1, i, 2, value),
-            );
-        // sell
-        } else if (action == 1) {
-            result = (prices[i] - prices[buyIndex]) + dfs(i + 1, -1, 2, value);
-        // cooldown
+        const cooldown = dfs(i + 1, buying);
+        if (buying == 1) {
+            const buy = dfs(i + 1, -1) - prices[i];
+            dp[i][buying] = Math.max(buy, cooldown);
         } else {
-            result = Math.max(
-                dfs(i + 1, buyIndex, 0, value),
-                dfs(i + 1, buyIndex, 0, value)
-            )
+            const sell = dfs(i + 2, 1) + prices[i];
+            dp[i][buying] = Math.max(sell, cooldown);
         }
-
-        cache[i][action] = result;
-        return result;
+        
+        return dp[i][buying];
     }
 
-    return Math.max(
-        dfs(0, -1, 0, 0),
-        dfs(0, -1, 2, 0)
-    );
-};
+    return dfs(0, 1);
+}
 
 // Initial brute force backtracking solution with dfs
 var maxProfit = function(prices) {
