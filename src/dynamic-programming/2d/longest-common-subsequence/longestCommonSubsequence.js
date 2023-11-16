@@ -5,17 +5,34 @@
  * @return {number}
  */
 
+// Bottom up DP
+function longestCommonSubsequence(text1, text2) {
+    const dpGrid = new Array(text1.length + 1).fill(0)
+        .map(() => new Array(text2.length + 1).fill(0));
+    
+    for (let col = text2.length - 1; col >= 0; col--) {
+        for (let row = text1.length - 1; row >= 0; row--) {
+            if (text2[col] === text1[row])
+                dpGrid[row][col] = 1 + dpGrid[row + 1][col + 1];
+            else
+                dpGrid[row][col] = Math.max(dpGrid[row + 1][col], dpGrid[row][col + 1]);
+        }
+    }
+    
+    return dpGrid[0][0];
+}
+
 // Top down DP with caching:
 const longestCommonSubsequence = (text1, text2) => {
     const memo = Array.from({ length: text1.length + 1 }, () =>
-        Array(text2.length + 1).fill(null)
+        Array(text2.length + 1).fill(-1)
     );
 
     const dfs = (i, j) => {
         if (i === text1.length || j === text2.length)
             return 0;
-  
-        if (memo[i][j] !== null)
+
+        if (memo[i][j] !== -1)
             return memo[i][j];
   
         if (text1[i] === text2[j])
@@ -27,7 +44,7 @@ const longestCommonSubsequence = (text1, text2) => {
     };
   
     return dfs(0, 0);
-};  
+};
 
 // Top down Brute force without caching
 // var longestCommonSubsequence = function(text1, text2) {
