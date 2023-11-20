@@ -1,4 +1,4 @@
-const networkDelayTime = require('./networkDelayTime'); // Update the path accordingly
+const networkDelayTime = require('./networkDelayTime');
 
 describe("networkDelayTime", () => {
     it('should return the correct delay time for a valid input', () => {
