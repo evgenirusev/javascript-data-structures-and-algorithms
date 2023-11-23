@@ -10,6 +10,6 @@ describe("coinChange", () => {
   });
 
   it('should correctly calculate coin change without timeout', () => {
-    expect(change(500, [3,5,7,8,9,10,11])).toBe(150);
+    expect(change(500, [3,5,7,8,9,10,11])).toBe(35502874);
   });
 });
