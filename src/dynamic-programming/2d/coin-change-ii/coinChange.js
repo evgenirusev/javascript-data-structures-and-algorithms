@@ -3,23 +3,23 @@
  * @param {number} amount
  * @param {number[]} coins
  * @return {number}
+ * Bottom up DP
+ * Time O(N * amount)
+ * Space O(N)
  */
-// Bottom up DP:
 function coinChange(amount, coins) {
-    const n = coins.length;
     const dp = new Array(amount + 1).fill(0);
     dp[0] = 1;
 
-    for (let i = n - 1; i >= 0; i--) {
-        for (let j = coins[i]; j <= amount; j++) {
+    for (let i = coins.length - 1; i >= 0; i--)
+        for (let j = coins[i]; j <= amount; j++)
             dp[j] += dp[j - coins[i]];
-        }
-    }
 
     return dp[amount];
 }
 
-// Top down DP:
+// Top down DP
+// Time O(N * amount) | Space O(N * amount)
 // function coinChange(amount, coins) {
 //     const memo = Array.from({ length: coins.length }, () => Array(amount + 1).fill(undefined));
 
