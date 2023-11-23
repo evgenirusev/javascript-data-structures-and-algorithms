@@ -4,31 +4,47 @@
  * @param {number[]} coins
  * @return {number}
  */
+// Bottom up DP:
 function coinChange(amount, coins) {
-    const memo = Array.from({ length: coins.length }, () => Array(amount + 1).fill(undefined));
+    const n = coins.length;
+    const dp = new Array(amount + 1).fill(0);
+    dp[0] = 1;
 
-    function dfs(i, a, cache) {
-        if (a === amount)
-            return 1;
-    
-        if (a > amount)
-            return 0;
-            
-        if (i === coins.length)
-            return 0;
-            
-        if (cache[i][a] !== undefined)
-            return cache[i][a];
-
-        cache[i][a] = dfs(i    , a + coins[i], cache)
-                    + dfs(i + 1, a           , cache);
-        
-        return cache[i][a];
+    for (let i = n - 1; i >= 0; i--) {
+        for (let j = coins[i]; j <= amount; j++) {
+            dp[j] += dp[j - coins[i]];
+        }
     }
-    
-    var res = dfs(0, 0, memo);
-    return res;
+
+    return dp[amount];
 }
+
+// Top down DP:
+// function coinChange(amount, coins) {
+//     const memo = Array.from({ length: coins.length }, () => Array(amount + 1).fill(undefined));
+
+//     function dfs(i, a, cache) {
+//         if (a === amount)
+//             return 1;
+    
+//         if (a > amount)
+//             return 0;
+            
+//         if (i === coins.length)
+//             return 0;
+            
+//         if (cache[i][a] !== undefined)
+//             return cache[i][a];
+
+//         cache[i][a] = dfs(i    , a + coins[i], cache)
+//                     + dfs(i + 1, a           , cache);
+        
+//         return cache[i][a];
+//     }
+    
+//     var res = dfs(0, 0, memo);
+//     return res;
+// }
 
 // Brute force backtracking - timeout
 // var coinChange = function(amount, coins) {
