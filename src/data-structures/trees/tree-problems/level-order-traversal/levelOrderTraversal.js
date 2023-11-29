@@ -18,9 +18,9 @@ var levelOrder = function(root) {
             return;
 
         if (!levelResults[level])
-            levelResults[level] = [node.val]
-        else
-            levelResults[level].push(node.val);
+            levelResults[level] = []
+        
+        levelResults[level].push(node.val);
         
         dfs(node.left, level + 1);
         dfs(node.right, level + 1);
