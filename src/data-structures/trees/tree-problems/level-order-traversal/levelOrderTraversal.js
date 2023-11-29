@@ -10,25 +10,26 @@ const Queue = require('../../../queues/with-object-and-pointers/Queue');
 var levelOrder = function(root) {
     if (!root)
         return [];
-    
+
+    const levelResults = [];
     const queue = new Queue();
     queue.enqueue(root);
-    const result = [];
-    while (queue.length > 0) {
+    while (!queue.isEmpty) {
+        const levelQueueLength = queue.length;
         const levelResult = [];
-        const levelSize = queue.length;
-        for (let i = 0; i < levelSize; i++) {
-            let curr = queue.dequeue();
-            levelResult.push(curr.val);
-            if (curr.left)
-                queue.enqueue(curr.left);
-            if (curr.right)
-                queue.enqueue(curr.right);
+        for (let i = 0; i < levelQueueLength; i++) {
+            const node = queue.dequeue();
+            levelResult.push(node.val);
+            if (node.left)
+                queue.enqueue(node.left)
+            if (node.right)
+                queue.enqueue(node.right)
         }
-        result.push(levelResult);
+
+        levelResults.push(levelResult);
     }
 
-    return result;
+    return levelResults;
 };
 
 module.exports = levelOrder;
