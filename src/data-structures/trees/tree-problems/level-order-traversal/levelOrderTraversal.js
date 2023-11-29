@@ -7,6 +7,8 @@ const Queue = require('../../../queues/with-object-and-pointers/Queue');
  * @param {TreeNode} root
  * @return {number[][]}
  */
+
+// DFS
 var levelOrder = function(root) {
     if (!root)
         return [];
@@ -31,6 +33,7 @@ var levelOrder = function(root) {
     return levelResults;
 };
 
+// BFS with a queue
 // var levelOrder = function(root) {
 //     if (!root)
 //         return [];
