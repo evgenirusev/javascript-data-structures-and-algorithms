@@ -4,51 +4,52 @@
  * @param {number} target
  * @return {number[][]}
  */
-function combinationSum(candidates, target) {
-    const res = [];
 
-    function dfs(i, cur, total) {
-        if (total === target) {
-            res.push([...cur]);
-            return;
-        }
-        
-        if (i >= candidates.length || total > target)
-            return;
-
-        cur.push(candidates[i]);
-        dfs(i, cur, total + candidates[i]);
-        cur.pop();
-        dfs(i + 1, cur, total);
+function backtrack(remain, comb, start, candidates, results) {
+    if (remain === 0) {
+        results.push([...comb]);
+        return;
+    } else if (remain < 0) {
+        return;
     }
 
-    dfs(0, [], 0);
-    return res;
+    for (let i = start; i < candidates.length; ++i) {
+        comb.push(candidates[i]);
+        backtrack(remain - candidates[i], comb, i, candidates, results);
+        comb.pop();
+    }
 }
 
-// My initial solution:
+function combinationSum(candidates, target) {
+    const results = [];
+    const comb = [];
+
+    backtrack(target, comb, 0, candidates, results);
+    return results;
+}
+
+
+// Solution without a for loop (a little confusing relativelly speaking)
 // function combinationSum(candidates, target) {
-//     const result = []
-//     backtrack(result, [], 0, 0, candidates, target);
-//     return result;
-// }
+//     const res = [];
 
-// function backtrack(result, subset, sum, i, candidates, target) {
-//     for (let j = i; j < candidates.length; j++) {
-//         subset.push(candidates[j]);
-//         sum += candidates[j];
-
-//         if (sum > target) {
-            
-//         } else if (sum === target) {
-//             result.push([...subset]);
-//         } else {
-//             backtrack(result, subset, sum, j, candidates, target);
+//     function dfs(i, cur, total) {
+//         if (total === target) {
+//             res.push([...cur]);
+//             return;
 //         }
+        
+//         if (i >= candidates.length || total > target)
+//             return;
 
-//         sum -= candidates[j];
-//         subset.pop();
+//         cur.push(candidates[i]);
+//         dfs(i, cur, total + candidates[i]);
+//         cur.pop();
+//         dfs(i + 1, cur, total);
 //     }
+
+//     dfs(0, [], 0);
+//     return res;
 // }
 
 // Another solution that I came up with on my 3rd try:
