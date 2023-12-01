@@ -4,27 +4,26 @@
  * @param {number} target
  * @return {number[][]}
  */
-
-function backtrack(remain, comb, start, candidates, results) {
+// 
+function backtrack(remain, set, start, candidates, results) {
     if (remain === 0) {
-        results.push([...comb]);
+        results.push([...set]);
         return;
-    } else if (remain < 0) {
+    } else if (remain < 0)
         return;
-    }
 
     for (let i = start; i < candidates.length; ++i) {
-        comb.push(candidates[i]);
-        backtrack(remain - candidates[i], comb, i, candidates, results);
-        comb.pop();
+        set.push(candidates[i]);
+        backtrack(remain - candidates[i], set, i, candidates, results);
+        set.pop();
     }
 }
 
 function combinationSum(candidates, target) {
     const results = [];
-    const comb = [];
+    const set = [];
 
-    backtrack(target, comb, 0, candidates, results);
+    backtrack(target, set, 0, candidates, results);
     return results;
 }
 
