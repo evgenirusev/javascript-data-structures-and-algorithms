@@ -16,19 +16,18 @@ function subsets(nums) {
             output.push([...curr]);
             return;
         }
-          
+
         for (let i = first; i < n; ++i) {
             curr.push(nums[i]);
             backtrack(i + 1, curr, nums);
             curr.pop();
         }
       }
-      
+
     n = nums.length;
 
-    for (k = 0; k < n + 1; ++k) {
+    for (k = 0; k < n + 1; ++k)
         backtrack(0, [], nums);
-    }
 
     return output;
 }

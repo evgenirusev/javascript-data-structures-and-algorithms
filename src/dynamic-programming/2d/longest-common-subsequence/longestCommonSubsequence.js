@@ -23,28 +23,28 @@ function longestCommonSubsequence(text1, text2) {
 }
 
 // Top down DP with caching:
-const longestCommonSubsequence = (text1, text2) => {
-    const memo = Array.from({ length: text1.length + 1 }, () =>
-        Array(text2.length + 1).fill(-1)
-    );
+// const longestCommonSubsequence = (text1, text2) => {
+//     const memo = Array.from({ length: text1.length + 1 }, () =>
+//         Array(text2.length + 1).fill(-1)
+//     );
 
-    const dfs = (i, j) => {
-        if (i === text1.length || j === text2.length)
-            return 0;
+//     const dfs = (i, j) => {
+//         if (i === text1.length || j === text2.length)
+//             return 0;
 
-        if (memo[i][j] !== -1)
-            return memo[i][j];
+//         if (memo[i][j] !== -1)
+//             return memo[i][j];
   
-        if (text1[i] === text2[j])
-            memo[i][j] = 1 + dfs(i + 1, j + 1);
-        else
-            memo[i][j] = Math.max(dfs(i, j + 1), dfs(i + 1, j));
+//         if (text1[i] === text2[j])
+//             memo[i][j] = 1 + dfs(i + 1, j + 1);
+//         else
+//             memo[i][j] = Math.max(dfs(i, j + 1), dfs(i + 1, j));
   
-        return memo[i][j];
-    };
+//         return memo[i][j];
+//     };
   
-    return dfs(0, 0);
-};
+//     return dfs(0, 0);
+// };
 
 // Top down Brute force without caching
 // var longestCommonSubsequence = function(text1, text2) {
