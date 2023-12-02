@@ -1,7 +1,6 @@
 const integerBreak = require('./integerBreak');
 
 describe("integerBreak function", () => {
-  
   it('should return 2 when n is 3', () => {
     expect(integerBreak(3)).toEqual(2);
   });
