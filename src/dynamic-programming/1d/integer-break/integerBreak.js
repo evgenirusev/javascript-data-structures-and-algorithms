@@ -4,34 +4,58 @@
  * @return {number}
  */
 
-// Top down DP approach
+// Bottom up DP
 // Time complexity - O(n^2)
 // Space complexity - O(n)
 function integerBreak(n) {
-    const dp = new Array(n + 1).fill(0);
-
-    function dfs(num) {
-        if (num <= 3)
-            return num;
-
-        if (dp[num] !== 0)
-            return dp[num];
-
-        let res = num;
-        for (let i = 2; i < num; i++) {
-            const r = i * dfs(num - i);
-            res = Math.max(res, r);
-        }
-
-        dp[num] = res;
-        return res;
-    }
-
     if (n <= 3)
         return n - 1;
 
-    return dfs(n);
+    const dp = Array(n + 1).fill(0);
+
+    for (let i = 1; i <= 3; i++)
+        dp[i] = i;
+
+    for (let num = 4; num <= n; num++) {
+        let ans = num;
+        
+        for (let i = 2; i < num; i++)
+            ans = Math.max(ans, i * dp[num - i]);
+
+        dp[num] = ans;
+    }
+
+    return dp[n];
 }
+
+// Top down DP approach
+// Time complexity - O(n^2)
+// Space complexity - O(n)
+// function integerBreak(n) {
+//     const dp = new Array(n + 1).fill(0);
+
+//     function dfs(num) {
+//         if (num <= 3)
+//             return num;
+
+//         if (dp[num] !== 0)
+//             return dp[num];
+
+//         let res = num;
+//         for (let i = 2; i < num; i++) {
+//             const r = i * dfs(num - i);
+//             res = Math.max(res, r);
+//         }
+
+//         dp[num] = res;
+//         return res;
+//     }
+
+//     if (n <= 3)
+//         return n - 1;
+
+//     return dfs(n);
+// }
 
 // Brute force backtracking dfs
 // Time complexity - O(2^n)
