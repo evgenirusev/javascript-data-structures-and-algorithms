@@ -5,24 +5,23 @@
  * @param {TreeNode} root
  * @return {number}
  */
-var diameterOfBinaryTree = function(root, max = [0]) {
-    dfs(root, max);
-    return max[0];
-};
+var diameterOfBinaryTree = function(root) {
+    let max = 0;
 
-const dfs = (root, max) => {
-    if (!root)
-        return 0;
+    function dfs(node) {
+        if (!node)
+            return 0;
+        
+        const leftDiameter = dfs(node.left);
+        const rightDiameter = dfs(node.right);
+        max = Math.max(max, leftDiameter + rightDiameter)
 
-    const left = dfs(root.left, max);
-    const right = dfs(root.right, max);
+        return 1 + Math.max(leftDiameter, rightDiameter);
+    }
 
-    const diameter = left + right;
-    max[0] = Math.max(max[0], diameter);
+    dfs(root);
 
-    const height = Math.max(left, right);
-
-    return height + 1;
+    return max;
 }
 
 module.exports = diameterOfBinaryTree;
