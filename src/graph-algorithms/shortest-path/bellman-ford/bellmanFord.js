@@ -6,9 +6,8 @@ function bellmanFord(graph, sourceVertex) {
 
     distances[sourceVertex] = 0;
 
-    for (let i = 0; i < graph.allVertices.length - 1; i++) {
+    for (let i = 0; i < graph.allVertices.length - 1; i++)
         relaxVertices(graph, distances);
-    }
 
     checkForNegativeCycle(graph, distances);
 

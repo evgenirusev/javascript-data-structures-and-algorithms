@@ -29,4 +29,4 @@ describe('floydWarshall', () => {
         [Infinity, Infinity, Infinity, Infinity, Infinity], // E
     ]);
   });
-})
+});

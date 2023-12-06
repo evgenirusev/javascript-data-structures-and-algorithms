@@ -22,8 +22,7 @@ function getShortestPaths(graph, sourceVertex) {
         visited[currentVertex] = true;
 
         graph.outgoingEdgesOf(currentVertex).forEach(edge => {
-            if (!visited[edge.end]) {
-                const distanceWithEdge = distances[currentVertex] + edge.weight;
+            const distanceWithEdge = distances[currentVertex] + edge.weight;
                 const endVertexDistance = distances[edge.end];
 
                 if (distanceWithEdge < endVertexDistance) {
@@ -34,7 +33,6 @@ function getShortestPaths(graph, sourceVertex) {
                         distance: distances[edge.end]
                     });
                 }
-            }
         });
     }
 

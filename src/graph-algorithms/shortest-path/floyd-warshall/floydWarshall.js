@@ -5,9 +5,8 @@ function floydWarshall(graph) {
     for (let k = 0; k < verticesCount; k++) {
         for (let i = 0; i < verticesCount; i++) {
             for (let j = 0; j < verticesCount; j++) {
-                if (distances[i][j] > distances[i][k] + distances[k][j]) {
+                if (distances[i][j] > distances[i][k] + distances[k][j])
                     distances[i][j] = distances[i][k] + distances[k][j];
-                }
             }
         }
     }

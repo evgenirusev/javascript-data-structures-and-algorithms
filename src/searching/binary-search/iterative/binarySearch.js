@@ -3,8 +3,8 @@ function binarySearch(arr, num, cmp) {
         cmp = (a, b) => a - b;
     }
 
-    let left = 0;
-    let right = arr.length - 1;
+    let left = 0,
+        right = arr.length - 1;
 
     while (left <= right) {
         let mid = Math.floor((left + right) / 2);
