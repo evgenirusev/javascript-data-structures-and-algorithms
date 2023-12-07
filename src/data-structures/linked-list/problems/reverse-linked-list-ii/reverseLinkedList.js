@@ -11,6 +11,8 @@ function ListNode(val, next) {
  * @param {number} left
  * @param {number} right
  * @return {ListNode}
+ * Time complexity - O(n)
+ * Space completixy - O(1)
  */
 var reverseBetween = function(head, left, right) {
     if (!head || left === right)
