@@ -1,3 +1,9 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ * Time complexity - O(n)
+ * Space complexity - O(1)
+ */
 var findDuplicate = function(nums) {
     const temp = nums[0];
     for (let i = 0; i < nums.length; i++) {
