@@ -23,16 +23,16 @@ function getShortestPaths(graph, sourceVertex) {
 
         graph.outgoingEdgesOf(currentVertex).forEach(edge => {
             const distanceWithEdge = distances[currentVertex] + edge.weight;
-                const endVertexDistance = distances[edge.end];
+            const endVertexDistance = distances[edge.end];
 
-                if (distanceWithEdge < endVertexDistance) {
-                    distances[edge.end] = distanceWithEdge;
+            if (distanceWithEdge < endVertexDistance) {
+               distances[edge.end] = distanceWithEdge;
 
-                    heap.insert({
-                        vertex: graph.getVertex(edge.end),
-                        distance: distances[edge.end]
-                    });
-                }
+                heap.insert({
+                    vertex: graph.getVertex(edge.end),
+                    distance: distances[edge.end]
+                });
+            }
         });
     }
 
