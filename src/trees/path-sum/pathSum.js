@@ -7,9 +7,12 @@
  * }
  */
 /**
+ * https://leetcode.com/problems/path-sum/
  * @param {TreeNode} root
  * @param {number} targetSum
  * @return {boolean}
+ * Time complexity - O(n)
+ * Space complexity - O(1)
  */
 var hasPathSum = function(root, sum) {
     if (root == null)
