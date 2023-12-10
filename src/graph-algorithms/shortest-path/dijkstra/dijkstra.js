@@ -26,7 +26,7 @@ function getShortestPaths(graph, sourceVertex) {
             const endVertexDistance = distances[edge.end];
 
             if (distanceWithEdge < endVertexDistance) {
-               distances[edge.end] = distanceWithEdge;
+                distances[edge.end] = distanceWithEdge;
 
                 heap.insert({
                     vertex: graph.getVertex(edge.end),

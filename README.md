@@ -1,6 +1,27 @@
 # Javascript Data Structures And Algorithms
 
-TDD Implementations of advanced data structures and algorithms.
+**TDD Implementations of data structures, algorithms and programming problems**
+
+## Data Structures
+* [Graph](src/data-structures/graphs)
+    * [Adjacency List Representation](src/data-structures/graphs/undirected/adjacency-list-graph)
+    * [Adjacency Matrix Representation](src/data-structures/graphs/undirected/adjacency-matrix-graph)
+* [Heap](src/data-structures/heaps)
+    * [Binary Heap](src/data-structures/heaps/binary-heap)
+* [Disjoint Set](src/data-structures/disjoint-sets)
+    * [Balanced Quick Union Tree](src/data-structures/disjoint-sets/balanced-quick-union-tree)
+    * [Path Compressed Quick Union](src/data-structures/disjoint-sets/path-compressed-quick-union)
+    * [Quick Find](src/data-structures/disjoint-sets/quick-find)
+    * [Quick Union](src/data-structures/disjoint-sets/quick-union)
+* [Linked List](src/data-structures/linked-list)
+* [Trie](src/data-structures/trie)
+* [Tree](src/data-structures/trees)
+  * [Binary Search Tree](src/data-structures/tree/binary-search-tree)
+  * [AVL Tree](src/data-structures/tree/avl-tree)
+  * [Red-Black Tree](src/data-structures/tree/red-black-tree)
+  * [Interval Tree](src/data-structures/tree/interval-tree)
+  * [Segment Tree](src/data-structures/tree/segment-tree)
+
 
 ## Algorithms
 
@@ -33,25 +54,3 @@ TDD Implementations of advanced data structures and algorithms.
 * [Others](src/others)
     * [Divide and Conquer](src/others/divide-and-conquer)
         * [Array Inversions](src/others/divide-and-conquer/array-inversions)
-
-## Data Structures
-
-* [Graph](src/data-structures/graphs)
-    * [Undirected](src/data-structures/graphs/undirected)
-        * [Adjacency List Representation](src/data-structures/graphs/undirected/adjacency-list-graph)
-        * [Adjacency Matrix Representation](src/data-structures/graphs/undirected/adjacency-matrix-graph)
-* [Heap](src/data-structures/heaps)
-    * [Binary Heap](src/data-structures/heaps/binary-heap)
-* [Disjoint Set](src/data-structures/disjoint-sets)
-    * [Balanced Quick Union Tree](src/data-structures/disjoint-sets/balanced-quick-union-tree)
-    * [Path Compressed Quick Union](src/data-structures/disjoint-sets/path-compressed-quick-union)
-    * [Quick Find](src/data-structures/disjoint-sets/quick-find)
-    * [Quick Union](src/data-structures/disjoint-sets/quick-union)
-* [Linked List](src/data-structures/linked-list)
-* [Trie](src/data-structures/trie)
-* [Tree](src/data-structures/trees)
-  * [Binary Search Tree](src/data-structures/tree/binary-search-tree)
-  * [AVL Tree](src/data-structures/tree/avl-tree)
-  * [Red-Black Tree](src/data-structures/tree/red-black-tree)
-  * [Interval Tree](src/data-structures/tree/interval-tree)
-  * [Segment Tree](src/data-structures/tree/segment-tree)

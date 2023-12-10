@@ -24,10 +24,10 @@ class UnionFind {
         if (rootKey1 === rootKey2) {
             return;
         }
-        if (this.rank[rootKey1] < this.rank[rootKey2]) {
+        if (this.rank[rootKey1] < this.rank[rootKey2])
             [rootKey1, rootKey2] = [rootKey2, rootKey1];
-        }
         this.parent[rootKey2] = rootKey1;
+
         if (this.rank[rootKey1] === this.rank[rootKey2]) {
             this.rank[rootKey1]++;
         }
