@@ -32,7 +32,6 @@
 * [Hash table](src/data-structures/hash-table)
 
 ## Algorithms
-
 * [Mathematics](src/mathematics)
     * [Divide and Conquer](src/mathematics/divide-and-conquer)
         * [Strassen's Matrix Multiplication](src/mathematics/divide-and-conquer/strassen-matrix-multiplication)
@@ -59,6 +58,14 @@
     * [Binary Search](src/searching/binary-search)
         * [Iterative](src/searching/binary-search/iterative)
         * [Recursive](src/searching/binary-search/recursive)
+* [Graph algorithms](src/graph-algorithms)
+    * [Breadth first search](src/graph-algorithms/breadth-first-search)
+    * [Depth first search](src/graph-algorithms/depth-first-search)
+    * [Kargers randomized contraction](src/graph-algorithms/kargers-randomized-contraction)
+    * [Shortest path](src/graph-algorithms/shortest-path)
+    * [Spanning trees](src/graph-algorithms/spanning-trees)
+    * [Strongly connected components - Kosaraju's algorithm](src/graph-algorithms/strongly-connected-components/kosaraju-algorithm)
+    * [Topological sort](src/graph-algorithms/topological-sort)
 * [Others](src/others)
     * [Divide and Conquer](src/others/divide-and-conquer)
         * [Array Inversions](src/others/divide-and-conquer/array-inversions)
