@@ -167,6 +167,7 @@
 * [Bit manipulation](src/bit-manipulation)
     * [Find missing](src/bit-manipulation/find-missing)
     * [Missing number](src/bit-manipulation/missing-number)
+* [Binary search problems](src/searching/binary-search)
 * [Others](src/others)
     * [Divide and Conquer](src/others/divide-and-conquer)
         * [Array Inversions](src/others/divide-and-conquer/array-inversions)
