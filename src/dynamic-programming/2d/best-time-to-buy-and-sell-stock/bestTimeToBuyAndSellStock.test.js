@@ -1,4 +1,4 @@
-const maxProfit = require('./maxProfit'); // Replace './maxProfit' with the correct path to your function file
+const maxProfit = require('./bestTimeToBuyAndSellStock');
 
 describe("maxProfit function", () => {
   it('should return 0 for an empty array', () => {
